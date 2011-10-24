@@ -1,4 +1,5 @@
-git clone git://github.com/vim-scripts/dbext.vim -c core.autocrlf=true
-::cd dbext.vim
-::git rebase
-::cd ..
+@ECHO OFF
+
+CALL gitPullPlugin.bat git://github.com/vim-scripts dbext.vim
+CALL gitPullPlugin.bat git://github.com/tpope vim-fugitive
+CALL gitPullPlugin.bat git://repo.or.cz vcscommand .git
