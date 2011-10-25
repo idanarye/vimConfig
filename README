@@ -1,0 +1,18 @@
+This is my vim config. To use it, download pathogen and write the following
+lines to your .vimrc:
+
+let $MYVIMRC="$VIM/vimfiles/bundle/_vimrc"
+source $MYVIMRC
+call pathogen#infect()
+
+
+Then use the following shell commands in your vimfiles/bundle to download
+everything:
+
+git init
+git config core.autocrlf false
+git remote add origin https://github.com/someboddy/vimConfig
+git fetch
+git checkout master
+pullPlugins.bat
+
