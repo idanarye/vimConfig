@@ -141,7 +141,7 @@ if has("autocmd")
   autocmd filetype sql setlocal dict+=$vim\dictionaries\sql.dic
   autocmd filetype vb setlocal dict+=$vim\dictionaries\vb.dic
 
-	autocmd BufRead,BufNewFile *.* let b:VCSCommandVCSType='SVN'
+  autocmd BufRead,BufNewFile *.* let b:VCSCommandVCSType='SVN'
 endif
 color torte
 
@@ -153,7 +153,11 @@ command! -complete=dir -nargs=* -count=0 Ex call netrw#Explore(<count>,0,0+<bang
 source $VIM/dbextProfiles.vim
 
 " VCSCommand SETTINGS
-set statusline=%<%f\ %{VCSCommandGetStatusLine()}\ %h%m%r%=%l,%c%V\ %P
+"set statusline=%<%f\ %{VCSCommandGetStatusLine()}\ %h%m%r%=%l,%c%V\ %P
+
+" Fugitive SETTINGS
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+noremap <Leader>gc <Esc>:Gcommit<Cr>
 
 filetype indent on
 
