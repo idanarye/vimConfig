@@ -1,0 +1,18 @@
+[submodule "dbext.vim"]
+	path = dbext.vim
+	url = git://github.com/vim-scripts/dbext.vim
+[submodule "vim-fugitive"]
+	path = vim-fugitive
+	url = git://github.com/tpope/vim-fugitive
+[submodule "vim-unimpaired"]
+	path = vim-unimpaired
+	url = git://github.com/tpope/vim-unimpaired.git
+[submodule "vim-repeat"]
+	path = vim-repeat
+	url = git://github.com/tpope/vim-repeat.git
+[submodule "powershell-vim"]
+	path = powershell-vim
+	url = git://github.com/gabemc/powershell-vim
+[submodule "vcscommand"]
+	path = vcscommand
+	url = git://repo.or.cz/vcscommand.git
