@@ -5,14 +5,9 @@ let $MYVIMRC="$VIM/vimfiles/bundle/_vimrc"
 source $MYVIMRC
 call pathogen#infect()
 
+Download this repo to your vimfiles/bundle, and run
 
-Then use the following shell commands in your vimfiles/bundle to download
-everything:
+git submodule init
+git submodule update
 
-git init
-git config core.autocrlf false
-git remote add origin https://github.com/someboddy/vimConfig
-git fetch
-git checkout master
-pullPlugins.bat
-
+to download the plugins.
