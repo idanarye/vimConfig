@@ -159,6 +159,7 @@ source $VIM/dbextProfiles.vim
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 autocmd BufReadPost fugitive://* set bufhidden=delete
 noremap <Leader>gc <Esc>:Gcommit<Cr>
+noremap <Leader>gs <Esc>:Gstatus<Cr>
 
 filetype indent on
 
