@@ -179,10 +179,12 @@ let g:ConqueTerm_CWInsert = 1
 let g:ConqueTerm_ReadUnfocused = 1
 
 
-silent execute '!mkdir "'.$VIMRUNTIME.'/temp"'
-silent execute '!del "'.$VIMRUNTIME.'/temp/*~"'
-set backupdir=$VIMRUNTIME/temp//
-set directory=$VIMRUNTIME/temp//
+if has('win32')
+	silent execute '!mkdir "'.$VIMRUNTIME.'/temp"'
+	silent execute '!del "'.$VIMRUNTIME.'/temp/*~"'
+	set backupdir=$VIMRUNTIME/temp//
+	set directory=$VIMRUNTIME/temp//
+endif
 
 nnoremap <A-j> :m+<CR>==
 nnoremap <A-k> :m-2<CR>==
