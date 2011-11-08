@@ -184,7 +184,13 @@ if has('win32')
 	silent execute '!del "'.$VIMRUNTIME.'/temp/*~"'
 	set backupdir=$VIMRUNTIME/temp//
 	set directory=$VIMRUNTIME/temp//
+elseif has('unix')
+	silent execute '!mkdir -p ~/vimtmp'
+	silent execute '!rm -f ~/vimtmp/*'
+	set backupdir=~/vimtmp//
+	set directory=~/vimtmp//
 endif
+	
 
 nnoremap <A-j> :m+<CR>==
 nnoremap <A-k> :m-2<CR>==
