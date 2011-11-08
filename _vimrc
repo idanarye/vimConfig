@@ -127,6 +127,8 @@ if has("autocmd")
   au BufRead,BufNewFile *.csproj compiler MSBuild
   au filetype cs compiler MSBuild
 
+  au filetype java compiler javac
+
   
   au filetype vb map <buffer> <F5> <Esc>:!%<CR>
   au filetype python map <buffer> <F5> <Esc>:!%<CR>
