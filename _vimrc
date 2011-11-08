@@ -124,10 +124,10 @@ if has("autocmd")
   au filetype c compiler MinGW
   au filetype cpp compiler MinGW
 
+  au filetype java compiler javac
+
   au BufRead,BufNewFile *.csproj compiler MSBuild
   au filetype cs compiler MSBuild
-
-  au filetype java compiler javac
 
   
   au filetype vb map <buffer> <F5> <Esc>:!%<CR>
@@ -147,7 +147,7 @@ if has("autocmd")
 endif
 color torte
 
-command Cmd ConqueTerm cmd
+"command Cmd ConqueTerm cmd
 
 let g:ftplugin_sql_omni_key = 'ã' "This is actuall <A-C>
 command! -complete=dir -nargs=* -count=0 Ex call netrw#Explore(<count>,0,0+<bang>0,<q-args>)
@@ -186,7 +186,13 @@ if has('win32')
 	silent execute '!del "'.$VIMRUNTIME.'/temp/*~"'
 	set backupdir=$VIMRUNTIME/temp//
 	set directory=$VIMRUNTIME/temp//
+elseif has('unix')
+	silent execute '!mkdir -p ~/vimtmp'
+	silent execute '!rm -f ~/vimtmp/*'
+	set backupdir=~/vimtmp//
+	set directory=~/vimtmp//
 endif
+	
 
 nnoremap <A-j> :m+<CR>==
 nnoremap <A-k> :m-2<CR>==
@@ -228,6 +234,4 @@ function MyDiff()
   endif
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
-
-
 
