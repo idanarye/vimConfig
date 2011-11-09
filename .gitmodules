@@ -16,3 +16,9 @@
 [submodule "vcscommand"]
 	path = vcscommand
 	url = git://repo.or.cz/vcscommand.git
+[submodule "vim-easymotion"]
+	path = vim-easymotion
+	url = git://github.com/Lokaltog/vim-easymotion.git
+[submodule "csv.vim"]
+	path = csv.vim
+	url = git://github.com/chrisbra/csv.vim.git
