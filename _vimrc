@@ -121,13 +121,13 @@ if has("autocmd")
   au BufRead,BufNewFile *.prr setlocal filetype=xml
   au BufRead,BufNewFile *.prt setlocal filetype=xml
 
-  au filetype c compiler MinGW
-  au filetype cpp compiler MinGW
+  au filetype c compiler gcc
+  au filetype cpp compiler gcc
 
-  au filetype java compiler javac
+  au filetype java compiler java
 
-  au BufRead,BufNewFile *.csproj compiler MSBuild
-  au filetype cs compiler MSBuild
+  au BufRead,BufNewFile *.csproj compiler dotnet
+  au filetype cs compiler dotnet
 
   
   au filetype vb map <buffer> <F5> <Esc>:!%<CR>
