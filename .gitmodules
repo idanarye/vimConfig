@@ -22,3 +22,6 @@
 [submodule "csv.vim"]
 	path = csv.vim
 	url = git://github.com/chrisbra/csv.vim.git
+[submodule "Vim-JDE"]
+	path = Vim-JDE
+	url = git://github.com/vim-scripts/Vim-JDE.git

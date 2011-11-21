@@ -80,6 +80,7 @@ if has("autocmd")
     \ endif
   
   autocmd BufEnter * lcs %:p:h
+  autocmd BufEnter * cd %:p:h
 
 
 
@@ -103,6 +104,8 @@ endif
 
 
 "	MY OWN SETTINGS
+
+cd %:p:h
 
 set go-=m
 set go-=T
