@@ -25,3 +25,6 @@
 [submodule "Vim-JDE"]
 	path = Vim-JDE
 	url = git://github.com/vim-scripts/Vim-JDE.git
+[submodule "mirodark"]
+	path = mirodark
+	url = git://github.com/djjcast/mirodark.git
