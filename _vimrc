@@ -132,6 +132,8 @@ if has("autocmd")
   au BufRead,BufNewFile *.csproj compiler dotnet
   au filetype cs compiler dotnet
 
+  au filetype ruby compiler ruby
+
   
   au filetype vb map <buffer> <F5> <Esc>:!%<CR>
   au filetype python map <buffer> <F5> <Esc>:!%<CR>

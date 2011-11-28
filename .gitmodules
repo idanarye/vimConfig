@@ -28,3 +28,6 @@
 [submodule "mirodark"]
 	path = mirodark
 	url = git://github.com/djjcast/mirodark.git
+[submodule "rubycomplete.vim"]
+	path = rubycomplete.vim
+	url = https://github.com/vim-scripts/rubycomplete.vim.git
