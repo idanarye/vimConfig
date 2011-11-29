@@ -124,15 +124,17 @@ if has("autocmd")
   au BufRead,BufNewFile *.prr setlocal filetype=xml
   au BufRead,BufNewFile *.prt setlocal filetype=xml
 
-  au filetype c compiler gcc
-  au filetype cpp compiler gcc
+  "au filetype c compiler gcc
+  "au filetype cpp compiler gcc
 
-  au filetype java compiler java
+  "au filetype java compiler java
 
-  au BufRead,BufNewFile *.csproj compiler dotnet
-  au filetype cs compiler dotnet
+  "au BufRead,BufNewFile *.csproj compiler dotnet
+  "au filetype cs compiler dotnet
 
-  au filetype ruby compiler ruby
+  "au filetype ruby compiler ruby
+
+  au BufRead,BufNewFile * compiler rake
 
   
   au filetype vb map <buffer> <F5> <Esc>:!%<CR>
@@ -209,6 +211,21 @@ vnoremap <A-k> :m-2<CR>gv=gv
 nnoremap <A-x> <C-a>
 inoremap <A-e> <C-y>
 
+function! CopyBuildFile(pattern)
+	let buildFiles=split(system("ls ".a:pattern." -1"),"\n")
+	let fileNames=[]
+	for buildFile in buildFiles
+		let buildFile=strpart(buildFile,strridx(buildFile,"/")+1)
+		let fileNames=fileNames+[(len(fileNames)+1).": ".buildFile]
+	endfor
+	let selectedIndex=inputlist(["Select build template"]+fileNames)-1
+	if selectedIndex>=0&&selectedIndex<len(buildFiles)
+		let selectedFile=buildFiles[selectedIndex]
+		call system("cp -f ".selectedFile." ./rakefile")
+	endif
+endfunc
+
+command! GetBuildFile call CopyBuildFile("~/.vim/buildTemplates/*.rake") | compiler rake
 
 
 source $VIMRUNTIME/vimrc_example.vim
