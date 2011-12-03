@@ -227,6 +227,8 @@ endfunc
 
 command! GetBuildFile call CopyBuildFile("~/.vim/buildTemplates/*.rake") | compiler rake
 
+noremap <Leader><Tab> <Esc>:NERDTreeToggle<Cr>
+
 
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
