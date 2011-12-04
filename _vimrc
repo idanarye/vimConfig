@@ -150,7 +150,6 @@ if has("autocmd")
   autocmd filetype sql setlocal dict+=$vim\dictionaries\sql.dic
   autocmd filetype vb setlocal dict+=$vim\dictionaries\vb.dic
 
-  autocmd BufRead,BufNewFile *.* let b:VCSCommandVCSType='SVN'
 endif
 color torte
 
@@ -160,9 +159,6 @@ let g:ftplugin_sql_omni_key = 'ã' "This is actuall <A-C>
 command! -complete=dir -nargs=* -count=0 Ex call netrw#Explore(<count>,0,0+<bang>0,<q-args>)
 " DBEXT SETTINGS
 runtime dbextProfiles.vim
-
-" VCSCommand SETTINGS
-"set statusline=%<%f\ %{VCSCommandGetStatusLine()}\ %h%m%r%=%l,%c%V\ %P
 
 " Fugitive SETTINGS
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
