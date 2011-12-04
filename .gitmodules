@@ -13,9 +13,6 @@
 [submodule "powershell-vim"]
 	path = powershell-vim
 	url = git://github.com/gabemc/powershell-vim
-[submodule "vcscommand"]
-	path = vcscommand
-	url = git://repo.or.cz/vcscommand.git
 [submodule "vim-easymotion"]
 	path = vim-easymotion
 	url = git://github.com/Lokaltog/vim-easymotion.git
