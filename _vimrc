@@ -133,6 +133,9 @@ if has("autocmd")
   "au filetype cs compiler dotnet
 
   "au filetype ruby compiler ruby
+  
+  let NERD_asm_alt_style=1
+  au filetype asm set autoindent
 
   au BufRead,BufNewFile * compiler rake
 

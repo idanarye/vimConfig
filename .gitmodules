@@ -31,3 +31,6 @@
 [submodule "nerdtree"]
 	path = nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
+[submodule "nerdcommenter"]
+	path = nerdcommenter
+	url = git://github.com/scrooloose/nerdcommenter.git
