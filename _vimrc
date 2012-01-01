@@ -145,6 +145,11 @@ if has("autocmd")
 
   autocmd filetype python setlocal expandtab
 
+  au filetype haskell set autoindent
+  au filetype haskell setlocal expandtab
+  au filetype haskell map <buffer> <F9> <Esc>:!%<CR>
+  au filetype haskell map <buffer> <F10> <Esc>:ghci %<CR>
+
   autocmd filetype c setlocal dict+=$vim\dictionaries\c.dic
   autocmd filetype cpp setlocal dict+=$vim\dictionaries\cpp.dic
   autocmd filetype cs setlocal dict+=$vim\dictionaries\cs.dic
@@ -154,7 +159,6 @@ if has("autocmd")
   autocmd filetype vb setlocal dict+=$vim\dictionaries\vb.dic
 
 endif
-color torte
 
 "command Cmd ConqueTerm cmd
 
