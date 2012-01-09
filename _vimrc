@@ -145,10 +145,6 @@ if has("autocmd")
 
   autocmd filetype python setlocal expandtab
 
-  au filetype haskell set autoindent
-  au filetype haskell setlocal expandtab
-  au filetype haskell map <buffer> <F9> <Esc>:!%<CR>
-  au filetype haskell map <buffer> <F10> <Esc>:ghci %<CR>
 
   autocmd filetype c setlocal dict+=$vim\dictionaries\c.dic
   autocmd filetype cpp setlocal dict+=$vim\dictionaries\cpp.dic
