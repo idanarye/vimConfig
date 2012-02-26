@@ -40,3 +40,6 @@
 [submodule "vim-rails"]
 	path = vim-rails
 	url = git://github.com/tpope/vim-rails.git
+[submodule "vim-surround"]
+	path = vim-surround
+	url = git://github.com/tpope/vim-surround.git
