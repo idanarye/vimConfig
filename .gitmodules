@@ -37,3 +37,6 @@
 [submodule "vim-indent-guides"]
 	path = vim-indent-guides
 	url = git://github.com/nathanaelkane/vim-indent-guides.git
+[submodule "vim-rails"]
+	path = vim-rails
+	url = git://github.com/tpope/vim-rails.git

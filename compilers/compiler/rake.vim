@@ -25,7 +25,7 @@ endif
 
 let s:rakeHeader=readfile(projectRoot."/rakefile",'',1)[0]
 if s:rakeHeader=='#java'
-	so ~/.vim/bundle/compiler/java.vim
+	so ~/.vim/bundle/compilers/compiler/java.vim
 else
-	so ~/.vim/bundle/compiler/core_rake.vim
+	so ~/.vim/bundle/compilers/compiler/core_rake.vim
 endif
