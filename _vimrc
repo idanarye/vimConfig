@@ -139,10 +139,6 @@ if has("autocmd")
 
   au BufRead,BufNewFile * compiler rake
 
-  
-  au filetype vb map <buffer> <F5> <Esc>:!%<CR>
-  au filetype python map <buffer> <F5> <Esc>:!%<CR>
-
   autocmd filetype python setlocal expandtab
 
 
@@ -199,6 +195,7 @@ elseif has('unix')
 	set directory=~/vimtmp//
 endif
 	
+map <buffer> <F9> <Esc>:!%<CR>
 
 nnoremap <A-j> :m+<CR>==
 nnoremap <A-k> :m-2<CR>==
@@ -225,6 +222,8 @@ function! CopyBuildFile(pattern)
 endfunc
 
 command! GetBuildFile call CopyBuildFile("~/.vim/buildTemplates/*.rake") | compiler rake
+
+command! CDhere exe "cd ".expand("%:p:h")
 
 noremap <Leader><Tab> <Esc>:NERDTreeToggle<Cr>
 
