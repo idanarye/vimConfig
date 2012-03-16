@@ -195,7 +195,7 @@ elseif has('unix')
 	set directory=~/vimtmp//
 endif
 	
-map <F9> <Esc>:!%<CR>
+map <F9> <Esc>:!./%<CR>
 
 nnoremap <A-j> :m+<CR>==
 nnoremap <A-k> :m-2<CR>==
