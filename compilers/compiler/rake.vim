@@ -24,8 +24,8 @@ if stridx(&tags,projectRoot."/tags")<0
 endif
 
 let s:rakeHeader=readfile(projectRoot."/rakefile",'',1)[0]
-if s:rakeHeader=='#java'
-	exe "so ".expand("<sfile>:p:h")."/java.vim"
-else
+"if s:rakeHeader=='#java'
+"	exe "so ".expand("<sfile>:p:h")."/java.vim"
+"else
 	exe "so ".expand("<sfile>:p:h")."/core_rake.vim"
-endif
+"endif
