@@ -43,3 +43,6 @@
 [submodule "vim-surround"]
 	path = vim-surround
 	url = git://github.com/tpope/vim-surround.git
+[submodule "simple-javascript-indenter"]
+	path = simple-javascript-indenter
+	url = https://github.com/jiangmiao/simple-javascript-indenter.git
