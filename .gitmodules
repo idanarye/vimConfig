@@ -46,3 +46,9 @@
 [submodule "simple-javascript-indenter"]
 	path = simple-javascript-indenter
 	url = https://github.com/jiangmiao/simple-javascript-indenter.git
+[submodule "vim-scala"]
+	path = vim-scala
+	url = https://github.com/derekwyatt/vim-scala
+[submodule "vim-mark"]
+	path = vim-mark
+	url = https://github.com/dimasg/vim-mark.git
