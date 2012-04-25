@@ -188,14 +188,15 @@ if has('win32')
 	silent execute '!del "'.$VIMRUNTIME.'/temp/*~"'
 	set backupdir=$VIMRUNTIME/temp//
 	set directory=$VIMRUNTIME/temp//
+	map <F9> <Esc>:!%<CR>
 elseif has('unix')
 	silent execute '!mkdir -p ~/vimtmp'
 	silent execute '!rm -f ~/vimtmp/*'
 	set backupdir=~/vimtmp//
 	set directory=~/vimtmp//
+	map <F9> <Esc>:!./%<CR>
 endif
 	
-map <F9> <Esc>:!./%<CR>
 
 nnoremap <A-j> :m+<CR>==
 nnoremap <A-k> :m-2<CR>==
@@ -226,6 +227,7 @@ command! GetBuildFile call CopyBuildFile("~/.vim/buildTemplates/*.rake") | compi
 command! CDhere exe "cd ".expand("%:p:h")
 
 noremap <Leader><Tab> <Esc>:NERDTreeToggle<Cr>
+noremap <Leader><C-c> <Esc>:noh<Bar>MarkClear<Cr>
 
 
 source $VIMRUNTIME/vimrc_example.vim
