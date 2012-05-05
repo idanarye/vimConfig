@@ -229,6 +229,8 @@ command! CDhere exe "cd ".expand("%:p:h")
 noremap <Leader><Tab> <Esc>:NERDTreeToggle<Cr>
 noremap <Leader><C-c> <Esc>:noh<Bar>MarkClear<Cr>
 
+nnoremap Y y$
+
 
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
