@@ -52,3 +52,6 @@
 [submodule "vim-mark"]
 	path = vim-mark
 	url = https://github.com/dimasg/vim-mark.git
+[submodule "vim-javacomplete"]
+	path = vim-javacomplete
+	url = https://github.com/gigelu/vim-javacomplete.git
