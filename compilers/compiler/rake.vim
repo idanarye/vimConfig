@@ -15,15 +15,15 @@ function! FindProjectRoot(lookFor)
 endfunction
 
 let projectRoot=FindProjectRoot('rakefile')
-if type(projectRoot)==0
-	finish
-endif
+"if type(projectRoot)==0
+	"finish
+"endif
 
 if stridx(&tags,projectRoot."/tags")<0
 	let &tags=&tags.",".projectRoot."/tags"
 endif
 
-let s:rakeHeader=readfile(projectRoot."/rakefile",'',1)[0]
+"let s:rakeHeader=readfile(projectRoot."/rakefile",'',1)[0]
 "if s:rakeHeader=='#java'
 "	exe "so ".expand("<sfile>:p:h")."/java.vim"
 "else
