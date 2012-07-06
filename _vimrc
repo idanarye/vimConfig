@@ -210,6 +210,8 @@ inoremap <A-e> <C-y>
 
 nnoremap <A-e> <C-y>
 
+nnoremap <A-2> @@
+
 function! CopyBuildFile(pattern)
 	let buildFiles=split(system("ls ".a:pattern." -1"),"\n")
 	let fileNames=[]
