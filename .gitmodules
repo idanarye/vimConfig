@@ -55,3 +55,6 @@
 [submodule "vim-javacomplete"]
 	path = vim-javacomplete
 	url = https://github.com/gigelu/vim-javacomplete.git
+[submodule "vim-bad-whitespace"]
+	path = vim-bad-whitespace
+	url = git://github.com/bitc/vim-bad-whitespace.git
