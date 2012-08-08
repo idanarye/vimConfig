@@ -1,0 +1,5 @@
+aspnetcs.vim - Syntax highlighting for ASP.NET files written with C#. (.aspx, .ascx).
+
+Author: Robert Hoelz <hoelz@wisc.edu>
+
+To install, put syntax/aspnetcs.vim into ~/.vim/syntax and ftdetect/aspnetcs.vim into ~/.vim/ftdetect.

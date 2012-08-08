@@ -58,3 +58,6 @@
 [submodule "vim-bad-whitespace"]
 	path = vim-bad-whitespace
 	url = git://github.com/bitc/vim-bad-whitespace.git
+[submodule "aspnetcs"]
+	path = aspnetcs
+	url = git://github.com/vim-scripts/aspnetcs.git
