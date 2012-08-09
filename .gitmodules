@@ -61,3 +61,6 @@
 [submodule "aspnetcs"]
 	path = aspnetcs
 	url = git://github.com/vim-scripts/aspnetcs.git
+[submodule "roo.vim"]
+	path = roo.vim
+	url = git://github.com/vim-scripts/roo.vim.git
