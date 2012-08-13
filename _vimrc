@@ -240,20 +240,6 @@ source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
-"Emacs-style editing on the command-line:
-	" start of line
-	:cnoremap <C-A>		<Home>
-	" back one character
-	:cnoremap <C-B>		<Left>
-	" end of line
-	:cnoremap <C-E>		<End>
-	" forward one character
-	:cnoremap <C-F>		<Right>
-	" recall newer command-line
-	:cnoremap <C-N>		<Down>
-	" recall previous (older) command-line
-	:cnoremap <C-P>		<Up>
-
 set diffexpr=MyDiff()
 function MyDiff()
   let opt = '-a --binary '
