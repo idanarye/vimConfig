@@ -214,8 +214,8 @@ nnoremap <A-2> @@
 
 nmap <A-n> <Plug>MarkSearchAnyNext
 
-nnoremap <A-h> <Esc>:SidewaysLeft
-nnoremap <A-l> <Esc>:SidewaysRight
+nnoremap <A-h> <Esc>:SidewaysLeft<Cr>
+nnoremap <A-l> <Esc>:SidewaysRight<Cr>
 
 
 function! CopyBuildFile(pattern)
