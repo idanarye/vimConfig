@@ -214,6 +214,9 @@ nnoremap <A-2> @@
 
 nmap <A-n> <Plug>MarkSearchAnyNext
 
+nnoremap <A-h> <Esc>:SidewaysLeft
+nnoremap <A-l> <Esc>:SidewaysRight
+
 
 function! CopyBuildFile(pattern)
 	let buildFiles=split(system("ls ".a:pattern." -1"),"\n")

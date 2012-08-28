@@ -64,3 +64,6 @@
 [submodule "roo.vim"]
 	path = roo.vim
 	url = git://github.com/vim-scripts/roo.vim.git
+[submodule "sideways.vim"]
+	path = sideways.vim
+	url = git://github.com/AndrewRadev/sideways.vim.git
