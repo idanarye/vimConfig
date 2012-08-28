@@ -1,0 +1,5 @@
+EraseBadWhitespace	bad-whitespace.txt	/*EraseBadWhitespace*
+HideBadWhitespace	bad-whitespace.txt	/*HideBadWhitespace*
+ShowBadWhitespace	bad-whitespace.txt	/*ShowBadWhitespace*
+ToggleBadWhitespace	bad-whitespace.txt	/*ToggleBadWhitespace*
+bad-whitespace.txt	bad-whitespace.txt	/*bad-whitespace.txt*

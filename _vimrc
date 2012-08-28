@@ -78,7 +78,7 @@ if has("autocmd")
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
-  
+
   autocmd BufEnter * lcs %:p:h
   autocmd BufEnter * cd %:p:h
 
@@ -133,7 +133,7 @@ if has("autocmd")
   "au filetype cs compiler dotnet
 
   "au filetype ruby compiler ruby
-  
+
   let NERD_asm_alt_style=1
   au filetype asm set autoindent
 
@@ -196,7 +196,7 @@ elseif has('unix')
 	set directory=~/vimtmp//
 	map <F9> <Esc>:!./%<CR>
 endif
-	
+
 
 nnoremap <A-j> :m+<CR>==
 nnoremap <A-k> :m-2<CR>==
@@ -211,6 +211,9 @@ inoremap <A-e> <C-y>
 nnoremap <A-e> <C-y>
 
 nnoremap <A-2> @@
+
+nmap <A-n> <Plug>MarkSearchAnyNext
+
 
 function! CopyBuildFile(pattern)
 	let buildFiles=split(system("ls ".a:pattern." -1"),"\n")
