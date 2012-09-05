@@ -67,3 +67,9 @@
 [submodule "sideways.vim"]
 	path = sideways.vim
 	url = git://github.com/AndrewRadev/sideways.vim.git
+[submodule "ultisnips"]
+	path = ultisnips
+	url = git://github.com/SirVer/ultisnips.git
+[submodule "vim-ruby"]
+	path = vim-ruby
+	url = git://github.com/vim-ruby/vim-ruby.git

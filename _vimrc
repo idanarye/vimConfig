@@ -241,6 +241,8 @@ noremap <Leader><C-c> <Esc>:noh<Bar>MarkClear<Cr>
 
 nnoremap Y y$
 
+let g:UltiSnipsSnippetDirectories=['snippets']
+
 
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
