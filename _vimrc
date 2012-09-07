@@ -190,10 +190,10 @@ if has('win32')
 	set directory=$VIMRUNTIME/temp//
 	map <F9> <Esc>:!%<CR>
 elseif has('unix')
-	silent execute '!mkdir -p ~/vimtmp'
-	silent execute '!rm -f ~/vimtmp/*'
-	set backupdir=~/vimtmp//
-	set directory=~/vimtmp//
+	silent execute '!mkdir -p ~/.vimtmp'
+	silent execute '!rm -f ~/.vimtmp/*'
+	set backupdir=~/.vimtmp//
+	set directory=~/.vimtmp//
 	map <F9> <Esc>:!./%<CR>
 endif
 
