@@ -73,3 +73,6 @@
 [submodule "vim-ruby"]
 	path = vim-ruby
 	url = git://github.com/vim-ruby/vim-ruby.git
+[submodule "vimclojure"]
+	path = vimclojure
+	url = git://github.com/krisajenkins/vimclojure.git
