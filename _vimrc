@@ -110,6 +110,8 @@ cd %:p:h
 set go-=m
 set go-=T
 
+let maplocalleader="\<C-\>"
+
 set ruler
 set vb t_vb=
 set virtualedit=all
@@ -216,7 +218,6 @@ nmap <A-n> <Plug>MarkSearchAnyNext
 
 nnoremap <A-h> <Esc>:SidewaysLeft<Cr>
 nnoremap <A-l> <Esc>:SidewaysRight<Cr>
-
 
 function! CopyBuildFile(pattern)
 	let buildFiles=split(system("ls ".a:pattern." -1"),"\n")
