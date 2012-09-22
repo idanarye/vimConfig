@@ -245,6 +245,7 @@ nnoremap Y y$
 let g:UltiSnipsSnippetDirectories=['snippets']
 
 autocmd FileType clojure setlocal indentexpr=MyClojureIndent()
+autocmd FileType clojure setlocal indentkeys+=0),0},0]
 
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim

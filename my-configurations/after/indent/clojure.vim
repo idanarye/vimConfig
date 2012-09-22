@@ -8,8 +8,8 @@ endfunction
 function! MyClojureIndent()
 	if 0==match(getline('.'),'^\s*)')
 		return s:FindOpenerIndentation('(',')')
-	elseif 0==match(getline('.'),'^\s*]')
-		return s:FindOpenerIndentation('[',']')
+	elseif 0==match(getline('.'),'^\s*\]')
+		return s:FindOpenerIndentation('\[','\]')
 	elseif 0==match(getline('.'),'^\s*}')
 		return s:FindOpenerIndentation('{','}')
 	else
