@@ -245,7 +245,7 @@ nnoremap Y y$
 let g:UltiSnipsSnippetDirectories=['snippets']
 
 autocmd FileType clojure setlocal indentexpr=MyClojureIndent()
-autocmd FileType clojure setlocal indentkeys+=),},]
+autocmd FileType clojure setlocal indentkeys+=0),0},0]
 
 autocmd FileType vim map <Buffer> <F9> <Esc>:source %<Cr>
 

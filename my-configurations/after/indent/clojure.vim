@@ -1,5 +1,6 @@
 function! s:FindOpenerIndentation()
-	let l:closers=matchstr(getline('.'),'^\s*[)\]}]*')
+	"let l:closers=matchstr(getline('.'),'^\s*[)\]}]*')
+	let l:closers=matchstr(getline('.'),'^\s*[)\]}]')
 	call cursor(line('.'),len(l:closers))
 	let l:close=l:closers[len(l:closers)-1]
 	if l:close==')'
