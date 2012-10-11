@@ -240,7 +240,14 @@ command! CDhere exe "cd ".expand("%:p:h")
 noremap <Leader><Tab> <Esc>:NERDTreeToggle<Cr>
 noremap <Leader><C-c> <Esc>:noh<Bar>MarkClear<Cr>
 
+nnoremap <Leader><C-r> <Esc>:RainbowToggle<Cr>
+nnoremap <Leader><C-s> <Esc>:execute "setfiletype" &filetype<Cr>
+
 nnoremap Y y$
+
+command! VimClojureWantNailgun let vimclojure#WantNailgun=1
+let vimclojure#UseErrorBuffer=0
+let g:vimclojure#ParenRainbow=1
 
 let g:UltiSnipsSnippetDirectories=['snippets']
 

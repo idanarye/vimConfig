@@ -76,3 +76,6 @@
 [submodule "vimclojure"]
 	path = vimclojure
 	url = git://github.com/krisajenkins/vimclojure.git
+[submodule "Rainbow-Parentheses-Improved"]
+	path = Rainbow-Parentheses-Improved
+	url = git://github.com/vim-scripts/Rainbow-Parentheses-Improved.git
