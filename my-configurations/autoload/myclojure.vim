@@ -1,10 +1,16 @@
-function! myclojure#evalCommand(command)
+function! myclojure#evalCommand(command,...)
+	if a:0>0&&a:1
+		call vimclojure#ExecuteNailWithInput("Repl", "(require :reload-all '".b:vimclojure_namespace.")", "-r")
+	endif
 	let result = vimclojure#ExecuteNailWithInput("Repl", a:command,
 				\ "-r")
 
 	let resultBuffer = g:vimclojure#ClojureResultBuffer.New("user")
 	call resultBuffer.showOutput(result)
 	wincmd p
+endfunction
+
+function! myclojure#reloadAllAndEvalCommand(command)
 endfunction
 
 function! s:FindOpenerIndentation()
