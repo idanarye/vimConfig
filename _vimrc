@@ -245,13 +245,9 @@ nnoremap <Leader><C-s> <Esc>:execute "setfiletype" &filetype<Cr>
 
 nnoremap Y y$
 
-command! VimClojureWantNailgun let vimclojure#WantNailgun=1
-let vimclojure#UseErrorBuffer=0
-let g:vimclojure#ParenRainbow=1
-
 let g:UltiSnipsSnippetDirectories=['snippets']
 
-autocmd FileType clojure setlocal indentexpr=MyClojureIndent()
+autocmd FileType clojure setlocal indentexpr=myclojure#clojureIndent()
 autocmd FileType clojure setlocal indentkeys+=0),0},0]
 
 autocmd FileType vim map <Buffer> <F9> <Esc>:source %<Cr>
