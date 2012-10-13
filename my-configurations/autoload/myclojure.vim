@@ -10,7 +10,31 @@ function! myclojure#evalCommand(command,...)
 	wincmd p
 endfunction
 
-function! myclojure#reloadAllAndEvalCommand(command)
+function! myclojure#runFile(fileName)
+	"shamelessly stolen from the vimclojure#ExecuteNailWithInput function
+	"
+	let cmdline = vimclojure#ShellEscapeArguments(
+				\ [g:vimclojure#NailgunClient,
+				\   '--nailgun-server', g:vimclojure#NailgunServer,
+				\   '--nailgun-port', g:vimclojure#NailgunPort,
+				\   'vimclojure.Nail', "Repl", "-r"]
+				\ + a:000)
+	let cmd = join(cmdline, " ") . " <" . a:fileName
+	" Add hardcore quoting for Windows
+	if has("win32") || has("win64")
+		let cmd = '"' . cmd . '"'
+	endif
+
+	let output = system(cmd)
+
+	if v:shell_error
+		throw "Error executing Nail! (" . v:shell_error . ")\n" . output
+	else
+		execute "let result = " . substitute(output, '\n$', '', '')
+		let resultBuffer = g:vimclojure#ClojureResultBuffer.New("user")
+		call resultBuffer.showOutput(result)
+		wincmd p
+	endif
 endfunction
 
 function! s:FindOpenerIndentation()

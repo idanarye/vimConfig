@@ -250,7 +250,7 @@ let g:UltiSnipsSnippetDirectories=['snippets']
 autocmd FileType clojure setlocal indentexpr=myclojure#clojureIndent()
 autocmd FileType clojure setlocal indentkeys+=0),0},0]
 
-autocmd FileType vim map <Buffer> <F9> <Esc>:source %<Cr>
+autocmd FileType vim map <buffer> <F9> <Esc>:source %<Cr>
 
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
