@@ -240,7 +240,7 @@ command! CDhere exe "cd ".expand("%:p:h")
 noremap <Leader><Tab> <Esc>:NERDTreeToggle<Cr>
 noremap <Leader><C-c> <Esc>:noh<Bar>MarkClear<Cr>
 
-nnoremap <Leader><C-r> <Esc>:RainbowToggle<Cr>
+nnoremap <Leader><C-r> <Esc>:call myrainbow#toggle()<Cr>
 nnoremap <Leader><C-s> <Esc>:execute "setfiletype" &filetype<Cr>
 
 nnoremap Y y$
