@@ -11,7 +11,7 @@ function! s:FindOpenerIndentation(lineNumber)
 		let l:open='{'
 	endif
 	"Shamelessly copied from the VimClojure indentation script
-	let l:result=searchpairpos(l:open,'',l:close,'bWn','myutil#SynIdName()!~"racketString\\d"')
+	let l:result=searchpairpos(l:open,'',l:close,'bWn','myutil#SynIdName()=="racketString"')
 	return l:result[1]-1
 endfunction
 
