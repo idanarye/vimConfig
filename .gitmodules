@@ -79,3 +79,6 @@
 [submodule "Rainbow-Parentheses-Improved"]
 	path = Rainbow-Parentheses-Improved
 	url = git://github.com/vim-scripts/Rainbow-Parentheses-Improved.git
+[submodule "vim-racket"]
+	path = vim-racket
+	url = git://github.com/wlangstroth/vim-racket.git
