@@ -82,3 +82,6 @@
 [submodule "vim-racket"]
 	path = vim-racket
 	url = git://github.com/wlangstroth/vim-racket.git
+[submodule "scribble.vim"]
+	path = scribble.vim
+	url = git://github.com/vim-scripts/scribble.vim.git
