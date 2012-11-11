@@ -229,7 +229,7 @@ function! CopyBuildFile(pattern)
 	let selectedIndex=inputlist(["Select build template"]+fileNames)-1
 	if selectedIndex>=0&&selectedIndex<len(buildFiles)
 		let selectedFile=buildFiles[selectedIndex]
-		call system("cp -f ".selectedFile." ./rakefile")
+		call system("cp -f ".selectedFile." ./Rakefile")
 	endif
 endfunc
 
