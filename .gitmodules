@@ -82,12 +82,12 @@
 [submodule "scribble.vim"]
 	path = scribble.vim
 	url = git://github.com/vim-scripts/scribble.vim.git
-[submodule "Dscanner"]
-	path = Dscanner
-	url = git://github.com/someboddy/Dscanner.git
 [submodule "vim-foreplay"]
 	path = vim-foreplay
 	url = git://github.com/tpope/vim-foreplay.git
 [submodule "vim-clojure-static"]
 	path = vim-clojure-static
 	url = git://github.com/guns/vim-clojure-static.git
+[submodule "Dscanner"]
+	path = Dscanner
+	url = git://github.com/Hackerpilot/Dscanner.git
