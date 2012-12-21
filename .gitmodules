@@ -91,3 +91,6 @@
 [submodule "Dscanner"]
 	path = Dscanner
 	url = git://github.com/Hackerpilot/Dscanner.git
+[submodule "vim-rsi"]
+	path = vim-rsi
+	url = git://github.com/tpope/vim-rsi.git
