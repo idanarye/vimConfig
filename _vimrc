@@ -255,6 +255,7 @@ autocmd FileType vim map <buffer> <F9> <Esc>:source %<Cr>
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
+set keymodel= "This makes the RSI plugin work better
 
 let g:NERDCustomDelimiters = {
 			\ 'racket': { 'left': ';'}
