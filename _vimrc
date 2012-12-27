@@ -139,7 +139,7 @@ if has("autocmd")
   let NERD_asm_alt_style=1
   au filetype asm set autoindent
 
-  au BufRead,BufNewFile * compiler rake
+  "au BufRead,BufNewFile * compiler rake
 
   autocmd filetype python setlocal expandtab
 
@@ -190,13 +190,11 @@ if has('win32')
 	silent execute '!del "'.$VIMRUNTIME.'/temp/*~"'
 	set backupdir=$VIMRUNTIME/temp//
 	set directory=$VIMRUNTIME/temp//
-	map <F9> <Esc>:!%<CR>
 elseif has('unix')
 	silent execute '!mkdir -p ~/.vimtmp'
 	silent execute '!rm -f ~/.vimtmp/*'
 	set backupdir=~/.vimtmp//
 	set directory=~/.vimtmp//
-	map <F9> <Esc>:!./%<CR>
 endif
 
 
@@ -233,7 +231,7 @@ function! CopyBuildFile(pattern)
 	endif
 endfunc
 
-command! GetBuildFile call CopyBuildFile("~/.vim/buildTemplates/*.rake") | compiler rake
+command! GetBuildFile call CopyBuildFile("~/.vim/buildTemplates/*.rake") "| compiler rake
 
 command! CDhere exe "cd ".expand("%:p:h")
 

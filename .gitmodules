@@ -94,3 +94,9 @@
 [submodule "vim-rsi"]
 	path = vim-rsi
 	url = git://github.com/tpope/vim-rsi.git
+[submodule "vim-makeshift"]
+	path = vim-makeshift
+	url = git://github.com/johnsyweb/vim-makeshift.git
+[submodule "vim-erroneous"]
+	path = vim-erroneous
+	url = git://github.com/someboddy/vim-erroneous.git
