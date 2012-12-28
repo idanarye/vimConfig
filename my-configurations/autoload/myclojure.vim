@@ -50,9 +50,21 @@ function! s:FindOpenerIndentation()
 	elseif l:close=='}'
 		let l:open='{'
 	endif
-	"Shamelessly copied from the VimClojure indentation script
-	let l:result=searchpairpos(l:open,'',l:close,'bWn','vimclojure#util#SynIdName()!~"clojureParen\\d"')
+	"Shamelessly copied from the VimClojure-static indentation script
+	let l:result=searchpairpos(l:open,'',l:close,'bWn','!s:IsParen()')
 	return l:result[1]-1
+endfunction
+
+"Shamelessly copied from the VimClojure-staic indentation script
+function! s:IsParen()
+	return s:CurrentChar() =~ '\v[\(\)\[\]\{\}]' &&
+	    \ s:SynIdName() !~? '\vstring|comment'
+endfunction
+function! s:SynIdName()
+	return synIDattr(synID(line("."), col("."), 0), "name")
+endfunction
+function! s:CurrentChar()
+	return getline('.')[col('.')-1]
 endfunction
 
 function! myclojure#clojureIndent()
