@@ -11,14 +11,23 @@ elseif has('unix')
 	nnoremap <F9> :Erun ./%<CR>
 endif
 
+if !exists("g:makeshift_systems")
+	let g:makeshift_systems={}
+endif
+call extend(g:makeshift_systems,{
+			\'build.xml': 'ant -q',
+			\})
+
 
 if !exists("g:erroneous_errorFormatChooserWords")
 	let g:erroneous_errorFormatChooserWords={}
 endif
 call extend(g:erroneous_errorFormatChooserWords,{
-			\'java': '%A%f:%l:%m,%-Z%p^,%-C%.%#',
+			\'javac': '%A%f:%l:%m,%-Z%p^,%-C%.%#',
 			\'dmd': '%f(%l): %m',
 			\'rdmd': '%f(%l): %m',
 			\'ruby': '%f:%l:%m',
-			\'rake': 0,
+			\'rake': function('erroneous_rake#parseErrorOutput'),
+			\'ant': function('erroneous_ant#parseErrorOutput'),
+			\'make': function('erroneous_make#parseErrorOutput'),
 			\})
