@@ -2,8 +2,8 @@
 nnoremap <F2> :silent exe "!".&makeprg." tags"<CR>
 nnoremap <F4> :Emake! clean<CR>
 nnoremap <F5> :Emake! compile<CR>
-nnoremap <F6> :Erun! run<CR>
-nnoremap <F7> :Erun! test<CR>
+nnoremap <F6> :Erun! rake run<CR>
+nnoremap <F7> :Erun! rake test<CR>
 
 if has('win32')
 	nnoremap <F9> :Erun %<CR>
