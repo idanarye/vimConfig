@@ -1,3 +1,4 @@
+set makeprg=rake\ -s
 
 nnoremap <F2> :silent exe "!".&makeprg." tags"<CR>
 nnoremap <F4> :Emake! clean<CR>
@@ -11,12 +12,13 @@ elseif has('unix')
 	nnoremap <F9> :Erun ./%<CR>
 endif
 
-if !exists("g:makeshift_systems")
-	let g:makeshift_systems={}
-endif
-call extend(g:makeshift_systems,{
-			\'build.xml': 'ant -q',
-			\})
+"Deprecated
+"if !exists("g:makeshift_systems")
+	"let g:makeshift_systems={}
+"endif
+"call extend(g:makeshift_systems,{
+			"\'build.xml': 'ant -q',
+			"\})
 
 
 if !exists("g:erroneous_errorFormatChooserWords")
