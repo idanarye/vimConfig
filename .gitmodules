@@ -91,6 +91,3 @@
 [submodule "vim-erroneous"]
 	path = vim-erroneous
 	url = git://github.com/someboddy/vim-erroneous.git
-[submodule "javacomplete"]
-	path = javacomplete
-	url = git://github.com/adragomir/javacomplete.git
