@@ -1,6 +1,4 @@
 setlocal omnifunc=javacomplete#Complete
-let g:first_nailgun_port=2114
-let g:javacomplete_ng="ng"
 
 "CompleteParamsInfo is not working :(
 "setlocal completefunc=javacomplete#CompleteParamsInfo
