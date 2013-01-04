@@ -1,15 +1,17 @@
-set makeprg=rake\ -s
+"set makeprg=rake\ -s
 
-nnoremap <F2> :silent exe "!".&makeprg." tags"<CR>
-nnoremap <F4> :Emake! clean<CR>
-nnoremap <F5> :Emake! compile<CR>
-nnoremap <F6> :Erun! rake run<CR>
-nnoremap <F7> :Erun! rake test<CR>
+nnoremap <F2> :silent exe "!rake -s tags"<CR>
+nnoremap <F4> :Erun! rake -s clean<CR>
+nnoremap <F5> :Erun! rake -s compile<CR>
+nnoremap <F6> ! rake run<CR>
+nnoremap <F7> ! rake test<CR>
 
 if has('win32')
-	nnoremap <F9> :Erun %<CR>
+	nnoremap <F9> !%<CR>
+	nnoremap <S-F9> :Erun! %<CR>
 elseif has('unix')
-	nnoremap <F9> :Erun ./%<CR>
+	nnoremap <F9> !./%<CR>
+	nnoremap <S-F9> :Erun! ./%<CR>
 endif
 
 "Deprecated

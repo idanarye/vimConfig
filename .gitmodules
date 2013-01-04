@@ -94,3 +94,6 @@
 [submodule "javacomplete"]
 	path = javacomplete
 	url = git://github.com/itszero/javacomplete.git
+[submodule "vim-eunuch"]
+	path = vim-eunuch
+	url = git://github.com/tpope/vim-eunuch.git
