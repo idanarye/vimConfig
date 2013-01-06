@@ -31,7 +31,8 @@ call extend(g:erroneous_errorFormatChooserWords,{
 			\'dmd': '%f(%l): %m',
 			\'rdmd': '%f(%l): %m',
 			\'ruby': '%f:%l:%m',
-			\'rake': function('erroneous_rake#parseErrorOutput'),
-			\'ant': function('erroneous_ant#parseErrorOutput'),
-			\'make': function('erroneous_make#parseErrorOutput'),
+			\'make': function('erroneous#parseMakeErrorOutput'),
+			\'rake': function('erroneous#parseRakeErrorOutput'),
+			\'ant': function('erroneous#parseAntErrorOutput'),
+			\'mvn': function('erroneous#parseMavenErrorOutput'),
 			\})
