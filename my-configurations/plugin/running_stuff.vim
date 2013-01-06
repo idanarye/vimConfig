@@ -3,8 +3,8 @@
 nnoremap <F2> :silent exe "!rake -s tags"<CR>
 nnoremap <F4> :Erun! rake -s clean<CR>
 nnoremap <F5> :Erun! rake -s compile<CR>
-nnoremap <F6> ! rake run<CR>
-nnoremap <F7> ! rake test<CR>
+nnoremap <F6> :!rake run<CR>
+nnoremap <F7> :!rake test<CR>
 
 if has('win32')
 	nnoremap <F9> !%<CR>
