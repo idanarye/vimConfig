@@ -7,10 +7,10 @@ nnoremap <F6> :!rake run<CR>
 nnoremap <F7> :!rake test<CR>
 
 if has('win32')
-	nnoremap <F9> !%<CR>
+	nnoremap <F9> :!%<CR>
 	nnoremap <S-F9> :Erun! %<CR>
 elseif has('unix')
-	nnoremap <F9> !./%<CR>
+	nnoremap <F9> :!./%<CR>
 	nnoremap <S-F9> :Erun! ./%<CR>
 endif
 
