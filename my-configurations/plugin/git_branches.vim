@@ -14,7 +14,7 @@ endfunction
 function! s:gitAction(action,args)
 	exec 'Git '.a:action.' '.a:args
 	try
-		silent bufdo edit
+		silent windo if ''==&buftype | edit | endif
 	catch
 	endtry
 endfunction
