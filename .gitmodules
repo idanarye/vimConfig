@@ -97,3 +97,9 @@
 [submodule "vim-eunuch"]
 	path = vim-eunuch
 	url = git://github.com/tpope/vim-eunuch.git
+[submodule "vim-jst"]
+	path = vim-jst
+	url = git://github.com/briancollins/vim-jst.git
+[submodule "psearch.vim"]
+	path = psearch.vim
+	url = git://github.com/gcmt/psearch.vim.git
