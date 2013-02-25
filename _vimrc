@@ -156,7 +156,7 @@ endif
 
 "command Cmd ConqueTerm cmd
 
-let g:ftplugin_sql_omni_key = 'ã' "This is actuall <A-C>
+let g:ftplugin_sql_omni_key = "\<M-c\>" "This is actuall <A-C>
 command! -complete=dir -nargs=* -count=0 Ex call netrw#Explore(<count>,0,0+<bang>0,<q-args>)
 " DBEXT SETTINGS
 runtime dbextProfiles.vim
