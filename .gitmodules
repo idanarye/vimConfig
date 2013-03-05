@@ -103,3 +103,12 @@
 [submodule "psearch.vim"]
 	path = psearch.vim
 	url = git://github.com/gcmt/psearch.vim.git
+[submodule "vimproc"]
+	path = vimproc
+	url = git://github.com/Shougo/vimproc.git
+[submodule "vimshell"]
+	path = vimshell
+	url = git://github.com/Shougo/vimshell.git
+[submodule "vimside"]
+	path = vimside
+	url = git://github.com/vim-scripts/vimside.git
