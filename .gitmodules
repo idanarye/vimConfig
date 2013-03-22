@@ -109,3 +109,6 @@
 [submodule "vimshell"]
 	path = vimshell
 	url = git://github.com/Shougo/vimshell.git
+[submodule "vim-sleuth"]
+	path = vim-sleuth
+	url = git://github.com/tpope/vim-sleuth.git
