@@ -1,3 +1,5 @@
+execute 'command! ReloadKeymaps source '.expand("<sfile>")
+
 nnoremap <A-j> :m+<CR>==
 nnoremap <A-k> :m-2<CR>==
 inoremap <A-j> <Esc>:m+<CR>==gi
@@ -29,3 +31,9 @@ noremap <Leader>gc <Esc>:Gcommit<Cr>
 noremap <Leader>gs <Esc>:Gstatus<Cr>
 
 nnoremap <Leader><C-f> :PSearch<Cr>
+
+nnoremap <Leader><C-d>t :diffthis<Cr>
+nnoremap <Leader><C-d>o :diffoff<Cr>
+nnoremap <Leader><C-d>u :diffupdate<Cr>
+vnoremap <Leader><C-d>g :diffget<Cr>
+vnoremap <Leader><C-d>p :diffput<Cr>
