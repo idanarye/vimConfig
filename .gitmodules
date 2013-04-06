@@ -76,9 +76,6 @@
 [submodule "Rainbow-Parentheses-Improved"]
 	path = Rainbow-Parentheses-Improved
 	url = git://github.com/vim-scripts/Rainbow-Parentheses-Improved.git
-[submodule "vim-foreplay"]
-	path = vim-foreplay
-	url = git://github.com/tpope/vim-foreplay.git
 [submodule "vim-clojure-static"]
 	path = vim-clojure-static
 	url = git://github.com/guns/vim-clojure-static.git
@@ -112,3 +109,6 @@
 [submodule "vim-sleuth"]
 	path = vim-sleuth
 	url = git://github.com/tpope/vim-sleuth.git
+[submodule "vim-fireplace"]
+	path = vim-fireplace
+	url = git://github.com/tpope/vim-fireplace.git
