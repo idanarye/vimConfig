@@ -112,3 +112,9 @@
 [submodule "vim-fireplace"]
 	path = vim-fireplace
 	url = git://github.com/tpope/vim-fireplace.git
+[submodule "vim-buffergator"]
+	path = vim-buffergator
+	url = https://github.com/jeetsukumaran/vim-buffergator
+[submodule "vim-vagrant"]
+	path = vim-vagrant
+	url = git://github.com/markcornick/vim-vagrant.git
