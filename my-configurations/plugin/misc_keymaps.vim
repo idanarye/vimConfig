@@ -37,3 +37,6 @@ nnoremap <Leader><C-d>o :diffoff<Cr>
 nnoremap <Leader><C-d>u :diffupdate<Cr>
 vnoremap <Leader><C-d>g :diffget<Cr>
 vnoremap <Leader><C-d>p :diffput<Cr>
+
+command! UseRailsIndentations set expandtab | set shiftwidth=2 | retab
+command! UseRegularIndentations set expandtab | set shiftwidth=4 | retab
