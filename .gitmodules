@@ -115,3 +115,6 @@
 [submodule "vim-vagrant"]
 	path = vim-vagrant
 	url = git://github.com/markcornick/vim-vagrant.git
+[submodule "Rainbow-Parentheses-Improved-and2"]
+	path = Rainbow-Parentheses-Improved-and2
+	url = git://github.com/vim-scripts/Rainbow-Parentheses-Improved-and2.git

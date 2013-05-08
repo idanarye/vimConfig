@@ -231,6 +231,9 @@ let g:NERDCustomDelimiters = {
 			\ 'racket': { 'left': ';'}
 			\ }
 
+let g:rainbow_active = 1
+let g:rainbow_operators = 1
+
 
 "set diffexpr=MyDiff()
 "function MyDiff()
