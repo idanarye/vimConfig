@@ -118,3 +118,6 @@
 [submodule "Rainbow-Parentheses-Improved-and2"]
 	path = Rainbow-Parentheses-Improved-and2
 	url = git://github.com/vim-scripts/Rainbow-Parentheses-Improved-and2.git
+[submodule "vim-git-log"]
+	path = vim-git-log
+	url = git://github.com/kablamo/vim-git-log.git
