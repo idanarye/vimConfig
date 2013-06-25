@@ -234,6 +234,8 @@ let g:NERDCustomDelimiters = {
 let g:rainbow_active = 1
 let g:rainbow_operators = 1
 
+let g:breeze_highlight_filename_patterns = '*.ejs,*.jsp,*.erb'
+
 
 "set diffexpr=MyDiff()
 "function MyDiff()
