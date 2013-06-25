@@ -40,3 +40,14 @@ vnoremap <Leader><C-d>p :diffput<Cr>
 
 command! UseRailsIndentations set expandtab | set shiftwidth=2 | retab
 command! UseRegularIndentations set expandtab | set shiftwidth=4 | retab
+
+nnoremap <Leader><Leader>h :BreezeJumpF<Cr>
+nnoremap <Leader><Leader>H :BreezeJumpB<Cr>
+
+nnoremap <Leader><C-h>j :BreezeNextSibling<Cr>
+nnoremap <Leader><C-h>k :BreezePrevSibling<Cr>
+nnoremap <Leader><C-h>K :BreezeFirstSibling<Cr>
+nnoremap <Leader><C-h>J :BreezeLastSibling<Cr>
+nnoremap <Leader><C-h><C-k> :BreezeFirstChild<Cr>
+nnoremap <Leader><C-h><C-j> :BreezeLastChild<Cr>
+nnoremap <Leader><C-h>p :BreezeParent<Cr>
