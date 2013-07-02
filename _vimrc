@@ -236,6 +236,8 @@ let g:rainbow_operators = 1
 
 let g:breeze_highlight_filename_patterns = '*.ejs,*.jsp,*.erb'
 
+let g:integrake_filePrefix='idanarye'
+
 
 "set diffexpr=MyDiff()
 "function MyDiff()

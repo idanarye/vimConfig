@@ -124,3 +124,6 @@
 [submodule "breeze.vim"]
 	path = breeze.vim
 	url = git://github.com/gcmt/breeze.vim.git
+[submodule "vim-integrake"]
+	path = vim-integrake
+	url = https://github.com/someboddy/vim-integrake.git

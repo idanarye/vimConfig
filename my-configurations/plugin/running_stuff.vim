@@ -1,11 +1,18 @@
 "set makeprg=rake\ -s
 
-nnoremap <F2> :silent exe "!rake -s tags"<CR>
-nnoremap <F3> :VimShellInteractive rake shell<Cr>
-nnoremap <F4> :Erun! rake -s clean<CR>
-nnoremap <F5> :Erun! rake -s compile<CR>
-nnoremap <F6> :!rake run<CR>
-nnoremap <F7> :!rake test<CR>
+"nnoremap <F2> :silent exe '!rake -s tags'<CR>
+"nnoremap <F3> :VimShellInteractive rake shell<Cr>
+"nnoremap <F4> :Erun! rake -s clean<CR>
+"nnoremap <F5> :Erun! rake -s compile<CR>
+"nnoremap <F6> :!rake run<CR>
+"nnoremap <F7> :!rake test<CR>
+
+nnoremap <F2> :IR tags<CR>
+nnoremap <F3> :IR shell<Cr>
+nnoremap <F4> :IR clean<CR>
+nnoremap <F5> :IR compile<CR>
+nnoremap <F6> :IR run<CR>
+nnoremap <F7> :IR test<CR>
 
 if has('win32')
 	nnoremap <F9> :!%<CR>
