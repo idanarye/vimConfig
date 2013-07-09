@@ -7,12 +7,39 @@
 "nnoremap <F6> :!rake run<CR>
 "nnoremap <F7> :!rake test<CR>
 
-nnoremap <F2> :IR tags<CR>
-nnoremap <F3> :IR shell<Cr>
-nnoremap <F4> :IR clean<CR>
-nnoremap <F5> :IR compile<CR>
-nnoremap <F6> :IR run<CR>
-nnoremap <F7> :IR test<CR>
+"nnoremap <F2> :IR tags<CR>
+"nnoremap <F3> :IR shell<Cr>
+"nnoremap <F4> :IR clean<CR>
+"nnoremap <F5> :IR compile<CR>
+"nnoremap <F6> :IR run<CR>
+"nnoremap <F7> :IR test<CR>
+
+function s:createIntegrakeShortcut(key,cmd)
+	if ''!=a:cmd
+		let l:cmd="IR ".a:cmd."<Cr>"
+	else
+		let l:cmd="IR<Cr>"
+	endif
+	execute "nnoremap <M-i>".a:key." :".l:cmd
+	execute "inoremap <M-i>".a:key." <C-o>:".l:cmd
+	execute "nnoremap <M-i><M-".a:key."> :".l:cmd
+	execute "inoremap <M-i><M-".a:key."> <C-o>:".l:cmd
+endfunction
+
+call s:createIntegrakeShortcut('i','')
+call s:createIntegrakeShortcut('c','compile')
+call s:createIntegrakeShortcut('r','run')
+call s:createIntegrakeShortcut('t','test')
+call s:createIntegrakeShortcut('C','clean')
+call s:createIntegrakeShortcut('T','tags')
+call s:createIntegrakeShortcut('s','shell')
+
+nnoremap <M-i> :IR<Cr>
+inoremap <M-i> <C-o>:IR<Cr>
+
+nnoremap <M-i><Space> :IR<Space>
+inoremap <M-i><Space> <C-o>:IR<Space>
+
 
 if has('win32')
 	nnoremap <F9> :!%<CR>
