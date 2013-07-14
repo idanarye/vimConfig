@@ -20,9 +20,9 @@ function s:createIntegrakeShortcut(key,cmd)
 	else
 		let l:cmd="IR<Cr>"
 	endif
-	execute "nnoremap <M-i>".a:key." :".l:cmd
+	execute "noremap <M-i>".a:key." :".l:cmd
 	execute "inoremap <M-i>".a:key." <C-o>:".l:cmd
-	execute "nnoremap <M-i><M-".a:key."> :".l:cmd
+	execute "noremap <M-i><M-".a:key."> :".l:cmd
 	execute "inoremap <M-i><M-".a:key."> <C-o>:".l:cmd
 endfunction
 
@@ -34,10 +34,10 @@ call s:createIntegrakeShortcut('C','clean')
 call s:createIntegrakeShortcut('T','tags')
 call s:createIntegrakeShortcut('s','shell')
 
-nnoremap <M-i> :IR<Cr>
+noremap <M-i> :IR<Cr>
 inoremap <M-i> <C-o>:IR<Cr>
 
-nnoremap <M-i><Space> :IR<Space>
+noremap <M-i><Space> :IR<Space>
 inoremap <M-i><Space> <C-o>:IR<Space>
 
 
