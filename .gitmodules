@@ -127,3 +127,6 @@
 [submodule "vim-integrake"]
 	path = vim-integrake
 	url = https://github.com/someboddy/vim-integrake.git
+[submodule "vim-airline"]
+	path = vim-airline
+	url = https://github.com/bling/vim-airline.git
