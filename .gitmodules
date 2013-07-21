@@ -130,3 +130,6 @@
 [submodule "vim-airline"]
 	path = vim-airline
 	url = https://github.com/bling/vim-airline.git
+[submodule "vim-bbye"]
+	path = vim-bbye
+	url = https://github.com/moll/vim-bbye.git
