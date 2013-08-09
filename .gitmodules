@@ -133,3 +133,9 @@
 [submodule "vim-bbye"]
 	path = vim-bbye
 	url = https://github.com/moll/vim-bbye.git
+[submodule "vim-easyclip"]
+	path = vim-easyclip
+	url = https://github.com/svermeulen/vim-easyclip.git
+[submodule "crunch"]
+	path = crunch
+	url = https://github.com/arecarn/crunch.git
