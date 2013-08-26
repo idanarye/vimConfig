@@ -139,3 +139,6 @@
 [submodule "crunch"]
 	path = crunch
 	url = https://github.com/arecarn/crunch.git
+[submodule "vim-yankitute"]
+	path = vim-yankitute
+	url = https://github.com/someboddy/vim-yankitute.git
