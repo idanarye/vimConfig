@@ -25,6 +25,7 @@ noremap <Leader><C-c> <Esc>:noh<Bar>MarkClear<Cr>
 nnoremap <Leader><C-r> <Esc>:call myrainbow#toggle()<Cr>
 nnoremap <Leader><C-s> <Esc>:execute "setfiletype" &filetype<Cr>
 nnoremap <Leader><A-s> <Esc>:set spell!<Cr>
+nnoremap <Leader><A-w> <Esc>:set wrap!<Cr>
 
 nnoremap Y y$
 
