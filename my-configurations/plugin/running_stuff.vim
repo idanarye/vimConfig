@@ -71,4 +71,6 @@ call extend(g:erroneous_errorFormatChooserWords,{
 			\'rake': function('erroneous#parseRakeErrorOutput'),
 			\'ant': function('erroneous#parseAntErrorOutput'),
 			\'mvn': function('erroneous#parseMavenErrorOutput'),
+			\'mcs': '%f(%l\,%c): %m',
+			\'MSBuild': ' %#%f(%l\,%c): %m',
 			\})
