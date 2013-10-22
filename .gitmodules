@@ -142,3 +142,6 @@
 [submodule "vim-yankitute"]
 	path = vim-yankitute
 	url = https://github.com/someboddy/vim-yankitute.git
+[submodule "vim-easy-align"]
+	path = vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align.git

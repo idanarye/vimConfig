@@ -53,3 +53,5 @@ nnoremap <Leader><C-h>J :BreezeLastSibling<Cr>
 nnoremap <Leader><C-h><C-k> :BreezeFirstChild<Cr>
 nnoremap <Leader><C-h><C-j> :BreezeLastChild<Cr>
 nnoremap <Leader><C-h>p :BreezeParent<Cr>
+
+vnoremap <silent> <Leader>a :EasyAlign<Cr>
