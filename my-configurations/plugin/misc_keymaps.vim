@@ -4,8 +4,8 @@ nnoremap <A-j> :m+<CR>==
 nnoremap <A-k> :m-2<CR>==
 inoremap <A-j> <Esc>:m+<CR>==gi
 inoremap <A-k> <Esc>:m-2<CR>==gi
-vnoremap <A-j> :m'>+<CR>gv=gv
-vnoremap <A-k> :m-2<CR>gv=gv
+"vnoremap <A-j> :m'>+<CR>gv=gv
+"vnoremap <A-k> :m-2<CR>gv=gv
 
 nnoremap <A-x> <C-a>
 inoremap <A-e> <C-y>
@@ -16,8 +16,13 @@ nnoremap <A-2> @@
 
 nmap <A-n> <Plug>MarkSearchAnyNext
 
-nnoremap <A-h> <Esc>:SidewaysLeft<Cr>
-nnoremap <A-l> <Esc>:SidewaysRight<Cr>
+"nnoremap <A-h> <Esc>:SidewaysLeft<Cr>
+"nnoremap <A-l> <Esc>:SidewaysRight<Cr>
+
+xmap <M-j> <Plug>(textmanip-move-down)
+xmap <M-k> <Plug>(textmanip-move-up)
+xmap <M-h> <Plug>(textmanip-move-left)
+xmap <M-l> <Plug>(textmanip-move-right)
 
 noremap <Leader><Tab> <Esc>:NERDTreeToggle<Cr>
 noremap <Leader><C-c> <Esc>:noh<Bar>MarkClear<Cr>
