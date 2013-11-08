@@ -145,3 +145,9 @@
 [submodule "vim-textmanip"]
 	path = vim-textmanip
 	url = https://github.com/t9md/vim-textmanip.git
+[submodule "mlessnau_case"]
+	path = mlessnau_case
+	url = https://github.com/vim-scripts/mlessnau_case.git
+[submodule "keepcase.vim"]
+	path = keepcase.vim
+	url = https://github.com/vim-scripts/keepcase.vim.git

@@ -60,3 +60,5 @@ nnoremap <Leader><C-h><C-j> :BreezeLastChild<Cr>
 nnoremap <Leader><C-h>p :BreezeParent<Cr>
 
 vnoremap <silent> <Leader>a :EasyAlign<Cr>
+
+nnoremap dic :call DeleteInCase()<Cr>
