@@ -239,6 +239,8 @@ let g:breeze_highlight_filename_patterns = '*.ejs,*.jsp,*.erb'
 let g:integrake_filePrefix='.idanarye'
 let g:integrake_grabDirs=[expand('<sfile>:p:h').'/my-configurations/integrake-templates']
 
+let g:indent_guides_color_change_percent=10
+let g:indent_guides_guide_size=1
 
 "set diffexpr=MyDiff()
 "function MyDiff()
