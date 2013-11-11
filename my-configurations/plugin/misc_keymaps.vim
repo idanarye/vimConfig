@@ -34,9 +34,6 @@ nnoremap <Leader><A-w> <Esc>:set wrap!<Cr>
 
 nnoremap Y y$
 
-noremap <Leader>gc <Esc>:Gcommit<Cr>
-noremap <Leader>gs <Esc>:Gstatus<Cr>
-
 nnoremap <Leader><C-f> :PSearch<Cr>
 
 nnoremap <Leader><C-d>t :diffthis<Cr>
@@ -62,3 +59,10 @@ nnoremap <Leader><C-h>p :BreezeParent<Cr>
 vnoremap <silent> <Leader>a :EasyAlign<Cr>
 
 nnoremap dic :call DeleteInCase()<Cr>
+
+"keymaps for fugitive:
+noremap <Leader>gs <Esc>:Gstatus<Cr>
+noremap <Leader>ge <Esc>:Gedit<Cr>
+noremap <Leader>gd <Esc>:Gdiff<Cr>
+noremap <Leader>gl <Esc>:Gllog<Cr>
+noremap <Leader>gb <Esc>:Gblame<Cr>
