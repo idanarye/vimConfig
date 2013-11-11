@@ -58,7 +58,7 @@ nnoremap <Leader><C-h>p :BreezeParent<Cr>
 
 vnoremap <silent> <Leader>a :EasyAlign<Cr>
 
-nnoremap dic :call DeleteInCase()<Cr>
+nnoremap dic :call Del my-configurations/plugin/misc_keymaps.vim
 
 "keymaps for fugitive:
 noremap <Leader>gs <Esc>:Gstatus<Cr>
