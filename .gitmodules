@@ -151,3 +151,9 @@
 [submodule "keepcase.vim"]
 	path = keepcase.vim
 	url = https://github.com/vim-scripts/keepcase.vim.git
+[submodule "ttoc_vim"]
+	path = ttoc_vim
+	url = https://github.com/tomtom/ttoc_vim.git
+[submodule "tlib_vim"]
+	path = tlib_vim
+	url = https://github.com/tomtom/tlib_vim.git
