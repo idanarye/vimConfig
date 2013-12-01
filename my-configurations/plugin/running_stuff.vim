@@ -72,5 +72,7 @@ call extend(g:erroneous_errorFormatChooserWords,{
 			\'ant': function('erroneous#parseAntErrorOutput'),
 			\'mvn': function('erroneous#parseMavenErrorOutput'),
 			\'mcs': '%f(%l\,%c): %m',
-			\'MSBuild': ' %#%f(%l\,%c): %m',
+			\'csc': '%#%f(%l\,%c): %m',
+			\'xbuild': function('erroneous#parseXBuildErrorOutput'),
+			\'MSBuild': function('erroneous#parseXBuildErrorOutput'),
 			\})

@@ -66,3 +66,6 @@ noremap <Leader>ge <Esc>:Gedit<Cr>
 noremap <Leader>gd <Esc>:Gdiff<Cr>
 noremap <Leader>gl <Esc>:Gllog<Cr>
 noremap <Leader>gb <Esc>:Gblame<Cr>
+
+"Map for setting marks after easyclip took `m`:
+noremap <M-m> m
