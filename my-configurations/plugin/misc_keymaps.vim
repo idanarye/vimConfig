@@ -69,3 +69,6 @@ noremap <Leader>gb <Esc>:Gblame<Cr>
 
 "Map for setting marks after easyclip took `m`:
 noremap <M-m> m
+
+"keymap for ttoc
+nnoremap <Leader>t :Ttoc<Cr>
