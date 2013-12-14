@@ -154,3 +154,9 @@
 [submodule "tlib_vim"]
 	path = tlib_vim
 	url = https://github.com/tomtom/tlib_vim.git
+[submodule "vim-csharp"]
+	path = vim-csharp
+	url = https://github.com/OrangeT/vim-csharp.git
+[submodule "vim-less"]
+	path = vim-less
+	url = https://github.com/groenewege/vim-less.git
