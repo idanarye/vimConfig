@@ -242,6 +242,8 @@ let g:integrake_grabDirs=[expand('<sfile>:p:h').'/my-configurations/integrake-te
 let g:indent_guides_color_change_percent=10
 let g:indent_guides_guide_size=1
 
+let g:EasyClipUseSubstituteDefaults=1
+
 "set diffexpr=MyDiff()
 "function MyDiff()
   "let opt = '-a --binary '
