@@ -81,4 +81,7 @@ call extend(g:erroneous_errorFormatChooserWords,{
 			\'csc': '%#%f(%l\,%c): %m',
 			\'xbuild': function('erroneous#parseXBuildErrorOutput'),
 			\'MSBuild': function('erroneous#parseXBuildErrorOutput'),
+			\'MSBuild3.5': function('erroneous#parseXBuildErrorOutput'),
+			\'MSBuild32': function('erroneous#parseXBuildErrorOutput'),
+			\'MSBuild64': function('erroneous#parseXBuildErrorOutput'),
 			\})
