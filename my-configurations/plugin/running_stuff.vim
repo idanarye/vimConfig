@@ -27,18 +27,19 @@ function s:createIntegrakeShortcut(key,cmd)
 endfunction
 
 call s:createIntegrakeShortcut('i','')
-call s:createIntegrakeShortcut('c','compile')
-call s:createIntegrakeShortcut('r','run')
-call s:createIntegrakeShortcut('t','test')
 call s:createIntegrakeShortcut('C','clean')
-call s:createIntegrakeShortcut('T','tags')
-call s:createIntegrakeShortcut('s','shell')
-call s:createIntegrakeShortcut('R','refresh')
+call s:createIntegrakeShortcut('c','compile')
+call s:createIntegrakeShortcut('d','debug')
+call s:createIntegrakeShortcut('h','help')
+call s:createIntegrakeShortcut('l','load')
 call s:createIntegrakeShortcut('m','migrate')
 call s:createIntegrakeShortcut('p','print')
+call s:createIntegrakeShortcut('R','refresh')
+call s:createIntegrakeShortcut('r','run')
+call s:createIntegrakeShortcut('s','shell')
+call s:createIntegrakeShortcut('T','tags')
+call s:createIntegrakeShortcut('t','test')
 call s:createIntegrakeShortcut('u','upload')
-call s:createIntegrakeShortcut('l','load')
-call s:createIntegrakeShortcut('h','help')
 
 noremap <M-i> :IR<Cr>
 inoremap <M-i> <C-o>:IR<Cr>

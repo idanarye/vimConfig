@@ -157,3 +157,6 @@
 [submodule "vim-less"]
 	path = vim-less
 	url = https://github.com/groenewege/vim-less.git
+[submodule "vim-vebugger"]
+	path = vim-vebugger
+	url = https://github.com/someboddy/vim-vebugger.git

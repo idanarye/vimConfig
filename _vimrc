@@ -244,6 +244,8 @@ let g:indent_guides_guide_size=1
 
 let g:EasyClipUseSubstituteDefaults=1
 
+let g:vebugger_leader='<M-d>'
+
 "set diffexpr=MyDiff()
 "function MyDiff()
   "let opt = '-a --binary '
