@@ -1,0 +1,11 @@
+MAIN_NAMESPACE='chapter-tracker'
+
+task :run do
+	cmd "Require"
+	cmd "Require #{MAIN_NAMESPACE.gsub('-','_')}.core"
+	cmd "Eval (#{MAIN_NAMESPACE}.core/-main)"
+end
+
+task :uberjar do
+	sh 'lein uberjar'
+end
