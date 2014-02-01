@@ -160,3 +160,6 @@
 [submodule "vim-vebugger"]
 	path = vim-vebugger
 	url = https://github.com/someboddy/vim-vebugger.git
+[submodule "DCD"]
+	path = DCD
+	url = git@github.com:Hackerpilot/DCD.git
