@@ -1,0 +1,321 @@
+###############################################################################
+#	Some snippets for T-SQL. For use with the snipmate plugin in Vim.
+#
+#	Install: Put this file in ~YourSnippetPath~/snippets
+# 
+#	There is a mini grammar used by the snippets. It works similar to Vim with
+#	things like dw=delete word.
+#		Nouns: tab, col, fk, ind, sp, fn, vw, sel, tr, uk, wh, cur, lj, rh, ij,
+#              fj, cj
+#		Verbs: (a)lter, (d)rop, (e)xists?ThenDelete
+#			   create is implicit, just type the noun
+#		Use: create column = col
+#			 alter column = acol
+#			 drop column = dcol
+#
+#	License: Same as Vim. http://www.vim.org/
+###############################################################################
+# select query.
+snippet sel
+	select $2.*
+	from ${1:/*Tab*/} ${2:/*Alias*/}
+	where ${3:0=0}
+# create table.
+snippet tab
+	create table dbo.${1:/*Tab*/} (
+		ID bigint identity(1,1) not null,
+		${2:/*cols*/}
+
+		CONSTRAINT PK_$1 primary key clustered (ID asc)
+	);
+	GO${3}
+# junction table for many-to-many mapping. A sequential ID is used becuase
+# sometimes the juntion is more than a mere implementaiton detail of a
+# many-to-many. It may be an entity in its own right with extra fields and 
+# other tables referencing it via FK. Double unique keys are created for both
+# directions of the mapping so you're covered no matter which field is used
+# in a join.
+snippet tabj
+	create table dbo.${1:/*Tab*/} (
+		ID bigint identity(1,1) not null,
+		${2:ID_1} ${3:bigint} not null,
+		${4:ID_2} ${5:bigint} not null,
+
+		CONSTRAINT PK_$1 primary key clustered (ID asc)
+	);
+	GO
+	alter table $1 add constraint UK_$1_$2_$4 unique ($2, $4);
+	alter table $1 add constraint UK_$1_$4_$2 unique ($4, $2);
+	alter table $1 with check add constraint FK_$1_$2
+		foreign key($2) references ${6:/*Tab1*/}(${7:/*ID_1*/});
+	GO
+	alter table $1 check constraint FK_$1_$2;
+	GO
+	alter table $1 with check add constraint FK_$1_$4
+		foreign key($4) references ${8:/*Tab2*/}(${9:/*ID_2*/});
+	GO
+	alter table $1 check constraint FK_$1_$4;
+	GO${10}
+# drop table
+snippet dtab
+	drop table ${1:/*Tab*/};${2}
+# truncate table. t as in (t)runcate
+snippet ttab
+	truncate table ${1:/*Tab*/};${2}
+# add column, when inside a create-table statement.
+snippet coll
+	${1:/*Col*/} ${2:/*Type*/} not null ${3:default(/*val*/)},${4}
+# add column
+snippet col
+	alter table ${1:/*Tab*/} add ${2:/*Col*/} ${3:/*Type*/} not null default(${4:/*DefVal*/});${5}
+# alter column
+snippet acol
+	alter table ${1:/*Tab*/} alter column ${2:/*Col*/} ${3:/*Type*/} not null default(${4:/*DefVal*/});${5}
+# drop column
+snippet dcol
+	alter table ${1:/*Tab*/} drop column ${2:/*Col*/};${3}
+# create index
+snippet ind
+	create index IX_$1_$2 on ${1:/*Tab*/}(${2:/*Col*/});${3}
+# drop index
+snippet dind
+	drop index IX_$1_${2} on ${1:/*Tab*/};${3}
+# foreign key
+snippet fk
+	alter table ${1:/*FKtab*/} with check add constraint FK_$1_$3
+		foreign key(${2:/*FKcol*/}) references ${3:/*UKtab*/}(${4:/*UKcol*/});
+	GO
+	alter table $1 check constraint FK_$1_$3;
+	GO${5}
+# foreign key and index.
+snippet fki
+	alter table ${1:/*FKtab*/} with check add constraint FK_$1_$3
+		foreign key(${2:/*FKcol*/}) references ${3:/*UKtab*/}(${4:/*UKcol*/});
+	GO
+	alter table $1 check constraint FK_$1_$3;
+	GO
+	create index IX_$1_$2 on $1($2);
+	GO${5}
+# drop foreign key
+snippet dfk
+	alter table ${1:/*FKtab*/} drop FK_$1_${2:/*UKtab*/};${3}
+# check constraint
+snippet ck
+	alter table ${1:/*Tab*/} add constraint CH_$1_${3:/*descr*/} check (${2:/*Conditions*/});${4}
+# drop check constraint
+snippet dck
+	alter table ${1:/*Tab*/} drop constraint CH_$1_${2};${3}
+# unique key
+snippet uk
+	alter table ${1:/*Tab*/} add constraint UK_$1_$2 unique (${2:/*Col*/});${3}
+# drop unique key
+snippet duk
+	alter table ${1:/*Tab*/} drop constraint UK_$1_${2};${3}
+# stored proc
+snippet sp
+	SET ANSI_NULLS ON
+	GO
+	SET QUOTED_IDENTIFIER ON
+	GO
+
+	create procedure dbo.${1:/*ProcName*/} (
+		@${2:/*param1Name*/} ${3:/*type*/},
+	)
+	as
+
+	${4:/*body*/}
+	GO${5}
+# drop stored proc
+snippet dsp
+	drop procedure ${1:/*ProcName*/};
+	GO${2}
+# alter proc is left out so you don't accidentally erase your proc.
+# function
+snippet fn
+	SET ANSI_NULLS ON
+	GO
+	SET QUOTED_IDENTIFIER ON
+	GO
+
+	create function dbo.${1:/*FuncName*/} (
+		@${3:/*param1Name*/} ${4:/*type*/}
+	)
+	RETURNS ${2:/*ReturnType*/} 
+	as
+
+	${5:/*body*/}
+	return /*val*/;
+	GO
+# drop function
+snippet dfn
+	drop function ${1:/*FuncName*/};${2}
+# view
+snippet vw
+	create view dbo.${1:/*ViewName*/}
+	as
+
+	${2:/*query*/}
+	GO
+# drop view
+snippet dvw
+	drop view ${1:/*ViewName*/};${2}
+# trigger
+snippet tr
+	create trigger ${1:/*TrigName*/} on dbo.${2:/*Tab*/} for ${3:/*insert, update, delete*/}
+	as
+	${4:/*body*/}
+	GO
+# trigger (experimental, doesn't work if on multiple actions)
+snippet trr
+	create trigger tr_$1_$2 on dbo.${1:/*Tab*/} for ${2:/*insert, update, delete*/}
+	as
+	${3:/*body*/}
+	GO
+# drop trigger
+snippet dtr
+	drop trigger ${1:/*Trig*/};${2}
+# exists? then delete trigger
+snippet etr
+	if exists(select null from dbo.sysobjects where name='${1:ObjName}' and OBJECTPROPERTY(id, 'IsTrigger') = 1)
+	begin
+		drop trigger $1;
+	end${2}
+# while loop. NOTE: consider a set-based operation instead of a loop
+snippet wh
+	declare @i int = 0;
+	while @i < ${1:@upper}
+	begin
+		${2:/*body*/}
+		set @i=@i+1;
+	end
+# cursor. Assumes 1 fetch variable, since I don't understand snippets enough to
+# have it fill up properly on multiple variables. 
+# NOTE: consider a set-based operation instead of a cursor
+snippet cur
+	declare @${1:fetchVar} ${2:type};
+	declare ${3:cur} cursor for
+		${4:/*query*/}
+	open cur
+	fetch next from $3 into @$1
+	while @@fetch_status = 0
+	begin
+		${5:/*body*/}
+		fetch next from $3 into @$1
+	end
+	close $3
+	deallocate $3
+# inner join
+snippet ij
+	inner join ${1:/*Tab_A*/} ${2:Alias_A} on $2.${3:key_A}=${4:Tab_B}.${5:key_B}
+# left join
+snippet lj
+	left join ${1:/*Tab_A*/} ${2:Alias_A} on $2.${3:key_A}=${4:Tab_B}.${5:key_B}
+# right join
+snippet rj
+	right join ${1:/*Tab_A*/} ${2:Alias_A} on $2.${3:key_A}=${4:Tab_B}.${5:key_B}
+# full outer join
+snippet fj
+	full outer join ${1:/*Tab_A*/} ${2:Alias_A} on $2.${3:key_A}=${4:Tab_B}.${5:key_B}
+# cross join
+snippet cj
+	cross join ${1:Tab}
+# insert
+snippet ins simple insert
+	insert into ${1:Tab}(${2:/*cols*/})
+	values($2);
+snippet inss insert with query
+	insert into dbo.${1:InsTab} (${2:/*cols*/})
+		${3:/*query*/}
+snippet up simple update
+	update ${1:Tab} set
+	${2:col}=@$2
+	where ${3:0=1};${4}
+snippet ups update with a join
+	update $2 set
+		$2.foo = $5.bar
+	from ${1:TargetTab} ${2:TargetAlias}
+	${3:inner join} ${4:Tab} ${5:Alias} on $5.${6:ID} = $2.${7:ID}
+	where ${8:0=1}
+snippet del simple delete
+	delete from ${1:Tab} where ${2:0=1};${3}
+snippet dels delete with join
+	delete $2
+	from ${1:TargetTab} ${2:TargetAlias}
+	${3:inner join} ${4:Tab} ${5:Alias} on $5.${6:ID} = $2.${7:ID}
+	where ${8:0=1}
+snippet cte
+	with ${1:CTE} as (
+		${2:/*CTE query*/}
+	)
+	${3:/*query*/}
+snippet cter recursive cte. Be careful!
+	with ${1:CTE} as (
+		select t.${6:/*cols*/},
+		t.$3, t.$5, 0 as depth
+		from ${2:Tab} t
+		where t.${3:ParentID} ${4:is null}
+
+		union all
+
+		select tt.$6,
+		tt.$3, tt.$5, depth + 1
+		from $2 tt
+		inner join $1 cte on cte.${5:ID}=tt.$3
+	)
+	select * from $1
+snippet page pagination for sql server 2005-2008
+	select *
+	from (
+		select row_number() over (order by ${2:/*Fields*/}) RowNum,
+		${3:*}
+		from ${1:/*Table*/}
+		) as RowNumQuery
+	where RowNum between ${4:low} and ${5:high}
+snippet pagecte pagination with CTE
+	with ${1:RowNumQuery} as (
+		select row_number() over (order by ${3:/*Fields*/}) RowNum,
+		${4:*}
+		from ${2:/*Tab*/}
+	)
+	select ${5:*}
+	from $1
+	where RowNum between ${6:low} and ${7:high}
+snippet page2 pagination for sql server 2012+
+	declare @PageNum int = ${1:1};
+	declare @PageSize int = ${2:20};
+	declare @RowStart int = @PageNum * @PageSize - @PageSize;
+	select ${4:*}
+	from ${3:/*Table*/}
+	order by ${5:/*Fields*/}
+	offset @RowStart rows fetch next @PageSize rows only;${6}
+snippet flag type flags for reference purposes
+	/* AF = Aggregate function (CLR)
+	C = CHECK constraint
+	D = DEFAULT (constraint or stand-alone)
+	F = FOREIGN KEY constraint
+	FN = SQL scalar function
+	FS = Assembly (CLR) scalar-function
+	FT = Assembly (CLR) table-valued function
+	IF = SQL inline table-valued function
+	IT = Internal table
+	P = SQL Stored Procedure
+	PC = Assembly (CLR) stored-procedure
+	PG = Plan guide
+	PK = PRIMARY KEY constraint
+	R = Rule (old-style, stand-alone)
+	RF = Replication-filter-procedure
+	S = System base table
+	SN = Synonym
+	SO = Sequence object
+	SQ = Service queue
+	TA = Assembly (CLR) DML trigger
+	TF = SQL table-valued-function
+	TR = SQL DML trigger 
+	TT = Table type
+	U = Table (user-defined)
+	UQ = UNIQUE constraint
+	V = View
+	X = Extended stored procedure */
+snippet e if exists
+	if object_id('${1:ObjName}', '${2:TypeFlag}') is not null
+		${3:/*HandleExistence*/};

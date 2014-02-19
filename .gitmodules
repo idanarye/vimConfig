@@ -163,3 +163,6 @@
 [submodule "DCD"]
 	path = DCD
 	url = git@github.com:Hackerpilot/DCD.git
+[submodule "snipmate.vim"]
+	path = snipmate.vim
+	url = https://github.com/msanders/snipmate.vim.git
