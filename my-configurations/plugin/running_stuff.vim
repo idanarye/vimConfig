@@ -86,4 +86,5 @@ call extend(g:erroneous_errorFormatChooserWords,{
 			\'MSBuild3.5': function('erroneous#parseXBuildErrorOutput'),
 			\'MSBuild32': function('erroneous#parseXBuildErrorOutput'),
 			\'MSBuild64': function('erroneous#parseXBuildErrorOutput'),
+			\'rustc': '%f:%l:%c: %t%*[^:]: %m,%f:%l:%c: %*\d:%*\d %t%*[^:]: %m,%-G%f:%l %s,%-G%*[ ]^,%-G%*[ ]^%*[~],%-G%*[ ]...'
 			\})
