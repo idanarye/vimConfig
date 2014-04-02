@@ -166,3 +166,6 @@
 [submodule "snipmate.vim"]
 	path = snipmate.vim
 	url = https://github.com/msanders/snipmate.vim.git
+[submodule "rust.vim"]
+	path = rust.vim
+	url = https://github.com/wting/rust.vim.git
