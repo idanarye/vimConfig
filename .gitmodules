@@ -93,7 +93,7 @@
 	url = git://github.com/briancollins/vim-jst.git
 [submodule "psearch.vim"]
 	path = psearch.vim
-	url = git://github.com/gcmt/psearch.vim.git
+	url = https://github.com/someboddy/psearch.vim.git
 [submodule "vimproc"]
 	path = vimproc
 	url = git://github.com/Shougo/vimproc.git
@@ -106,9 +106,6 @@
 [submodule "vim-fireplace"]
 	path = vim-fireplace
 	url = git://github.com/tpope/vim-fireplace.git
-[submodule "vim-vagrant"]
-	path = vim-vagrant
-	url = git://github.com/markcornick/vim-vagrant.git
 [submodule "Rainbow-Parentheses-Improved-and2"]
 	path = Rainbow-Parentheses-Improved-and2
 	url = git://github.com/vim-scripts/Rainbow-Parentheses-Improved-and2.git
