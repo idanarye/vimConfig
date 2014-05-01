@@ -106,9 +106,6 @@
 [submodule "vim-fireplace"]
 	path = vim-fireplace
 	url = git://github.com/tpope/vim-fireplace.git
-[submodule "Rainbow-Parentheses-Improved-and2"]
-	path = Rainbow-Parentheses-Improved-and2
-	url = git://github.com/vim-scripts/Rainbow-Parentheses-Improved-and2.git
 [submodule "vim-git-log"]
 	path = vim-git-log
 	url = git://github.com/kablamo/vim-git-log.git
@@ -159,10 +156,13 @@
 	url = https://github.com/someboddy/vim-vebugger.git
 [submodule "DCD"]
 	path = DCD
-	url = git@github.com:Hackerpilot/DCD.git
+	utl = https://github.com/Hackerpilot/DCD.git
 [submodule "snipmate.vim"]
 	path = snipmate.vim
 	url = https://github.com/msanders/snipmate.vim.git
 [submodule "rust.vim"]
 	path = rust.vim
 	url = https://github.com/wting/rust.vim.git
+[submodule "rainbow"]
+	path = rainbow
+	url = https://github.com/luochen1990/rainbow.git
