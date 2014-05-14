@@ -186,13 +186,13 @@ let g:ConqueTerm_ReadUnfocused = 1
 if has('win32')
 	silent execute '!mkdir "'.$TEMP.'/.vimtmp"'
 	silent execute '!del "'.$TEMP.'/.vimtmp/*~"'
-	set backupdir=$TEMP/.vimtmp//
-	set directory=$TEMP/.vimtmp//
+	set backupdir=$TEMP/.vimtmp
+	set directory=$TEMP/.vimtmp
 elseif has('unix')
 	silent execute '!mkdir -p ~/.vimtmp'
 	silent execute '!rm -f ~/.vimtmp/*'
-	set backupdir=~/.vimtmp//
-	set directory=~/.vimtmp//
+	set backupdir=~/.vimtmp
+	set directory=~/.vimtmp
 endif
 
 
