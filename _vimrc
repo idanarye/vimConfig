@@ -188,11 +188,17 @@ if has('win32')
 	silent execute '!del "'.$TEMP.'/.vimtmp/*~"'
 	set backupdir=$TEMP/.vimtmp
 	set directory=$TEMP/.vimtmp
+	if exists('+undodir')
+	  set undodir=$TEMP/.vimtmp
+	endif
 elseif has('unix')
 	silent execute '!mkdir -p ~/.vimtmp'
 	silent execute '!rm -f ~/.vimtmp/*'
 	set backupdir=~/.vimtmp
 	set directory=~/.vimtmp
+	if exists('+undodir')
+	  set undodir=~/.vimtmp
+	endif
 endif
 
 
