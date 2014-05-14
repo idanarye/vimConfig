@@ -29,14 +29,14 @@ noremap <Leader><C-c> <Esc>:noh<Bar>MarkClear<Cr>
 
 "nnoremap <Leader><C-r> <Esc>:call myrainbow#toggle()<Cr>
 nnoremap <Leader><C-r> <Esc>:RainbowToggle<Cr>
-"nnoremap <Leader><C-s> <Esc>:execute "setfiletype" &filetype<Cr>
-nnoremap <Leader><C-s> :filetype detect<Cr>
-nnoremap <Leader><A-s> <Esc>:set spell!<Cr>
+nnoremap <Leader><C-s> <Esc>:set spell!<Cr>
+nnoremap <Leader><A-f> :filetype detect<Cr>
 nnoremap <Leader><A-w> <Esc>:set wrap!<Cr>
 
 nnoremap Y y$
 
 nnoremap <Leader><C-f> :PSearch<Cr>
+nnoremap <Leader><A-s> :VimShellPop<Cr>
 
 nnoremap <Leader><C-d>t :diffthis<Cr>
 nnoremap <Leader><C-d>o :diffoff<Cr>
