@@ -156,7 +156,7 @@
 	url = https://github.com/someboddy/vim-vebugger.git
 [submodule "DCD"]
 	path = DCD
-	utl = https://github.com/Hackerpilot/DCD.git
+	url = https://github.com/Hackerpilot/DCD.git
 [submodule "snipmate.vim"]
 	path = snipmate.vim
 	url = https://github.com/msanders/snipmate.vim.git
