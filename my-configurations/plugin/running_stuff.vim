@@ -40,6 +40,9 @@ call s:createIntegrakeShortcut('s','shell')
 call s:createIntegrakeShortcut('T','tags')
 call s:createIntegrakeShortcut('t','test')
 call s:createIntegrakeShortcut('u','upload')
+call s:createIntegrakeShortcut('z','zip')
+call s:createIntegrakeShortcut('s','ssh')
+call s:createIntegrakeShortcut('S','sync')
 
 noremap <M-i> :IR<Cr>
 inoremap <M-i> <C-o>:IR<Cr>
