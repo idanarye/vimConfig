@@ -14,7 +14,7 @@
 "nnoremap <F6> :IR run<CR>
 "nnoremap <F7> :IR test<CR>
 
-function s:createIntegrakeShortcut(key,cmd)
+function! s:createIntegrakeShortcut(key,cmd)
 	if ''!=a:cmd
 		let l:cmd="IR ".a:cmd."<Cr>"
 	else
@@ -30,6 +30,7 @@ call s:createIntegrakeShortcut('i','')
 call s:createIntegrakeShortcut('C','clean')
 call s:createIntegrakeShortcut('c','compile')
 call s:createIntegrakeShortcut('d','debug')
+call s:createIntegrakeShortcut('D','dump')
 call s:createIntegrakeShortcut('h','help')
 call s:createIntegrakeShortcut('l','load')
 call s:createIntegrakeShortcut('m','migrate')
@@ -37,12 +38,12 @@ call s:createIntegrakeShortcut('p','print')
 call s:createIntegrakeShortcut('R','refresh')
 call s:createIntegrakeShortcut('r','run')
 call s:createIntegrakeShortcut('s','shell')
+call s:createIntegrakeShortcut('s','ssh')
+call s:createIntegrakeShortcut('S','sync')
 call s:createIntegrakeShortcut('T','tags')
 call s:createIntegrakeShortcut('t','test')
 call s:createIntegrakeShortcut('u','upload')
 call s:createIntegrakeShortcut('z','zip')
-call s:createIntegrakeShortcut('s','ssh')
-call s:createIntegrakeShortcut('S','sync')
 
 noremap <M-i> :IR<Cr>
 inoremap <M-i> <C-o>:IR<Cr>

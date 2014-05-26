@@ -166,3 +166,6 @@
 [submodule "rainbow"]
 	path = rainbow
 	url = https://github.com/luochen1990/rainbow.git
+[submodule "vim-extradite"]
+	path = vim-extradite
+	url = git://github.com/int3/vim-extradite.git

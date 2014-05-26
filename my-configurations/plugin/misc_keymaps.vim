@@ -16,22 +16,22 @@ nnoremap <A-2> @@
 
 nmap <A-n> <Plug>MarkSearchAnyNext
 
-"nnoremap <A-h> <Esc>:SidewaysLeft<Cr>
-"nnoremap <A-l> <Esc>:SidewaysRight<Cr>
+"nnoremap <A-h> :SidewaysLeft<Cr>
+"nnoremap <A-l> :SidewaysRight<Cr>
 
 xmap <M-j> <Plug>(textmanip-move-down)
 xmap <M-k> <Plug>(textmanip-move-up)
 xmap <M-h> <Plug>(textmanip-move-left)
 xmap <M-l> <Plug>(textmanip-move-right)
 
-noremap <Leader><Tab> <Esc>:NERDTreeToggle<Cr>
-noremap <Leader><C-c> <Esc>:noh<Bar>MarkClear<Cr>
+noremap <Leader><Tab> :NERDTreeToggle<Cr>
+noremap <Leader><C-c> :noh<Bar>MarkClear<Cr>
 
-"nnoremap <Leader><C-r> <Esc>:call myrainbow#toggle()<Cr>
-nnoremap <Leader><C-r> <Esc>:RainbowToggle<Cr>
-nnoremap <Leader><C-s> <Esc>:set spell!<Cr>
+"nnoremap <Leader><C-r> :call myrainbow#toggle()<Cr>
+nnoremap <Leader><C-r> :RainbowToggle<Cr>
+nnoremap <Leader><C-s> :set spell!<Cr>
 nnoremap <Leader><A-f> :filetype detect<Cr>
-nnoremap <Leader><A-w> <Esc>:set wrap!<Cr>
+nnoremap <Leader><A-w> :set wrap!<Cr>
 
 nnoremap Y y$
 
@@ -62,12 +62,15 @@ vnoremap <silent> <Leader>a :EasyAlign<Cr>
 
 nnoremap dic :call Del my-configurations/plugin/misc_keymaps.vim
 
-"keymaps for fugitive:
-noremap <Leader>gs <Esc>:Gstatus<Cr>
-noremap <Leader>ge <Esc>:Gedit<Cr>
-noremap <Leader>gd <Esc>:Gdiff<Cr>
-noremap <Leader>gl <Esc>:Gllog<Cr>
-noremap <Leader>gb <Esc>:Gblame<Cr>
+"keymaps for Fugitive:
+noremap <Leader>gs :Gstatus<Cr>
+noremap <Leader>ge :Gedit<Cr>
+noremap <Leader>gd :Gdiff<Cr>
+noremap <Leader>gl :Gllog<Cr>
+noremap <Leader>gb :Gblame<Cr>
+
+"This one if for Extradite
+noremap <Leader>gE :Extradite!<Cr>
 
 "Map for setting marks after easyclip took `m`:
 noremap <M-m> m
