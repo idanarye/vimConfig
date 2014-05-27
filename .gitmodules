@@ -169,3 +169,6 @@
 [submodule "vim-extradite"]
 	path = vim-extradite
 	url = git://github.com/int3/vim-extradite.git
+[submodule "vim-scriptease"]
+	path = vim-scriptease
+	url = git://github.com/tpope/vim-scriptease.git
