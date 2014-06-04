@@ -172,3 +172,6 @@
 [submodule "vim-scriptease"]
 	path = vim-scriptease
 	url = git://github.com/tpope/vim-scriptease.git
+[submodule "vim-merginal"]
+	path = vim-merginal
+	url = git://github.com/idanarye/vim-merginal.git
