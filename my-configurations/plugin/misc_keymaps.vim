@@ -80,3 +80,8 @@ noremap <M-m> m
 
 "keymap for ttoc
 nnoremap <Leader>t :Ttoc<Cr>
+
+
+"keymaps for Bufstop
+nnoremap <Leader>bb :Bufstop<Cr>
+nnoremap <Leader>bs :BufstopStatusline<Cr>

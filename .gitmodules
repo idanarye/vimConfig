@@ -175,3 +175,6 @@
 [submodule "vim-merginal"]
 	path = vim-merginal
 	url = git://github.com/idanarye/vim-merginal.git
+[submodule "bufstop"]
+	path = bufstop
+	url = git://github.com/mihaifm/bufstop.git
