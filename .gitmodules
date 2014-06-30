@@ -178,3 +178,6 @@
 [submodule "vim-merginal"]
 	path = vim-merginal
 	url = git://github.com/idanarye/vim-merginal.git
+[submodule "ag.vim"]
+	path = ag.vim
+	url = https://github.com/rking/ag.vim.git
