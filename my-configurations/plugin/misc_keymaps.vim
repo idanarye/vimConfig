@@ -68,6 +68,7 @@ noremap <Leader>ge :Gedit<Cr>
 noremap <Leader>gd :Gdiff<Cr>
 noremap <Leader>gl :Gllog<Cr>
 noremap <Leader>gb :Gblame<Cr>
+noremap <Leader>gf :Git fetch<Cr>
 
 "This one is for my very own Merginal
 noremap <Leader>gm :Merginal<Cr>
