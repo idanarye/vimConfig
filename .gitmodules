@@ -111,7 +111,7 @@
 	url = git://github.com/kablamo/vim-git-log.git
 [submodule "breeze.vim"]
 	path = breeze.vim
-	url = git://github.com/gcmt/breeze.vim.git
+	url = git://github.com/idanarye/breeze.vim.git
 [submodule "vim-integrake"]
 	path = vim-integrake
 	url = https://github.com/idanarye/vim-integrake.git
