@@ -86,3 +86,14 @@ nnoremap <Leader>t :Ttoc<Cr>
 "keymaps for Bufstop
 nnoremap <Leader>bb :Bufstop<Cr>
 nnoremap <Leader>bs :BufstopStatusline<Cr>
+
+"keymaps for vim-bookmarks
+nmap <Leader><C-m>m <Plug>BookmarkToggle
+nmap <Leader><C-m><C-m> <Plug>BookmarkToggle
+nmap <Leader><C-m>i <Plug>BookmarkAnnotate
+nmap <Leader><C-m>a <Plug>BookmarkShowAll
+nmap <Leader><C-m>j <Plug>BookmarkNext
+nmap <Leader><C-m>k <Plug>BookmarkPrev
+nmap <Leader><C-m>c <Plug>BookmarkClear
+nmap <Leader><C-m>x <Plug>BookmarkClearAll
+

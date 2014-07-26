@@ -181,3 +181,12 @@
 [submodule "ag.vim"]
 	path = ag.vim
 	url = https://github.com/rking/ag.vim.git
+[submodule "vim-bookmarks"]
+	path = vim-bookmarks
+	url = https://github.com/MattesGroeger/vim-bookmarks.git
+[submodule "AdvancedSorters"]
+	path = AdvancedSorters
+	url = https://github.com/vim-scripts/AdvancedSorters.git
+[submodule "ingo-library"]
+	path = ingo-library
+	url = https://github.com/vim-scripts/ingo-library.git
