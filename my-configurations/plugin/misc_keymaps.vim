@@ -65,7 +65,7 @@ nnoremap dic :call Del my-configurations/plugin/misc_keymaps.vim
 "keymaps for Fugitive:
 noremap <Leader>gs :Gstatus<Cr>
 noremap <Leader>ge :Gedit<Cr>
-noremap <Leader>gd :Gdiff<Cr>
+noremap <Leader>gd :Gvdiff<Cr>
 noremap <Leader>gl :Gllog<Cr>
 noremap <Leader>gb :Gblame<Cr>
 noremap <Leader>gf :Git fetch<Cr>
