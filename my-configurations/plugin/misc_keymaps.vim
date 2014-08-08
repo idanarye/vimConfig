@@ -67,6 +67,7 @@ noremap <Leader>gs :Gstatus<Cr>
 noremap <Leader>ge :Gedit<Cr>
 noremap <Leader>gd :Gvdiff<Cr>
 noremap <Leader>gl :Gllog<Cr>
+noremap <Leader>gL :GitLog<Cr>
 noremap <Leader>gb :Gblame<Cr>
 noremap <Leader>gf :Git fetch<Cr>
 
