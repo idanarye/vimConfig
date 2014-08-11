@@ -72,7 +72,7 @@ noremap <Leader>gb :Gblame<Cr>
 noremap <Leader>gf :Git fetch<Cr>
 
 "This one is for my very own Merginal
-noremap <Leader>gm :Merginal<Cr>
+noremap <Leader>gm :MerginalToggle<Cr>
 
 "This one if for Extradite
 noremap <Leader>gE :Extradite!<Cr>
