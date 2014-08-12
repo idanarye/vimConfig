@@ -22,29 +22,36 @@ function! s:createIntegrakeShortcut(key,cmd)
 	endif
 	execute "noremap <M-i>".a:key." :".l:cmd
 	execute "inoremap <M-i>".a:key." <C-o>:".l:cmd
-	execute "noremap <M-i><M-".a:key."> :".l:cmd
-	execute "inoremap <M-i><M-".a:key."> <C-o>:".l:cmd
+	"Single lowercase keys also get the special Alt+ mapping:
+	if a:key=~'\v^[a-z]$'
+		execute "noremap <M-i><M-".a:key."> :".l:cmd
+		execute "inoremap <M-i><M-".a:key."> <C-o>:".l:cmd
+	endif
 endfunction
 
 call s:createIntegrakeShortcut('i','')
 call s:createIntegrakeShortcut('C','clean')
 call s:createIntegrakeShortcut('c','compile')
+call s:createIntegrakeShortcut('<C-c>','configure')
 call s:createIntegrakeShortcut('d','debug')
 call s:createIntegrakeShortcut('D','dump')
 call s:createIntegrakeShortcut('h','help')
 call s:createIntegrakeShortcut('k','kill')
 call s:createIntegrakeShortcut('l','load')
+call s:createIntegrakeShortcut('L','launch')
 call s:createIntegrakeShortcut('m','migrate')
 call s:createIntegrakeShortcut('p','print')
 call s:createIntegrakeShortcut('q','query')
 call s:createIntegrakeShortcut('R','refresh')
 call s:createIntegrakeShortcut('r','run')
+call s:createIntegrakeShortcut('<C-r>','reset')
 call s:createIntegrakeShortcut('s','shell')
-call s:createIntegrakeShortcut('s','ssh')
+call s:createIntegrakeShortcut('<C-s>','ssh')
 call s:createIntegrakeShortcut('S','sync')
 call s:createIntegrakeShortcut('T','tags')
 call s:createIntegrakeShortcut('t','test')
 call s:createIntegrakeShortcut('u','upload')
+call s:createIntegrakeShortcut('w','wipe')
 call s:createIntegrakeShortcut('z','zip')
 
 noremap <M-i> :IR<Cr>
@@ -92,5 +99,6 @@ call extend(g:erroneous_errorFormatChooserWords,{
 			\'MSBuild3.5': function('erroneous#parseXBuildErrorOutput'),
 			\'MSBuild32': function('erroneous#parseXBuildErrorOutput'),
 			\'MSBuild64': function('erroneous#parseXBuildErrorOutput'),
+			\'waf': function('erroneous#parseWafErrorOutput'),
 			\'rustc': '%f:%l:%c: %t%*[^:]: %m,%f:%l:%c: %*\d:%*\d %t%*[^:]: %m,%-G%f:%l %s,%-G%*[ ]^,%-G%*[ ]^%*[~],%-G%*[ ]...'
 			\})
