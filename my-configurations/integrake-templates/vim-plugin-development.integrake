@@ -1,0 +1,20 @@
+PLUGIN_NAME=''
+
+task :refresh do
+	['plugin','autoload'].select{|a|Dir.exists?(a)}.each do|dir_name|
+		Dir.glob("#{dir_name}/*.vim").each do|file_name|
+			source file_name
+		end
+	end
+end
+
+task :run=>:refresh do
+end
+
+task :zip do|name,args|
+	version_number=`git tag`.split("\n").
+		select{|e|e=~/^v?(\d+\.)\d+/}.
+		map{|e|e.sub(/^v/,'').split('.').map(&:to_i)}.
+		sort.last.join('.')
+	system "zip #{PLUGIN_NAME}_v#{version_number}.zip #{`git ls-files`.gsub(/ /,'\ ').split("\n").join(' ')}"
+end

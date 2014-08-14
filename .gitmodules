@@ -73,9 +73,6 @@
 [submodule "vim-clojure-static"]
 	path = vim-clojure-static
 	url = git://github.com/guns/vim-clojure-static.git
-[submodule "Dscanner"]
-	path = Dscanner
-	url = git://github.com/Hackerpilot/Dscanner.git
 [submodule "vim-rsi"]
 	path = vim-rsi
 	url = git://github.com/tpope/vim-rsi.git
@@ -154,9 +151,6 @@
 [submodule "vim-vebugger"]
 	path = vim-vebugger
 	url = https://github.com/idanarye/vim-vebugger.git
-[submodule "DCD"]
-	path = DCD
-	url = https://github.com/Hackerpilot/DCD.git
 [submodule "snipmate.vim"]
 	path = snipmate.vim
 	url = https://github.com/msanders/snipmate.vim.git
@@ -190,3 +184,6 @@
 [submodule "ingo-library"]
 	path = ingo-library
 	url = https://github.com/vim-scripts/ingo-library.git
+[submodule "vim-dutyl"]
+	path = vim-dutyl
+	url = git://github.com/idanarye/vim-dutyl.git
