@@ -30,6 +30,8 @@ function! s:createIntegrakeShortcut(key,cmd)
 endfunction
 
 call s:createIntegrakeShortcut('i','')
+call s:createIntegrakeShortcut('B','bump')
+call s:createIntegrakeShortcut('b','build')
 call s:createIntegrakeShortcut('C','clean')
 call s:createIntegrakeShortcut('c','compile')
 call s:createIntegrakeShortcut('<C-c>','configure')
