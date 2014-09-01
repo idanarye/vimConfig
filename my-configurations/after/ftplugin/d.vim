@@ -7,3 +7,5 @@ setlocal formatoptions-=t formatoptions+=croql
 setlocal smartindent
 setlocal autoindent
 setlocal commentstring=//%s
+
+nnoremap <buffer> K :DUddoc<Cr>
