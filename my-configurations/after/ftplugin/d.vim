@@ -8,4 +8,6 @@ setlocal smartindent
 setlocal autoindent
 setlocal commentstring=//%s
 
-nnoremap <buffer> K :DUddoc<Cr>
+"nnoremap <buffer> K :DUddoc<Cr>
+nnoremap <buffer> <LocalLeader>d :DUddoc<Cr>
+nnoremap <buffer> <LocalLeader>j :DUjump<Cr>
