@@ -30,6 +30,7 @@ noremap <Leader><C-c> :noh<Bar>MarkClear<Cr>
 "nnoremap <Leader><C-r> :call myrainbow#toggle()<Cr>
 nnoremap <Leader><C-r> :RainbowToggle<Cr>
 nnoremap <Leader><C-s> :set spell!<Cr>
+nnoremap <Leader><C-l> :set list!<Cr>
 nnoremap <Leader><A-f> :filetype detect<Cr>
 nnoremap <Leader><A-w> :set wrap!<Cr>
 
