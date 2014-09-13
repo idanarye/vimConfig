@@ -12,3 +12,6 @@ setlocal commentstring=//%s
 nnoremap <buffer> <LocalLeader>d :DUddoc<Cr>
 nnoremap <buffer> <LocalLeader>j :DUjump<Cr>
 nnoremap <buffer> <LocalLeader>J :DUjump!<Cr>
+
+nnoremap <buffer> <LocalLeader>s :DUsyntaxCheck %<Cr>
+nnoremap <buffer> <LocalLeader>S :DUstyleCheck %<Cr>
