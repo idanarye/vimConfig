@@ -15,3 +15,5 @@ nnoremap <buffer> <LocalLeader>J :DUjump!<Cr>
 
 nnoremap <buffer> <LocalLeader>s :DUsyntaxCheck %<Cr>
 nnoremap <buffer> <LocalLeader>S :DUstyleCheck %<Cr>
+
+nnoremap <buffer> <LocalLeader>u :DUupdateCTags %<Cr>
