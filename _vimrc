@@ -161,6 +161,8 @@ command! -complete=dir -nargs=* -count=0 Ex call netrw#Explore(<count>,0,0+<bang
 " DBEXT SETTINGS
 runtime dbextProfiles.vim
 
+set laststatus=2
+
 " Fugitive SETTINGS
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 autocmd BufReadPost fugitive://* set bufhidden=delete
