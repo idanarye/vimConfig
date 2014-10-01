@@ -17,3 +17,6 @@ nnoremap <buffer> <LocalLeader>s :DUsyntaxCheck %<Cr>
 nnoremap <buffer> <LocalLeader>S :DUstyleCheck %<Cr>
 
 nnoremap <buffer> <LocalLeader>u :DUupdateCTags %<Cr>
+
+nnoremap <buffer> <LocalLeader><C-d>l :DUDCDstartServer<Cr>
+nnoremap <buffer> <LocalLeader><C-d>k :DUDCDstopServer<Cr>
