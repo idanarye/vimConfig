@@ -33,6 +33,7 @@ nnoremap <Leader><C-s> :set spell!<Cr>
 nnoremap <Leader><C-l> :set list!<Cr>
 nnoremap <Leader><A-f> :filetype detect<Cr>
 nnoremap <Leader><A-w> :set wrap!<Cr>
+nnoremap <Leader><C-t> :checktime<Cr>
 
 nnoremap Y y$
 

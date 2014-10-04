@@ -20,3 +20,5 @@ nnoremap <buffer> <LocalLeader>u :DUupdateCTags %<Cr>
 
 nnoremap <buffer> <LocalLeader><C-d>l :DUDCDstartServer<Cr>
 nnoremap <buffer> <LocalLeader><C-d>k :DUDCDstopServer<Cr>
+nnoremap <buffer> <LocalLeader><C-d>c :DUDCDclearCache<Cr>
+nnoremap <buffer> <LocalLeader><C-d>r :DUDCDrestartServer<Cr>
