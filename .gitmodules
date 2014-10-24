@@ -187,3 +187,6 @@
 [submodule "vim-dutyl"]
 	path = vim-dutyl
 	url = git://github.com/idanarye/vim-dutyl.git
+[submodule "vim-snippets"]
+	path = vim-snippets
+	url = https://github.com/honza/vim-snippets.git

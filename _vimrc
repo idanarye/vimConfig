@@ -1,13 +1,13 @@
 " An example for a vimrc file.
 "
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2008 Dec 17
+" Maintainer:   Bram Moolenaar <Bram@vim.org>
+" Last change:  2008 Dec 17
 "
 " To use it, copy it to
 "     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
+"         for Amiga:  s:.vimrc
 "  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
+"       for OpenVMS:  sys$login:.vimrc
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -22,14 +22,14 @@ set nocompatible
 set backspace=indent,eol,start
 
 if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
+  set nobackup      " do not keep a backup file, use versions instead
 else
-  set backup		" keep a backup file
+  set backup        " keep a backup file
 endif
-set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
+set history=50      " keep 50 lines of command line history
+set ruler       " show the cursor position all the time
+set showcmd     " display incomplete commands
+set incsearch       " do incremental searching
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 let &guioptions = substitute(&guioptions, "t", "", "g")
@@ -89,7 +89,7 @@ if has("autocmd")
 
 else
 
-  set autoindent		" always set autoindenting on
+  set autoindent        " always set autoindenting on
   set autochdir
 
 endif " has("autocmd")
@@ -99,11 +99,11 @@ endif " has("autocmd")
 " Only define it when not defined already.
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+          \ | wincmd p | diffthis
 endif
 
 
-"	MY OWN SETTINGS
+"   MY OWN SETTINGS
 
 cd %:p:h
 
@@ -186,43 +186,46 @@ let g:ConqueTerm_ReadUnfocused = 1
 
 
 if has('win32')
-	silent execute '!mkdir "'.$TEMP.'/.vimtmp"'
-	silent execute '!del "'.$TEMP.'/.vimtmp/*~"'
-	set backupdir=$TEMP/.vimtmp
-	set directory=$TEMP/.vimtmp
-	if exists('+undodir')
-	  set undodir=$TEMP/.vimtmp
-	endif
+    silent execute '!mkdir "'.$TEMP.'/.vimtmp"'
+    silent execute '!del "'.$TEMP.'/.vimtmp/*~"'
+    set backupdir=$TEMP/.vimtmp
+    set directory=$TEMP/.vimtmp
+    if exists('+undodir')
+      set undodir=$TEMP/.vimtmp
+    endif
 elseif has('unix')
-	silent execute '!mkdir -p ~/.vimtmp'
-	silent execute '!rm -f ~/.vimtmp/*'
-	set backupdir=~/.vimtmp
-	set directory=~/.vimtmp
-	if exists('+undodir')
-	  set undodir=~/.vimtmp
-	endif
+    silent execute '!mkdir -p ~/.vimtmp'
+    silent execute '!rm -f ~/.vimtmp/*'
+    set backupdir=~/.vimtmp
+    set directory=~/.vimtmp
+    if exists('+undodir')
+      set undodir=~/.vimtmp
+    endif
 endif
 
 
 
 function! CopyBuildFile(pattern)
-	let buildFiles=split(system("ls ".a:pattern." -1"),"\n")
-	let fileNames=[]
-	for buildFile in buildFiles
-		let buildFile=strpart(buildFile,strridx(buildFile,"/")+1)
-		let fileNames=fileNames+[(len(fileNames)+1).": ".buildFile]
-	endfor
-	let selectedIndex=inputlist(["Select build template"]+fileNames)-1
-	if selectedIndex>=0&&selectedIndex<len(buildFiles)
-		let selectedFile=buildFiles[selectedIndex]
-		call system("cp -f ".selectedFile." ./Rakefile")
-	endif
+    let buildFiles=split(system("ls ".a:pattern." -1"),"\n")
+    let fileNames=[]
+    for buildFile in buildFiles
+        let buildFile=strpart(buildFile,strridx(buildFile,"/")+1)
+        let fileNames=fileNames+[(len(fileNames)+1).": ".buildFile]
+    endfor
+    let selectedIndex=inputlist(["Select build template"]+fileNames)-1
+    if selectedIndex>=0&&selectedIndex<len(buildFiles)
+        let selectedFile=buildFiles[selectedIndex]
+        call system("cp -f ".selectedFile." ./Rakefile")
+    endif
 endfunc
 
 command! GetBuildFile call CopyBuildFile("~/.vim/buildTemplates/*.rake") "| compiler rake
 
 command! CDhere exe "cd ".expand("%:p:h")
 
+if has('unix')
+    let g:snippets_dir=expand('<sfile>:p:h').'/vim-snippets/snippets'
+endif
 let g:UltiSnipsSnippetDirectories=['snippets']
 
 autocmd FileType clojure setlocal indentexpr=myclojure#clojureIndent()
@@ -236,8 +239,8 @@ behave mswin
 set keymodel= "This makes the RSI plugin work better
 
 let g:NERDCustomDelimiters = {
-			\ 'racket': { 'left': ';'}
-			\ }
+            \ 'racket': { 'left': ';'}
+            \ }
 
 let g:rainbow_active = 1
 let g:rainbow_operators = 1
