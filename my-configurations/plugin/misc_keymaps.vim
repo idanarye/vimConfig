@@ -100,3 +100,12 @@ nmap <Leader><C-m>k <Plug>BookmarkPrev
 nmap <Leader><C-m>c <Plug>BookmarkClear
 nmap <Leader><C-m>x <Plug>BookmarkClearAll
 
+"keymaps for working with tabs
+nnoremap <M-t>n :tabnew<Cr>
+nnoremap <M-t>q :tabclose<Cr>
+nnoremap <M-t>c :tabclose<Cr>
+nnoremap <M-t>o :tabonly<Cr>
+nnoremap <M-t>l :tabmove +1<Cr>
+nnoremap <M-t>L :tabmove<Cr>
+nnoremap <M-t>h :tabmove -1<Cr>
+nnoremap <M-t>H :tabmove 0<Cr>

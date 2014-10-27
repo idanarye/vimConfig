@@ -22,11 +22,12 @@ function! s:createIntegrakeShortcut(key,cmd)
 	endif
 	execute "noremap <M-i>".a:key." :".l:cmd
 	execute "inoremap <M-i>".a:key." <C-o>:".l:cmd
-	"Single lowercase keys also get the special Alt+ mapping:
-	if a:key=~'\v^[a-z]$'
-		execute "noremap <M-i><M-".a:key."> :".l:cmd
-		execute "inoremap <M-i><M-".a:key."> <C-o>:".l:cmd
-	endif
+
+	""Single lowercase keys also get the special Alt+ mapping:
+	"if a:key=~'\v^[a-z]$'
+		"execute "noremap <M-i><M-".a:key."> :".l:cmd
+		"execute "inoremap <M-i><M-".a:key."> <C-o>:".l:cmd
+	"endif
 endfunction
 
 call s:createIntegrakeShortcut('i','')
@@ -38,6 +39,7 @@ call s:createIntegrakeShortcut('<C-c>','configure')
 call s:createIntegrakeShortcut('d','debug')
 call s:createIntegrakeShortcut('D','dump')
 call s:createIntegrakeShortcut('<C-d>','doc')
+call s:createIntegrakeShortcut('f','fetch')
 call s:createIntegrakeShortcut('G','generate')
 call s:createIntegrakeShortcut('g','go')
 call s:createIntegrakeShortcut('h','help')
