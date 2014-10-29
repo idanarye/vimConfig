@@ -25,6 +25,7 @@ xmap <M-h> <Plug>(textmanip-move-left)
 xmap <M-l> <Plug>(textmanip-move-right)
 
 noremap <Leader><Tab> :NERDTreeToggle<Cr>
+noremap <Leader><Leader><Tab> :NERDTreeFind<Cr>
 noremap <Leader><C-c> :noh<Bar>MarkClear<Cr>
 
 "nnoremap <Leader><C-r> :call myrainbow#toggle()<Cr>
@@ -109,3 +110,23 @@ nnoremap <M-t>l :tabmove +1<Cr>
 nnoremap <M-t>L :tabmove<Cr>
 nnoremap <M-t>h :tabmove -1<Cr>
 nnoremap <M-t>H :tabmove 0<Cr>
+
+"keymaps for quick access to CtrlP modes
+nnoremap <M-p>l :CtrlPLine<Cr>
+nnoremap <M-p>f :CtrlPFunky<Cr>
+nnoremap <M-p>m :CtrlPModified<Cr>
+nnoremap <M-p>b :CtrlPBranch<Cr>
+nnoremap <M-p>r :CtrlPRoot<Cr>
+nnoremap <M-p>c :CtrlPChange<Cr>
+nnoremap <M-p>u :CtrlPUndo<Cr>
+nnoremap <M-p>q :CtrlPQuickfix<Cr>
+nnoremap <M-p><C-b> :CtrlPBuffer<Cr>
+nnoremap <M-p>t :CtrlPTag<Cr>
+nnoremap <M-p><C-t> :CtrlPBufTag<Cr>
+
+"I don't really need these:
+":CtrlPMRU
+":CtrlPDir
+":CtrlPRTS
+":CtrlPMixed
+":CtrlPBookmarkDir

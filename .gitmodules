@@ -193,3 +193,12 @@
 [submodule "ctrlp.vim"]
 	path = ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
+[submodule "ctrlp-funky"]
+	path = ctrlp-funky
+	url = https://github.com/tacahiroy/ctrlp-funky.git
+[submodule "ctrlp-modified.vim"]
+	path = ctrlp-modified.vim
+	url = https://github.com/jasoncodes/ctrlp-modified.vim.git
+[submodule "ctrlp-py-matcher"]
+	path = ctrlp-py-matcher
+	url = https://github.com/FelikZ/ctrlp-py-matcher.git
