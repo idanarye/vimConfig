@@ -130,3 +130,9 @@ nnoremap <M-p><C-t> :CtrlPBufTag<Cr>
 ":CtrlPRTS
 ":CtrlPMixed
 ":CtrlPBookmarkDir
+
+"Keymaps for RengBang
+map <Leader>sr <Plug>(operator-rengbang)
+map <Leader>sp <Plug>(operator-rengbang-useprev)
+nnoremap <Leader>sR :RengBangConfirm<Cr>
+vnoremap <Leader>sR :RengBangConfirm<Cr>

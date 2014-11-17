@@ -202,3 +202,9 @@
 [submodule "ctrlp-py-matcher"]
 	path = ctrlp-py-matcher
 	url = https://github.com/FelikZ/ctrlp-py-matcher.git
+[submodule "vim-rengbang"]
+	path = vim-rengbang
+	url = https://github.com/deris/vim-rengbang.git
+[submodule "vim-operator-user"]
+	path = vim-operator-user
+	url = https://github.com/kana/vim-operator-user.git
