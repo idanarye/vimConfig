@@ -208,3 +208,9 @@
 [submodule "vim-operator-user"]
 	path = vim-operator-user
 	url = https://github.com/kana/vim-operator-user.git
+[submodule "vim-argwrap"]
+	path = vim-argwrap
+	url = https://github.com/FooSoft/vim-argwrap.git
+[submodule "vim-plugin-AnsiEsc"]
+	path = vim-plugin-AnsiEsc
+	url = https://github.com/powerman/vim-plugin-AnsiEsc.git

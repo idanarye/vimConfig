@@ -92,14 +92,14 @@ nnoremap <Leader>bb :Bufstop<Cr>
 nnoremap <Leader>bs :BufstopStatusline<Cr>
 
 "keymaps for vim-bookmarks
-nmap <Leader><C-m>m <Plug>BookmarkToggle
-nmap <Leader><C-m><C-m> <Plug>BookmarkToggle
-nmap <Leader><C-m>i <Plug>BookmarkAnnotate
-nmap <Leader><C-m>a <Plug>BookmarkShowAll
-nmap <Leader><C-m>j <Plug>BookmarkNext
-nmap <Leader><C-m>k <Plug>BookmarkPrev
-nmap <Leader><C-m>c <Plug>BookmarkClear
-nmap <Leader><C-m>x <Plug>BookmarkClearAll
+nmap <M-m>m <Plug>BookmarkToggle
+nmap <M-m><C-m> <Plug>BookmarkToggle
+nmap <M-m>i <Plug>BookmarkAnnotate
+nmap <M-m>a <Plug>BookmarkShowAll
+nmap <M-m>j <Plug>BookmarkNext
+nmap <M-m>k <Plug>BookmarkPrev
+nmap <M-m>c <Plug>BookmarkClear
+nmap <M-m>x <Plug>BookmarkClearAll
 
 "keymaps for working with tabs
 nnoremap <M-t>n :tabnew<Cr>
@@ -115,6 +115,7 @@ nnoremap <M-t>H :tabmove 0<Cr>
 nnoremap <M-p>l :CtrlPLine<Cr>
 nnoremap <M-p>f :CtrlPFunky<Cr>
 nnoremap <M-p>m :CtrlPModified<Cr>
+nnoremap <M-p><C-m> :CtrlPMRUFiles<Cr>
 nnoremap <M-p>b :CtrlPBranch<Cr>
 nnoremap <M-p>r :CtrlPRoot<Cr>
 nnoremap <M-p>c :CtrlPChange<Cr>
@@ -125,7 +126,6 @@ nnoremap <M-p>t :CtrlPTag<Cr>
 nnoremap <M-p><C-t> :CtrlPBufTag<Cr>
 
 "I don't really need these:
-":CtrlPMRU
 ":CtrlPDir
 ":CtrlPRTS
 ":CtrlPMixed
@@ -136,3 +136,5 @@ map <Leader>sr <Plug>(operator-rengbang)
 map <Leader>sp <Plug>(operator-rengbang-useprev)
 nnoremap <Leader>sR :RengBangConfirm<Cr>
 vnoremap <Leader>sR :RengBangConfirm<Cr>
+
+nnoremap <Leader>w :call argwrap#toggle()<Cr>
