@@ -138,3 +138,5 @@ nnoremap <Leader>sR :RengBangConfirm<Cr>
 vnoremap <Leader>sR :RengBangConfirm<Cr>
 
 nnoremap <Leader>w :call argwrap#toggle()<Cr>
+
+let g:casetrate_leader = '<M-c>'
