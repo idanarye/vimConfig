@@ -81,7 +81,7 @@ noremap <Leader>gm :MerginalToggle<Cr>
 noremap <Leader>gE :Extradite!<Cr>
 
 "Map for setting marks after easyclip took `m`:
-noremap <M-m> m
+noremap <C-m> m
 
 "keymap for ttoc
 nnoremap <Leader>t :Ttoc<Cr>
@@ -140,3 +140,5 @@ vnoremap <Leader>sR :RengBangConfirm<Cr>
 nnoremap <Leader>w :call argwrap#toggle()<Cr>
 
 let g:casetrate_leader = '<M-c>'
+
+let g:no_cecutil_maps = 1
