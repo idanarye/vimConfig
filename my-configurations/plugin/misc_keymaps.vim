@@ -142,3 +142,11 @@ nnoremap <Leader>w :call argwrap#toggle()<Cr>
 let g:casetrate_leader = '<M-c>'
 
 let g:no_cecutil_maps = 1
+
+"Keymaps for multicursor
+let g:multicursor_quit = "\<Esc>"
+nnoremap <Leader><C-m>p :call MultiCursorPlaceCursor()<Cr>
+nnoremap <Leader><C-m>r :call MultiCursorRemoveCursors()<Cr>
+nnoremap <Leader><C-m>m :call MultiCursorManual()<Cr>
+nnoremap <Leader><C-m>v :call MultiCursorVisual()<Cr>
+xnoremap <Leader><C-m>s :call MultiCursorSearch('')<Cr>
