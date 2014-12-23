@@ -30,7 +30,7 @@ noremap <Leader><C-c> :noh<Bar>MarkClear<Cr>
 
 "nnoremap <Leader><C-r> :call myrainbow#toggle()<Cr>
 nnoremap <Leader><C-r> :RainbowToggle<Cr>
-nnoremap <Leader><C-s> :set spell!<Cr>
+nnoremap <Leader><C-s> :setlocal spell!<Cr>
 nnoremap <Leader><C-l> :set list!<Cr>
 nnoremap <Leader><A-f> :filetype detect<Cr>
 nnoremap <Leader><A-w> :set wrap!<Cr>
@@ -81,7 +81,7 @@ noremap <Leader>gm :MerginalToggle<Cr>
 noremap <Leader>gE :Extradite!<Cr>
 
 "Map for setting marks after easyclip took `m`:
-noremap <C-m> m
+noremap <C-M-m> m
 
 "keymap for ttoc
 nnoremap <Leader>t :Ttoc<Cr>
