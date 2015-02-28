@@ -154,3 +154,6 @@ nnoremap <Leader><C-m>r :call MultiCursorRemoveCursors()<Cr>
 nnoremap <Leader><C-m>m :call MultiCursorManual()<Cr>
 nnoremap <Leader><C-m>v :call MultiCursorVisual()<Cr>
 xnoremap <Leader><C-m>s :call MultiCursorSearch('')<Cr>
+
+"Some keymaps I don't want to put in the main vebugger plugin:
+execute 'nnoremap '.g:vebugger_leader.'k :VBGkill<Cr>'
