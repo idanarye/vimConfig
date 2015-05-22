@@ -223,3 +223,6 @@
 [submodule "vim-indentwise"]
 	path = vim-indentwise
 	url = https://github.com/jeetsukumaran/vim-indentwise.git
+[submodule "vim-ninja-feet"]
+	path = vim-ninja-feet
+	url = https://github.com/tommcdo/vim-ninja-feet.git
