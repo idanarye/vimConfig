@@ -64,9 +64,6 @@
 [submodule "roo.vim"]
 	path = roo.vim
 	url = git://github.com/vim-scripts/roo.vim.git
-[submodule "ultisnips"]
-	path = ultisnips
-	url = git://github.com/SirVer/ultisnips.git
 [submodule "vim-ruby"]
 	path = vim-ruby
 	url = git://github.com/vim-ruby/vim-ruby.git
@@ -151,9 +148,6 @@
 [submodule "vim-vebugger"]
 	path = vim-vebugger
 	url = https://github.com/idanarye/vim-vebugger.git
-[submodule "snipmate.vim"]
-	path = snipmate.vim
-	url = https://github.com/msanders/snipmate.vim.git
 [submodule "rust.vim"]
 	path = rust.vim
 	url = https://github.com/wting/rust.vim.git
@@ -187,9 +181,6 @@
 [submodule "vim-dutyl"]
 	path = vim-dutyl
 	url = git://github.com/idanarye/vim-dutyl.git
-[submodule "vim-snippets"]
-	path = vim-snippets
-	url = https://github.com/honza/vim-snippets.git
 [submodule "ctrlp.vim"]
 	path = ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
@@ -217,12 +208,12 @@
 [submodule "vim-casetrate"]
 	path = vim-casetrate
 	url = https://github.com/idanarye/vim-casetrate.git
-[submodule "vim-multicursor"]
-	path = vim-multicursor
-	url = https://github.com/paradigm/vim-multicursor.git
 [submodule "vim-indentwise"]
 	path = vim-indentwise
 	url = https://github.com/jeetsukumaran/vim-indentwise.git
 [submodule "vim-ninja-feet"]
 	path = vim-ninja-feet
 	url = https://github.com/tommcdo/vim-ninja-feet.git
+[submodule "ctrlsf.vim"]
+	path = ctrlsf.vim
+	url = https://github.com/dyng/ctrlsf.vim.git

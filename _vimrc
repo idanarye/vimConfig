@@ -223,10 +223,10 @@ command! GetBuildFile call CopyBuildFile("~/.vim/buildTemplates/*.rake") "| comp
 
 command! CDhere exe "cd ".expand("%:p:h")
 
-if has('unix')
-    let g:snippets_dir=expand('<sfile>:p:h').'/vim-snippets/snippets'
-endif
-let g:UltiSnipsSnippetDirectories=['snippets']
+"if has('unix')
+    "let g:snippets_dir=expand('<sfile>:p:h').'/vim-snippets/snippets'
+"endif
+"let g:UltiSnipsSnippetDirectories=['snippets']
 
 autocmd FileType clojure setlocal indentexpr=myclojure#clojureIndent()
 autocmd FileType clojure setlocal indentkeys+=0),0},0]
