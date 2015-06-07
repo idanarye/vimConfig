@@ -157,8 +157,3 @@ xnoremap <Leader><C-m>s :call MultiCursorSearch('')<Cr>
 
 "Some keymaps I don't want to put in the main vebugger plugin:
 execute 'nnoremap '.g:vebugger_leader.'k :VBGkill<Cr>'
-
-let g:EasyClipUsePasteToggleDefaults = 0
-
-nmap <c-f> <plug>EasyClipSwapPasteForward
-nmap <c-d> <plug>EasyClipSwapPasteBackwards
