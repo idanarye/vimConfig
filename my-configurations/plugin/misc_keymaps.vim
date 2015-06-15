@@ -74,7 +74,8 @@ noremap <Leader>gd :Gvdiff<Cr>
 noremap <Leader>gl :Gllog<Cr>
 noremap <Leader>gL :GitLog<Cr>
 noremap <Leader>gb :Gblame<Cr>
-noremap <Leader>gf :Git fetch<Cr>
+noremap <Leader>gf :Git fetch --prune<Cr>
+noremap <Leader>gu :Git submodule update --init<Cr>
 
 "This one is for my very own Merginal
 noremap <Leader>gm :MerginalToggle<Cr>
