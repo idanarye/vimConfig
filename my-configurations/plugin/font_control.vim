@@ -1,6 +1,12 @@
 function! s:fontSize(size)
 	let l:newSize = str2nr(a:size)
-	let l:currentFont = getfontname()
+	let l:currentFont = &guifont
+	if empty(l:currentFont)
+		let l:currentFont = getfontname()
+	endif
+	if empty(l:currentFont)
+		let l:currentFont = 'Monospace 10'
+	endif
 	let l:fontSizeStartIndex = match(l:currentFont, '\v\s\d+$')
 	let l:currentFontFace = l:currentFont[:(l:fontSizeStartIndex)]
 	let l:currentFontSize = str2nr(l:currentFont[(l:fontSizeStartIndex):])
