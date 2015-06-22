@@ -158,3 +158,8 @@ xnoremap <Leader><C-m>s :call MultiCursorSearch('')<Cr>
 
 "Some keymaps I don't want to put in the main vebugger plugin:
 execute 'nnoremap '.g:vebugger_leader.'k :VBGkill<Cr>'
+
+
+if exists('&fullscreen')
+	nnoremap <F11> :set fullscreen!<Cr>
+endif
