@@ -220,6 +220,3 @@
 [submodule "mirror.vim"]
 	path = mirror.vim
 	url = https://github.com/zenbro/mirror.vim.git
-[submodule "vim-flake8"]
-	path = vim-flake8
-	url = https://github.com/nvie/vim-flake8.git
