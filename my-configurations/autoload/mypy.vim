@@ -1,9 +1,12 @@
 
 function! mypy#runFlake8(filename)
+	let l:flakeCmd = 'flake8'
+	let l:flakeCmd .= ' --max-line-length=130'
+	let l:flakeCmd .= ' --ignore=F403'
 	if empty(a:filename)
-		let l:flakeResult = systemlist('flake8 -', getline(0, '$'))
+		let l:flakeResult = systemlist(l:flakeCmd . ' -', getline(0, '$'))
 	else
-		let l:flakeResult = systemlist('flake8 ' . shellescape(a:filename))
+		let l:flakeResult = systemlist(l:flakeCmd . ' ' . shellescape(a:filename))
 	endif
 	let l:qfItems = []
 	for l:line in l:flakeResult
