@@ -220,3 +220,6 @@
 [submodule "mirror.vim"]
 	path = mirror.vim
 	url = https://github.com/zenbro/mirror.vim.git
+[submodule "lazyList.vim"]
+	path = lazyList.vim
+	url = https://github.com/KabbAmine/lazyList.vim.git

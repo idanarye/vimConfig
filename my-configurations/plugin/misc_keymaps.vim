@@ -164,3 +164,13 @@ execute 'nnoremap '.g:vebugger_leader.'k :VBGkill<Cr>'
 if exists('&fullscreen')
 	nnoremap <F11> :set fullscreen!<Cr>
 endif
+
+nnoremap gll :LazyList<CR>
+vnoremap gll :LazyList<CR>
+nnoremap gl* :LazyList ' * '<CR>
+vnoremap gl* :LazyList ' * '<CR>
+nnoremap gl- :LazyList ' - '<CR>
+vnoremap gl- :LazyList ' - '<CR>
+nnoremap gl+ :LazyList ' + '<CR>
+vnoremap gl+ :LazyList ' + '<CR>
+
