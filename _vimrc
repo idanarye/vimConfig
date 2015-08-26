@@ -280,6 +280,10 @@ if executable("ag")
     let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --ignore ''.git'' --ignore ''.DS_Store'' --ignore ''node_modules'' --hidden -g ""'
 endif
 
+" Make command-line mode autocompletion work like in bash
+set wildmode=longest,list,full
+set wildmenu
+
 "set diffexpr=MyDiff()
 "function MyDiff()
   "let opt = '-a --binary '

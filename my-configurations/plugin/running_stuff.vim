@@ -31,6 +31,7 @@ function! s:createIntegrakeShortcut(key,cmd)
 endfunction
 
 call s:createIntegrakeShortcut('i','')
+call s:createIntegrakeShortcut('a','act')
 call s:createIntegrakeShortcut('B','bump')
 call s:createIntegrakeShortcut('b','build')
 call s:createIntegrakeShortcut('C','clean')
