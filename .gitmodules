@@ -226,3 +226,6 @@
 [submodule "FIGlet.vim"]
 	path = FIGlet.vim
 	url = https://github.com/fadein/FIGlet.vim.git
+[submodule "SimpylFold"]
+	path = SimpylFold
+	url = https://github.com/tmhedberg/SimpylFold.git
