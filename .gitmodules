@@ -229,3 +229,6 @@
 [submodule "SimpylFold"]
 	path = SimpylFold
 	url = https://github.com/tmhedberg/SimpylFold.git
+[submodule "vim-do"]
+	path = vim-do
+	url = https://github.com/joonty/vim-do.git

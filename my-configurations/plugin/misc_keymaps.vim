@@ -174,3 +174,4 @@ vnoremap gl- :LazyList ' - '<CR>
 nnoremap gl+ :LazyList ' + '<CR>
 vnoremap gl+ :LazyList ' + '<CR>
 
+nnoremap <Leader>d :Doing<Cr>
