@@ -241,3 +241,6 @@
 [submodule "vim-airline-themes"]
 	path = vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes.git
+[submodule "vim-omnipytent"]
+	path = vim-omnipytent
+	url = https://github.com/idanarye/vim-omnipytent.git

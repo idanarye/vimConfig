@@ -14,7 +14,8 @@
 "nnoremap <F6> :IR run<CR>
 "nnoremap <F7> :IR test<CR>
 
-function! s:createIntegrakeShortcut(key,cmd)
+function! s:createTaskRunningShortcut(key,cmd)
+	"For Integrake
 	if ''!=a:cmd
 		let l:cmd="IR ".a:cmd."<Cr>"
 	else
@@ -23,54 +24,57 @@ function! s:createIntegrakeShortcut(key,cmd)
 	execute "noremap <M-i>".a:key." :".l:cmd
 	execute "inoremap <M-i>".a:key." <C-o>:".l:cmd
 
-	""Single lowercase keys also get the special Alt+ mapping:
-	"if a:key=~'\v^[a-z]$'
-		"execute "noremap <M-i><M-".a:key."> :".l:cmd
-		"execute "inoremap <M-i><M-".a:key."> <C-o>:".l:cmd
-	"endif
+	"For Omnipytent
+	if ''!=a:cmd
+		let l:cmd="OP ".a:cmd."<Cr>"
+	else
+		let l:cmd="OP<Cr>"
+	endif
+	execute "noremap <M-o>".a:key." :".l:cmd
+	execute "inoremap <M-o>".a:key." <C-o>:".l:cmd
 endfunction
 
-call s:createIntegrakeShortcut('i','')
-call s:createIntegrakeShortcut('a','act')
-call s:createIntegrakeShortcut('B','bump')
-call s:createIntegrakeShortcut('b','build')
-call s:createIntegrakeShortcut('C','clean')
-call s:createIntegrakeShortcut('c','compile')
-call s:createIntegrakeShortcut('<C-c>','configure')
-call s:createIntegrakeShortcut('d','debug')
-call s:createIntegrakeShortcut('D','dump')
-call s:createIntegrakeShortcut('<C-d>','doc')
-call s:createIntegrakeShortcut('e','execute')
-call s:createIntegrakeShortcut('<M-d>','deploy')
-call s:createIntegrakeShortcut('f','fetch')
-call s:createIntegrakeShortcut('F','fix')
-call s:createIntegrakeShortcut('G','generate')
-call s:createIntegrakeShortcut('g','go')
-call s:createIntegrakeShortcut('h','help')
-call s:createIntegrakeShortcut('i','install')
-call s:createIntegrakeShortcut('I','init')
-call s:createIntegrakeShortcut('k','kill')
-call s:createIntegrakeShortcut('l','load')
-call s:createIntegrakeShortcut('L','launch')
-call s:createIntegrakeShortcut('<C-l>','log')
-call s:createIntegrakeShortcut('m','migrate')
-call s:createIntegrakeShortcut('p','print')
-call s:createIntegrakeShortcut('P','prompt')
-call s:createIntegrakeShortcut('q','query')
-call s:createIntegrakeShortcut('R','refresh')
-call s:createIntegrakeShortcut('r','run')
-call s:createIntegrakeShortcut('<C-r>','reset')
-call s:createIntegrakeShortcut('s','shell')
-call s:createIntegrakeShortcut('<C-s>','ssh')
-call s:createIntegrakeShortcut('S','sync')
-call s:createIntegrakeShortcut('t','test')
-call s:createIntegrakeShortcut('<C-t>','build-tests')
-call s:createIntegrakeShortcut('T','tags')
-call s:createIntegrakeShortcut('u','upload')
-call s:createIntegrakeShortcut('U','update')
-call s:createIntegrakeShortcut('w','wipe')
-call s:createIntegrakeShortcut('W','wipe-all')
-call s:createIntegrakeShortcut('z','zip')
+call s:createTaskRunningShortcut('i','')
+call s:createTaskRunningShortcut('a','act')
+call s:createTaskRunningShortcut('B','bump')
+call s:createTaskRunningShortcut('b','build')
+call s:createTaskRunningShortcut('C','clean')
+call s:createTaskRunningShortcut('c','compile')
+call s:createTaskRunningShortcut('<C-c>','configure')
+call s:createTaskRunningShortcut('d','debug')
+call s:createTaskRunningShortcut('D','dump')
+call s:createTaskRunningShortcut('<C-d>','doc')
+call s:createTaskRunningShortcut('e','execute')
+call s:createTaskRunningShortcut('<M-d>','deploy')
+call s:createTaskRunningShortcut('f','fetch')
+call s:createTaskRunningShortcut('F','fix')
+call s:createTaskRunningShortcut('G','generate')
+call s:createTaskRunningShortcut('g','go')
+call s:createTaskRunningShortcut('h','help')
+call s:createTaskRunningShortcut('i','install')
+call s:createTaskRunningShortcut('I','init')
+call s:createTaskRunningShortcut('k','kill')
+call s:createTaskRunningShortcut('l','load')
+call s:createTaskRunningShortcut('L','launch')
+call s:createTaskRunningShortcut('<C-l>','log')
+call s:createTaskRunningShortcut('m','migrate')
+call s:createTaskRunningShortcut('p','print')
+call s:createTaskRunningShortcut('P','prompt')
+call s:createTaskRunningShortcut('q','query')
+call s:createTaskRunningShortcut('R','refresh')
+call s:createTaskRunningShortcut('r','run')
+call s:createTaskRunningShortcut('<C-r>','reset')
+call s:createTaskRunningShortcut('s','shell')
+call s:createTaskRunningShortcut('<C-s>','ssh')
+call s:createTaskRunningShortcut('S','sync')
+call s:createTaskRunningShortcut('t','test')
+call s:createTaskRunningShortcut('<C-t>','build_tests')
+call s:createTaskRunningShortcut('T','tags')
+call s:createTaskRunningShortcut('u','upload')
+call s:createTaskRunningShortcut('U','update')
+call s:createTaskRunningShortcut('w','wipe')
+call s:createTaskRunningShortcut('W','wipe-all')
+call s:createTaskRunningShortcut('z','zip')
 
 noremap <M-i> :IR<Cr>
 inoremap <M-i> <C-o>:IR<Cr>
