@@ -238,3 +238,6 @@
 [submodule "vim-swap"]
 	path = vim-swap
 	url = https://github.com/machakann/vim-swap.git
+[submodule "vim-airline-themes"]
+	path = vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git
