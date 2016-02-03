@@ -18,6 +18,8 @@ nmap <A-n> <Plug>MarkSearchAnyNext
 
 "nnoremap <A-h> :SidewaysLeft<Cr>
 "nnoremap <A-l> :SidewaysRight<Cr>
+nmap <A-h> <Plug>(swap-prev)
+nmap <A-l> <Plug>(swap-next)
 
 xmap <M-j> <Plug>(textmanip-move-down)
 xmap <M-k> <Plug>(textmanip-move-up)

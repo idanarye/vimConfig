@@ -235,3 +235,6 @@
 [submodule "vim-qml"]
 	path = vim-qml
 	url = https://github.com/peterhoeg/vim-qml.git
+[submodule "vim-swap"]
+	path = vim-swap
+	url = https://github.com/machakann/vim-swap.git

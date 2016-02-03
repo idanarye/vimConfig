@@ -280,6 +280,8 @@ if executable("ag")
     let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --ignore ''.git'' --ignore ''.DS_Store'' --ignore ''node_modules'' --hidden -g ""'
 endif
 
+let g:swap_no_default_key_mappings = 1
+
 " Make command-line mode autocompletion work like in bash
 set wildmode=longest,list,full
 set wildmenu
