@@ -82,6 +82,12 @@ inoremap <M-i> <C-o>:IR<Cr>
 noremap <M-i><Space> :IR<Space>
 inoremap <M-i><Space> <C-o>:IR<Space>
 
+noremap <M-o> :OP<Cr>
+inoremap <M-o> <C-o>:OP<Cr>
+
+"noremap <M-o><Space> :OP<Space>
+"inoremap <M-o><Space> <C-o>:OP<Space>
+
 
 if has('win32')
 	nnoremap <F9> :!%<CR>
