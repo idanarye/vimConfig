@@ -244,3 +244,6 @@
 [submodule "vim-omnipytent"]
 	path = vim-omnipytent
 	url = https://github.com/idanarye/vim-omnipytent.git
+[submodule "jedi-vim"]
+	path = jedi-vim
+	url = https://github.com/davidhalter/jedi-vim.git
