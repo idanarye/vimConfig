@@ -247,3 +247,9 @@
 [submodule "jedi-vim"]
 	path = jedi-vim
 	url = https://github.com/davidhalter/jedi-vim.git
+[submodule "targets.vim"]
+	path = targets.vim
+	url = https://github.com/wellle/targets.vim.git
+[submodule "visual-split.vim"]
+	path = visual-split.vim
+	url = https://github.com/wellle/visual-split.vim.git
