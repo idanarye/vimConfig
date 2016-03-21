@@ -44,7 +44,11 @@ nnoremap <Leader><C-t> :checktime<Cr>
 nnoremap Y y$
 
 nnoremap <Leader><C-f> :PSearch<Cr>
-nnoremap <Leader><A-s> :VimShellPop<Cr>
+if exists(':terminal')
+	nnoremap <Leader><A-s> :new <Bar> terminal<Cr>
+else
+	nnoremap <Leader><A-s> :VimShellPop<Cr>
+endif
 
 nnoremap <Leader><C-d>t :diffthis<Cr>
 nnoremap <Leader><C-d>o :diffoff<Cr>

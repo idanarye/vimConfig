@@ -45,6 +45,7 @@ call s:createTaskRunningShortcut('d','debug')
 call s:createTaskRunningShortcut('D','dump')
 call s:createTaskRunningShortcut('<C-d>','doc')
 call s:createTaskRunningShortcut('e','execute')
+call s:createTaskRunningShortcut('E','explore')
 call s:createTaskRunningShortcut('<M-d>','deploy')
 call s:createTaskRunningShortcut('f','fetch')
 call s:createTaskRunningShortcut('F','fix')
@@ -72,6 +73,7 @@ call s:createTaskRunningShortcut('<C-t>','build_tests')
 call s:createTaskRunningShortcut('T','tags')
 call s:createTaskRunningShortcut('u','upload')
 call s:createTaskRunningShortcut('U','update')
+call s:createTaskRunningShortcut('v','view')
 call s:createTaskRunningShortcut('w','wipe')
 call s:createTaskRunningShortcut('W','wipe-all')
 call s:createTaskRunningShortcut('z','zip')
@@ -120,6 +122,7 @@ call extend(g:erroneous_errorFormatChooserWords,{
 			\'rake': function('erroneous#parseRakeErrorOutput'),
 			\'ant': function('erroneous#parseAntErrorOutput'),
 			\'mvn': function('erroneous#parseMavenErrorOutput'),
+			\'gradle': '%A%f:%l:%m,%-Z%p^,%-C%.%#',
 			\'mcs': '%f(%l\,%c): %m',
 			\'csc': '%#%f(%l\,%c): %m',
 			\'xbuild': function('erroneous#parseXBuildErrorOutput'),

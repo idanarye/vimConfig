@@ -1,4 +1,4 @@
-setlocal omnifunc=javacomplete#Complete
+"setlocal omnifunc=javacomplete#Complete
 
 "CompleteParamsInfo is not working :(
 "setlocal completefunc=javacomplete#CompleteParamsInfo
@@ -9,3 +9,5 @@ set si
 set shiftwidth=4
 "Java anonymous classes. Sometimes, you have to use them.
 set cinoptions+=j1
+
+setlocal omnifunc=javacomplete#Complete

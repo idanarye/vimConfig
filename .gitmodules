@@ -76,9 +76,6 @@
 [submodule "vim-erroneous"]
 	path = vim-erroneous
 	url = git://github.com/idanarye/vim-erroneous.git
-[submodule "javacomplete"]
-	path = javacomplete
-	url = git://github.com/itszero/javacomplete.git
 [submodule "vim-eunuch"]
 	path = vim-eunuch
 	url = git://github.com/tpope/vim-eunuch.git
@@ -253,3 +250,9 @@
 [submodule "visual-split.vim"]
 	path = visual-split.vim
 	url = https://github.com/wellle/visual-split.vim.git
+[submodule "vim-javacomplete2"]
+	path = vim-javacomplete2
+	url = https://github.com/artur-shaik/vim-javacomplete2.git
+[submodule "vim-gradle"]
+	path = vim-gradle
+	url = https://github.com/vim-scripts/vim-gradle.git
