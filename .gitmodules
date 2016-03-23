@@ -256,3 +256,6 @@
 [submodule "vim-gradle"]
 	path = vim-gradle
 	url = https://github.com/vim-scripts/vim-gradle.git
+[submodule "linediff.vim"]
+	path = linediff.vim
+	url = https://github.com/AndrewRadev/linediff.vim.git

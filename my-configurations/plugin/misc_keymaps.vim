@@ -181,3 +181,7 @@ nnoremap gl+ :LazyList ' + '<CR>
 vnoremap gl+ :LazyList ' + '<CR>
 
 nnoremap <Leader>d :Doing<Cr>
+
+nnoremap <Leader>ld :Linediff<Cr>
+vnoremap <Leader>ld :Linediff<Cr>
+nnoremap <Leader>lD :LinediffReset<Cr>
