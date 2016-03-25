@@ -1,3 +1,20 @@
+let s:python2BuiltinsNotInPython3 = [
+			\ 'StandardError',
+			\ 'apply',
+			\ 'basestring',
+			\ 'buffer',
+			\ 'cmp',
+			\ 'coerce',
+			\ 'execfile',
+			\ 'file',
+			\ 'intern',
+			\ 'long',
+			\ 'raw_input',
+			\ 'reduce',
+			\ 'reload',
+			\ 'unichr',
+			\ 'unicode',
+			\ 'xrange']
 
 function! mypy#runFlake8(filename)
 	let l:flakeCmd = 'flake8'
@@ -10,7 +27,6 @@ function! mypy#runFlake8(filename)
 	endif
 	let l:qfItems = []
 	for l:line in l:flakeResult
-		echo l:line
 		let l:match = matchlist(l:line, '\v\C^(.*):(\d+):(\d+): (\w)(\d+) (.*)$')
 		if !empty(l:match)
 			let l:item = {}
@@ -27,8 +43,16 @@ function! mypy#runFlake8(filename)
 			let l:item.nr = l:match[5]
 			let l:item.text = l:match[6]
 
+			if l:item.nr == 821
+				let l:undefinedName = matchstr(l:item.text, "\\v['\"]\\zs\\w+\\ze['\"]$")
+				if 0 <= index(s:python2BuiltinsNotInPython3, l:undefinedName)
+					continue
+				endif
+			endif
+			echo l:line
 			call add(l:qfItems, l:item)
 		endif
 	endfor
 	call setqflist(l:qfItems)
 endfunction
+
