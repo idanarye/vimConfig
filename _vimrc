@@ -110,7 +110,9 @@ cd %:p:h
 set go-=m
 set go-=T
 
-let maplocalleader="\<C-\>"
+"let maplocalleader="\<C-\>"
+let mapleader = "\<Space>"
+let maplocalleader = "\<C-Space>"
 
 set ruler
 set vb t_vb=
