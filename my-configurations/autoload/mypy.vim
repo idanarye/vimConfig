@@ -56,3 +56,22 @@ function! mypy#runFlake8(filename)
 	call setqflist(l:qfItems)
 endfunction
 
+function! mypy#runAutopep8() abort
+	let l:autopep8Cmd = 'autopep8 -'
+	let l:autopep8Cmd .= ' --max-line-length=130'
+	let l:autopep8Cmd .= ' --ignore=F403'
+
+	let l:lnum = v:lnum
+	let l:count = v:count
+
+	let l:lines = getline(l:lnum, l:lnum + l:count - 1)
+	let l:formattedLines = systemlist(l:autopep8Cmd, l:lines)
+
+	if l:count > len(l:formattedLines)
+		execute (l:lnum + len(l:formattedLines)).','.(l:lnum + l:count - 1) 'delete'
+	elseif l:count < len(l:formattedLines)
+		call append(l:lnum + l:count - 1, repeat([''], len(l:formattedLines) - l:count))
+	endif
+
+	call setline(l:lnum, l:formattedLines)
+endfunction
