@@ -63,9 +63,12 @@ function! mypy#runAutopep8() abort
 
 	let l:lnum = v:lnum
 	let l:count = v:count
+	let l:autopep8Cmd .= printf(' --line-range %s %s', l:lnum, l:lnum + l:count - 1)
 
-	let l:lines = getline(l:lnum, l:lnum + l:count - 1)
+	let l:lines = getline(1, '$')
+	let l:countAfter = len(l:lines) - l:lnum - l:count + 1
 	let l:formattedLines = systemlist(l:autopep8Cmd, l:lines)
+	let l:formattedLines = l:formattedLines[l:lnum - 1 : len(l:formattedLines) - l:countAfter - 1]
 
 	if l:count > len(l:formattedLines)
 		execute (l:lnum + len(l:formattedLines)).','.(l:lnum + l:count - 1) 'delete'
