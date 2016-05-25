@@ -9,12 +9,12 @@ setlocal autoindent
 setlocal commentstring=//%s
 
 "nnoremap <buffer> K :DUddoc<Cr>
-nnoremap <buffer> <LocalLeader>d :DUddoc<Cr>
-nnoremap <buffer> <LocalLeader>j :DUjump<Cr>
-nnoremap <buffer> <LocalLeader>J :DUjump!<Cr>
+nnoremap <buffer> K :DUddoc<Cr>
+nnoremap <buffer> <LocalLeader>d :DUjump<Cr>
+nnoremap <buffer> <LocalLeader>D :DUjump!<Cr>
 
 nnoremap <buffer> <LocalLeader>s :DUsyntaxCheck %<Cr>
-nnoremap <buffer> <LocalLeader>S :DUstyleCheck %<Cr>
+nnoremap <buffer> <LocalLeader>f :DUstyleCheck %<Cr>
 
 nnoremap <buffer> <LocalLeader>u :DUupdateCTags %<Cr>
 

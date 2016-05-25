@@ -286,6 +286,8 @@ endif
 
 let g:swap_no_default_key_mappings = 1
 
+let g:JavaComplete_EnableDefaultMappings = 0
+
 " Make command-line mode autocompletion work like in bash
 set wildmode=longest,list,full
 set wildmenu
