@@ -34,7 +34,7 @@ noremap <Leader><M-c> :nohlsearch<Bar>MarkClear<Cr>
 
 "nnoremap <Leader><C-r> :call myrainbow#toggle()<Cr>
 nnoremap <Leader><C-r> :RainbowToggle<Cr>
-nnoremap <Leader><C-s> :setlocal spell!<Cr>
+nnoremap <Leader><C-s> :setlocal spell! <Bar> syntax spell toplevel<Cr>
 nnoremap <Leader><C-l> :set list!<Cr>
 nnoremap <Leader><A-l> :set number!<Cr>
 nnoremap <Leader><A-f> :filetype detect<Cr>
