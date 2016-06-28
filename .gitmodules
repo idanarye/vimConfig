@@ -259,3 +259,9 @@
 [submodule "linediff.vim"]
 	path = linediff.vim
 	url = https://github.com/AndrewRadev/linediff.vim.git
+[submodule "vim-exchange"]
+	path = vim-exchange
+	url = https://github.com/tommcdo/vim-exchange.git
+[submodule "kotlin-vim"]
+	path = kotlin-vim
+	url = https://github.com/udalov/kotlin-vim.git
