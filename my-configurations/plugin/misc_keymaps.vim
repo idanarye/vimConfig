@@ -121,25 +121,18 @@ nnoremap <M-t>L :tabmove<Cr>
 nnoremap <M-t>h :tabmove -1<Cr>
 nnoremap <M-t>H :tabmove 0<Cr>
 
-"keymaps for quick access to CtrlP modes
-nnoremap <M-p>l :CtrlPLine<Cr>
-nnoremap <M-p>f :CtrlPFunky<Cr>
-nnoremap <M-p>m :CtrlPModified<Cr>
-nnoremap <M-p><C-m> :CtrlPMRUFiles<Cr>
-nnoremap <M-p>b :CtrlPBranch<Cr>
-nnoremap <M-p>r :CtrlPRoot<Cr>
-nnoremap <M-p>c :CtrlPChange<Cr>
-nnoremap <M-p>u :CtrlPUndo<Cr>
-nnoremap <M-p>q :CtrlPQuickfix<Cr>
-nnoremap <M-p><C-b> :CtrlPBuffer<Cr>
-nnoremap <M-p>t :CtrlPTag<Cr>
-nnoremap <M-p><C-t> :CtrlPBufTag<Cr>
-
-"I don't really need these:
-":CtrlPDir
-":CtrlPRTS
-":CtrlPMixed
-":CtrlPBookmarkDir
+"keymaps for quick access to Unite modes
+if has('nvim')
+	nnoremap <C-p> :Unite file_rec/neovim<Cr>
+else
+	nnoremap <C-p> :Unite file_rec/async<Cr>
+endif
+nnoremap <M-p><C-b> :Unite buffer<Cr>
+nnoremap <M-p>l :Unite line<Cr>
+nnoremap <M-p><C-m> :Unite file_mru<Cr>
+nnoremap <M-p>g :Unite grep:.<Cr>
+nnoremap <M-p>m :Unite git/modified<Cr>
+nnoremap <M-p>b :Unite git/branch<Cr>
 
 "Keymaps for RengBang
 map <Leader>sr <Plug>(operator-rengbang)

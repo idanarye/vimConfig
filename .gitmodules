@@ -265,3 +265,9 @@
 [submodule "kotlin-vim"]
 	path = kotlin-vim
 	url = https://github.com/udalov/kotlin-vim.git
+[submodule "unite.vim"]
+	path = unite.vim
+	url = https://github.com/Shougo/unite.vim.git
+[submodule "neomru.vim"]
+	path = neomru.vim
+	url = https://github.com/Shougo/neomru.vim.git
