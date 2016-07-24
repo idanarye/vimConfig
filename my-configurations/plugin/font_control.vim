@@ -11,7 +11,7 @@ if has('nvim')
 		else
 			let g:guifontSize = str2nr(a:size)
 		endif
-		call rpcnotify(0, 'Gui', 'SetFont', g:guifontFace.':h'.g:guifontSize)
+		call GuiFont(g:guifontFace.':h'.g:guifontSize)
 	endfunction
 else
 	function! s:fontSize(size)

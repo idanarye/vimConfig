@@ -162,6 +162,8 @@ execute 'nnoremap '.g:vebugger_leader.'k :VBGkill<Cr>'
 
 if exists('&fullscreen')
 	nnoremap <F11> :set fullscreen!<Cr>
+elseif has('nvim')
+	nnoremap <F11> :call GuiWindowFullScreen(!g:GuiWindowFullScreen)<Cr>
 endif
 
 nnoremap gll :LazyList<CR>
