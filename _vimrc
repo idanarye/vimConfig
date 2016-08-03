@@ -262,7 +262,7 @@ let g:EasyClipUseSubstituteDefaults=1
 let g:vebugger_leader='<M-d>'
 
 " PyMatcher for CtrlP
-let g:ctrlp_extensions=['funky','modified','branch']
+let g:ctrlp_extensions = ['modified', 'branch']
 if !has('python')
     echo 'In order to use pymatcher plugin, you need +python compiled vim'
 else
