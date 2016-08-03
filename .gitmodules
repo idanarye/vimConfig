@@ -175,18 +175,6 @@
 [submodule "vim-dutyl"]
 	path = vim-dutyl
 	url = git://github.com/idanarye/vim-dutyl.git
-[submodule "ctrlp.vim"]
-	path = ctrlp.vim
-	url = https://github.com/kien/ctrlp.vim.git
-[submodule "ctrlp-funky"]
-	path = ctrlp-funky
-	url = https://github.com/tacahiroy/ctrlp-funky.git
-[submodule "ctrlp-modified.vim"]
-	path = ctrlp-modified.vim
-	url = https://github.com/jasoncodes/ctrlp-modified.vim.git
-[submodule "ctrlp-py-matcher"]
-	path = ctrlp-py-matcher
-	url = https://github.com/FelikZ/ctrlp-py-matcher.git
 [submodule "vim-rengbang"]
 	path = vim-rengbang
 	url = https://github.com/deris/vim-rengbang.git
@@ -271,3 +259,12 @@
 [submodule "indentLine"]
 	path = indentLine
 	url = https://github.com/Yggdroot/indentLine.git
+[submodule "ctrlp.vim"]
+	path = ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
+[submodule "ctrlp-py-matcher"]
+	path = ctrlp-py-matcher
+	url = https://github.com/FelikZ/ctrlp-py-matcher.git
+[submodule "ctrlp-modified.vim"]
+	path = ctrlp-modified.vim
+	url = https://github.com/jasoncodes/ctrlp-modified.vim.git
