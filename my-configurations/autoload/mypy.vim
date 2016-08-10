@@ -16,7 +16,7 @@ let s:python2BuiltinsNotInPython3 = [
             \ 'unicode',
             \ 'xrange']
 
-function! mypy#runFlake8(filename)
+function! mypy#runFlake8(filename) range
     let l:flakeCmd = 'flake8'
     let l:flakeCmd .= ' --max-line-length=130'
     let l:flakeCmd .= ' --ignore=F403'
@@ -38,6 +38,10 @@ function! mypy#runFlake8(filename)
             endif
 
             let l:item.lnum = l:match[2]
+            if l:item.lnum < a:firstline || a:lastline < l:item.lnum
+                continue
+            endif
+
             let l:item.col = l:match[3]
             let l:item.type = l:match[4]
             let l:item.nr = l:match[5]

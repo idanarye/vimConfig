@@ -22,7 +22,7 @@ function! ctrlp#sift#init()
     if empty(l:pattern)
         return []
     endif
-    return systemlist('sift -n -r . -e '.shellescape(l:pattern))
+    return systemlist('sift --line-number --recursive --binary-skip . --regexp='.shellescape(l:pattern))
 endfunction
 
 function! ctrlp#sift#accept(mode, str)
