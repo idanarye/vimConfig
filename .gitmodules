@@ -268,3 +268,6 @@
 [submodule "ctrlp-modified.vim"]
 	path = ctrlp-modified.vim
 	url = https://github.com/jasoncodes/ctrlp-modified.vim.git
+[submodule "vim-smile"]
+	path = vim-smile
+	url = https://github.com/idanarye/vim-smile.git
