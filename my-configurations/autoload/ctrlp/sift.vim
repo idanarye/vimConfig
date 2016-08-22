@@ -18,11 +18,7 @@ endif
 let s:id = g:ctrlp_builtins + len(g:ctrlp_ext_vars)
 
 function! ctrlp#sift#init()
-    let l:pattern = input('sift> ')
-    if empty(l:pattern)
-        return []
-    endif
-    return systemlist('sift --line-number --recursive --binary-skip . --regexp='.shellescape(l:pattern))
+    return systemlist('sift --line-number --recursive --binary-skip . --regexp='.shellescape(s:pattern))
 endfunction
 
 function! ctrlp#sift#accept(mode, str)
@@ -40,6 +36,10 @@ function! ctrlp#sift#accept(mode, str)
     silent! normal! zvzz
 endfunction
 
-function! ctrlp#sift#id()
+function! ctrlp#sift#cmd()
+    let s:pattern = input('sift> ')
+    if empty(s:pattern)
+        return []
+    endif
     return s:id
 endfunction
