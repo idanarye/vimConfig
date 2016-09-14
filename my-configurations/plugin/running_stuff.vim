@@ -49,6 +49,7 @@ call s:createTaskRunningShortcut('E','explore')
 call s:createTaskRunningShortcut('<M-d>','deploy')
 call s:createTaskRunningShortcut('f','fetch')
 call s:createTaskRunningShortcut('F','fix')
+call s:createTaskRunningShortcut('<C-f>','find')
 call s:createTaskRunningShortcut('G','generate')
 call s:createTaskRunningShortcut('g','go')
 call s:createTaskRunningShortcut('h','help')
@@ -59,8 +60,7 @@ call s:createTaskRunningShortcut('l','load')
 call s:createTaskRunningShortcut('L','launch')
 call s:createTaskRunningShortcut('<C-l>','log')
 call s:createTaskRunningShortcut('m','migrate')
-call s:createTaskRunningShortcut('p','print')
-call s:createTaskRunningShortcut('P','prompt')
+call s:createTaskRunningShortcut('p','prompt')
 call s:createTaskRunningShortcut('q','query')
 call s:createTaskRunningShortcut('R','refresh')
 call s:createTaskRunningShortcut('r','run')
@@ -75,7 +75,7 @@ call s:createTaskRunningShortcut('u','upload')
 call s:createTaskRunningShortcut('U','update')
 call s:createTaskRunningShortcut('v','view')
 call s:createTaskRunningShortcut('w','wipe')
-call s:createTaskRunningShortcut('W','wipe-all')
+call s:createTaskRunningShortcut('W','wipe_all')
 call s:createTaskRunningShortcut('z','zip')
 
 noremap <M-i> :IR<Cr>
@@ -104,7 +104,7 @@ endif
 			"\'build.xml': 'ant -q',
 			"\})
 
-
+let g:erroneous_dontUseRuby = 1
 if !exists("g:erroneous_errorFormatChooserWords")
 	let g:erroneous_errorFormatChooserWords={}
 endif
