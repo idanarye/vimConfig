@@ -23,3 +23,10 @@ if executable('ag')
 				\ '-i --vimgrep --hidden --ignore ' .
 				\ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
 endif
+
+
+" Distable rust-racer default mappings - I'll add them in a ftplugin
+let g:racer_no_default_keymappings = 1
+
+" Configure NERDCommenter
+let g:NERDSpaceDelims = 1

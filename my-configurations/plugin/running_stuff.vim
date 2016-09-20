@@ -129,4 +129,5 @@ call extend(g:erroneous_errorFormatChooserWords,{
 			\'MSBuild64': function('erroneous#parseXBuildErrorOutput'),
 			\'waf': function('erroneous#parseWafErrorOutput'),
 			\'rustc': '%f:%l:%c: %t%*[^:]: %m,%f:%l:%c: %*\d:%*\d %t%*[^:]: %m,%-G%f:%l %s,%-G%*[ ]^,%-G%*[ ]^%*[~],%-G%*[ ]...'
+			\'cargo': '%f:%l:%c: %t%*[^:]: %m,%f:%l:%c: %*\d:%*\d %t%*[^:]: %m,%-G%f:%l %s,%-G%*[ ]^,%-G%*[ ]^%*[~],%-G%*[ ]...'
 			\})

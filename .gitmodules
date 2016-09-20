@@ -271,3 +271,6 @@
 [submodule "vim-smile"]
 	path = vim-smile
 	url = https://github.com/idanarye/vim-smile.git
+[submodule "vim-racer"]
+	path = vim-racer
+	url = https://github.com/racer-rust/vim-racer.git
