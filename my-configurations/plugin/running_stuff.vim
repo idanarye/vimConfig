@@ -111,7 +111,9 @@ endif
 call extend(g:erroneous_errorFormatChooserWords,{
 			\'javac': '%A%f:%l:%m,%-Z%p^,%-C%.%#',
 			\'dmd': '%f(%l): %m',
-			\'dub': '%f(%l): %m',
+			\'ldc': '%f(%l): %m',
+			\'ldc2': '%f(%l): %m',
+			\'dub': '%f(%l): %m,%f(%l\,%c): %m',
 			\'rdmd': '%f(%l): %m',
 			\'ruby': '%f:%l:%m',
 			\'eclim_project_build': '%t:%f:%l:%c:%m',

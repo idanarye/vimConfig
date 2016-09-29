@@ -29,4 +29,14 @@ endif
 let g:racer_no_default_keymappings = 1
 
 " Configure NERDCommenter
-let g:NERDSpaceDelims = 1
+function! s:setNerdCommenterOptions() abort
+	try
+		if b:NERDCommenterDelims.left =~ '\v $'
+			let g:NERDSpaceDelims = 0
+		else
+			let g:NERDSpaceDelims = 1
+		endif
+	catch
+	endtry
+endfunction
+autocmd BufEnter,BufRead,Filetype * call s:setNerdCommenterOptions()
