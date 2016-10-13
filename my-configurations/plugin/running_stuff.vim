@@ -130,6 +130,27 @@ call extend(g:erroneous_errorFormatChooserWords,{
 			\'MSBuild32': function('erroneous#parseXBuildErrorOutput'),
 			\'MSBuild64': function('erroneous#parseXBuildErrorOutput'),
 			\'waf': function('erroneous#parseWafErrorOutput'),
-			\'rustc': '%f:%l:%c: %t%*[^:]: %m,%f:%l:%c: %*\d:%*\d %t%*[^:]: %m,%-G%f:%l %s,%-G%*[ ]^,%-G%*[ ]^%*[~],%-G%*[ ]...',
-			\'cargo': '%f:%l:%c: %t%*[^:]: %m,%f:%l:%c: %*\d:%*\d %t%*[^:]: %m,%-G%f:%l %s,%-G%*[ ]^,%-G%*[ ]^%*[~],%-G%*[ ]...',
 			\})
+
+let g:erroneous_errorFormatChooserWords.rustc = ''
+			\ . '%f:%l:%c: %t%*[^:]: %m,'
+			\ . '%f:%l:%c: %*\d:%*\d %t%*[^:]: %m,'
+			\ . '%-G%f:%l %s,'
+			\ . '%-G%*[ ]^,'
+			\ . '%-G%*[ ]^%*[~],'
+			\ . '%-G%*[ ]...,'
+			\ . '%-G,'
+			\ . '%-Gerror: aborting %.%#,'
+			\ . '%-Gerror: Could not compile %.%#,'
+			\ . '%Eerror: %m,'
+			\ . '%Eerror[E%n]: %m,'
+			\ . '%Wwarning: %m,'
+			\ . '%Inote: %m,'
+			\ . '%C %#--> %f:%l:%c'
+let g:erroneous_errorFormatChooserWords.cargo = g:erroneous_errorFormatChooserWords.rustc . ','
+			\ . '%-G%\s%#Downloading%.%#,'
+			\ . '%-G%\s%#Compiling%.%#,'
+			\ . '%-G%\s%#Finished%.%#,'
+			\ . '%-G%\s%#error: Could not compile %.%#,'
+			\ . '%-G%\s%#To learn more\,%.%#'
+
