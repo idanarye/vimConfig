@@ -274,3 +274,6 @@
 [submodule "vim-racer"]
 	path = vim-racer
 	url = https://github.com/racer-rust/vim-racer.git
+[submodule "ale"]
+	path = ale
+	url = https://github.com/w0rp/ale.git

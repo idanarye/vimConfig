@@ -21,7 +21,7 @@ function! mypy#runFlake8(filename) range
     let l:flakeCmd .= ' --max-line-length=130'
     let l:flakeCmd .= ' --ignore=F403'
     if empty(a:filename)
-        let l:flakeResult = systemlist(l:flakeCmd . ' -', getline(0, '$'))
+        let l:flakeResult = systemlist(l:flakeCmd . ' -', getline(0, '$') + [''])
     else
         let l:flakeResult = systemlist(l:flakeCmd . ' ' . shellescape(a:filename))
     endif
