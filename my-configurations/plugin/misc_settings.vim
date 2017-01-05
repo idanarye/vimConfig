@@ -40,3 +40,5 @@ function! s:setNerdCommenterOptions() abort
 	endtry
 endfunction
 autocmd BufEnter,BufRead,Filetype * call s:setNerdCommenterOptions()
+
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']

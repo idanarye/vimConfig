@@ -277,3 +277,12 @@
 [submodule "ale"]
 	path = ale
 	url = https://github.com/w0rp/ale.git
+[submodule "ultisnips"]
+	path = ultisnips
+	url = https://github.com/SirVer/ultisnips.git
+[submodule "vim-snippets"]
+	path = vim-snippets
+	url = https://github.com/honza/vim-snippets.git
+[submodule "editorconfig-vim"]
+	path = editorconfig-vim
+	url = https://github.com/editorconfig/editorconfig-vim.git

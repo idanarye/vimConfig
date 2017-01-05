@@ -1,0 +1,20 @@
+# Snippets for answering JIRA tickets
+
+snippet code "A code block" b
+{code}
+$0
+{code}
+endsnippet
+
+snippet tr "XClip trace" b
+$0{noformat}
+`xclip-traces -p`
+{noformat}
+endsnippet
+
+snippet tlt "Read testlight logs" b
+{noformat}
+$ teka -q logs ${1:run-key} testlight.log | awk -F\\| '/${2:search condition}/ {print \$1" | "\$7}'
+$0teka -q logs $1 testlight.log | awk -F\\| '/$2/ {print \$1" | "\$7}'
+{noformat}
+endsnippet
