@@ -286,3 +286,6 @@
 [submodule "editorconfig-vim"]
 	path = editorconfig-vim
 	url = https://github.com/editorconfig/editorconfig-vim.git
+[submodule "vim-terminalogy"]
+	path = vim-terminalogy
+	url = https://github.com/idanarye/vim-terminalogy.git
