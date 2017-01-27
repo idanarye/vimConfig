@@ -202,4 +202,4 @@ nnoremap <Leader>ld :Linediff<Cr>
 vnoremap <Leader>ld :Linediff<Cr>
 nnoremap <Leader>lD :LinediffReset<Cr>
 
-nnoremap <M-l> :ALESetQfList<Cr>
+nnoremap <Leader><M-q> :ALESetQfList<Cr>

@@ -1,1 +1,1 @@
-let $RUST_SRC_PATH = '`rustc --print sysroot`/lib/rustlib/src/rust/src/'
+silent let $RUST_SRC_PATH = systemlist('rustc --print sysroot')[0].'/lib/rustlib/src/rust/src/'
