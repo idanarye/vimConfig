@@ -3,6 +3,10 @@ set completeopt-=longest
 set selection=inclusive
 set breakindent
 
+if has('nvim')
+	let $EDITOR = 'nvim'
+endif
+
 
 " Configure Unite
 
