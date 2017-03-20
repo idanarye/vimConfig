@@ -148,6 +148,7 @@ nnoremap <M-p><C-b> :CtrlPBuffer<Cr>
 nnoremap <M-p>t :CtrlPTag<Cr>
 nnoremap <M-p><C-t> :CtrlPBufTag<Cr>
 nnoremap <M-p>s :call ctrlp#init(ctrlp#sift#cmd())<Cr>
+nnoremap <M-p>B :CtrlPBookmark<Cr>
 
 "I don't really need these:
 ":CtrlPDir

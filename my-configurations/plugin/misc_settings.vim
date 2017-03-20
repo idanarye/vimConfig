@@ -46,3 +46,8 @@ endfunction
 autocmd BufEnter,BufRead,Filetype * call s:setNerdCommenterOptions()
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
+
+" Configure bookmarks
+let g:bookmark_save_per_working_dir = 1
+let g:bookmark_auto_save = 1
