@@ -1,6 +1,7 @@
 let g:ale_set_loclist = 0
 let g:ale_sign_column_always = 1
 let g:ale_python_flake8_args = '--max-line-length=130 --ignore=F403,F999'
+let g:ale_rust_cargo_use_check = 1
 
 function! s:aleSetQfList() abort
 	let l:list = ale#engine#GetLoclist(bufnr(''))
