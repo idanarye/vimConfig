@@ -289,3 +289,6 @@
 [submodule "vim-terminalogy"]
 	path = vim-terminalogy
 	url = https://github.com/idanarye/vim-terminalogy.git
+[submodule "neovim-fuzzy"]
+	path = neovim-fuzzy
+	url = https://github.com/cloudhead/neovim-fuzzy.git
