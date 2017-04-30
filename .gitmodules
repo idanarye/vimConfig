@@ -292,3 +292,6 @@
 [submodule "neovim-fuzzy"]
 	path = neovim-fuzzy
 	url = https://github.com/cloudhead/neovim-fuzzy.git
+[submodule "LanguageClient-neovim"]
+	path = LanguageClient-neovim
+	url = https://github.com/autozimu/LanguageClient-neovim.git
