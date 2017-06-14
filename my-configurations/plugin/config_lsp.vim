@@ -3,8 +3,10 @@ if has('nvim')
                 \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
                 \ 'python': ['pyls'],
                 \ }, get(g:, 'LanguageClient_serverCommands', {}))
+                " \ 'java': ['java-lang-server'],
 
     let g:LanguageClient_autoStart = 1
+    let g:LanguageClient_diagnosticsList = ''
 
     function! s:setupLanguage() abort
         if has_key(g:LanguageClient_serverCommands, &filetype)
