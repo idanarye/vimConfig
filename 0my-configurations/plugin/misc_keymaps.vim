@@ -157,6 +157,26 @@ nnoremap <M-p>B :CtrlPBookmark<Cr>
 ":CtrlPMixed
 ":CtrlPBookmarkDir
 
+" Keymaps for FZF
+let g:ctrlp_map = ''
+nnoremap <C-p> :FzfFiles<Cr>
+nnoremap <M-p>l :FzfBLines<Cr>
+nnoremap <M-p>m :FzfGitFiles?<Cr>
+nnoremap <M-p><C-m> :FZFMru<Cr>
+nnoremap <M-p>b :call fzf#run(fzf#wrap({'source': 'git diff $(git merge-base origin/HEAD HEAD).. --name-only'}))<Cr>
+" nnoremap <M-p>r :CtrlPRoot<Cr>
+" nnoremap <M-p>c :CtrlPChange<Cr>
+" nnoremap <M-p>u :CtrlPUndo<Cr>
+" nnoremap <M-p>q :CtrlPQuickfix<Cr>
+nnoremap <M-p><C-b> :FzfBuffers<Cr>
+nnoremap <M-p>t :FzfTags<Cr>
+nnoremap <M-p><C-t> :FzfBTags<Cr>
+nnoremap <M-p>s :FzfAg<Cr>
+" nnoremap <M-p>s :FzfRg<Cr>
+
+" nnoremap <M-p><C-s> :call ctrlp#init(ctrlp#sift#cmd())<Cr>
+" nnoremap <M-p>B :CtrlPBookmark<Cr>
+
 "Keymaps for RengBang
 map <Leader>sr <Plug>(operator-rengbang)
 map <Leader>sp <Plug>(operator-rengbang-useprev)

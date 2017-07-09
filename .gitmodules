@@ -295,3 +295,6 @@
 [submodule "LanguageClient-neovim"]
 	path = LanguageClient-neovim
 	url = https://github.com/autozimu/LanguageClient-neovim.git
+[submodule "fzf.vim"]
+	path = fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git
