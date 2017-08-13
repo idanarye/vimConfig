@@ -12,6 +12,7 @@ if has('nvim')
         if has_key(g:LanguageClient_serverCommands, &filetype)
             ALEDisable
             setlocal omnifunc=LanguageClient#complete
+            setlocal formatexpr=LanguageClient_textDocument_rangeFormatting()
 
             nnoremap <buffer> <silent> K :call LanguageClient_textDocument_hover()<CR>
         endif
