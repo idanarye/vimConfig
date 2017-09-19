@@ -298,3 +298,6 @@
 [submodule "fzf.vim"]
 	path = fzf.vim
 	url = https://github.com/junegunn/fzf.vim.git
+[submodule "Tabmerge"]
+	path = Tabmerge
+	url = https://github.com/vim-scripts/Tabmerge.git
