@@ -2,8 +2,8 @@ if has('nvim')
     let g:LanguageClient_serverCommands = extend({
                 \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
                 \ 'python': ['pyls'],
+                \ 'java': ['java-lang-server'],
                 \ }, get(g:, 'LanguageClient_serverCommands', {}))
-                " \ 'java': ['java-lang-server'],
 
     let g:LanguageClient_autoStart = 1
     let g:LanguageClient_diagnosticsList = ''
@@ -23,6 +23,7 @@ if has('nvim')
     nnoremap <silent> \d :call LanguageClient_textDocument_definition()<CR>
     nnoremap <silent> \r :call LanguageClient_textDocument_rename()<CR>
     nnoremap <silent> \n :call LanguageClient_textDocument_references()<CR>
+    nnoremap <silent> \a :call LanguageClient_textDocument_codeAction()<Cr>
 
     command! LCdSymbol call LanguageClient_textDocument_documentSymbol()
     command! LCwSymbol call LanguageClient_workspace_symbol()

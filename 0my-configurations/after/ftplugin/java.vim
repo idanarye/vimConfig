@@ -10,4 +10,4 @@ set shiftwidth=4
 "Java anonymous classes. Sometimes, you have to use them.
 set cinoptions+=j1
 
-setlocal omnifunc=javacomplete#Complete
+setlocal completefunc=javacomplete#Complete
