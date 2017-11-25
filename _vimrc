@@ -79,8 +79,8 @@ if has("autocmd")
     \   exe "normal! g`\"" |
     \ endif
 
-  autocmd BufEnter * lcs %:p:h
-  autocmd BufEnter * cd %:p:h
+  " autocmd BufEnter * lcs %:p:h
+  " autocmd BufEnter * silent cd %:p:h
 
 
 
@@ -235,7 +235,7 @@ autocmd FileType clojure setlocal indentkeys+=0),0},0]
 
 autocmd FileType vim map <buffer> <F9> <Esc>:source %<Cr>
 
-source $VIMRUNTIME/vimrc_example.vim
+" source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 set keymodel= "This makes the RSI plugin work better
