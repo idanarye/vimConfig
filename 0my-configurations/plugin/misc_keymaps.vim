@@ -45,7 +45,7 @@ nnoremap Y y$
 
 nnoremap <Leader><C-f> :PSearch<Cr>
 if exists(':terminal')
-	nnoremap <Leader><A-s> :new <Bar> terminal<Cr>
+	nnoremap <Leader><A-s> :new <Bar> terminal<Cr>a
 else
 	nnoremap <Leader><A-s> :VimShellPop<Cr>
 endif
