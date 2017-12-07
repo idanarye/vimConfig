@@ -301,3 +301,6 @@
 [submodule "Tabmerge"]
 	path = Tabmerge
 	url = https://github.com/vim-scripts/Tabmerge.git
+[submodule "vim-makecfg"]
+	path = vim-makecfg
+	url = https://github.com/idanarye/vim-makecfg.git
