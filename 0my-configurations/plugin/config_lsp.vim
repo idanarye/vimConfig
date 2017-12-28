@@ -1,12 +1,13 @@
 if has('nvim')
+            " \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     let g:LanguageClient_serverCommands = extend({
-                \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+                \ 'rust': systemlist('find ~/.rustup -name rls | grep bin | grep nightly | sort | tail -1'),
                 \ 'python': ['pyls'],
                 \ 'java': ['java-lang-server'],
                 \ }, get(g:, 'LanguageClient_serverCommands', {}))
 
     let g:LanguageClient_autoStart = 1
-    let g:LanguageClient_diagnosticsList = ''
+    " let g:LanguageClient_diagnosticsList = ''
 
     function! s:setupLanguage() abort
         if has_key(g:LanguageClient_serverCommands, &filetype)
