@@ -56,7 +56,8 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc', { 'do': 'make -B' }
 Plug 'Shougo/vimshell'
 Plug 'SirVer/ultisnips'
-Plug 'svermeulen/vim-easyclip'
+" Plug 'svermeulen/vim-easyclip'
+Plug 'idanarye/vim-easyclip', { 'branch': 'allow-pasting-to-neovim-terminal' }
 Plug 't9md/vim-textmanip'
 Plug 'tmhedberg/SimpylFold'
 Plug 'tommcdo/vim-exchange'
