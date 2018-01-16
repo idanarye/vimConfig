@@ -299,6 +299,7 @@ set wildmenu
     "echo 'source ' . s:configFile
 "endfor
 let &runtimepath .= ',' . expand('<sfile>:p:h') . '/0my-configurations'
+let &runtimepath .= ',' . expand('<sfile>:p:h') . '/0my-configurations/after'
 
 "set diffexpr=MyDiff()
 "function MyDiff()
