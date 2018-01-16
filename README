@@ -1,13 +1,26 @@
-This is my vim config. To use it, download pathogen and write the following
-lines to your .vimrc:
+This is my vim config. To use it:
 
-let $MYVIMRC="$VIM/vimfiles/bundle/_vimrc"
-source $MYVIMRC
-call pathogen#infect()
+- Clone this:
+    ```sh
+    cd ~/.vim
+    git clone git@github.com:idanarye/vimConfig.git
+    ```
 
-Download this repo to your vimfiles/bundle, and run
+- Clone vim-plug:
+    ```sh
+    cd ~/.vim
+    git clone https://github.com/junegunn/vim-plug.git
+    ```
 
-git submodule init
-git submodule update
+Add these lines to your .vimrc:
+    ```vim
+    let $MYVIMRC="$VIM/vimfiles/bundle/_vimrc"
+    source $MYVIMRC
 
-to download the plugins.
+    set runtimepath+=/home/idanarye/.vim/vim-plug/
+    runtime plug.vim
+
+    call plug#begin('~/.vim/plugins')
+    source ~/.vim/vimConfig/plugins.vim
+    call plug#end()
+```

@@ -293,6 +293,13 @@ let g:JavaComplete_EnableDefaultMappings = 0
 set wildmode=longest,list,full
 set wildmenu
 
+"let s:myConfiguration = expand('<sfile>:p:h') . '/0my-configurations'
+"let &runtimepath .= ',' . s:myConfiguration
+"for s:configFile in glob('0my-configurations/plugin/*.vim', 0, 1)
+    "echo 'source ' . s:configFile
+"endfor
+let &runtimepath .= ',' . expand('<sfile>:p:h') . '/0my-configurations'
+
 "set diffexpr=MyDiff()
 "function MyDiff()
   "let opt = '-a --binary '
