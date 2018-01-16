@@ -1,7 +1,10 @@
 Plug 'AndrewRadev/linediff.vim'
 Plug 'arecarn/crunch'
 Plug 'artur-shaik/vim-javacomplete2'
-Plug 'autozimu/LanguageClient-neovim'
+if has('nvim')
+    " Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+    Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+endif
 Plug 'bitc/vim-bad-whitespace'
 Plug 'bling/vim-airline'
 Plug 'briancollins/vim-jst'
