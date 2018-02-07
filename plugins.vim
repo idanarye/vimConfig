@@ -2,8 +2,8 @@ Plug 'AndrewRadev/linediff.vim'
 Plug 'arecarn/crunch'
 Plug 'artur-shaik/vim-javacomplete2'
 if has('nvim')
-    " Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
-    Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+    " Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 endif
 Plug 'bitc/vim-bad-whitespace'
 Plug 'bling/vim-airline'
@@ -92,6 +92,8 @@ Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'zenbro/mirror.vim'
+Plug 'donRaphaco/neotex', { 'for': 'tex' }
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }
 Plug 'idanarye/vim-dutyl', { 'branch': 'develop' }

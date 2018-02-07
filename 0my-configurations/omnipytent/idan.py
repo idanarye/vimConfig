@@ -1,12 +1,14 @@
 from __future__ import absolute_import
 
 from omnipytent.integration.plumbum import local
+from omnipytent.ext.erroneous import ERUN
 
 
 python2 = local['python2']
 python3 = local['python3']
 cargo = local['cargo']
 dub = local['dub']
+gradle = local['gradle']['-q']
 
 
 def zip_vim_plugin(plugin_name):
