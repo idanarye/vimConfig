@@ -56,8 +56,10 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc', { 'do': 'make -B' }
 Plug 'Shougo/vimshell'
 Plug 'SirVer/ultisnips'
-" Plug 'svermeulen/vim-easyclip'
-Plug 'idanarye/vim-easyclip', { 'branch': 'allow-pasting-to-neovim-terminal' }
+
+" Plug 'idanarye/vim-easyclip', { 'branch': 'fix-HasMapping-for-buffer-local-maps' }
+Plug 'svermeulen/vim-easyclip'
+
 Plug 't9md/vim-textmanip'
 Plug 'tmhedberg/SimpylFold'
 Plug 'tommcdo/vim-exchange'
@@ -94,6 +96,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'zenbro/mirror.vim'
 Plug 'donRaphaco/neotex', { 'for': 'tex' }
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'hynek/vim-python-pep8-indent'
 
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }
 Plug 'idanarye/vim-dutyl', { 'branch': 'develop' }

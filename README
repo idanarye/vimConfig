@@ -12,15 +12,11 @@ This is my vim config. To use it:
     git clone https://github.com/junegunn/vim-plug.git
     ```
 
-Add these lines to your .vimrc:
+Add these lines to your .vimrc (replacing `/home/idanarye` with your the correct paths):
     ```vim
-    let $MYVIMRC="$VIM/vimfiles/bundle/_vimrc"
+    let $MYVIMRC="/home/idanarye/.vim/vimConfig/_vimrc"
     source $MYVIMRC
 
     set runtimepath+=/home/idanarye/.vim/vim-plug/
-    runtime plug.vim
-
-    call plug#begin('~/.vim/plugins')
-    source ~/.vim/vimConfig/plugins.vim
-    call plug#end()
+    source /home/idanarye/.vim/vimConfig/custom_plugin_loading.vim
 ```
