@@ -1,7 +1,9 @@
 if has('nvim')
-
 	let g:guifontFace = get(g:, 'guifontFace', 'DejaVu Sans Mono')
 	let g:guifontSize = get(g:, 'guifontSize', 14)
+	let s:guiType = system('ps --pid `ps --pid '.getpid().' -oppid --no-headers` -ocomm --no-headers')
+	let s:guiType = substitute(s:guiType, "\\v[\n\r]", '', '')
+
 	function! s:fontSize(size)
 		if '' == a:size
 			echo 'Current font size: '.g:guifontSize
@@ -11,7 +13,11 @@ if has('nvim')
 		else
 			let g:guifontSize = str2nr(a:size)
 		endif
-		call GuiFont(g:guifontFace.':h'.g:guifontSize)
+		if s:guiType == 'nvim-qt'
+			call GuiFont(g:guifontFace.':h'.g:guifontSize)
+		elseif s:guiType == 'nvim-gtk'
+			echo rpcnotify(1, 'Gui', 'Font', g:guifontFace.' '.g:guifontSize)
+		endif
 	endfunction
 else
 	function! s:fontSize(size)
