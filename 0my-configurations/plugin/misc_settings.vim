@@ -51,3 +51,10 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 " Configure bookmarks
 let g:bookmark_save_per_working_dir = 1
 let g:bookmark_auto_save = 1
+
+" GTK setup
+if exists('g:GtkGuiLoaded')
+    if str2nr($NVIM_GTK_NO_HEADERBAR)
+		call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
+	endif
+endif
