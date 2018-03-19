@@ -94,9 +94,8 @@ Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'zenbro/mirror.vim'
-Plug 'donRaphaco/neotex', { 'for': 'tex' }
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'hynek/vim-python-pep8-indent'
+Plug 'lervag/vimtex'
 
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }
 Plug 'idanarye/vim-dutyl', { 'branch': 'develop' }

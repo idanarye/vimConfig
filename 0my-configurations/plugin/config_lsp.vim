@@ -7,7 +7,7 @@ if has('nvim')
                 \ }, get(g:, 'LanguageClient_serverCommands', {}))
 
     let g:LanguageClient_autoStart = 1
-    " let g:LanguageClient_diagnosticsList = ''
+    let g:LanguageClient_diagnosticsList = v:null
 
     function! s:setupLanguage() abort
         if has_key(g:LanguageClient_serverCommands, &filetype)
