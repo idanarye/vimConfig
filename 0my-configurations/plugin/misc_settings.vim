@@ -58,3 +58,6 @@ if exists('g:GtkGuiLoaded')
 		call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
 	endif
 endif
+
+" Vimtex setup
+let g:tex_flavor = 'latex'
