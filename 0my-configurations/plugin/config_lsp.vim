@@ -32,11 +32,11 @@ if has('nvim')
     nnoremap <silent> \s :call LanguageClient_textDocument_documentSymbol()<Cr>
     command! LCwSymbol call LanguageClient_workspace_symbol()
 
-    function! s:languageClient_restart(alive, ...) abort
-        if a:alive
+    function! s:LanguageClient_restart(alive, ...) abort
+        if a:alive.result
             LanguageClientStop
         endif
         LanguageClientStart
     endfunction
-    command! LCrestart call LanguageClient_alive(function('s:languageClient_restart'))
+    command! LCrestart call LanguageClient#alive(function('s:LanguageClient_restart'))
 endif
