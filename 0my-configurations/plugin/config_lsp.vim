@@ -30,6 +30,7 @@ if has('nvim')
     " nnoremap <silent> \S :call LanguageClient_textDocument_signatureHelp()<Cr>
 
     nnoremap <silent> \s :call LanguageClient_textDocument_documentSymbol()<Cr>
+    nnoremap <silent> \\ :call LanguageClient_contextMenu()<Cr>
     command! LCwSymbol call LanguageClient_workspace_symbol()
 
     function! s:LanguageClient_restart(alive, ...) abort

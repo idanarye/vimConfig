@@ -1,4 +1,8 @@
 function! s:ApplyUltisnipAfterCompletion() abort
+    if !has_key(v:completed_item, 'word')
+        " Completion was aborted midway
+        return
+    endif
     if v:completed_item.word =~ '\n'
         " TODO: support multiline snippets?
         return
