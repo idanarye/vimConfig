@@ -45,9 +45,9 @@ nnoremap Y y$
 
 nnoremap <Leader><C-f> :PSearch<Cr>
 if exists(':terminal')
-	nnoremap <Leader><A-s> :new <Bar> terminal<Cr>a
+    nnoremap <Leader><A-s> :new <Bar> terminal<Cr>a
 else
-	nnoremap <Leader><A-s> :VimShellPop<Cr>
+    nnoremap <Leader><A-s> :VimShellPop<Cr>
 endif
 
 nnoremap <Leader><C-d>t :diffthis<Cr>
@@ -123,9 +123,9 @@ nnoremap <M-t>H :tabmove 0<Cr>
 
 "keymaps for quick access to Unite modes
 "if has('nvim')
-	"nnoremap <C-p> :Unite file_rec/neovim<Cr>
+    "nnoremap <C-p> :Unite file_rec/neovim<Cr>
 "else
-	"nnoremap <C-p> :Unite file_rec/async<Cr>
+    "nnoremap <C-p> :Unite file_rec/async<Cr>
 "endif
 "nnoremap <M-p><C-b> :Unite buffer<Cr>
 "nnoremap <M-p>l :Unite line<Cr>
@@ -171,8 +171,9 @@ nnoremap <M-p>b :call fzf#run(fzf#wrap({'source': 'git diff $(git merge-base ori
 nnoremap <M-p><C-b> :FzfBuffers<Cr>
 nnoremap <M-p>t :FzfTags<Cr>
 nnoremap <M-p><C-t> :FzfBTags<Cr>
-nnoremap <M-p>s :FzfAg<Cr>
-" nnoremap <M-p>s :FzfRg<Cr>
+" nnoremap <M-p>s :FzfAg<Cr>
+nnoremap <M-p>s :FzfRg<Cr>
+nnoremap <M-p><M-s> :execute 'FzfRg ' . input('rg> ')<Cr>
 
 " nnoremap <M-p><C-s> :call ctrlp#init(ctrlp#sift#cmd())<Cr>
 " nnoremap <M-p>B :CtrlPBookmark<Cr>
@@ -204,9 +205,9 @@ execute 'nnoremap '.g:vebugger_leader.'k :VBGkill<Cr>'
 
 
 if exists('&fullscreen')
-	nnoremap <F11> :set fullscreen!<Cr>
+    nnoremap <F11> :set fullscreen!<Cr>
 elseif has('nvim')
-	nnoremap <F11> :call GuiWindowFullScreen(!g:GuiWindowFullScreen)<Cr>
+    nnoremap <F11> :call GuiWindowFullScreen(!g:GuiWindowFullScreen)<Cr>
 endif
 
 nnoremap gll :LazyList<CR>
