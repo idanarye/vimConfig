@@ -120,6 +120,7 @@ nnoremap <M-t>l :tabmove +1<Cr>
 nnoremap <M-t>L :tabmove<Cr>
 nnoremap <M-t>h :tabmove -1<Cr>
 nnoremap <M-t>H :tabmove 0<Cr>
+call map(range(1, 9), {i -> execute(printf("nnoremap <M-t>%s :tabnext %s<Cr>", i, i))})
 
 "keymaps for quick access to Unite modes
 "if has('nvim')
