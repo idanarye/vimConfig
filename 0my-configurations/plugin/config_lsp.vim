@@ -23,11 +23,15 @@ if has('nvim')
     autocmd FileType * call s:setupLanguage()
 
     nnoremap <silent> \d :call LanguageClient_textDocument_definition()<CR>
+    nnoremap <silent> \D :call LanguageClient_textDocument_typeDefinition()<CR>
     nnoremap <silent> \r :call LanguageClient_textDocument_rename()<CR>
     nnoremap <silent> \n :call LanguageClient_textDocument_references()<CR>
     nnoremap <silent> \a :call LanguageClient_textDocument_codeAction()<Cr>
     " nnoremap <silent> \e :call LanguageClient_workspace_executeCommand()<Cr>
     " nnoremap <silent> \S :call LanguageClient_textDocument_signatureHelp()<Cr>
+
+    nnoremap <silent> \h :call LanguageClient_textDocument_documentHighlight()<Cr>
+    nnoremap <silent> \H :call LanguageClient_clearDocumentHighlight()<Cr>
 
     nnoremap <silent> \s :call LanguageClient_textDocument_documentSymbol()<Cr>
     nnoremap <silent> \\ :call LanguageClient_contextMenu()<Cr>
