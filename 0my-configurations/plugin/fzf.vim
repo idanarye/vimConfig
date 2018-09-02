@@ -1,3 +1,4 @@
+let $FZF_DEFAULT_COMMAND = 'rg --files'
 let g:fzf_command_prefix = 'Fzf'
 
 source /usr/share/vim/vimfiles/plugin/fzf.vim
