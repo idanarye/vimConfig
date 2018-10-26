@@ -99,6 +99,7 @@ Plug 'lervag/vimtex'
 Plug 'ron-rs/ron.vim'
 Plug 'VoldikSS/vim-searchme'
 Plug 'vimwiki/vimwiki'
+Plug 'mattboehm/vim-unstack'
 
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }
 Plug 'idanarye/vim-dutyl', { 'branch': 'develop' }
