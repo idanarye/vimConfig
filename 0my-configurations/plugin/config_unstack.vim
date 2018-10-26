@@ -48,7 +48,7 @@ function! s:javaExtractor.extract(text) abort dict
             call add(l:result, [l:path, l:linenum])
         endif
     endfor
-    return l:result
+    return reverse(l:result)
 endfunction
 
 let g:unstack_extractors = [s:javaExtractor]
