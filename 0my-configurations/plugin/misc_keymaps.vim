@@ -72,8 +72,6 @@ nnoremap <Leader><C-h>p :BreezeParent<Cr>
 
 vnoremap <silent> <Leader>a :EasyAlign<Cr>
 
-nnoremap dic :call Del my-configurations/plugin/misc_keymaps.vim
-
 "keymaps for Fugitive:
 noremap <Leader>gs :Gstatus<Cr>
 noremap <Leader>ge :Gedit<Cr>

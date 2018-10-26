@@ -98,6 +98,7 @@ Plug 'hynek/vim-python-pep8-indent'
 Plug 'lervag/vimtex'
 Plug 'ron-rs/ron.vim'
 Plug 'VoldikSS/vim-searchme'
+Plug 'vimwiki/vimwiki'
 
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }
 Plug 'idanarye/vim-dutyl', { 'branch': 'develop' }
