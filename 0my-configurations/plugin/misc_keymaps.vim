@@ -28,6 +28,10 @@ xmap <M-l> <Plug>(textmanip-move-right)
 
 noremap <Leader><Tab> :NERDTreeToggle<Cr>
 noremap <Leader><Leader><Tab> :NERDTreeFind<Cr>
+
+noremap <Leader>` :TagbarToggle<Cr>
+noremap <Leader><Leader>` :TagbarShowTag<Cr>
+
 noremap <Leader><C-c> :nohlsearch<Bar>MarkClear<Cr>
 "Sometimes <Leader><C-c> doesn't work for whatever odd reason...
 noremap <Leader><M-c> :nohlsearch<Bar>MarkClear<Cr>
