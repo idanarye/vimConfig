@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+from omnipytent import task
 from omnipytent.integration.plumbum import local
 from omnipytent.ext.erroneous import ERUN
 
@@ -24,3 +25,29 @@ def zip_vim_plugin(plugin_name):
     zip_command = local['zip']['%s_v%s.zip' % (plugin_name, version_number)]
     zip_command = zip_command[local['git']['ls-files']().splitlines()]
     return zip_command
+
+
+@task.options_multi
+def cargo_tests(ctx):
+    ctx.key(str)
+    import re
+    pattern = re.compile(r'^(.*): test$', re.MULTILINE)
+
+    for match in pattern.finditer(cargo['test']['--', '--list']()):
+        if '.rs -  (line ' in match.group(1):
+            continue
+        yield match.group(1)
+
+
+@task.options
+def cargo_example(ctx):
+    ctx.key(str)
+    import json
+    metadata = json.loads(cargo['metadata']())
+    wm_members = {wm.split(' ')[0] for wm in metadata['workspace_members']}
+    for package in metadata['packages']:
+        if package['name'] not in wm_members:
+            continue
+        for target in package['targets']:
+            if 'example' in target['kind']:
+                yield target['name']
