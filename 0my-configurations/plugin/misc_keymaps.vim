@@ -177,6 +177,7 @@ nnoremap <M-p><C-t> :FzfBTags<Cr>
 " nnoremap <M-p>s :FzfAg<Cr>
 nnoremap <M-p>s :FzfRg<Cr>
 nnoremap <M-p><M-s> :execute 'FzfRg ' . input('rg> ')<Cr>
+nnoremap <M-p>S :execute 'FzfRg ' . expand('<cword>')<Cr>
 
 " nnoremap <M-p><C-s> :call ctrlp#init(ctrlp#sift#cmd())<Cr>
 " nnoremap <M-p>B :CtrlPBookmark<Cr>
