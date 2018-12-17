@@ -102,6 +102,7 @@ Plug 'ron-rs/ron.vim'
 Plug 'VoldikSS/vim-searchme'
 Plug 'vimwiki/vimwiki'
 Plug 'mattboehm/vim-unstack'
+Plug 'cespare/vim-toml'
 
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }
 Plug 'idanarye/vim-dutyl', { 'branch': 'develop' }
@@ -114,3 +115,4 @@ Plug 'idanarye/vim-smile', { 'branch': 'develop' }
 Plug 'idanarye/vim-terminalogy'
 Plug 'idanarye/vim-vebugger', { 'branch': 'develop' }
 Plug 'idanarye/vim-yankitute'
+Plug 'idanarye/vim-tabnine-completefunc'
