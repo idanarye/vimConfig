@@ -78,6 +78,10 @@ call s:createTaskRunningShortcut('w','wipe')
 call s:createTaskRunningShortcut('W','wipe_all')
 call s:createTaskRunningShortcut('z','zip')
 
+for s:digit in range(10)
+	call s:createTaskRunningShortcut(string(s:digit), ':' . s:digit)
+endfor
+
 noremap <M-i> :IR<Cr>
 inoremap <M-i> <C-o>:IR<Cr>
 

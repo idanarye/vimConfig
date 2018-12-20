@@ -111,6 +111,7 @@ Plug 'idanarye/vim-integrake', { 'branch': 'develop' }
 Plug 'idanarye/vim-makecfg'
 Plug 'idanarye/vim-merginal', { 'branch': 'develop' }
 Plug 'idanarye/vim-omnipytent', { 'branch': 'develop' }
+Plug 'idanarye/vim-omnipytent-extra', { 'branch': 'develop' }
 Plug 'idanarye/vim-smile', { 'branch': 'develop' }
 Plug 'idanarye/vim-terminalogy'
 Plug 'idanarye/vim-vebugger', { 'branch': 'develop' }
