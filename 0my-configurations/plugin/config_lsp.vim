@@ -4,6 +4,7 @@ if has('nvim')
                 \ 'rust': systemlist('find ~/.rustup -name rls | grep bin | grep nightly | sort | tail -1'),
                 \ 'python': ['pyls'],
                 \ 'java': ['java-lang-server'],
+                \ 'kotlin': ['kotlin-language-server'],
                 \ }, get(g:, 'LanguageClient_serverCommands', {}))
 
     let g:LanguageClient_autoStart = 1
