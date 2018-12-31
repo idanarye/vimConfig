@@ -7,6 +7,12 @@ if has('nvim')
                 \ 'kotlin': ['kotlin-language-server'],
                 \ }, get(g:, 'LanguageClient_serverCommands', {}))
 
+    let g:LanguageClient_rootMarkers = {
+                \ 'rust': ['Cargo.toml'],
+                \ 'java': ['build.gradle', 'build.gradle.kts'],
+                \ 'kotlin': ['build.gradle', 'build.gradle.kts'],
+                \ }
+
     let g:LanguageClient_autoStart = 1
     let g:LanguageClient_diagnosticsList = 'Disabled'
 
