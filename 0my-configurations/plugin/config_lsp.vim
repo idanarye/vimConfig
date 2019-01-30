@@ -15,6 +15,12 @@ if has('nvim')
 
     let g:LanguageClient_autoStart = 1
     let g:LanguageClient_diagnosticsList = 'Disabled'
+    if has('nvim')
+        let s:nvimInstanceDir = matchstr(v:servername, '\v^/tmp/.*\ze/\d+$')
+        if !empty(s:nvimInstanceDir)
+            let g:LanguageClient_loggingFile = s:nvimInstanceDir . '/languageClient.log'
+        endif
+    end
 
     function! s:setupLanguage() abort
         if has_key(g:LanguageClient_serverCommands, &filetype)

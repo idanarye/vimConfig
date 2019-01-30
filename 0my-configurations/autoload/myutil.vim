@@ -19,3 +19,24 @@ function! myutil#invokeCompletion(completeFunc) abort
     call complete(l:start + 1, a:completeFunc(0, l:base))
     return ''
 endfunction
+
+function! s:hasSigns(bufnr) abort
+    let l:signcolumn = getbufvar(a:bufnr, '&l:signcolumn')
+    if l:signcolumn == 'yes'
+        return v:true
+    elseif l:signcolumn == 'no'
+        return v:false
+    else
+        return execute('sign place buffer=' . a:bufnr) =~ 'Signs for'
+    endif
+endfunction
+
+function! myutil#fitWinWidth() abort
+    let l:targetWidth = max(map(getline(0, '$'), 'len(v:val)'))
+    let l:signs = execute('sign list')
+    if s:hasSigns(bufnr(''))
+        " let l:targetWidth += max(map(split(execute('sign list'), '\n'), 'len(matchstr(v:val, "text=\\zs\\S*"))'))
+        let l:targetWidth += 2
+    endif
+    execute l:targetWidth.'wincmd |'
+endfunction

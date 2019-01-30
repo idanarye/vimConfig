@@ -232,3 +232,5 @@ nnoremap <Leader>lD :LinediffReset<Cr>
 nnoremap <Leader><M-q> :ALESetQfList<Cr>
 
 nnoremap yoe :let &l:conceallevel = &l:conceallevel ? 0 : 2<Cr>
+
+nnoremap <C-w>m :call myutil#fitWinWidth()<Cr>
