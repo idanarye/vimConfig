@@ -5,7 +5,6 @@ if -1 == index(split(&runtimepath, ','), s:vimPlugDir)
 endif
 
 let s:pluginsFile = expand('<sfile>:p:h') . '/plugins.vim'
-let s:pluginOverrideFile = expand('<sfile>:p:h') . '/../override-plugins.txt'
 
 function! s:getThisDirPluginName() abort
     try
@@ -22,12 +21,9 @@ function! s:getThisDirPluginName() abort
     return v:null
 endfunction
 
-function! ReloadPluginDefinition()
-    call plug#begin('~/.vim/plugins')
-    execute 'source ' . s:pluginsFile
-
-    if filereadable(s:pluginOverrideFile)
-        for l:override in readfile(s:pluginOverrideFile)
+function! s:applyPluginOverride(pluginOverrideFile) abort
+    if filereadable(a:pluginOverrideFile)
+        for l:override in readfile(a:pluginOverrideFile)
             if l:override =~ '^\s*#'
                 continue
             endif
@@ -36,6 +32,14 @@ function! ReloadPluginDefinition()
             let g:plugs[l:pluginName] = {'dir': l:overrideDir}
         endfor
     endif
+endfunction
+
+function! ReloadPluginDefinition()
+    call plug#begin('~/.vim/plugins')
+    execute 'source ' . s:pluginsFile
+
+    call s:applyPluginOverride(expand('<sfile>:p:h') . '/../override-plugins.txt')
+    call s:applyPluginOverride('override-plugins.txt')
 
     let l:thisDirPluginName = s:getThisDirPluginName()
     if has_key(g:plugs, l:thisDirPluginName)
