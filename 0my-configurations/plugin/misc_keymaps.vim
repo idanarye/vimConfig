@@ -59,6 +59,7 @@ nnoremap <Leader><C-d>o :diffoff<Cr>
 nnoremap <Leader><C-d>u :diffupdate<Cr>
 vnoremap <Leader><C-d>g :diffget<Cr>
 vnoremap <Leader><C-d>p :diffput<Cr>
+nnoremap <Leader><C-d><C-o> :call myutil#diffOnly()<Cr>
 
 command! UseRailsIndentations set expandtab | set tabstop=2 | set shiftwidth=2 | retab
 command! UseRegularIndentations set expandtab | set tabstop=4 | set shiftwidth=4 | retab

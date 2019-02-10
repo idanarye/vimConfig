@@ -40,3 +40,18 @@ function! myutil#fitWinWidth() abort
     endif
     execute l:targetWidth.'wincmd |'
 endfunction
+
+function! myutil#diffOnly() abort
+    if !&diff
+        echoerr 'diffOnly called from a non-diff window'
+        return
+    endif
+    let l:win = 1
+    while l:win <= winnr('$')
+        if l:win != winnr() && getwinvar(l:win, '&diff')
+            execute l:win . 'wincmd c'
+        else
+            let l:win += 1
+        endif
+    endwhile
+endfunction
