@@ -34,7 +34,6 @@ function! s:createTaskRunningShortcut(key,cmd)
 	execute "inoremap <M-o>".a:key." <C-o>:".l:cmd
 endfunction
 
-call s:createTaskRunningShortcut('i','')
 call s:createTaskRunningShortcut('a','act')
 call s:createTaskRunningShortcut('B','bump')
 call s:createTaskRunningShortcut('b','build')
@@ -90,6 +89,9 @@ inoremap <M-i><Space> <C-o>:IR<Space>
 
 noremap <M-o><Space> :OP<Space>
 inoremap <M-o><Space> <C-o>:OP<Space>
+
+noremap <M-o> :OP<Cr>
+inoremap <M-o> <C-o>:OP<Cr>
 
 
 if has('win32')
