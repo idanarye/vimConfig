@@ -39,7 +39,7 @@ Plug 'KabbAmine/lazyList.vim'
 Plug 'kablamo/vim-git-log'
 Plug 'kana/vim-operator-user'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'luochen1990/rainbow'
+Plug 'luochen1990/rainbow', { 'commit': '85d262156fd3c0556b91c88e2b72f93d7d00b729' }
 Plug 'machakann/vim-swap'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'mihaifm/bufstop'
