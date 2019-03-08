@@ -102,6 +102,7 @@ Plug 'VoldikSS/vim-searchme'
 Plug 'vimwiki/vimwiki'
 Plug 'mattboehm/vim-unstack'
 Plug 'cespare/vim-toml'
+" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }
 Plug 'idanarye/vim-dutyl', { 'branch': 'develop' }
