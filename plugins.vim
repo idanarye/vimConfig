@@ -105,6 +105,7 @@ Plug 'cespare/vim-toml'
 " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'blindFS/vim-taskwarrior'
 Plug 'tbabej/taskwiki'
+Plug 'rafi/awesome-vim-colorschemes'
 
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }
 Plug 'idanarye/vim-dutyl', { 'branch': 'develop' }
