@@ -26,8 +26,18 @@ xmap <M-k> <Plug>(textmanip-move-up)
 xmap <M-h> <Plug>(textmanip-move-left)
 xmap <M-l> <Plug>(textmanip-move-right)
 
-noremap <Leader><Tab> :NERDTreeToggle<Cr>
-noremap <Leader><Leader><Tab> :NERDTreeFind<Cr>
+" noremap <Leader><Tab> :NERDTreeToggle<Cr>
+" noremap <Leader><Leader><Tab> :NERDTreeFind<Cr>
+
+noremap <Leader><Tab> :Defx -split=vertical -toggle -winwidth=31<Cr>
+noremap <Leader><Leader><Tab> :Defx -split=vertical -winwidth=31 -search=`expand('%:p')`<Cr>
+
+noremap <Leader>d :Defx -new -search=`expand('%:p')`<Cr>
+
+augroup MyDefxKeymaps
+    autocmd!
+    autocmd FileType defx call myconfig_defx#setup()
+augroup END
 
 noremap <Leader>` :TagbarToggle<Cr>
 noremap <Leader><Leader>` :TagbarShowTag<Cr>

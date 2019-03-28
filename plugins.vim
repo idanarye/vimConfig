@@ -109,6 +109,13 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'samoshkin/vim-mergetool'
 Plug 'thinca/vim-themis'
 Plug 'liuchengxu/vista.vim'
+if has('nvim')
+    Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+    Plug 'Shougo/defx.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }
 Plug 'idanarye/vim-dutyl', { 'branch': 'develop' }
