@@ -5,7 +5,7 @@ augroup END
 
 call defx#custom#option('_', {
             \ 'winwidth': 31,
-            \ 'columns': 'git:mark:icons:filename:type:size:time',
+            \ 'columns': 'git:mark:indent:icons:filename:type:size:time',
             \ })
 
 call defx#custom#column('filename', {
