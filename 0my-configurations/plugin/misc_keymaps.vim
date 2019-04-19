@@ -35,8 +35,12 @@ noremap <Leader><Leader><Tab> :Defx -split=vertical -winwidth=31 -search=`expand
 
 noremap <Leader>d :Defx -new -search=`expand('%:p')`<Cr>
 
-noremap <Leader>` :TagbarToggle<Cr>
-noremap <Leader><Leader>` :TagbarShowTag<Cr>
+" noremap <Leader>` :TagbarToggle<Cr>
+" noremap <Leader><Leader>` :TagbarShowTag<Cr>
+
+" noremap <Leader>` :call myutil#toggleVista()<Cr>
+noremap <Leader>` :Vista!!<Cr>
+" noremap <Leader><Leader>` :TagbarShowTag<Cr>
 
 noremap <Leader><C-c> :nohlsearch<Bar>MarkClear<Cr>
 "Sometimes <Leader><C-c> doesn't work for whatever odd reason...
@@ -155,11 +159,11 @@ nnoremap <M-p>c :CtrlPChange<Cr>
 nnoremap <M-p>u :CtrlPUndo<Cr>
 nnoremap <M-p>q :CtrlPQuickfix<Cr>
 nnoremap <M-p><C-b> :CtrlPBuffer<Cr>
-nnoremap <M-p>t :CtrlPTag<Cr>
-nnoremap <M-p><C-t> :CtrlPBufTag<Cr>
 nnoremap <M-p>s :FuzzyGrep<Cr>
 nnoremap <M-p><C-s> :call ctrlp#init(ctrlp#sift#cmd())<Cr>
 nnoremap <M-p>B :CtrlPBookmark<Cr>
+" nnoremap <M-p>t :CtrlPTag<Cr>
+" nnoremap <M-p><C-t> :CtrlPBufTag<Cr>
 
 "I don't really need these:
 ":CtrlPDir
@@ -178,13 +182,15 @@ nnoremap <M-p>b :call fzf#run(fzf#wrap({'source': 'git diff $(git merge-base ori
 " nnoremap <M-p>c :CtrlPChange<Cr>
 " nnoremap <M-p>u :CtrlPUndo<Cr>
 " nnoremap <M-p>q :CtrlPQuickfix<Cr>
-nnoremap <M-p><C-b> :FzfBuffers<Cr>
-nnoremap <M-p>t :FzfTags<Cr>
 nnoremap <M-p><C-t> :FzfBTags<Cr>
 " nnoremap <M-p>s :FzfAg<Cr>
 nnoremap <M-p>s :FzfRg<Cr>
 nnoremap <M-p><M-s> :execute 'FzfRg ' . input('rg> ')<Cr>
 nnoremap <M-p>S :execute 'FzfRg ' . expand('<cword>')<Cr>
+" nnoremap <M-p><C-b> :FzfBuffers<Cr>
+" nnoremap <M-p>t :FzfTags<Cr>
+nnoremap <M-p>t :Vista finder!<Cr>
+nnoremap <M-p><C-t> :Vista finder<Cr>
 
 " nnoremap <M-p><C-s> :call ctrlp#init(ctrlp#sift#cmd())<Cr>
 " nnoremap <M-p>B :CtrlPBookmark<Cr>

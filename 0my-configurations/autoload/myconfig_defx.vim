@@ -3,8 +3,8 @@ function! myconfig_defx#setup() abort
     nnoremap <silent><buffer><expr><nowait> o defx#do_action('call', 'myconfig_defx#openAction')
     nnoremap <silent><buffer><expr><nowait> <Cr> defx#do_action('call', 'myconfig_defx#openAction')
 
-    nnoremap <silent><buffer><expr><nowait> s defx#do_action('drop', 'split')
-    nnoremap <silent><buffer><expr><nowait> v defx#do_action('drop', 'vsplit')
+    nnoremap <silent><buffer><expr><nowait> i defx#do_action('drop', 'split')
+    nnoremap <silent><buffer><expr><nowait> s defx#do_action('drop', 'vsplit')
     nnoremap <silent><buffer><expr><nowait> t defx#do_action('drop', 'tabnew')
 
     " nnoremap <silent><buffer><expr><nowait> <CR> defx#do_action('open')

@@ -50,7 +50,7 @@ Plug 'racer-rust/vim-racer'
 Plug 'rking/ag.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/unite.vim'
 " Plug 'Shougo/denite.nvim'
@@ -108,7 +108,7 @@ Plug 'tbabej/taskwiki'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'samoshkin/vim-mergetool'
 Plug 'thinca/vim-themis'
-Plug 'liuchengxu/vista.vim'
+Plug 'liuchengxu/vista.vim', { 'branch': 'support-nested-display' }
 if has('nvim')
     Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 else
