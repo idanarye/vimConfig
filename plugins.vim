@@ -108,7 +108,7 @@ Plug 'tbabej/taskwiki'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'samoshkin/vim-mergetool'
 Plug 'thinca/vim-themis'
-Plug 'liuchengxu/vista.vim', { 'branch': 'support-nested-display' }
+Plug 'liuchengxu/vista.vim'
 if has('nvim')
     Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 else
