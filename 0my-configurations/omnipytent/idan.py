@@ -51,3 +51,19 @@ def cargo_example(ctx):
         for target in package['targets']:
             if 'example' in target['kind']:
                 yield target['name']
+
+
+def get_gradle_deps(configuration='runtime'):
+    import re
+
+    cmd = gradle['dependencies']
+    if configuration:
+        cmd = cmd['--configuration', configuration]
+    data = cmd()
+
+    deps_root = local.path('~/.gradle/caches/modules-2/files-2.1/')
+    for m in re.finditer(r'--- ([^: ]+):([^: ]+):([^: \n]+)$', data, re.MULTILINE):
+        group, name, version = m.groups()
+        dep_root = deps_root / group / name/ version
+        for jar in  dep_root.walk(lambda p: p.suffix == '.jar'):
+            yield jar
