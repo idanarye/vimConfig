@@ -118,6 +118,7 @@ else
 endif
 Plug 'kristijanhusak/defx-icons'
 Plug 'kristijanhusak/defx-git'
+Plug 'rhysd/git-messenger.vim'
 
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }
 Plug 'idanarye/vim-dutyl', { 'branch': 'develop' }
