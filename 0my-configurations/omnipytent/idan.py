@@ -67,3 +67,13 @@ def get_gradle_deps(configuration='runtime'):
         dep_root = deps_root / group / name/ version
         for jar in  dep_root.walk(lambda p: p.suffix == '.jar'):
             yield jar
+
+
+@task.options(alias=':1')
+def cargo_manifest(ctx):
+    ctx.key(str)
+    ctx.value('{}/Cargo.toml'.format)
+    import toml
+    workspace_members = toml.load('Cargo.toml')['workspace']['members']
+    for member in workspace_members:
+        yield member
