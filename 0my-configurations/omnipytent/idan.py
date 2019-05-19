@@ -69,7 +69,7 @@ def get_gradle_deps(configuration='runtime'):
             yield jar
 
 
-@task.options(alias=':1')
+@task.options
 def cargo_manifest(ctx):
     ctx.key(str)
     ctx.value('{}/Cargo.toml'.format)
