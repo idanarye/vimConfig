@@ -6,7 +6,7 @@ if has('nvim')
     " Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 endif
 Plug 'bitc/vim-bad-whitespace'
-Plug 'bling/vim-airline'
+" Plug 'bling/vim-airline'
 Plug 'briancollins/vim-jst'
 Plug 'chrisbra/csv.vim'
 Plug 'cloudhead/neovim-fuzzy'
@@ -79,7 +79,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'udalov/kotlin-vim'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/AdvancedSorters'
 Plug 'vim-scripts/aspnetcs'
@@ -119,6 +119,7 @@ endif
 Plug 'kristijanhusak/defx-icons'
 Plug 'kristijanhusak/defx-git'
 Plug 'rhysd/git-messenger.vim'
+Plug 'rbong/vim-crystalline'
 
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }
 Plug 'idanarye/vim-dutyl', { 'branch': 'develop' }
