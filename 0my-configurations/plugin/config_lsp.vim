@@ -121,7 +121,8 @@ elseif !empty(globpath(&runtimepath, 'plugin/coc.vim'))
 
 			" Rename symbol under cursor to a new word.
 
-    nmap <silent> \a <Plug>(coc-codeaction)
+    nmap <silent> \A <Plug>(coc-codeaction)
+    nnoremap <silent> \a :call cocfzf#codeAction()<Cr>
 
 			" Get and run code action(s) for current line.
 
@@ -142,7 +143,7 @@ elseif !empty(globpath(&runtimepath, 'plugin/coc.vim'))
 
 			" Do command from codeLens of current line.
 
-    nmap <silent> \l <Plug>(coc-fix-current)
+    nmap <silent> \f <Plug>(coc-fix-current)
 " <Plug>(coc-fix-current) 			*n_coc-fix-current*
 
 			" Try run quickfix action for diagnostics in current

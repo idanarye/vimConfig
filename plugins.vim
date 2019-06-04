@@ -2,7 +2,7 @@ Plug 'AndrewRadev/linediff.vim'
 Plug 'arecarn/crunch'
 Plug 'artur-shaik/vim-javacomplete2'
 if has('nvim')
-    Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+    " Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
     " Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 endif
 Plug 'bitc/vim-bad-whitespace'
@@ -90,7 +90,7 @@ Plug 'vim-scripts/roo.vim'
 Plug 'vim-scripts/rubycomplete.vim'
 Plug 'vim-scripts/Tabmerge'
 Plug 'vim-scripts/vim-gradle'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 Plug 'wellle/targets.vim'
 Plug 'wellle/visual-split.vim'
 Plug 'Yggdroot/indentLine'
@@ -120,6 +120,7 @@ Plug 'kristijanhusak/defx-icons'
 Plug 'kristijanhusak/defx-git'
 Plug 'rhysd/git-messenger.vim'
 Plug 'rbong/vim-crystalline'
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }
 Plug 'idanarye/vim-dutyl', { 'branch': 'develop' }
