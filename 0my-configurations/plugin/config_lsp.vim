@@ -58,6 +58,8 @@ if !empty(globpath(&runtimepath, 'plugin/LanguageClient.vim'))
     endfunction
     command! LCrestart call LanguageClient#alive(function('s:LanguageClient_restart'))
 elseif !empty(globpath(&runtimepath, 'plugin/coc.vim'))
+    imap <C-l> <Plug>(coc-snippets-expand)
+
     inoremap <silent><expr> <c-x><c-o> coc#refresh()
 
     " nmap <silent> \h :call LanguageClient_textDocument_documentHighlight()<Cr>

@@ -56,7 +56,7 @@ Plug 'Shougo/unite.vim'
 " Plug 'Shougo/denite.nvim'
 Plug 'Shougo/vimproc', { 'do': 'make -B' }
 Plug 'Shougo/vimshell'
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'majutsushi/tagbar'
 
 " Plug 'idanarye/vim-easyclip', { 'branch': 'fix-HasMapping-for-buffer-local-maps' }
