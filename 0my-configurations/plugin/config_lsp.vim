@@ -59,6 +59,8 @@ if !empty(globpath(&runtimepath, 'plugin/LanguageClient.vim'))
     command! LCrestart call LanguageClient#alive(function('s:LanguageClient_restart'))
 elseif !empty(globpath(&runtimepath, 'plugin/coc.vim'))
     imap <C-l> <Plug>(coc-snippets-expand)
+    nnoremap <silent> K :call CocAction('doHover')<CR>
+    let g:jedi#documentation_command = ''
 
     inoremap <silent><expr> <c-x><c-o> coc#refresh()
 
