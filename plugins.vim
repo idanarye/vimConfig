@@ -121,6 +121,14 @@ Plug 'kristijanhusak/defx-git'
 Plug 'rhysd/git-messenger.vim'
 Plug 'rbong/vim-crystalline'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+let g:my_coc_extensions = [
+            \ 'coc-java',
+            \ 'coc-json',
+            \ 'coc-python',
+            \ 'coc-rls',
+            \ 'coc-snippets',
+            \ ]
+
 
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }
 Plug 'idanarye/vim-dutyl', { 'branch': 'develop' }
