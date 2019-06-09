@@ -64,6 +64,9 @@ elseif !empty(globpath(&runtimepath, 'plugin/coc.vim'))
 
     inoremap <silent><expr> <c-x><c-o> coc#refresh()
 
+    nnoremap <silent> \\ :CocList<Cr>
+    nnoremap <silent> \c :CocCommand<Cr>
+
     " nmap <silent> \h :call LanguageClient_textDocument_documentHighlight()<Cr>
     " nmap <silent> \H :call LanguageClient_clearDocumentHighlight()<Cr>
     " nmap <silent> \s :call LanguageClient_textDocument_documentSymbol()<Cr>
@@ -125,8 +128,11 @@ elseif !empty(globpath(&runtimepath, 'plugin/coc.vim'))
 
 			" Rename symbol under cursor to a new word.
 
-    nmap <silent> \A <Plug>(coc-codeaction)
-    nnoremap <silent> \a :call cocfzf#codeAction()<Cr>
+    " nmap <silent> \A <Plug>(coc-codeaction)
+    " nnoremap <silent> \A :CocAction<Cr>
+    " nnoremap <silent> \a :call cocfzf#codeAction()<Cr>
+    nnoremap <silent> \A :call cocfzf#codeAction()<Cr>
+    nnoremap <silent> \a :CocList actions<Cr>
 
 			" Get and run code action(s) for current line.
 

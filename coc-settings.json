@@ -95,5 +95,7 @@
         }
       }
     }
-  }
+},
+"java.jdt.ls.home": "/usr/share/java/jdtls/",
+"java.errors.incompleteClasspath.severity": "ignore"
 }
