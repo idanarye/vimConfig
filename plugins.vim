@@ -128,6 +128,7 @@ let g:my_coc_extensions = [
             \ 'coc-rls',
             \ 'coc-snippets',
             \ ]
+Plug 'AndrewRadev/inline_edit.vim'
 
 
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }
