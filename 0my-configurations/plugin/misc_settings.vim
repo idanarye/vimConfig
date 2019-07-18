@@ -66,3 +66,7 @@ let g:git_messenger_no_default_mappings = v:true
 
 
 set signcolumn=yes
+
+let g:doge_mapping = "<Leader>D"
+let g:doge_mapping_comment_jump_forward = "<C-j>"
+let g:doge_mapping_comment_jump_backward = "<C-k>"
