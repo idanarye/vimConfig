@@ -70,3 +70,5 @@ set signcolumn=yes
 let g:doge_mapping = "<Leader>D"
 let g:doge_mapping_comment_jump_forward = "<C-j>"
 let g:doge_mapping_comment_jump_backward = "<C-k>"
+
+set diffopt=filler,internal,algorithm:histogram,indent-heuristic
