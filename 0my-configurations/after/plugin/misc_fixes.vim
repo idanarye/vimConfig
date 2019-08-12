@@ -10,5 +10,8 @@ if exists(':GuiPopupmenu')
     GuiPopupmenu 0
 endif
 if exists(':FontSize')
-    FontSize 14
+    try
+	silent FontSize 14
+    catch
+    endtry
 endif
