@@ -42,6 +42,9 @@ def cargo_tests(ctx):
 @task.options
 def cargo_example(ctx):
     ctx.key(str)
+    if ctx.allow_main:
+        ctx.key(lambda value: value or 'No example - use main')
+        yield None
     import json
     metadata = json.loads(cargo['metadata']())
     wm_members = {wm.split(' ')[0] for wm in metadata['workspace_members']}
@@ -51,6 +54,7 @@ def cargo_example(ctx):
         for target in package['targets']:
             if 'example' in target['kind']:
                 yield target['name']
+cargo_example.allow_main = False
 
 
 def get_gradle_deps(configuration='runtime'):
