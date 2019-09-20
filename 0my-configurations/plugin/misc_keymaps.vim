@@ -88,14 +88,15 @@ nnoremap <Leader><C-h>p :BreezeParent<Cr>
 vnoremap <silent> <Leader>a :EasyAlign<Cr>
 
 "keymaps for Fugitive:
-noremap <Leader>gs :Gstatus<Cr>
-noremap <Leader>ge :Gedit<Cr>
-noremap <Leader>gd :Gvdiff!<Cr>
-noremap <Leader>gl :Gllog<Cr>
-noremap <Leader>gL :GitLog<Cr>
+nnoremap <Leader>gs :Gstatus<Cr>
+nnoremap <Leader>ge :Gedit<Cr>
+nnoremap <Leader>gd :Gvdiff!<Cr>
+nnoremap <Leader>gl :0Gllog<Cr>
+vnoremap <Leader>gl :Gllog<Cr>
+nnoremap <Leader>gL :GitLog<Cr>
 noremap <Leader>gb :Gblame<Cr>
-noremap <Leader>gf :call merginal#bang('git fetch --prune')<Cr>
-noremap <Leader>gu :call merginal#bang('git submodule update --init')<Cr>
+nnoremap <Leader>gf :call merginal#bang('git fetch --prune')<Cr>
+nnoremap <Leader>gu :call merginal#bang('git submodule update --init')<Cr>
 
 "This one is for my very own Merginal
 noremap <Leader>gm :MerginalToggle<Cr>
