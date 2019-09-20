@@ -1,5 +1,6 @@
 {
   "suggest.autoTrigger": "none",
+  "snippets.autoTrigger": false,
   "diagnostic.locationlist": false,
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextPrefix": " ",
@@ -95,7 +96,7 @@
         }
       }
     }
-},
-"java.jdt.ls.home": "/usr/share/java/jdtls/",
-"java.errors.incompleteClasspath.severity": "ignore"
+  },
+  "java.jdt.ls.home": "/usr/share/java/jdtls/",
+  "java.errors.incompleteClasspath.severity": "ignore"
 }
