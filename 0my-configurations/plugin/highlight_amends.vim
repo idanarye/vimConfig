@@ -1,0 +1,2 @@
+highlight default link CocErrorVirtualText ErrorMsg
+highlight default link CocWarningVirtualText WarningMsg
