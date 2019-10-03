@@ -192,6 +192,7 @@ nnoremap <M-p>S :execute 'FzfRg ' . expand('<cword>')<Cr>
 " nnoremap <M-p>t :FzfTags<Cr>
 nnoremap <M-p>t :Vista finder!<Cr>
 nnoremap <M-p><C-t> :Vista finder<Cr>
+nnoremap <M-p>f :FzfFiletypes<Cr>
 
 " nnoremap <M-p><C-s> :call ctrlp#init(ctrlp#sift#cmd())<Cr>
 " nnoremap <M-p>B :CtrlPBookmark<Cr>
