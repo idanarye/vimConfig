@@ -133,6 +133,8 @@ let g:my_coc_extensions = [
 Plug 'AndrewRadev/inline_edit.vim'
 Plug 'kkoomen/vim-doge'
 Plug 'KnoP-01/tortus'
+Plug 'tpope/vim-rhubarb'
+Plug 'tommcdo/vim-fubitive'
 
 
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }
