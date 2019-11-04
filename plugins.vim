@@ -104,8 +104,8 @@ Plug 'vimwiki/vimwiki'
 Plug 'mattboehm/vim-unstack'
 Plug 'cespare/vim-toml'
 " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-Plug 'blindFS/vim-taskwarrior'
-Plug 'tbabej/taskwiki'
+" Plug 'blindFS/vim-taskwarrior'
+" Plug 'tbabej/taskwiki'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'samoshkin/vim-mergetool'
 Plug 'thinca/vim-themis'
@@ -129,6 +129,9 @@ let g:my_coc_extensions = [
             \ 'coc-rls',
             \ 'coc-snippets',
             \ 'coc-tabnine',
+            \ 'coc-todolist',
+            \ 'coc-git',
+            \ 'coc-yaml',
             \ ]
 Plug 'AndrewRadev/inline_edit.vim'
 Plug 'kkoomen/vim-doge'

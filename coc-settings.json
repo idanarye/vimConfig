@@ -98,5 +98,21 @@
     }
   },
   "java.jdt.ls.home": "/usr/share/java/jdtls/",
-  "java.errors.incompleteClasspath.severity": "ignore"
+  "java.errors.incompleteClasspath.severity": "ignore",
+  "coc.source.omni.enable": true,
+  "coc.source.omni.filetypes": ["python"],
+  "json.schemas": [
+    {
+      "url": "file:///files/tests/jsonschema/1/schema.json",
+      "fileMatch":[
+        "/files/tests/jsonschema/1/*.json"
+      ]
+    }
+  ],
+  "yaml.schemas": {
+      "file:///files/tests/jsonschema/1/schema.json": "/files/tests/jsonschema/1/*.yaml",
+      "file:///files/code/wekapp2/qa/schemas/iogen.schema.json": "/files/code/wekapp2/qa/iogen/configs/*.yaml",
+      "file:///tmp/json-schema-test/schema.json": "/tmp/json-schema-test/data.yaml"
+  },
+  "git.signOffset": 999
 }
