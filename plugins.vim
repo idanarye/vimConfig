@@ -129,7 +129,6 @@ let g:my_coc_extensions = [
             \ 'coc-rls',
             \ 'coc-snippets',
             \ 'coc-tabnine',
-            \ 'coc-todolist',
             \ 'coc-git',
             \ 'coc-yaml',
             \ ]

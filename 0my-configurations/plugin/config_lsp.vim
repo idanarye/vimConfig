@@ -160,7 +160,4 @@ elseif !empty(globpath(&runtimepath, 'plugin/coc.vim'))
 
 			" Try run quickfix action for diagnostics in current
 			" line.
-
-    nnoremap <silent> \t :CocList todolist<Cr>
-    nnoremap <silent> \T :CocCommand todolist.create<Cr>
 endif
