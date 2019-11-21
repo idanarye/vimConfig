@@ -62,9 +62,7 @@ elseif !empty(globpath(&runtimepath, 'plugin/coc.vim'))
     nnoremap <silent> K :call CocAction('doHover')<CR>
     let g:jedi#documentation_command = ''
 
-    " TODO: remove the <c-x><c-o> mapping once I get use to <c-space>
-    inoremap <silent><expr> <c-x><c-o> coc#refresh()
-    inoremap <silent><expr> <c-space> coc#refresh()
+    inoremap <silent><expr> <C-Space> coc#refresh()
 
     nnoremap <silent> \\ :CocList<Cr>
     nnoremap <silent> \c :CocCommand<Cr>
