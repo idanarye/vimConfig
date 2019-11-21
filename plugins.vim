@@ -138,6 +138,7 @@ Plug 'kkoomen/vim-doge'
 Plug 'KnoP-01/tortus'
 Plug 'tpope/vim-rhubarb'
 Plug 'tommcdo/vim-fubitive'
+Plug 'psliwka/vim-smoothie'
 
 
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }
