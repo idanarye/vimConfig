@@ -135,7 +135,9 @@ nnoremap <M-t>L :tabmove<Cr>
 nnoremap <M-t>h :tabmove -1<Cr>
 nnoremap <M-t>H :tabmove 0<Cr>
 call map(range(1, 9), {i -> execute(printf("nnoremap <M-t>%s :tabnext %s<Cr>", i, i))})
-nnoremap <M-t>m :call mytabmerge#fzfAndTabmerge()<Cr>
+nnoremap <M-t>m :call tabops#fzfAndTabmerge()<Cr>
+nnoremap <M-t>t :call tabops#fzfAndTabjump()<Cr>
+nnoremap <M-t><M-t> :call tabops#fzfAndTabjump()<Cr>
 
 "keymaps for quick access to Unite modes
 "if has('nvim')
