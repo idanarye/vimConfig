@@ -126,7 +126,7 @@ let g:my_coc_extensions = [
             \ 'coc-java',
             \ 'coc-json',
             \ 'coc-python',
-            \ 'coc-rls',
+            \ 'coc-rust-analyzer',
             \ 'coc-snippets',
             \ 'coc-tabnine',
             \ 'coc-git',

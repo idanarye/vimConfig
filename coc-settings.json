@@ -2,6 +2,7 @@
   "suggest.autoTrigger": "none",
   "snippets.autoTrigger": false,
   "diagnostic.locationlist": false,
+  "codeLens.enable": true,
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextPrefix": " ",
   "coc.preferences.rootPatterns": [".idanarye.omnipytent.3.py", ".vim",".git",".hg",".projections.json"],
@@ -114,5 +115,10 @@
       "file:///files/code/wekapp2/qa/schemas/iogen.schema.json": "/files/code/wekapp2/qa/iogen/configs/*.yaml",
       "file:///tmp/json-schema-test/schema.json": "/tmp/json-schema-test/data.yaml"
   },
-  "git.signOffset": 999
+  "git.signOffset": 999,
+  "python.autoComplete.extraPaths": [
+    "/files/code/easypy",
+    "/files/code/talker",
+    "/files/code/wekapp/deps/plumbum"
+  ]
 }
