@@ -7,7 +7,7 @@ function! s:wikipageFzf()
     let l:wikiFiles = globpath(join(l:paths, ','), '**/*.wiki', 0, 1)
     echo fzf#run(fzf#wrap({
                 \ 'source': l:wikiFiles,
-                \ 'options': fzf#vim#with_preview('up:60%').options,
+                \ 'options': fzf#vim#with_preview('up:80%').options,
                 \ }, 1))
 endfunction
 
