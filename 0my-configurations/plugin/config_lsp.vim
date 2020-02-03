@@ -132,7 +132,8 @@ elseif !empty(globpath(&runtimepath, 'plugin/coc.vim'))
     " nnoremap <silent> \A :CocAction<Cr>
     " nnoremap <silent> \a :call cocfzf#codeAction()<Cr>
     nnoremap <silent> \A :call cocfzf#codeAction()<Cr>
-    nnoremap <silent> \a :CocList actions<Cr>
+    " nnoremap <silent> \a :CocList actions<Cr>
+    nnoremap <silent> \a :CocCommand actions.open<Cr>
 
 			" Get and run code action(s) for current line.
 
