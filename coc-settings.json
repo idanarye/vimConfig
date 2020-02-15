@@ -36,6 +36,10 @@
     "default": "\uf29c"
   },
   "languageserver": {
+    "kotlin": {
+      "command": "kotlin-language-server",
+      "filetypes": ["kotlin"]
+    }
   },
   "java.jdt.ls.home": "/usr/share/java/jdtls/",
   "java.errors.incompleteClasspath.severity": "ignore",
