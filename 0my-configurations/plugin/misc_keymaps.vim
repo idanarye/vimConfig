@@ -34,6 +34,9 @@ noremap <Leader><Tab> :Defx -split=vertical -toggle<Cr>
 noremap <Leader><Leader><Tab> :Defx -split=vertical -winwidth=31 -search=`expand('%:p')`<Cr>
 
 noremap <Leader>d :Defx -new -search=`expand('%:p')`<Cr>
+noremap <C-w><M-s> :split <Bar> Defx -new -search=`expand('%:p')`<Cr>
+noremap <C-w><M-v> :vsplit <Bar> Defx -new -search=`expand('%:p')`<Cr>
+noremap <M-t>d :tab split <Bar> Defx -new -search=`expand('%:p')`<Cr>
 
 " noremap <Leader>` :TagbarToggle<Cr>
 " noremap <Leader><Leader>` :TagbarShowTag<Cr>
@@ -138,6 +141,7 @@ call map(range(1, 9), {i -> execute(printf("nnoremap <M-t>%s :tabnext %s<Cr>", i
 nnoremap <M-t>m :call tabops#fzfAndTabmerge()<Cr>
 nnoremap <M-t>t :call tabops#fzfAndTabjump()<Cr>
 nnoremap <M-t><M-t> :call tabops#fzfAndTabjump()<Cr>
+nnoremap <M-t>s :tab split<Cr>
 
 "keymaps for quick access to Unite modes
 "if has('nvim')
