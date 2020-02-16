@@ -39,6 +39,20 @@
     "kotlin": {
       "command": "kotlin-language-server",
       "filetypes": ["kotlin"]
+    },
+    "dls": {
+      "enable": false,
+      "command": "/home/idanarye/.dub/packages/.bin/dls-latest/dls",
+      "args": ["--stdio"],
+      "filetypes": ["d"],
+      "trace.server": "off",
+      "rootPatterns": ["dub.json", "dub.sdl"]
+    },
+    "d": {
+      "enable": false,
+      "command": "dub",
+      "args": ["run", "serve-d"],
+      "filetypes": ["d"]
     }
   },
   "java.jdt.ls.home": "/usr/share/java/jdtls/",
