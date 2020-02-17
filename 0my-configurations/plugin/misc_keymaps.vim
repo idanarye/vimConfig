@@ -108,7 +108,7 @@ noremap <Leader>gm :MerginalToggle<Cr>
 noremap <Leader>gE :Extradite!<Cr>
 
 "Map for setting marks after easyclip took `m`:
-noremap <C-M-m> m
+noremap <M-m> m
 
 "keymap for ttoc
 nnoremap <Leader>t :Ttoc<Cr>
@@ -117,16 +117,6 @@ nnoremap <Leader>t :Ttoc<Cr>
 "keymaps for Bufstop
 nnoremap <Leader>bb :Bufstop<Cr>
 nnoremap <Leader>bs :BufstopStatusline<Cr>
-
-"keymaps for vim-bookmarks
-nmap <M-m>m <Plug>BookmarkToggle
-nmap <M-m><C-m> <Plug>BookmarkToggle
-nmap <M-m>i <Plug>BookmarkAnnotate
-nmap <M-m>a <Plug>BookmarkShowAll
-nmap <M-m>j <Plug>BookmarkNext
-nmap <M-m>k <Plug>BookmarkPrev
-nmap <M-m>c <Plug>BookmarkClear
-nmap <M-m>x <Plug>BookmarkClearAll
 
 "keymaps for working with tabs
 nnoremap <M-t>n :tabnew<Cr>
