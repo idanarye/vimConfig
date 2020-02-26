@@ -1,5 +1,4 @@
 let g:vimwiki_map_prefix = '<M-w>'
-nnoremap <M-w><M-w> :TW<Cr>
 
 function! s:wikipageFzf()
     let l:paths = map(copy(g:vimwiki_wikilocal_vars), {i, v -> v['path']})
