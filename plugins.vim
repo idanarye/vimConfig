@@ -120,7 +120,6 @@ Plug 'rhysd/git-messenger.vim'
 Plug 'rbong/vim-crystalline'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 let g:my_coc_extensions = [
-            \ 'coc-java',
             \ 'coc-json',
             \ 'coc-python',
             \ 'coc-rust-analyzer',

@@ -36,7 +36,13 @@
     "default": "\uf29c"
   },
   "languageserver": {
+    "java": {
+      "enable": true,
+      "command": "java-lang-server",
+      "filetypes": ["java"]
+    },
     "kotlin": {
+      "enable": true,
       "command": "kotlin-language-server",
       "filetypes": ["kotlin"]
     },
