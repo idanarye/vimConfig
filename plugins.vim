@@ -38,7 +38,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'KabbAmine/lazyList.vim'
 Plug 'kablamo/vim-git-log'
 Plug 'kana/vim-operator-user'
-Plug 'Lokaltog/vim-easymotion'
+" Plug 'Lokaltog/vim-easymotion'
 " Plug 'luochen1990/rainbow', { 'commit': '85d262156fd3c0556b91c88e2b72f93d7d00b729' }
 Plug 'luochen1990/rainbow'
 Plug 'machakann/vim-swap'
@@ -138,6 +138,7 @@ Plug 'tommcdo/vim-fubitive'
 Plug 'psliwka/vim-smoothie'
 Plug 'wellle/context.vim'
 Plug 'dstein64/vim-win'
+Plug 'zsugabubus/vim-jumpmotion'
 
 
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }
