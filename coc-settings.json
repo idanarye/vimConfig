@@ -84,5 +84,6 @@
     "/files/code/easypy",
     "/files/code/talker",
     "/files/code/wekapp/deps/plumbum"
-  ]
+  ],
+  "coc-actions.hideCursor": false
 }
