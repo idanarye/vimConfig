@@ -34,11 +34,13 @@ function! s:applyPluginOverride(pluginOverrideFile) abort
     endif
 endfunction
 
+let s:globalPluginOverrideFilePath = expand('<sfile>:p:h') . '/../override-plugins.txt'
+
 function! ReloadPluginDefinition()
     call plug#begin('~/.vim/plugins')
     execute 'source ' . s:pluginsFile
 
-    call s:applyPluginOverride(expand('<sfile>:p:h') . '/../override-plugins.txt')
+    call s:applyPluginOverride(s:globalPluginOverrideFilePath)
     call s:applyPluginOverride('override-plugins.txt')
 
     let l:thisDirPluginName = s:getThisDirPluginName()
