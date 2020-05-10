@@ -139,7 +139,9 @@ Plug 'psliwka/vim-smoothie'
 Plug 'wellle/context.vim'
 Plug 'dstein64/vim-win'
 Plug 'zsugabubus/vim-jumpmotion'
-Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
+if has('nvim')
+    Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
+endif
 
 
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }
