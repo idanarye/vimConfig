@@ -142,6 +142,7 @@ Plug 'zsugabubus/vim-jumpmotion'
 if has('nvim')
     Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
 endif
+Plug 'da-x/name-assign.vim'
 
 
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }

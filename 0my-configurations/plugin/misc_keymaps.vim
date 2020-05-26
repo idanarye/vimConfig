@@ -253,3 +253,5 @@ nnoremap <Leader>i :InlineEdit<Cr>
 nnoremap <Leader>C :ContextToggle<Cr>
 
 nmap <leader>W <plug>WinWin
+
+vmap <leader>e <Plug>NameAssign
