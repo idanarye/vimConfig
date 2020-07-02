@@ -12,3 +12,18 @@ command! -bang -nargs=* FzfRg
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
+
+function FzfRgRegex(withPreview) abort
+    let l:options = {'options': [
+          \ '--phony',
+          \ '--bind', 'change:reload:rg --column --line-number --no-heading --color=never {q}',
+          \ '--prompt', 'rg> '
+          \ ]}
+
+    if a:withPreview
+        let l:spec = fzf#vim#with_preview(l:options, 'up:60%')
+    else
+        let l:spec = fzf#vim#with_preview(l:options, 'right:50%:hidden', '?')
+    endif
+    call fzf#vim#grep('echo', 1, l:spec, a:withPreview)
+endfunction

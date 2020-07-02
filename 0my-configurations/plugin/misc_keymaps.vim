@@ -158,7 +158,7 @@ nnoremap <M-p>u :CtrlPUndo<Cr>
 nnoremap <M-p>q :CtrlPQuickfix<Cr>
 nnoremap <M-p><C-b> :CtrlPBuffer<Cr>
 nnoremap <M-p>s :FuzzyGrep<Cr>
-nnoremap <M-p><C-s> :call ctrlp#init(ctrlp#sift#cmd())<Cr>
+" nnoremap <M-p><C-s> :call ctrlp#init(ctrlp#sift#cmd())<Cr>
 nnoremap <M-p>B :CtrlPBookmark<Cr>
 " nnoremap <M-p>t :CtrlPTag<Cr>
 " nnoremap <M-p><C-t> :CtrlPBufTag<Cr>
@@ -185,6 +185,7 @@ nnoremap <M-p><C-t> :FzfBTags<Cr>
 nnoremap <M-p>s :FzfRg<Cr>
 nnoremap <M-p><M-s> :execute 'FzfRg ' . input('rg> ')<Cr>
 nnoremap <M-p>S :execute 'FzfRg ' . expand('<cword>')<Cr>
+nnoremap <M-p><C-s> :call FzfRgRegex(0)<Cr>
 " nnoremap <M-p><C-b> :FzfBuffers<Cr>
 " nnoremap <M-p>t :FzfTags<Cr>
 nnoremap <M-p>t :Vista finder!<Cr>
