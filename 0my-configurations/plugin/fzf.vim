@@ -10,7 +10,7 @@ command! -bang -nargs=* FzfRg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=never '.shellescape(<q-args>), 1,
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \           : fzf#vim#with_preview('right:50%:hidden', 'ctrl-/'),
   \   <bang>0)
 
 function FzfRgRegex(withPreview) abort
@@ -23,7 +23,7 @@ function FzfRgRegex(withPreview) abort
     if a:withPreview
         let l:spec = fzf#vim#with_preview(l:options, 'up:60%')
     else
-        let l:spec = fzf#vim#with_preview(l:options, 'right:50%:hidden', '?')
+        let l:spec = fzf#vim#with_preview(l:options, 'right:50%:hidden', 'ctrl-/')
     endif
     call fzf#vim#grep('echo', 1, l:spec, a:withPreview)
 endfunction
