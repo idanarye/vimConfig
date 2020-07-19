@@ -261,7 +261,7 @@ let g:indent_guides_guide_size=1
 
 let g:EasyClipUseSubstituteDefaults=1
 
-let g:vebugger_leader='<M-d>'
+" let g:vebugger_leader='<M-d>'
 
 " PyMatcher for CtrlP
 let g:ctrlp_extensions = ['modified', 'branch']

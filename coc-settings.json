@@ -68,8 +68,14 @@
   "json.schemas": [
     {
       "url": "file:///files/tests/jsonschema/1/schema.json",
-      "fileMatch":[
+      "fileMatch": [
         "/files/tests/jsonschema/1/*.json"
+      ]
+    },
+    {
+      "url": "https://puremourning.github.io/vimspector/schema/vimspector.schema.json",
+      "fileMatch": [
+        ".vimspector.json"
       ]
     }
   ],

@@ -144,6 +144,7 @@ if has('nvim')
 endif
 Plug 'da-x/name-assign.vim'
 Plug 'n0v1c3/vira', { 'do': './install.sh' }
+Plug 'puremourning/vimspector'
 
 
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }
