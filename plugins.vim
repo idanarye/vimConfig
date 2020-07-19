@@ -143,6 +143,7 @@ if has('nvim')
     Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
 endif
 Plug 'da-x/name-assign.vim'
+Plug 'n0v1c3/vira', { 'do': './install.sh' }
 
 
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }

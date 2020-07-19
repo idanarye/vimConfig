@@ -3,6 +3,7 @@ function! StatusLine(current)
                 \ . ' %f%h%w%m%r '
                 \ . (a:current ? '%#CrystallineFill# %<%{fugitive#head()} ' : '')
                 \ . '%=' . (a:current ? '%#Crystalline# %{&paste?"PASTE ":""}%{&spell?"SPELL ":""}' . crystalline#mode_color() : '')
+                \ . '%{substitute(ViraStatusLine(), "^None$", "", "")}'
                 \ . ' %{&ft}[%{&enc}][%{&ffs}] %l/%L %c%V %P '
 endfunction
 let g:crystalline_statusline_fn = 'StatusLine'
