@@ -82,7 +82,7 @@ Plug 'udalov/kotlin-vim'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/AdvancedSorters'
 Plug 'vim-scripts/aspnetcs'
-Plug 'vim-scripts/dbext.vim'
+" Plug 'vim-scripts/dbext.vim'
 Plug 'vim-scripts/keepcase.vim'
 Plug 'vim-scripts/mlessnau_case'
 Plug 'vim-scripts/roo.vim'
@@ -145,6 +145,11 @@ endif
 Plug 'da-x/name-assign.vim'
 Plug 'n0v1c3/vira', { 'do': './install.sh' }
 Plug 'puremourning/vimspector'
+Plug 'rraks/pyro'
+Plug 'whiteinge/diffconflicts'
+Plug 'rhysd/conflict-marker.vim'
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
 
 
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }
