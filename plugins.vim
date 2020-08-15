@@ -129,6 +129,7 @@ let g:my_coc_extensions = [
             \ 'coc-yaml',
             \ 'coc-actions',
             \ 'coc-calc',
+            \ 'coc-db',
             \ ]
 Plug 'AndrewRadev/inline_edit.vim'
 Plug 'kkoomen/vim-doge'
