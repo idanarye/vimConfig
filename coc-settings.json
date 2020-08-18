@@ -91,5 +91,11 @@
     "/files/code/talker",
     "/files/code/wekapp/deps/plumbum"
   ],
-  "coc-actions.hideCursor": false
+  "coc-actions.hideCursor": false,
+  "explorer.keyMappings": {
+    "<cr>": ["expandable?", ["expanded?", "collapse", "expand"], "open"],
+    "cd": ["cd"],
+    "gS": ["reveal:sourceWindow"]
+  },
+  "explorer.file.autoReveal": false
 }

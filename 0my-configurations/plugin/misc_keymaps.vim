@@ -29,14 +29,13 @@ xmap <M-l> <Plug>(textmanip-move-right)
 " noremap <Leader><Tab> :NERDTreeToggle<Cr>
 " noremap <Leader><Leader><Tab> :NERDTreeFind<Cr>
 
-" noremap <Leader><Tab> :Defx -split=vertical -toggle -winwidth=31<Cr>
-noremap <Leader><Tab> :Defx -split=vertical -toggle<Cr>
-noremap <Leader><Leader><Tab> :Defx -split=vertical -winwidth=31 -search=`expand('%:p')`<Cr>
+" noremap <Leader><Tab> :Defx -split=vertical -toggle<Cr>
+" noremap <Leader><Leader><Tab> :Defx -split=vertical -winwidth=31 -search=`expand('%:p')`<Cr>
 
-noremap <Leader>d :Defx -new -search=`expand('%:p')`<Cr>
-noremap <C-w><M-s> :split <Bar> Defx -new -search=`expand('%:p')`<Cr>
-noremap <C-w><M-v> :vsplit <Bar> Defx -new -search=`expand('%:p')`<Cr>
-noremap <M-t>d :tab split <Bar> Defx -new -search=`expand('%:p')`<Cr>
+" noremap <Leader>d :Defx -new -search=`expand('%:p')`<Cr>
+" noremap <C-w><M-s> :split <Bar> Defx -new -search=`expand('%:p')`<Cr>
+" noremap <C-w><M-v> :vsplit <Bar> Defx -new -search=`expand('%:p')`<Cr>
+" noremap <M-t>d :tab split <Bar> Defx -new -search=`expand('%:p')`<Cr>
 
 " noremap <Leader>` :TagbarToggle<Cr>
 " noremap <Leader><Leader>` :TagbarShowTag<Cr>
