@@ -1,3 +1,6 @@
+if !has('python3')
+    finish
+endif
 let g:vira_config_file_servers = '/home/idanarye/.config/vira/vira_servers.yaml'
 let g:vira_config_file_projects = '/home/idanarye/.config/vira/vira_projects.yaml'
 
