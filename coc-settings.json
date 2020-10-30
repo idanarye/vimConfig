@@ -92,7 +92,7 @@
     "/files/code/wekapp/deps/plumbum"
   ],
   "coc-actions.hideCursor": false,
-  "explorer.keyMappings": {
+  "explorer.keyMappings.global": {
     "<cr>": ["expandable?", ["expanded?", "collapse", "expand"], "open"],
     "cd": ["cd"],
     "gS": ["reveal:sourceWindow"]
