@@ -155,6 +155,7 @@ Plug 'whiteinge/diffconflicts'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }
