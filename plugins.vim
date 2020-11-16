@@ -118,7 +118,7 @@ Plug 'liuchengxu/vista.vim'
 " Plug 'kristijanhusak/defx-git'
 Plug 'rhysd/git-messenger.vim'
 Plug 'rbong/vim-crystalline'
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
 let g:my_coc_extensions = [
             \ 'coc-json',
             \ 'coc-python',
