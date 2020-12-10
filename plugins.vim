@@ -102,7 +102,7 @@ Plug 'mattboehm/vim-unstack'
 Plug 'cespare/vim-toml'
 " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 " Plug 'blindFS/vim-taskwarrior'
-" Plug 'tbabej/taskwiki'
+" Plug 'tools-life/taskwiki'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'samoshkin/vim-mergetool'
 Plug 'thinca/vim-themis'
