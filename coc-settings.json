@@ -1,13 +1,13 @@
 {
   "suggest.autoTrigger": "none",
   "snippets.autoTrigger": false,
-  "diagnostic.locationlist": false,
+  "diagnostic.locationlistUpdate": false,
   "codeLens.enable": true,
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextPrefix": " ",
   "coc.preferences.rootPatterns": [".idanarye.omnipytent.3.py", ".vim",".git",".hg",".projections.json"],
   "suggest.noselect": false,
-  "suggest.keepCompleteopt": true,
+  "suggest.keepCompleteopt": false,
   "suggest.completionItemKindLabels": {
     "keyword": "\uf1de",
     "variable": "\ue79b",
