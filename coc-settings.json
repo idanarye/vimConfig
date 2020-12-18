@@ -7,7 +7,7 @@
   "diagnostic.virtualTextPrefix": " ",
   "coc.preferences.rootPatterns": [".idanarye.omnipytent.3.py", ".vim",".git",".hg",".projections.json"],
   "suggest.noselect": false,
-  "suggest.keepCompleteopt": false,
+  "suggest.keepCompleteopt": true,
   "suggest.completionItemKindLabels": {
     "keyword": "\uf1de",
     "variable": "\ue79b",
