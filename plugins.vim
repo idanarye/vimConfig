@@ -131,7 +131,6 @@ let g:my_coc_extensions = [
             \ 'coc-calc',
             \ 'coc-db',
             \ 'coc-explorer',
-            \ 'coc-bookmark',
             \ ]
 Plug 'AndrewRadev/inline_edit.vim'
 Plug 'kkoomen/vim-doge'
