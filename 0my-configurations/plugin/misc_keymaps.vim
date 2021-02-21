@@ -98,7 +98,7 @@ nnoremap <Leader>gd :Gvdiff!<Cr>
 nnoremap <Leader>gl :0Gllog<Cr>
 vnoremap <Leader>gl :Gllog<Cr>
 nnoremap <Leader>gL :GitLog<Cr>
-noremap <Leader>gb :Gblame<Cr>
+nnoremap <Leader>gb :Git blame<Cr>
 nnoremap <Leader>gf :call merginal#bang('git fetch --prune')<Cr>
 nnoremap <Leader>gu :call merginal#bang('git submodule update --init')<Cr>
 
