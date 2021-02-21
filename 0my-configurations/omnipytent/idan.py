@@ -57,6 +57,33 @@ def cargo_example(ctx):
 cargo_example.allow_main = False
 
 
+@task
+def cargo_fmt_check(ctx):
+    import re
+
+    from plumbum import ProcessExecutionError
+
+    from omnipytent.util import populate_quickfix
+
+    header_pattern = re.compile(r'^Diff in (.+) at line (\d+):$')
+
+    with populate_quickfix() as qf:
+        try:
+            for line, _ in cargo['fmt', '--all', '--', '--check', '--color', 'never'].popen():
+                if line is None:
+                    continue
+                m = header_pattern.match(line)
+                if m:
+                    print(line)
+                    filename, lnum = m.groups()
+                    qf(filename=filename, lnum=lnum)
+                else:
+                    qf(text=line)
+        except ProcessExecutionError as e:
+            if e.retcode != 1:
+                raise
+
+
 def get_gradle_deps(configuration='runtime'):
     import re
 
