@@ -92,7 +92,7 @@ nnoremap <Leader><C-h>p :BreezeParent<Cr>
 vnoremap <silent> <Leader>a :EasyAlign<Cr>
 
 "keymaps for Fugitive:
-nnoremap <Leader>gs :Gstatus<Cr>
+nnoremap <Leader>gs :Git<Cr>
 nnoremap <Leader>ge :Gedit<Cr>
 nnoremap <Leader>gd :Gvdiff!<Cr>
 nnoremap <Leader>gl :0Gllog<Cr>
