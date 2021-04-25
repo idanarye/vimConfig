@@ -257,3 +257,6 @@ nnoremap <Leader>C :ContextToggle<Cr>
 nmap <leader>W <plug>WinWin
 
 vmap <leader>e <Plug>NameAssign
+
+" Disable conflict-markers keybinds
+let g:conflict_marker_enable_mappings = 0
