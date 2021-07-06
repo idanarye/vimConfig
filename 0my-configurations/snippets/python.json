@@ -4,6 +4,6 @@
         "body": [
             "import IPython",
             "IPython.embed()"
-        ],
+        ]
     }
 }
