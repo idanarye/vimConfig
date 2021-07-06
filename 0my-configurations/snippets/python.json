@@ -1,0 +1,9 @@
+{
+    "Insert IPython.embed()": {
+        "prefix": "ipy",
+        "body": [
+            "import IPython",
+            "IPython.embed()"
+        ],
+    }
+}

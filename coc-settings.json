@@ -97,6 +97,6 @@
     "cd": ["cd"],
     "gS": ["reveal:sourceWindow"]
   },
-  "explorer.file.autoReveal": false,
+  "explorer.file.reveal.auto": false,
   "workspace.progressTarget": "statusline"
 }

@@ -1,3 +1,27 @@
+if !has('nvim')
+    finish
+endif
+let g:completion_enable_auto_popup = 0
+
+imap <C-Space> <Plug>(completion_smart_tab)
+
+" nnoremap <silent> \a <cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <silent> \a <cmd>Telescope lsp_code_actions<CR>
+vnoremap <silent> \a <cmd>Telescope lsp_range_code_actions<CR>
+
+nnoremap <silent> \d <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K  <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> \D <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> \k <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> \<C-d> <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> \n <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> \0 <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> \W <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+nnoremap <silent> \<M-d> <cmd>lua vim.lsp.buf.declaration()<CR>
+
+nnoremap <silent> \r <cmd>lua vim.lsp.buf.rename()<CR>
+
+finish
 if !empty(globpath(&runtimepath, 'plugin/LanguageClient.vim'))
             " \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     let g:LanguageClient_serverCommands = extend({

@@ -11,7 +11,7 @@ Plug 'briancollins/vim-jst'
 Plug 'chrisbra/csv.vim'
 Plug 'cloudhead/neovim-fuzzy'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'deris/vim-rengbang'
 Plug 'inkarkat/vim-ingo-library'
@@ -118,20 +118,18 @@ Plug 'liuchengxu/vista.vim'
 " Plug 'kristijanhusak/defx-git'
 Plug 'rhysd/git-messenger.vim'
 Plug 'rbong/vim-crystalline'
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-let g:my_coc_extensions = [
-            \ 'coc-json',
-            \ 'coc-python',
-            \ 'coc-rust-analyzer',
-            \ 'coc-snippets',
-            \ 'coc-tabnine',
-            \ 'coc-git',
-            \ 'coc-yaml',
-            \ 'coc-actions',
-            \ 'coc-calc',
-            \ 'coc-db',
-            \ 'coc-explorer',
-            \ ]
+" Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+" let g:my_coc_extensions = [
+            " \ 'coc-json',
+            " \ 'coc-snippets',
+            " \ 'coc-tabnine',
+            " \ 'coc-git',
+            " \ 'coc-yaml',
+            " \ 'coc-actions',
+            " \ 'coc-calc',
+            " \ 'coc-db',
+            " \ 'coc-explorer',
+            " \ ]
 Plug 'AndrewRadev/inline_edit.vim'
 Plug 'kkoomen/vim-doge'
 Plug 'KnoP-01/tortus'
@@ -155,6 +153,23 @@ Plug 'rhysd/conflict-marker.vim'
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
+if has('nvim')
+    Plug 'nvim-lua/lsp_extensions.nvim'
+    Plug 'nvim-lua/completion-nvim'
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'kyazdani42/nvim-web-devicons' " for file icons
+    Plug 'kyazdani42/nvim-tree.lua'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'lewis6991/gitsigns.nvim'
+    Plug 'bfredl/nvim-luadev'
+    Plug 'hrsh7th/vim-vsnip'
+    Plug 'hrsh7th/vim-vsnip-integ'
+endif
+Plug 'rafamadriz/friendly-snippets'
 
 
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }
