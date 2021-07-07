@@ -165,9 +165,12 @@ if has('nvim')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'lewis6991/gitsigns.nvim'
-    Plug 'bfredl/nvim-luadev'
     Plug 'hrsh7th/vim-vsnip'
     Plug 'hrsh7th/vim-vsnip-integ'
+    Plug 'haringsrob/nvim_context_vt'
+    Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
+    Plug 'onsails/lspkind-nvim'
+    Plug 'rafcamlet/nvim-luapad'
 endif
 Plug 'rafamadriz/friendly-snippets'
 
