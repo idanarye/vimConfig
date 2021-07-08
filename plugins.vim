@@ -171,6 +171,7 @@ if has('nvim')
     Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
     Plug 'onsails/lspkind-nvim'
     Plug 'rafcamlet/nvim-luapad'
+    " Plug 'hrsh7th/nvim-compe'
 endif
 Plug 'rafamadriz/friendly-snippets'
 
