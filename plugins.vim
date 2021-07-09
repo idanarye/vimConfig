@@ -172,6 +172,7 @@ if has('nvim')
     Plug 'onsails/lspkind-nvim'
     Plug 'rafcamlet/nvim-luapad'
     " Plug 'hrsh7th/nvim-compe'
+    Plug 'ojroques/nvim-lspfuzzy'
 endif
 Plug 'rafamadriz/friendly-snippets'
 

@@ -7,9 +7,10 @@ endif
 " imap <C-Space> <Plug>(completion_smart_tab)
 " inoremap <silent><expr> <C-Space> compe#complete()
 
-" nnoremap <silent> \a <cmd>lua vim.lsp.buf.code_action()<CR>
-nnoremap <silent> \a <cmd>Telescope lsp_code_actions<CR>
-vnoremap <silent> \a <cmd>Telescope lsp_range_code_actions<CR>
+nnoremap <silent> \a <cmd>lua vim.lsp.buf.code_action()<CR>
+vnoremap <silent> \a :lua vim.lsp.buf.range_code_action()<CR>
+" nnoremap <silent> \a <cmd>Telescope lsp_code_actions<CR>
+" vnoremap <silent> \a <cmd>Telescope lsp_range_code_actions<CR>
 
 nnoremap <silent> \d <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K  <cmd>lua vim.lsp.buf.hover()<CR>
@@ -22,6 +23,9 @@ nnoremap <silent> \W <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> \<M-d> <cmd>lua vim.lsp.buf.declaration()<CR>
 
 nnoremap <silent> \r <cmd>lua vim.lsp.buf.rename()<CR>
+
+nnoremap <silent> \q <cmd> LspDiagnostics 0<CR>
+nnoremap <silent> \Q <cmd> LspDiagnosticsAll<CR>
 
 finish
 if !empty(globpath(&runtimepath, 'plugin/LanguageClient.vim'))

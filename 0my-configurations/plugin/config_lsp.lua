@@ -16,6 +16,9 @@ lsp_extensions.inlay_hints{
     enabled = {"TypeHint", "ChainingHint", "ParameterHint"},
 }
 
+require'lspfuzzy'.setup {
+}
+
 nvim_lsp.rust_analyzer.setup({
     capabilities = capabilities,
     on_attach = on_attach,
