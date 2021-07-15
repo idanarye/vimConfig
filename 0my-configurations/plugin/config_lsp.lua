@@ -65,6 +65,7 @@ nvim_lsp.jedi_language_server.setup {
             extraPaths = {
                 '/home/idanarye/.vim/plugins/vim-omnipytent/autoload',
                 '/home/idanarye/.vim/plugins/vim-omnipytent-extra',
+                unpack(vim.g.extraJediPaths),
             }
         },
     }
