@@ -11,7 +11,7 @@ function! s:tabsInfo() abort
             call add(l:result, l:tabData)
             continue
         endif
-        let l:m = matchlist(l:line, '\v^([> ])   (.*)$')
+        let l:m = matchlist(l:line, '\v^([> #])   (.*)$')
         if l:m[1] == '>'
             let l:tabData.current = v:true
         endif
