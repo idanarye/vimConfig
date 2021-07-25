@@ -39,6 +39,25 @@ def cargo_tests(ctx):
         yield match.group(1)
 
 
+@task.options_multi
+def cargo_testfiles(ctx):
+    ctx.key(str)
+    import re
+    pattern = re.compile(r'^(?:    )(\w+)$', re.MULTILINE)
+    _, _, stderr = cargo['test', '--test'].run(retcode=101)
+
+    it = iter(stderr.splitlines())
+    for line in it:
+        if line == 'Available tests:':
+            break
+    else:
+        return
+    for line in it:
+        if m := pattern.match(line):
+            testfile, = m.groups()
+            yield testfile
+
+
 @task.options
 def cargo_example(ctx):
     ctx.key(str)
