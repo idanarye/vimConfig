@@ -173,6 +173,9 @@ if has('nvim')
     Plug 'rafcamlet/nvim-luapad'
     " Plug 'hrsh7th/nvim-compe'
     Plug 'ojroques/nvim-lspfuzzy'
+    Plug 'mfussenegger/nvim-dap'
+    Plug 'rcarriga/nvim-dap-ui'
+    Plug 'theHamsta/nvim-dap-virtual-text'
 endif
 Plug 'rafamadriz/friendly-snippets'
 

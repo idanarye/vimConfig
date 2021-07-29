@@ -1,3 +1,4 @@
+finish
 nnoremap <silent> <M-d>l :<c-u>call vimspector#Launch()<Cr>
 nmap <M-d>c <Plug>VimspectorContinue
 nmap <M-d>k <Plug>VimspectorStop
