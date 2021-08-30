@@ -1,3 +1,4 @@
+finish
 function! s:startExplorer(path)
     enew
     execute 'CocCommand explorer --no-toggle --position floating --open-action-strategy sourceWindow' a:path
