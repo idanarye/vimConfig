@@ -176,6 +176,7 @@ if has('nvim')
     Plug 'mfussenegger/nvim-dap'
     Plug 'rcarriga/nvim-dap-ui'
     Plug 'theHamsta/nvim-dap-virtual-text'
+    Plug 'pwntester/octo.nvim'
 endif
 Plug 'rafamadriz/friendly-snippets'
 
