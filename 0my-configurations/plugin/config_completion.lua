@@ -1,14 +1,23 @@
 -- vim.api.nvim_set_keymap('i', '<C-Space>', 'compe#complete() . "\\<C-n>"', {expr = true, noremap = true, silent = true})
 -- vim.api.nvim_set_keymap('i', '<C-Space>', 'compe#complete()', {expr = true, noremap = true, silent = true})
 
+completion = require'completion'
 
 local on_attach = function(client)
-    require'completion'.on_attach(client)
+    completion.on_attach(client)
 end
 
-vim.api.nvim_set_keymap('i', '<C-Space>', '<Plug>(completion_smart_tab)', {})
+vim.api.nvim_set_keymap('i', '<C-Space>', '<Plug>(completion_trigger)', {})
 vim.o.completeopt = 'menuone'
 vim.api.nvim_set_var('completion_enable_auto_popup', 0)
+
+vim.api.nvim_set_var('completion_chain_complete_list', {
+    default = {
+        { complete_items = {'lsp', 'snippet'} };
+    };
+})
+
+vim.api.nvim_set_var('completion_enable_snippet', 'vim-vsnip')
 -- vim.api.nvim_set_var('completion_enable_snippet', vim)
 -- vim.api.nvim_set_var('completion_confirm_key', "<C-l>")
 
