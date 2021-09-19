@@ -102,3 +102,5 @@ require'lspconfig'.sumneko_lua.setup {
     },
   },
 }
+
+require'lspconfig'.kotlin_language_server.setup{}
