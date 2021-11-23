@@ -21,7 +21,8 @@ require'lspfuzzy'.setup {
 
 nvim_lsp.rust_analyzer.setup({
     capabilities = capabilities,
-    on_attach = on_attach,
+    -- on_attach = on_attach,
+    --on_attach = require'completion'.on_attach;
     settings = {
         ["rust-analyzer"] = {
             assist = {
@@ -70,6 +71,10 @@ nvim_lsp.jedi_language_server.setup {
         },
     }
 }
+ -- nvim_lsp.pylsp.setup {
+   -- capabilities = capabilities;
+ -- }
+
 
 require'lspconfig'.ccls.setup{}
 

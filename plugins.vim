@@ -156,7 +156,7 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 if has('nvim')
     Plug 'nvim-lua/lsp_extensions.nvim'
-    Plug 'nvim-lua/completion-nvim'
+    " Plug 'nvim-lua/completion-nvim'
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'neovim/nvim-lspconfig'
@@ -177,6 +177,15 @@ if has('nvim')
     Plug 'rcarriga/nvim-dap-ui'
     Plug 'theHamsta/nvim-dap-virtual-text'
     Plug 'pwntester/octo.nvim'
+
+    " Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    " Plug 'hrsh7th/cmp-buffer'
+    " Plug 'hrsh7th/cmp-path'
+    " Plug 'hrsh7th/cmp-cmdline'
+    Plug 'hrsh7th/cmp-calc'
+    Plug 'hrsh7th/nvim-cmp'
+    Plug 'lukas-reineke/cmp-under-comparator'
 endif
 Plug 'rafamadriz/friendly-snippets'
 

@@ -1,63 +1,38 @@
--- vim.api.nvim_set_keymap('i', '<C-Space>', 'compe#complete() . "\\<C-n>"', {expr = true, noremap = true, silent = true})
--- vim.api.nvim_set_keymap('i', '<C-Space>', 'compe#complete()', {expr = true, noremap = true, silent = true})
+local cmp = require'cmp'
 
-completion = require'completion'
-
-local on_attach = function(client)
-    completion.on_attach(client)
-end
-
-vim.api.nvim_set_keymap('i', '<C-Space>', '<Plug>(completion_trigger)', {})
-vim.o.completeopt = 'menuone'
-vim.api.nvim_set_var('completion_enable_auto_popup', 0)
-
-vim.api.nvim_set_var('completion_chain_complete_list', {
-    default = {
-        { complete_items = {'lsp', 'snippet'} };
+cmp.setup {
+    completion = {
+        autocomplete = false;
+        completeopt = 'menu,menuone';
     };
-})
 
-vim.api.nvim_set_var('completion_enable_snippet', 'vim-vsnip')
--- vim.api.nvim_set_var('completion_enable_snippet', vim)
--- vim.api.nvim_set_var('completion_confirm_key', "<C-l>")
+    mapping = {
+        ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+        ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+        ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+        ['<C-e>'] = cmp.mapping({
+            i = cmp.mapping.abort(),
+            c = cmp.mapping.close(),
+        }),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    };
 
--- vim.api.nvim_set_var(
--- let g:completion_enable_auto_popup = 0
--- let g:completion_enable_snippet = 'vim-vsnip'
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' };
+        { name = 'calc' };
+    });
 
-
--- vim.o.completeopt = 'menuone,noselect'
--- require'compe'.setup {
-    -- enabled = true;
-    -- autocomplete = false;
-    -- -- debug = false;
-    -- -- min_length = 1;
-    -- preselect = 'enable';
-    -- -- preselect = 'always';
-    -- -- throttle_time = 80;
-    -- -- source_timeout = 200;
-    -- -- resolve_timeout = 800;
-    -- -- incomplete_delay = 400;
-    -- -- max_abbr_width = 100;
-    -- -- max_kind_width = 100;
-    -- -- max_menu_width = 100;
-    -- -- documentation = {
-        -- -- border = { '', '' ,'', ' ', '', '', '', ' ' }, -- the border option is the same as `|help nvim_open_win|`
-        -- -- winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
-        -- -- max_width = 120,
-        -- -- min_width = 60,
-        -- -- max_height = math.floor(vim.o.lines * 0.3),
-        -- -- min_height = 1,
-    -- -- };
-
-    -- source = {
-        -- path = true;
-        -- buffer = true;
-        -- calc = true;
-        -- nvim_lsp = true;
-        -- nvim_lua = true;
-        -- vsnip = true;
-        -- ultisnips = true;
-        -- luasnip = true;
-    -- };
--- }
+    sorting = {
+        comparators = {
+            cmp.config.compare.offset,
+            cmp.config.compare.exact,
+            cmp.config.compare.score,
+            require "cmp-under-comparator".under,
+            cmp.config.compare.kind,
+            cmp.config.compare.sort_text,
+            cmp.config.compare.length,
+            cmp.config.compare.order,
+        },
+    },
+}
