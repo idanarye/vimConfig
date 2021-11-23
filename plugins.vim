@@ -186,6 +186,8 @@ if has('nvim')
     Plug 'hrsh7th/cmp-calc'
     Plug 'hrsh7th/nvim-cmp'
     Plug 'lukas-reineke/cmp-under-comparator'
+
+    Plug 'ray-x/lsp_signature.nvim'
 endif
 Plug 'rafamadriz/friendly-snippets'
 

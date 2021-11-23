@@ -16,6 +16,11 @@ lsp_extensions.inlay_hints{
     enabled = {"TypeHint", "ChainingHint", "ParameterHint"},
 }
 
+require'lsp_signature'.setup {
+  toggle_key = '<M-s>';
+}
+
+
 require'lspfuzzy'.setup {
 }
 
