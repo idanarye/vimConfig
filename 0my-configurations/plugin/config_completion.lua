@@ -3,7 +3,7 @@ local cmp = require'cmp'
 cmp.setup {
     completion = {
         autocomplete = false;
-        completeopt = 'menu,menuone';
+        completeopt = 'menu,menuone,noselect';
     };
 
     mapping = {

@@ -18,6 +18,7 @@ lsp_extensions.inlay_hints{
 
 require'lsp_signature'.setup {
   toggle_key = '<M-s>';
+  floating_window_above_cur_line = true;
 }
 
 
