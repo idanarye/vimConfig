@@ -10,10 +10,13 @@ require'nvim-tree'.setup {
         dotfiles = true;
         custom = {};
     };
+
+    git = {
+        ignore = true;
+    };
 }
 
 -- These settings are here for now until the author of nvim-tree moves them to the setup function:
-vim.g.nvim_tree_gitignore = 1
 vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_git_hl = 1
 vim.g.nvim_tree_highlight_opened_files = 1
