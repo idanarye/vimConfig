@@ -5,6 +5,8 @@ if has('nvim')
 	let $EDITOR = 'nvim'
 endif
 
+set nohidden
+
 
 " Configure Unite
 
