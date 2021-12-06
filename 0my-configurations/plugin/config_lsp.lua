@@ -66,7 +66,7 @@ nvim_lsp.rust_analyzer.setup({
 -- }
 
 nvim_lsp.jedi_language_server.setup {
-    capabilities = capabilities,
+    capabilities = capabilities;
     -- cmd = { 'jedi-language-server', '--log-file', '/tmp/jedilog.log' },
     init_options = {
         workspace = {
@@ -74,9 +74,15 @@ nvim_lsp.jedi_language_server.setup {
                 '/home/idanarye/.vim/plugins/vim-omnipytent/autoload',
                 '/home/idanarye/.vim/plugins/vim-omnipytent-extra',
                 unpack(vim.g.extraJediPaths or {}),
-            }
-        },
-    }
+            };
+        };
+    };
+    root_dir = function(startpath)
+      if startpath == '' then
+        startpath = vim.fn.getcwd()
+      end
+      return nvim_lsp.jedi_language_server.document_config.default_config.root_dir(startpath)
+    end;
 }
  -- nvim_lsp.pylsp.setup {
    -- capabilities = capabilities;
