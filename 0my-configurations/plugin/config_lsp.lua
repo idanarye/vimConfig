@@ -22,7 +22,8 @@ require'lsp_signature'.setup {
 }
 
 
-require'lspfuzzy'.setup {
+require'fzf_lsp'.setup {
+  override_ui_select = true;
 }
 
 nvim_lsp.rust_analyzer.setup({

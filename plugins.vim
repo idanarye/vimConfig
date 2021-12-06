@@ -172,7 +172,6 @@ if has('nvim')
     Plug 'onsails/lspkind-nvim'
     Plug 'rafcamlet/nvim-luapad'
     " Plug 'hrsh7th/nvim-compe'
-    Plug 'ojroques/nvim-lspfuzzy'
     Plug 'mfussenegger/nvim-dap'
     Plug 'rcarriga/nvim-dap-ui'
     Plug 'theHamsta/nvim-dap-virtual-text'
@@ -188,6 +187,8 @@ if has('nvim')
     Plug 'lukas-reineke/cmp-under-comparator'
 
     Plug 'ray-x/lsp_signature.nvim'
+
+    Plug 'gfanto/fzf-lsp.nvim'
 endif
 Plug 'rafamadriz/friendly-snippets'
 
