@@ -1,3 +1,4 @@
+local lsp_installer = require'nvim-lsp-installer'
 local nvim_lsp = require'lspconfig'
 local lsp_extensions = require'lsp_extensions'
 
@@ -26,7 +27,9 @@ require'fzf_lsp'.setup {
   override_ui_select = true;
 }
 
-nvim_lsp.rust_analyzer.setup({
+local server_setups = {}
+
+server_setups.rust_analyzer = {
     capabilities = capabilities,
     -- on_attach = on_attach,
     --on_attach = require'completion'.on_attach;
@@ -48,43 +51,9 @@ nvim_lsp.rust_analyzer.setup({
             },
         }
     }
-})
+}
 
--- nvim_lsp.jedi_language_server.setup {
-    -- init_options = {
-        -- diagnostics = {
-            -- enable = false,
-        -- }
-    -- },
-    -- settings = {
-        -- ['jedi-language-server'] = {
-            -- diagnostics = {
-                -- enable = false,
-            -- },
-        -- },
-    -- },
--- }
-
---nvim_lsp.jedi_language_server.setup {
-    --capabilities = capabilities;
-    ---- cmd = { 'jedi-language-server', '--log-file', '/tmp/jedilog.log' },
-    --init_options = {
-        --workspace = {
-            --extraPaths = {
-                --'/home/idanarye/.vim/plugins/vim-omnipytent/autoload',
-                --'/home/idanarye/.vim/plugins/vim-omnipytent-extra',
-                --unpack(vim.g.extraJediPaths or {}),
-            --};
-        --};
-    --};
-    --root_dir = function(startpath)
-      --if startpath == '' then
-        --startpath = vim.fn.getcwd()
-      --end
-      --return nvim_lsp.jedi_language_server.document_config.default_config.root_dir(startpath)
-    --end;
---}
-  nvim_lsp.pylsp.setup {
+server_setups.pylsp = {
     capabilities = capabilities;
 
     settings = {
@@ -121,13 +90,13 @@ nvim_lsp.rust_analyzer.setup({
   }
 
 
-require'lspconfig'.ccls.setup{}
+server_setups.ccls = {}
 
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-require'lspconfig'.sumneko_lua.setup {
+server_setups.sumneko_lua = {
   cmd = {'lua-language-server'};
   settings = {
     Lua = {
@@ -153,4 +122,19 @@ require'lspconfig'.sumneko_lua.setup {
   },
 }
 
-require'lspconfig'.kotlin_language_server.setup{}
+server_setups.kotlin_language_server = {
+}
+
+for server_name, _ in pairs(server_setups) do
+  local _, server = lsp_installer.get_server(server_name)
+  if not server:is_installed() then
+    server:install()
+  end
+end
+
+lsp_installer.on_server_ready(function(server)
+  local setup_opts = server_setups[server.name]
+  if setup_opts then
+    server:setup(server_setups[server.name])
+  end
+end)
