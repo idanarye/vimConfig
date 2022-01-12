@@ -187,6 +187,8 @@ if has('nvim')
     Plug 'ray-x/lsp_signature.nvim'
 
     Plug 'gfanto/fzf-lsp.nvim'
+
+    Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 endif
 Plug 'rafamadriz/friendly-snippets'
 
