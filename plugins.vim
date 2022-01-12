@@ -143,9 +143,6 @@ if has('nvim')
     Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
 endif
 Plug 'da-x/name-assign.vim'
-if has('python3')
-    Plug 'n0v1c3/vira', { 'do': './install.sh' }
-endif
 Plug 'puremourning/vimspector'
 Plug 'rraks/pyro'
 Plug 'whiteinge/diffconflicts'
