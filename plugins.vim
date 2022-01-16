@@ -189,6 +189,8 @@ if has('nvim')
     Plug 'gfanto/fzf-lsp.nvim'
 
     Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+
+    Plug 'jose-elias-alvarez/null-ls.nvim'
 endif
 Plug 'rafamadriz/friendly-snippets'
 
