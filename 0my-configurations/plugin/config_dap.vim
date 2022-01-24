@@ -10,7 +10,7 @@ nnoremap <M-d>k <cmd>lua require'dap'.close()<cr>
 " nmap <M-d>p <Plug>VimspectorPause
 nnoremap <M-d>b <cmd>lua require'dap'.toggle_breakpoint()<cr>
 nnoremap <M-d><C-b> <cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>
-" nmap <M-d><C-b> <Plug>VimspectorToggleConditionalBreakpoint
+nnoremap <M-d>B <cmd>lua require'dap'.clear_breakpoints()<cr>
 " nnoremap <silent> <M-d>B <cmd><c-u>call vimspector#ClearBreakpoints()<Cr>
 
 nnoremap <M-d>o <cmd>lua require'dap'.step_over()<cr>
