@@ -160,12 +160,12 @@ if has('nvim')
     Plug 'neovim/nvim-lspconfig'
     Plug 'kyazdani42/nvim-web-devicons' " for file icons
     Plug 'kyazdani42/nvim-tree.lua'
-    Plug 'nvim-treesitter/nvim-treesitter', { 'branch': '0.5-compat', 'do': ':TSUpdate' }
+    Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'lewis6991/gitsigns.nvim'
     Plug 'hrsh7th/vim-vsnip'
     Plug 'hrsh7th/vim-vsnip-integ'
-    Plug 'haringsrob/nvim_context_vt'
+    "Plug 'haringsrob/nvim_context_vt'
     Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
     Plug 'onsails/lspkind-nvim'
     Plug 'rafcamlet/nvim-luapad'
