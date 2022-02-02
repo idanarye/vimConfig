@@ -191,6 +191,8 @@ if has('nvim')
     Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
     Plug 'jose-elias-alvarez/null-ls.nvim'
+
+    Plug 'ncm2/float-preview.nvim'
 endif
 Plug 'rafamadriz/friendly-snippets'
 

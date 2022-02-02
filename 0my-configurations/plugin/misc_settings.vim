@@ -76,3 +76,6 @@ set diffopt=filler,internal,algorithm:histogram,indent-heuristic
 let g:context_enabled = 0
 
 set inccommand=nosplit
+
+set completeopt-=preview
+let g:float_preview#docked = 0
