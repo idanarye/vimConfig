@@ -60,13 +60,18 @@ endfunction
 call s:createMapping('g', function('s:getDiffLines'))
 
 function! s:getDiagnosticLines() abort
-    let l:lines = []
-    let l:thisBufname = bufname()
-    for l:entry in CocAction('diagnosticList')
-        if bufname(l:entry.file) == l:thisBufname
-            call add(l:lines, l:entry.lnum)
-        endif
-    endfor
-    return uniq(sort(l:lines))
+    return uniq(sort(map(luaeval('vim.diagnostic.get(0)'), 'v:val.lnum + 1')))
+    " let l:lines = []
+    " let l:thisBufname = bufname()
+    " for l:entry in CocAction('diagnosticList')
+        " if bufname(l:entry.file) == l:thisBufname
+            " call add(l:lines, l:entry.lnum)
+        " endif
+    " endfor
+    " return uniq(sort(l:lines))
 endfunction
 call s:createMapping('d', function('s:getDiagnosticLines'))
+
+function! GetDiagnosticLines()
+    return s:getDiagnosticLines()
+endfunction
