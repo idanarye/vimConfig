@@ -193,6 +193,8 @@ if has('nvim')
     Plug 'jose-elias-alvarez/null-ls.nvim'
 
     Plug 'ncm2/float-preview.nvim'
+    Plug 'MunifTanjim/nui.nvim'
+    Plug 'nvim-neo-tree/neo-tree.nvim'
 endif
 Plug 'rafamadriz/friendly-snippets'
 
