@@ -19,6 +19,16 @@ require("neo-tree").setup {
         };
         bind_to_cwd = false;
     };
+    event_handlers = {
+        {
+            event = 'file_open_requested';
+            handler = function(args)
+                local path = args.path
+                local open_cmd = args.open_cmd or "edit"
+                require'nvim-tree.actions.open-file'.fn(open_cmd, path)
+            end;
+        };
+    };
 }
 vim.fn.sign_define("LspDiagnosticsSignError", {text = " ", texthl = "LspDiagnosticsSignError"})
 vim.fn.sign_define("LspDiagnosticsSignWarning", {text = " ", texthl = "LspDiagnosticsSignWarning"})
