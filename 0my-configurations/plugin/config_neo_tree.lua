@@ -26,6 +26,7 @@ require("neo-tree").setup {
                 local path = args.path
                 local open_cmd = args.open_cmd or "edit"
                 require'nvim-tree.actions.open-file'.fn(open_cmd, path)
+                return { handled = true }
             end;
         };
     };
