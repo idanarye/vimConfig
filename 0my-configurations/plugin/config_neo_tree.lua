@@ -1,6 +1,7 @@
 vim.api.nvim_set_keymap('n', '<Leader><Tab>', ':NeoTreeFocusToggle<Cr>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<Leader><Leader><Tab>', ':NeoTreeReveal<Cr>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<Leader>d', ':NeoTreeRevealInSplit<Cr>', {noremap = true, silent = true})
+require'nvim-tree'.setup{}
 require("neo-tree").setup {
     filesystem = {
         hijack_netrw_behavior = "open_split";
@@ -23,6 +24,9 @@ require("neo-tree").setup {
         {
             event = 'file_open_requested';
             handler = function(args)
+                if args.state.current_position == 'split' then
+                    return
+                end
                 local path = args.path
                 local open_cmd = args.open_cmd or "edit"
                 require'nvim-tree.actions.open-file'.fn(open_cmd, path)
