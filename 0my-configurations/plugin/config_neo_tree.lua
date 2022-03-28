@@ -1,10 +1,10 @@
-vim.api.nvim_set_keymap('n', '<Leader><Tab>', ':NeoTreeFocusToggle<Cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader><Leader><Tab>', ':NeoTreeReveal<Cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>d', ':NeoTreeRevealInSplit<Cr>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader><Tab>', ':Neotree focus toggle<Cr>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader><Leader><Tab>', ':Neotree focus reveal<Cr>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader>d', ':Neotree reveal current<Cr>', {noremap = true, silent = true})
 require'nvim-tree'.setup{}
 require("neo-tree").setup {
     filesystem = {
-        hijack_netrw_behavior = "open_split";
+        hijack_netrw_behavior = "open_current";
         window = {
             mappings = {
                 ['t'] = function(state)
@@ -24,7 +24,7 @@ require("neo-tree").setup {
         {
             event = 'file_open_requested';
             handler = function(args)
-                if args.state.current_position == 'split' then
+                if args.state.current_position == 'current' then
                     return
                 end
                 local path = args.path
