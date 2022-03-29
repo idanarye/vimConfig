@@ -1,7 +1,9 @@
 vim.api.nvim_set_keymap('n', '<Leader><Tab>', ':Neotree focus toggle<Cr>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<Leader><Leader><Tab>', ':Neotree focus reveal<Cr>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<Leader>d', ':Neotree reveal current<Cr>', {noremap = true, silent = true})
-require'nvim-tree'.setup{}
+require'nvim-tree'.setup {
+    hijack_netrw = false;
+}
 require("neo-tree").setup {
     filesystem = {
         hijack_netrw_behavior = "open_current";
