@@ -10,6 +10,7 @@ require("neo-tree").setup {
                     vim.cmd('tabnew ' .. state.tree:get_node():get_id())
                 end;
                 ['o'] = 'system_open';
+                ['w'] = false;
             }
         };
         commands = {
