@@ -159,7 +159,6 @@ if has('nvim')
     Plug 'williamboman/nvim-lsp-installer'
     Plug 'neovim/nvim-lspconfig'
     Plug 'kyazdani42/nvim-web-devicons' " for file icons
-    Plug 'kyazdani42/nvim-tree.lua' " Keep this because I use a function from there for opening files with neo-tree
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'lewis6991/gitsigns.nvim'
@@ -195,6 +194,7 @@ if has('nvim')
     Plug 'ncm2/float-preview.nvim'
     Plug 'MunifTanjim/nui.nvim'
     Plug 'nvim-neo-tree/neo-tree.nvim'
+    Plug 's1n7ax/nvim-window-picker'
 endif
 Plug 'rafamadriz/friendly-snippets'
 

@@ -1,9 +1,6 @@
 vim.api.nvim_set_keymap('n', '<Leader><Tab>', ':Neotree focus toggle<Cr>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<Leader><Leader><Tab>', ':Neotree focus reveal<Cr>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<Leader>d', ':Neotree reveal current<Cr>', {noremap = true, silent = true})
-require'nvim-tree'.setup {
-    hijack_netrw = false;
-}
 require("neo-tree").setup {
     filesystem = {
         hijack_netrw_behavior = "open_current";
@@ -31,7 +28,11 @@ require("neo-tree").setup {
                 end
                 local path = args.path
                 local open_cmd = args.open_cmd or "edit"
-                require'nvim-tree.actions.open-file'.fn(open_cmd, path)
+                local window = require'window-picker'.pick_window()
+                if window then
+                    vim.api.nvim_set_current_win(window)
+                    vim.api.nvim_command(open_cmd .. ' ' .. path)
+                end
                 return { handled = true }
             end;
         };
