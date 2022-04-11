@@ -1,0 +1,2 @@
+require 'window-picker'.setup {
+}
