@@ -265,11 +265,6 @@ let g:EasyClipUseSubstituteDefaults=1
 
 " PyMatcher for CtrlP
 let g:ctrlp_extensions = ['modified', 'branch']
-if !has('python')
-    echo 'In order to use pymatcher plugin, you need +python compiled vim'
-else
-    let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-endif
 " Set delay to prevent extra search
 let g:ctrlp_lazy_update = 350
 
