@@ -145,7 +145,6 @@ Plug 'da-x/name-assign.vim'
 Plug 'puremourning/vimspector'
 Plug 'rraks/pyro'
 Plug 'whiteinge/diffconflicts'
-Plug 'rhysd/conflict-marker.vim'
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
@@ -194,6 +193,7 @@ if has('nvim')
     Plug 'MunifTanjim/nui.nvim'
     Plug 'nvim-neo-tree/neo-tree.nvim'
     Plug 's1n7ax/nvim-window-picker'
+    Plug 'akinsho/git-conflict.nvim'
 endif
 Plug 'rafamadriz/friendly-snippets'
 
