@@ -36,18 +36,19 @@ server_setups.rust_analyzer = {
     settings = {
         ["rust-analyzer"] = {
             assist = {
-                importGranularity = "module",
-                importPrefix = "by_self",
+                importGranularity = "module";
+                importPrefix = "by_self";
             },
             cargo = {
-                loadOutDirsFromCheck = true,
+                loadOutDirsFromCheck = true;
+                allFeatures = true;
             },
             procMacro = {
-                enable = true,
+                enable = true;
             },
             completion = {
-                -- addCallArgumentSnippets = true,
-                -- addCallParenthesis = true,
+                -- addCallArgumentSnippets = true;
+                -- addCallParenthesis = true;
             },
         }
     }
@@ -61,7 +62,7 @@ server_setups.pylsp = {
         plugins = {
           flake8 = {
             enabled = true;
-            ignore = {'F403', 'F405'};
+            ignore = {'F403', 'F405', 'W503'};
           };
           pycodestyle = {
             enabled = false;
