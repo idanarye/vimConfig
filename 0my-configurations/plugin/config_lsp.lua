@@ -1,5 +1,6 @@
 local lsp_installer = require'nvim-lsp-installer'
-local nvim_lsp = require'lspconfig'
+lsp_installer.setup {}
+local lspconfig = require'lspconfig'
 local lsp_extensions = require'lsp_extensions'
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -27,9 +28,7 @@ require'fzf_lsp'.setup {
   override_ui_select = true;
 }
 
-local server_setups = {}
-
-server_setups.rust_analyzer = {
+lspconfig.rust_analyzer.setup {
     capabilities = capabilities,
     -- on_attach = on_attach,
     --on_attach = require'completion'.on_attach;
@@ -54,7 +53,7 @@ server_setups.rust_analyzer = {
     }
 }
 
-server_setups.pylsp = {
+lspconfig.pylsp.setup {
     capabilities = capabilities;
 
     settings = {
@@ -86,18 +85,18 @@ server_setups.pylsp = {
       if startpath == '' then
         startpath = vim.fn.getcwd()
       end
-      return nvim_lsp.pylsp.document_config.default_config.root_dir(startpath)
+      return lspconfig.pylsp.document_config.default_config.root_dir(startpath)
     end;
   }
 
 
-server_setups.ccls = {}
+lspconfig.ccls.setup {}
 
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-server_setups.sumneko_lua = {
+lspconfig.sumneko_lua.setup {
   cmd = {'lua-language-server'};
   settings = {
     Lua = {
@@ -123,19 +122,5 @@ server_setups.sumneko_lua = {
   },
 }
 
-server_setups.kotlin_language_server = {
+lspconfig.kotlin_language_server.setup {
 }
-
-for server_name, _ in pairs(server_setups) do
-  local _, server = lsp_installer.get_server(server_name)
-  if not server:is_installed() then
-    server:install()
-  end
-end
-
-lsp_installer.on_server_ready(function(server)
-  local setup_opts = server_setups[server.name]
-  if setup_opts then
-    server:setup(server_setups[server.name])
-  end
-end)
