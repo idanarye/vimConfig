@@ -37,7 +37,7 @@ endfunction
 let s:globalPluginOverrideFilePath = expand('<sfile>:p:h') . '/../override-plugins.txt'
 
 function! ReloadPluginDefinition()
-    call plug#begin('~/.vim/plugins')
+    call plug#begin()
     execute 'source ' . s:pluginsFile
 
     call s:applyPluginOverride(s:globalPluginOverrideFilePath)

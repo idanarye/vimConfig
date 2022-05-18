@@ -5,10 +5,16 @@ from omnipytent.integration.plumbum import local
 from omnipytent.ext.erroneous import ERUN
 
 
-python2 = local['python2']
+try:
+    python2 = local['python2']
+except Exception as e:
+    pass
 python3 = local['python3']
 cargo = local['cargo']
-dub = local['dub']
+try:
+    dub = local['dub']
+except Exception as e:
+    pass
 gradle = local['gradle']['-q']
 
 
