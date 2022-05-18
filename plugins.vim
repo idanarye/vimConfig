@@ -138,9 +138,6 @@ Plug 'psliwka/vim-smoothie'
 Plug 'wellle/context.vim'
 Plug 'dstein64/vim-win'
 Plug 'zsugabubus/vim-jumpmotion'
-if has('nvim')
-    Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
-endif
 Plug 'da-x/name-assign.vim'
 Plug 'puremourning/vimspector'
 Plug 'rraks/pyro'
