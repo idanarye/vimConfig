@@ -64,22 +64,44 @@ def cargo_testfiles(ctx):
             yield testfile
 
 
-@task.options
-def cargo_example(ctx):
-    ctx.key(str)
-    if ctx.allow_main:
-        ctx.key(lambda value: value or 'No example - use main')
-        yield None
+@task
+def cargo_metadata(ctx):
     import json
-    metadata = json.loads(cargo['metadata']())
-    wm_members = {wm.split(' ')[0] for wm in metadata['workspace_members']}
-    for package in metadata['packages']:
-        if package['name'] not in wm_members:
-            continue
+    manifest = json.loads(cargo('metadata', '--no-deps'))
+    ctx.pass_data(manifest)
+
+
+class CargoExample(str):
+    def __new__(cls, name, required_features):
+        self = super().__new__(cls, name)
+        self.required_features = tuple(required_features)
+        return self
+
+
+@task.options
+def cargo_example(ctx, manifest=cargo_metadata):
+    import yaml
+    ctx.key(lambda example: str(example) if example else 'No example - use main')
+    ctx.preview(lambda example: yaml.safe_dump(example.__dict__) if example else '')
+    if ctx.allow_main:
+        yield None
+    for package in manifest['packages']:
         for target in package['targets']:
-            if 'example' in target['kind']:
-                yield target['name']
+            if 'example' not in target['kind']:
+                continue
+            yield CargoExample(target['name'], target.get('required-features', []))
 cargo_example.allow_main = False
+
+
+@task
+def cargo_required_features_for_all_examples(ctx, manifest=cargo_metadata):
+    result = set()
+    for package in manifest['packages']:
+        for target in package['targets']:
+            if 'example' not in target['kind']:
+                continue
+            result.update(target.get('required-features', []))
+    ctx.pass_data(sorted(result))
 
 
 @task
