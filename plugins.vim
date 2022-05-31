@@ -191,6 +191,7 @@ if has('nvim')
     Plug 'nvim-neo-tree/neo-tree.nvim'
     Plug 's1n7ax/nvim-window-picker'
     Plug 'akinsho/git-conflict.nvim'
+    Plug 'jbyuki/venn.nvim'
 endif
 Plug 'rafamadriz/friendly-snippets'
 
