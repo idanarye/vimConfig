@@ -68,7 +68,7 @@ Plug 'tomtom/tlib_vim'
 Plug 'tomtom/ttoc_vim'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fireplace'
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive', { 'commit': '92c73bb0507338441733198d630a1fe5e7fdac3a' }
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rsi'
