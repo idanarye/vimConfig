@@ -21,6 +21,7 @@ cmp.setup {
     sources = cmp.config.sources({
         { name = 'nvim_lsp' };
         { name = 'calc' };
+        { name = 'crates' };
     });
 
     sorting = {
