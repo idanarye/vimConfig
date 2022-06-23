@@ -6,9 +6,9 @@ fzf.setup {
     keymap = {
         fzf = {
             ["ctrl-z"] = "abort";
-            --["ctrl-u"] = "unix-line-discard";
-            ["ctrl-d"] = "half-page-down";
-            ["ctrl-u"] = "half-page-up";
+            ["ctrl-u"] = "unix-line-discard";
+            --["ctrl-d"] = "half-page-down";
+            --["ctrl-u"] = "half-page-up";
             --["ctrl-a"] = "beginning-of-line";
             --["ctrl-e"] = "end-of-line";
             ["alt-a"] = "toggle-all";
