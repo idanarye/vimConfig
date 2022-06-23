@@ -192,6 +192,8 @@ if has('nvim')
     Plug 's1n7ax/nvim-window-picker'
     Plug 'akinsho/git-conflict.nvim'
     Plug 'jbyuki/venn.nvim'
+
+    Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 endif
 Plug 'rafamadriz/friendly-snippets'
 

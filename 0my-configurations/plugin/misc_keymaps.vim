@@ -172,18 +172,18 @@ nnoremap <M-p>B :CtrlPBookmark<Cr>
 
 " Keymaps for FZF
 let g:ctrlp_map = ''
-nnoremap <C-p> :FzfFiles<Cr>
-nnoremap <M-p>l :FzfBLines<Cr>
-nnoremap <M-p>m :FzfGitFiles?<Cr>
+"nnoremap <C-p> :FzfFiles<Cr>
+" nnoremap <M-p>l :FzfBLines<Cr>
+" nnoremap <M-p>m :FzfGitFiles?<Cr>
 nnoremap <M-p><C-m> :FZFMru<Cr>
 nnoremap <M-p>b :call fzf#run(fzf#wrap({'source': 'git diff $(git merge-base origin/HEAD HEAD).. --name-only'}))<Cr>
 " nnoremap <M-p>r :CtrlPRoot<Cr>
 " nnoremap <M-p>c :CtrlPChange<Cr>
 " nnoremap <M-p>u :CtrlPUndo<Cr>
 " nnoremap <M-p>q :CtrlPQuickfix<Cr>
-nnoremap <M-p><C-t> :FzfBTags<Cr>
+" nnoremap <M-p><C-t> :FzfBTags<Cr>
 " nnoremap <M-p>s :FzfAg<Cr>
-nnoremap <M-p>s :FzfRg<Cr>
+" nnoremap <M-p>s :FzfRg<Cr>
 nnoremap <M-p><M-s> :execute 'FzfRg ' . input('rg> ')<Cr>
 nnoremap <M-p>S :execute 'FzfRg ' . expand('<cword>')<Cr>
 nnoremap <M-p><C-s> :call FzfRgRegex(0)<Cr>
