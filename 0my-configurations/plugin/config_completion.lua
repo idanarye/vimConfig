@@ -1,6 +1,11 @@
 local cmp = require'cmp'
 
 cmp.setup {
+    snippet = {
+        expand = function(args)
+            vim.fn["vsnip#anonymous"](args.body)
+        end;
+    };
     completion = {
         autocomplete = false;
         completeopt = 'menu,menuone,noselect';
