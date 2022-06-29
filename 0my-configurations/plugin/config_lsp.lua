@@ -28,30 +28,9 @@ require'fzf_lsp'.setup {
   override_ui_select = true;
 }
 
-lspconfig.rust_analyzer.setup {
-    capabilities = capabilities,
-    -- on_attach = on_attach,
-    --on_attach = require'completion'.on_attach;
-    settings = {
-        ["rust-analyzer"] = {
-            assist = {
-                importGranularity = "module";
-                importPrefix = "by_self";
-            },
-            cargo = {
-                loadOutDirsFromCheck = true;
-                allFeatures = true;
-            },
-            procMacro = {
-                enable = true;
-            },
-            completion = {
-                -- addCallArgumentSnippets = true;
-                -- addCallParenthesis = true;
-            },
-        }
-    }
-}
+
+-- This is already defined by rust-tools in config_rust.lua
+-- lspconfig.rust_analyzer.setup {}
 
 lspconfig.pylsp.setup {
     capabilities = capabilities;
