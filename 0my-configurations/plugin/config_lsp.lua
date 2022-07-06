@@ -4,7 +4,7 @@ local lspconfig = require'lspconfig'
 local lsp_extensions = require'lsp_extensions'
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities.textDocument.completion.completionItem.snippetSupport = true
+ capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = {
     'documentation',
@@ -102,4 +102,11 @@ lspconfig.sumneko_lua.setup {
 }
 
 lspconfig.kotlin_language_server.setup {
+}
+
+lspconfig.jsonls.setup {
+  capabilities = capabilities;
+}
+
+lspconfig.yamlls.setup {
 }
