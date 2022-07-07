@@ -44,7 +44,7 @@ lspconfig.pylsp.setup {
           };
           pycodestyle = {
             enabled = false;
-            maxLineLength = 130;
+            maxLineLength = 120;
           };
           pyflakes = {
             enabled = false;

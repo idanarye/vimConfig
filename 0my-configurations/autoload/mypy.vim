@@ -18,7 +18,7 @@ let s:python2BuiltinsNotInPython3 = [
 
 function! mypy#runFlake8(filename) range
     let l:flakeCmd = 'flake8'
-    let l:flakeCmd .= ' --max-line-length=130'
+    let l:flakeCmd .= ' --max-line-length=120'
     let l:flakeCmd .= ' --ignore=F403'
     if empty(a:filename)
         let l:flakeResult = systemlist(l:flakeCmd . ' -', getline(0, '$') + [''])
@@ -62,7 +62,7 @@ endfunction
 
 function! mypy#runAutopep8() abort
     let l:autopep8Cmd = 'autopep8 -'
-    let l:autopep8Cmd .= ' --max-line-length=130'
+    let l:autopep8Cmd .= ' --max-line-length=120'
     let l:autopep8Cmd .= ' --ignore=F403'
 
     let l:lnum = v:lnum
