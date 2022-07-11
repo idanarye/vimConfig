@@ -195,6 +195,8 @@ if has('nvim')
     Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
     Plug 'simrat39/rust-tools.nvim'
     Plug 'saecki/crates.nvim', { 'tag': 'v0.2.1' }
+    Plug 'kevinhwang91/promise-async'
+    Plug 'kevinhwang91/nvim-ufo'
 endif
 Plug 'rafamadriz/friendly-snippets'
 
