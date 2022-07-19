@@ -197,6 +197,7 @@ if has('nvim')
     Plug 'saecki/crates.nvim', { 'tag': 'v0.2.1' }
     Plug 'kevinhwang91/promise-async'
     Plug 'kevinhwang91/nvim-ufo'
+    Plug 'ggandor/leap.nvim'
 endif
 Plug 'rafamadriz/friendly-snippets'
 
