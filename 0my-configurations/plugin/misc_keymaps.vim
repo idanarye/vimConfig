@@ -184,9 +184,9 @@ nnoremap <M-p>b :call fzf#run(fzf#wrap({'source': 'git diff $(git merge-base ori
 " nnoremap <M-p><C-t> :FzfBTags<Cr>
 " nnoremap <M-p>s :FzfAg<Cr>
 " nnoremap <M-p>s :FzfRg<Cr>
-nnoremap <M-p><M-s> :execute 'FzfRg ' . input('rg> ')<Cr>
-nnoremap <M-p>S :execute 'FzfRg ' . expand('<cword>')<Cr>
-nnoremap <M-p><C-s> :call FzfRgRegex(0)<Cr>
+" nnoremap <M-p><M-s> :execute 'FzfRg ' . input('rg> ')<Cr>
+"nnoremap <M-p>S :execute 'FzfRg ' . expand('<cword>')<Cr>
+" nnoremap <M-p><C-s> :call FzfRgRegex(0)<Cr>
 " nnoremap <M-p><C-b> :FzfBuffers<Cr>
 " nnoremap <M-p>t :FzfTags<Cr>
 nnoremap <M-p>t :Vista finder!<Cr>
