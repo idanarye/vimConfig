@@ -1,4 +1,5 @@
 require'mason'.setup {}
+require'mason-lspconfig'.setup {}
 local lspconfig = require'lspconfig'
 local lsp_extensions = require'lsp_extensions'
 
