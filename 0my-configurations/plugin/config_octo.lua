@@ -1,0 +1,2 @@
+require'octo'.setup {
+}
