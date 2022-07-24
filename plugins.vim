@@ -150,7 +150,8 @@ if has('nvim')
     " Plug 'nvim-lua/completion-nvim'
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'williamboman/nvim-lsp-installer'
+    "Plug 'williamboman/nvim-lsp-installer'
+    Plug 'williamboman/mason.nvim'
     Plug 'neovim/nvim-lspconfig'
     Plug 'kyazdani42/nvim-web-devicons' " for file icons
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }

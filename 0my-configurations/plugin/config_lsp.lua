@@ -1,5 +1,4 @@
-local lsp_installer = require'nvim-lsp-installer'
-lsp_installer.setup {}
+require'mason'.setup {}
 local lspconfig = require'lspconfig'
 local lsp_extensions = require'lsp_extensions'
 
@@ -74,9 +73,9 @@ lspconfig.pylsp.setup {
 }
 
 
-lspconfig.ccls.setup {
-    capabilities = capabilities;
-}
+--lspconfig.ccls.setup {
+    --capabilities = capabilities;
+--}
 
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
