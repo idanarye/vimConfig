@@ -121,3 +121,20 @@ lspconfig.jsonls.setup {
 lspconfig.yamlls.setup {
     capabilities = capabilities;
 }
+
+lspconfig.serve_d.setup {
+    capabilities = capabilities;
+    on_init = function(client)
+        local path = client.workspace_folders[1].name
+        if path == '/files/code/wekapp' then
+            client.config.settings.d = {
+                projectImportPaths = {
+                    '/files/code/wekapp/weka/submodules/mecca/src',
+                    '/files/code/wekapp/qa/stress0/server',
+                }
+            }
+            client.notify("workspace/didChangeConfiguration")
+            return true
+        end
+    end;
+}
