@@ -1,0 +1,13 @@
+pylsp.plugins:
+  flake8:
+    enabled: true
+    ignore: ['F403', 'F405', 'W503']
+  pycodestyle:
+    enabled: false
+    maxLineLength: 120
+  pyflakes:
+    enabled: false
+  jedi:
+    extra_paths:
+      - /home/idanarye/.vim/plugins/vim-omnipytent/autoload
+      - /home/idanarye/.vim/plugins/vim-omnipytent-extra

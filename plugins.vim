@@ -154,6 +154,7 @@ if has('nvim')
     Plug 'williamboman/mason.nvim'
     Plug 'williamboman/mason-lspconfig.nvim'
     Plug 'neovim/nvim-lspconfig'
+    Plug 'tamago324/nlsp-settings.nvim'
     Plug 'kyazdani42/nvim-web-devicons' " for file icons
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
     Plug 'nvim-telescope/telescope.nvim'
