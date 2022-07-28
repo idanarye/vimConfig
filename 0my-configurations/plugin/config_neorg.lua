@@ -27,29 +27,34 @@ require'neorg'.setup {
     }
 }
 
-local mkcmd = function(args)
-    return function()
-        vim.cmd('Neorg ' .. args)
+vim.keymap.set('n', '<M-r>', function()
+    local mkcmd = function(args)
+        return function()
+            vim.cmd('Neorg ' .. args)
+        end
     end
-end
 
-vim.keymap.set('n', '<M-r><M-r>', mkcmd(''))
-vim.keymap.set('n', '<M-r>j', mkcmd('journal'))
+    vim.keymap.set('n', '<M-r><M-r>', mkcmd(''))
+    vim.keymap.set('n', '<M-r>j', mkcmd('journal'))
 
-vim.keymap.set('n', '<M-r>w', function()
-    local dirman = require'neorg'.modules.get_module('core.norg.dirman')
-    if dirman == nil then
-        return
-    end
-    require'fzf-lua'.fzf_exec(dirman.get_workspace_names(), {
-        actions = {
-            ['default'] = function(selected)
-                local workspace = selected[1]
-                vim.cmd('Neorg workspace ' .. workspace)
-            end;
-        };
-        fzf_opts = {
-            ["--no-multi"]  = '';
-        };
-    })
+    vim.keymap.set('n', '<M-r>w', function()
+        local dirman = require'neorg'.modules.get_module('core.norg.dirman')
+        if dirman == nil then
+            return
+        end
+        require'fzf-lua'.fzf_exec(dirman.get_workspace_names(), {
+            actions = {
+                ['default'] = function(selected)
+                    local workspace = selected[1]
+                    vim.cmd('Neorg workspace ' .. workspace)
+                end;
+            };
+            fzf_opts = {
+                ["--no-multi"]  = '';
+            };
+        })
+    end)
+
+    vim.keymap.del('n', '<M-r>')
+    vim.cmd('NeorgStart')
 end)
