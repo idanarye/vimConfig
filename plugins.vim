@@ -201,6 +201,7 @@ if has('nvim')
     Plug 'kevinhwang91/promise-async'
     Plug 'kevinhwang91/nvim-ufo'
     Plug 'ggandor/leap.nvim'
+    Plug 'nvim-neorg/neorg'
 endif
 Plug 'rafamadriz/friendly-snippets'
 
