@@ -29,10 +29,10 @@ lsp_extensions.inlay_hints{
     enabled = {"TypeHint", "ChainingHint", "ParameterHint"},
 }
 
-require'lsp_signature'.setup {
-    toggle_key = '<M-s>';
-    floating_window = false;
-}
+--require'lsp_signature'.setup {
+    --toggle_key = '<M-s>';
+    --floating_window = false;
+--}
 
 
 require'fzf_lsp'.setup {

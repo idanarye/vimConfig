@@ -1,5 +1,15 @@
 local cmp = require'cmp'
 
+local run_if_visible = function(dlg)
+    return function(fallback)
+        if next(cmp.core.view.custom_entries_view.entries) ~= nil then
+            return dlg()
+        else
+            fallback()
+        end
+    end
+end
+
 cmp.setup {
     snippet = {
         expand = function(args)
@@ -21,6 +31,8 @@ cmp.setup {
             c = cmp.mapping.close(),
         }),
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ['<C-n>'] = run_if_visible(cmp.select_next_item);
+        ['<C-p>'] = run_if_visible(cmp.select_prev_item);
     };
 
     sources = cmp.config.sources({
