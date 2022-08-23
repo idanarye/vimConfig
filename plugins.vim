@@ -95,12 +95,10 @@ Plug 'hynek/vim-python-pep8-indent'
 Plug 'lervag/vimtex'
 Plug 'ron-rs/ron.vim'
 Plug 'voldikss/vim-browser-search'
-Plug 'vimwiki/vimwiki'
 Plug 'mattboehm/vim-unstack'
 Plug 'cespare/vim-toml'
 " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 " Plug 'blindFS/vim-taskwarrior'
-" Plug 'tools-life/taskwiki'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'samoshkin/vim-mergetool'
 Plug 'thinca/vim-themis'
@@ -201,8 +199,8 @@ if has('nvim')
     Plug 'kevinhwang91/promise-async'
     Plug 'kevinhwang91/nvim-ufo'
     Plug 'ggandor/leap.nvim'
-    Plug 'nvim-neorg/neorg'
     Plug 'AckslD/nvim-FeMaco.lua'
+    Plug 'phaazon/mind.nvim'
 endif
 Plug 'rafamadriz/friendly-snippets'
 
