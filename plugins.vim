@@ -202,6 +202,7 @@ if has('nvim')
     Plug 'kevinhwang91/nvim-ufo'
     Plug 'ggandor/leap.nvim'
     Plug 'nvim-neorg/neorg'
+    Plug 'AckslD/nvim-FeMaco.lua'
 endif
 Plug 'rafamadriz/friendly-snippets'
 

@@ -1,0 +1,2 @@
+require("femaco").setup {
+}
