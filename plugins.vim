@@ -201,6 +201,7 @@ if has('nvim')
     Plug 'ggandor/leap.nvim'
     Plug 'AckslD/nvim-FeMaco.lua'
     Plug 'phaazon/mind.nvim'
+    Plug 'sindrets/diffview.nvim'
 endif
 Plug 'rafamadriz/friendly-snippets'
 
