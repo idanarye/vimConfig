@@ -8,36 +8,38 @@ dapui.setup({
 
 vim.g.dap_virtual_text = true
 
-dap.adapters.python = {
-    type = 'executable';
-    command = '/usr/bin/python';
-    args = { '-m', 'debugpy.adapter' };
-}
+require'dap-python'.setup()
+
+--dap.adapters.python = {
+    --type = 'executable';
+    --command = '/usr/bin/python';
+    --args = { '-m', 'debugpy.adapter' };
+--}
 
 dap.adapters.lldb = {
     type = 'executable';
     command = '/usr/bin/lldb-vscode';
 }
 
-dap.configurations.python = {
-    {
-        type = 'python';
-        request = 'launch';
-        name = 'Launch file';
+-- dap.configurations.python = {
+    -- {
+        -- type = 'python';
+        -- request = 'launch';
+        -- name = 'Launch file';
 
-        program = "${file}";
-        paythonPath = function()
-            --local cwd = vim.fn.getcwd()
-            --if vim.fn.executable(cwd .. '/venv/bin/python') == 1 then
-                --return cwd .. '/venv/bin/python'
-            --elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
-                --return cwd .. '/.venv/bin/python'
-            --else
-                return '/usr/bin/python'
-            --end
-        end;
-    },
-}
+        -- program = "${file}";
+        -- paythonPath = function()
+            -- --local cwd = vim.fn.getcwd()
+            -- --if vim.fn.executable(cwd .. '/venv/bin/python') == 1 then
+                -- --return cwd .. '/venv/bin/python'
+            -- --elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
+                -- --return cwd .. '/.venv/bin/python'
+            -- --else
+                -- return '/usr/bin/python'
+            -- --end
+        -- end;
+    -- },
+-- }
 
 dap.configurations.cpp = {
     {

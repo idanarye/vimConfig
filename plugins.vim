@@ -167,6 +167,8 @@ if has('nvim')
     Plug 'mfussenegger/nvim-dap'
     Plug 'rcarriga/nvim-dap-ui'
     Plug 'theHamsta/nvim-dap-virtual-text'
+    Plug 'mfussenegger/nvim-dap-python'
+
     Plug 'pwntester/octo.nvim'
 
     " Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
