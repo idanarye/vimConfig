@@ -2,7 +2,10 @@ local whitespace = require'whitespace-nvim'
 
 whitespace.setup {
     highlight = 'Error';
-    ignored_filetypes = { 'TelescopePrompt' };
+    ignored_filetypes = {
+        'TelescopePrompt',
+        'fzf',
+    };
 }
 
 whitespace.highlight()
