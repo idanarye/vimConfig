@@ -5,7 +5,7 @@ if has('nvim')
     " Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
     " Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 endif
-Plug 'bitc/vim-bad-whitespace'
+"Plug 'bitc/vim-bad-whitespace'
 " Plug 'bling/vim-airline'
 Plug 'briancollins/vim-jst'
 Plug 'chrisbra/csv.vim'
@@ -203,6 +203,7 @@ if has('nvim')
     Plug 'AckslD/nvim-FeMaco.lua'
     Plug 'phaazon/mind.nvim'
     Plug 'sindrets/diffview.nvim'
+    Plug 'johnfrankmorgan/whitespace.nvim'
 endif
 Plug 'rafamadriz/friendly-snippets'
 
