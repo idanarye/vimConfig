@@ -211,7 +211,6 @@ Plug 'rafamadriz/friendly-snippets'
 Plug 'idanarye/vim-casetrate', { 'branch': 'develop' }
 Plug 'idanarye/vim-dutyl', { 'branch': 'develop' }
 Plug 'idanarye/vim-erroneous', { 'branch': 'develop' }
-Plug 'idanarye/vim-integrake', { 'branch': 'develop' }
 Plug 'idanarye/vim-makecfg'
 Plug 'idanarye/vim-merginal', { 'branch': 'develop' }
 Plug 'idanarye/vim-omnipytent', { 'branch': 'develop' }
@@ -221,3 +220,6 @@ Plug 'idanarye/vim-terminalogy'
 Plug 'idanarye/vim-vebugger', { 'branch': 'develop' }
 Plug 'idanarye/vim-yankitute'
 Plug 'idanarye/vim-tabnine-completefunc'
+if has('nvim')
+    Plug 'idanarye/nvim-moonicipal'
+endif

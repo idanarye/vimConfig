@@ -1,29 +1,6 @@
 "set makeprg=rake\ -s
 
-"nnoremap <F2> :silent exe '!rake -s tags'<CR>
-"nnoremap <F3> :VimShellInteractive rake shell<Cr>
-"nnoremap <F4> :Erun! rake -s clean<CR>
-"nnoremap <F5> :Erun! rake -s compile<CR>
-"nnoremap <F6> :!rake run<CR>
-"nnoremap <F7> :!rake test<CR>
-
-"nnoremap <F2> :IR tags<CR>
-"nnoremap <F3> :IR shell<Cr>
-"nnoremap <F4> :IR clean<CR>
-"nnoremap <F5> :IR compile<CR>
-"nnoremap <F6> :IR run<CR>
-"nnoremap <F7> :IR test<CR>
-
 function! s:createTaskRunningShortcut(key,cmd)
-	"For Integrake
-	if ''!=a:cmd
-		let l:cmd="IR ".a:cmd."<Cr>"
-	else
-		let l:cmd="IR<Cr>"
-	endif
-	execute "noremap <M-i>".a:key." :".l:cmd
-	execute "inoremap <M-i>".a:key." <C-o>:".l:cmd
-
 	"For Omnipytent
 	if ''!=a:cmd
 		let l:cmd="OP ".a:cmd."<Cr>"
@@ -32,6 +9,15 @@ function! s:createTaskRunningShortcut(key,cmd)
 	endif
 	execute "noremap <M-o>".a:key." :".l:cmd
 	execute "inoremap <M-o>".a:key." <C-o>:".l:cmd
+
+	"For Moonicipal
+	if ''!=a:cmd
+		let l:cmd="MC ".a:cmd."<Cr>"
+	else
+		let l:cmd="MC<Cr>"
+	endif
+	execute "noremap <M-i>".a:key." :".l:cmd
+	execute "inoremap <M-i>".a:key." <C-o>:".l:cmd
 endfunction
 
 call s:createTaskRunningShortcut('a','act')
@@ -82,11 +68,11 @@ for s:digit in range(10)
 	call s:createTaskRunningShortcut(string(s:digit), ':' . s:digit)
 endfor
 
-noremap <M-i> :IR<Cr>
-inoremap <M-i> <C-o>:IR<Cr>
+noremap <M-i> :MC<Cr>
+inoremap <M-i> <C-o>:MC<Cr>
 
-noremap <M-i><Space> :IR<Space>
-inoremap <M-i><Space> <C-o>:IR<Space>
+noremap <M-i><Space> :MC<Space>
+inoremap <M-i><Space> <C-o>:MC<Space>
 
 noremap <M-o><Space> :OP<Space>
 inoremap <M-o><Space> <C-o>:OP<Space>

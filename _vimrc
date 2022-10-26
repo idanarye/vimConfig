@@ -251,9 +251,6 @@ let g:rainbow_operators = 1
 
 let g:breeze_highlight_filename_patterns = '*.ejs,*.jsp,*.erb'
 
-let g:integrake_filePrefix='.idanarye'
-let g:integrake_grabDirs=[expand('<sfile>:p:h').'/my-configurations/integrake-templates']
-
 let g:omnipytent_filePrefix = '.idanarye'
 let g:omnipytent_defaultPythonVersion = 3
 
