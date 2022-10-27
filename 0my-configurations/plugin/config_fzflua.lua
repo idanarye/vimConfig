@@ -31,6 +31,8 @@ fzf.setup {
     };
 }
 
+fzf.register_ui_select()
+
 vim.keymap.set('n', '<C-p>', fzf.files)
 vim.keymap.set('n', '<M-p><M-p>', fzf.builtin)
 vim.keymap.set('n', '<M-p>l', fzf.blines)

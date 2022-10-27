@@ -36,7 +36,7 @@ lsp_extensions.inlay_hints{
 
 
 require'fzf_lsp'.setup {
-    override_ui_select = true;
+    --override_ui_select = true;
 }
 
 
