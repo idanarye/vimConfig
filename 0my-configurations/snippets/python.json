@@ -5,5 +5,11 @@
             "import IPython",
             "IPython.embed()"
         ]
+    },
+    "Insert Debugpy Breakpoint": {
+        "prefix": "dbpy",
+        "body": [
+            "import runpy; runpy.run_path('/home/idanarye/hacks/connect_to_debugpy.py')['debugpy'].breakpoint()"
+        ]
     }
 }
