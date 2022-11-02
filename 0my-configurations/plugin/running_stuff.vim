@@ -70,6 +70,8 @@ endfor
 
 noremap <M-i> :MC<Cr>
 inoremap <M-i> <C-o>:MC<Cr>
+noremap <M-i><M-i> :MC<Cr>
+inoremap <M-i><M-i> <C-o>:MC<Cr>
 
 noremap <M-i><Space> :MC<Space>
 inoremap <M-i><Space> <C-o>:MC<Space>
@@ -79,6 +81,8 @@ inoremap <M-o><Space> <C-o>:OP<Space>
 
 noremap <M-o> :OP<Cr>
 inoremap <M-o> <C-o>:OP<Cr>
+noremap <M-o><M-o> :OP<Cr>
+inoremap <M-o><M-o> <C-o>:OP<Cr>
 
 
 if has('win32')
