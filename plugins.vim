@@ -223,4 +223,5 @@ Plug 'idanarye/vim-yankitute'
 Plug 'idanarye/vim-tabnine-completefunc'
 if has('nvim')
     Plug 'idanarye/nvim-moonicipal'
+    Plug 'idanarye/nvim-channelot'
 endif
