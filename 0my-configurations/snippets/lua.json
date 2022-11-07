@@ -1,0 +1,10 @@
+{
+    "Insert anonymous function": {
+        "prefix": "f)",
+        "body": [
+            "function()",
+            "    $0",
+            "end)"
+        ]
+    }
+}
