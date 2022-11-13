@@ -75,12 +75,14 @@ lspconfig.sumneko_lua.setup {
     settings = {
         Lua = {
             runtime = {
+                version = 'LuaJIT',
                 -- Setup your lua path
                 path = runtime_path,
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
                 library = vim.api.nvim_get_runtime_file("", true),
+                checkThirdParty = false,
             },
         },
     },
