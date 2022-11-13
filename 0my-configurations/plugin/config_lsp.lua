@@ -3,6 +3,11 @@ require'mason-lspconfig'.setup {}
 local lspconfig = require'lspconfig'
 local lsp_extensions = require'lsp_extensions'
 
+local local_settings_loaded, local_settings = pcall(require, 'idan_local_settings')
+if not local_settings_loaded then
+    local_settings = {}
+end
+
 require'nlspsettings'.setup {
     config_home = vim.fn.globpath(vim.o.runtimepath, 'nlsp-settings');
     append_default_schemas = true;
@@ -91,6 +96,11 @@ lspconfig.jsonls.setup {
 
 lspconfig.yamlls.setup {
     capabilities = capabilities;
+    settings = {
+        yaml = {
+            schemas = local_settings.yaml_schemas,
+        },
+    },
 }
 
 lspconfig.serve_d.setup {
