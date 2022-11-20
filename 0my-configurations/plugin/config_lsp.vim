@@ -8,7 +8,7 @@ endif
 " inoremap <silent><expr> <C-Space> compe#complete()
 
 nnoremap <silent> \a <cmd>lua vim.lsp.buf.code_action()<CR>
-vnoremap <silent> \a :lua vim.lsp.buf.range_code_action()<CR>
+vnoremap <silent> \a :lua vim.lsp.buf.code_action()<CR>
 " nnoremap <silent> \a <cmd>Telescope lsp_code_actions<CR>
 " vnoremap <silent> \a <cmd>Telescope lsp_range_code_actions<CR>
 
