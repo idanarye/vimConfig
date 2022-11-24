@@ -206,6 +206,9 @@ if has('nvim')
     Plug 'phaazon/mind.nvim'
     Plug 'sindrets/diffview.nvim'
     Plug 'johnfrankmorgan/whitespace.nvim'
+
+    Plug 'nvim-neotest/neotest'
+    Plug 'nvim-neotest/neotest-python'
 endif
 Plug 'rafamadriz/friendly-snippets'
 
