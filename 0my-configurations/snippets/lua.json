@@ -1,10 +1,18 @@
 {
-    "Insert anonymous function": {
+    "Insert anonymous function last argument": {
         "prefix": "f)",
         "body": [
-            "function()",
-            "    $0",
+            "function($2)",
+            "    $1",
             "end)"
+        ]
+    },
+    "Insert anonymous function non-last argument": {
+        "prefix": "f,",
+        "body": [
+            "function($2)",
+            "    $1",
+            "end,"
         ]
     }
 }
