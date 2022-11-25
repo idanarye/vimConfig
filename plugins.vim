@@ -65,7 +65,6 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'tommcdo/vim-exchange'
 Plug 'tommcdo/vim-ninja-feet'
 Plug 'tomtom/tlib_vim'
-Plug 'tomtom/ttoc_vim'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-fugitive'
@@ -209,6 +208,7 @@ if has('nvim')
 
     Plug 'nvim-neotest/neotest'
     Plug 'nvim-neotest/neotest-python'
+    Plug 'rouge8/neotest-rust'
 endif
 Plug 'rafamadriz/friendly-snippets'
 
