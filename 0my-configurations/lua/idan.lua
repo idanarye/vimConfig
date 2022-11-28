@@ -9,4 +9,16 @@ function M.unload_package(pattern)
     end
 end
 
+function M.run_block_in_ipython(job, block)
+    job:write'\21'
+    local rows = vim.split(block, '\n')
+    for i, row in ipairs(rows) do
+        if rows[i + 1] then
+            job:write('\x01' .. row .. '\x0f\x0e')
+        else -- last row
+            job:write('\x01' .. row .. '\x1b\r')
+        end
+    end
+end
+
 return M
