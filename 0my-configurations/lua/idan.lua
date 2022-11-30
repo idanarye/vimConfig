@@ -21,4 +21,13 @@ function M.run_block_in_ipython(job, block)
     end
 end
 
+function M.generate_docs(cmd)
+    vim.cmd'botright vnew'
+    local j = require'channelot'.terminal_job(cmd or 'make -s docs')
+    vim.cmd.setfiletype('help')
+    vim.keymap.set('n', 'q', vim.cmd.quit, {buffer = true})
+    j:wait()
+    vim.cmd.checktime()
+end
+
 return M
