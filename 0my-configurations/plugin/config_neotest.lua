@@ -2,6 +2,7 @@ local neotest = require'neotest'
 
 neotest.setup {
     adapters = {
+        require'neotest-plenary',
         require'neotest-python',
         require'neotest-rust' {
             args = { "--no-capture" },

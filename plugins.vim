@@ -145,7 +145,10 @@ if has('nvim')
     Plug 'nvim-lua/lsp_extensions.nvim'
     " Plug 'nvim-lua/completion-nvim'
     Plug 'nvim-lua/popup.nvim'
-    Plug 'nvim-lua/plenary.nvim'
+
+    "Plug 'nvim-lua/plenary.nvim'
+    Plug 'idanarye/plenary.nvim', { 'branch': 'async-testing' }
+
     "Plug 'williamboman/nvim-lsp-installer'
     Plug 'williamboman/mason.nvim'
     Plug 'williamboman/mason-lspconfig.nvim'
@@ -207,6 +210,7 @@ if has('nvim')
     Plug 'johnfrankmorgan/whitespace.nvim'
 
     Plug 'nvim-neotest/neotest'
+    Plug 'nvim-neotest/neotest-plenary'
     Plug 'nvim-neotest/neotest-python'
     Plug 'rouge8/neotest-rust'
 endif
