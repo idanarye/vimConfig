@@ -1,6 +1,8 @@
 local dap = require'dap'
 local dapui = require'dapui'
 
+local mason_core_path = require'mason-core.path'
+
 dapui.setup({
     --sidebar = { open_on_start = false };
     --tray = { open_on_start = false };
@@ -8,43 +10,22 @@ dapui.setup({
 
 vim.g.dap_virtual_text = true
 
-require'dap-python'.setup()
+require'dap-python'.setup(mason_core_path.package_prefix'debugpy/venv/bin/python')
 
---dap.adapters.python = {
-    --type = 'executable';
-    --command = '/usr/bin/python';
-    --args = { '-m', 'debugpy.adapter' };
---}
-
-dap.adapters.lldb = {
-    type = 'executable';
-    command = '/usr/bin/lldb-vscode';
+dap.adapters.codelldb = {
+    type = 'server',
+    host = '127.0.0.1',
+    port = '${port}',
+    executable = {
+        command = mason_core_path.bin_prefix'codelldb';
+        args = { '--port', '${port}' };
+    },
 }
-
--- dap.configurations.python = {
-    -- {
-        -- type = 'python';
-        -- request = 'launch';
-        -- name = 'Launch file';
-
-        -- program = "${file}";
-        -- paythonPath = function()
-            -- --local cwd = vim.fn.getcwd()
-            -- --if vim.fn.executable(cwd .. '/venv/bin/python') == 1 then
-                -- --return cwd .. '/venv/bin/python'
-            -- --elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
-                -- --return cwd .. '/.venv/bin/python'
-            -- --else
-                -- return '/usr/bin/python'
-            -- --end
-        -- end;
-    -- },
--- }
 
 dap.configurations.cpp = {
     {
         name = 'Launch';
-        type = 'lldb';
+        type = 'codelldb';
         request = 'launch';
         program = function()
             return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
