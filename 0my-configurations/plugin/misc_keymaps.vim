@@ -144,9 +144,9 @@ nnoremap <M-t>s :tab split<Cr>
 "nnoremap <M-p>b :Unite git/branch<Cr>
 
 "keymaps for quick access to CtrlP modes
-nnoremap <M-p>l :CtrlPLine<Cr>
+" nnoremap <M-p>l :CtrlPLine<Cr>
 "nnoremap <M-p>f :CtrlPFunky<Cr>
-nnoremap <M-p>m :CtrlPModified<Cr>
+" nnoremap <M-p>m :CtrlPModified<Cr>
 nnoremap <M-p><C-m> :CtrlPMRUFiles<Cr>
 nnoremap <M-p>b :CtrlPBranch<Cr>
 nnoremap <M-p>r :CtrlPRoot<Cr>
@@ -154,7 +154,7 @@ nnoremap <M-p>c :CtrlPChange<Cr>
 nnoremap <M-p>u :CtrlPUndo<Cr>
 nnoremap <M-p>q :CtrlPQuickfix<Cr>
 nnoremap <M-p><C-b> :CtrlPBuffer<Cr>
-nnoremap <M-p>s :FuzzyGrep<Cr>
+"nnoremap <M-p>s :FuzzyGrep<Cr>
 " nnoremap <M-p><C-s> :call ctrlp#init(ctrlp#sift#cmd())<Cr>
 nnoremap <M-p>B :CtrlPBookmark<Cr>
 " nnoremap <M-p>t :CtrlPTag<Cr>

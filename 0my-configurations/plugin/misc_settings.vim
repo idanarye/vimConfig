@@ -74,6 +74,9 @@ let g:doge_mapping_comment_jump_backward = "<C-k>"
 set diffopt=filler,internal,algorithm:histogram,indent-heuristic
 
 let g:context_enabled = 0
+try
+    ContextDisable
+endtry
 
 if has('nvim')
     set inccommand=nosplit
