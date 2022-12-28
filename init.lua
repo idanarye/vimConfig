@@ -10,6 +10,22 @@ else
   localcfg = {}
 end
 
+local lazy_dev_patterns = {}
+do
+    local f = io.open('.git/config')
+    if f then
+      local pattern = vim.regex[=[\V\^\s\*url = git@github.com:\zsidanarye/\.\+.git\$]=]
+      for line in f:lines() do
+        local s, e = pattern:match_str(line)
+        if s then
+          table.insert(lazy_dev_patterns, line:sub(s + 1, e))
+        end
+      end
+      f:close()
+    end
+end
+
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -23,6 +39,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.runtimepath:prepend(lazypath)
 require'lazy'.setup(require'plugins', {
+  dev = {
+    path = '/files/oss',
+    patterns = lazy_dev_patterns,
+  },
   install = {
     colorscheme = {'torte'},
   },
