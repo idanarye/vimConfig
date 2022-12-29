@@ -1,5 +1,19 @@
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = { "norg" };
+    ensure_installed = {
+        'bash',
+        'd',
+        'json',
+        'json5',
+        'lua',
+        'markdown',
+        'markdown_inline',
+        'norg',
+        'python',
+        'query',
+        'rust',
+        'toml',
+        'yaml',
+    };
     highlight = { enable = true };
     incremental_selection = { enable = true };
     textobjects = { enable = true };
