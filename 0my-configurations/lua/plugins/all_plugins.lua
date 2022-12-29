@@ -36,7 +36,6 @@ return {
     'mihaifm/bufstop',
     'moll/vim-bbye',
     'peterhoeg/vim-qml',
-    'powerman/vim-plugin-AnsiEsc',
     'rking/ag.vim',
     'rust-lang/rust.vim',
     'scrooloose/nerdcommenter',

@@ -201,8 +201,6 @@ vnoremap <Leader>sR :RengBangConfirm<Cr>
 
 nnoremap <Leader>w :call argwrap#toggle()<Cr>
 
-nnoremap <Leader><C-a> :AnsiEsc<Cr>
-
 let g:casetrate_leader = '<M-c>'
 
 let g:no_cecutil_maps = 1
