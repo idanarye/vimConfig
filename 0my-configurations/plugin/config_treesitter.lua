@@ -4,6 +4,7 @@ require'nvim-treesitter.configs'.setup {
         'd',
         'json',
         'json5',
+        'kotlin',
         'lua',
         'markdown',
         'markdown_inline',
