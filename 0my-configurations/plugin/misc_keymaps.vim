@@ -130,19 +130,6 @@ nnoremap <M-t>t :call tabops#fzfAndTabjump()<Cr>
 nnoremap <M-t><M-t> :call tabops#fzfAndTabjump()<Cr>
 nnoremap <M-t>s :tab split<Cr>
 
-"keymaps for quick access to Unite modes
-"if has('nvim')
-    "nnoremap <C-p> :Unite file_rec/neovim<Cr>
-"else
-    "nnoremap <C-p> :Unite file_rec/async<Cr>
-"endif
-"nnoremap <M-p><C-b> :Unite buffer<Cr>
-"nnoremap <M-p>l :Unite line<Cr>
-"nnoremap <M-p><C-m> :Unite file_mru<Cr>
-"nnoremap <M-p>g :Unite grep:.<Cr>
-"nnoremap <M-p>m :Unite git/modified<Cr>
-"nnoremap <M-p>b :Unite git/branch<Cr>
-
 "keymaps for quick access to CtrlP modes
 " nnoremap <M-p>l :CtrlPLine<Cr>
 "nnoremap <M-p>f :CtrlPFunky<Cr>

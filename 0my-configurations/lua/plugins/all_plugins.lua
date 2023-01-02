@@ -40,7 +40,6 @@ return {
     'rust-lang/rust.vim',
     'scrooloose/nerdcommenter',
     'Shougo/neomru.vim',
-    'Shougo/unite.vim',
     {'Shougo/vimproc', build = 'make -B'},
     'Shougo/vimshell',
 

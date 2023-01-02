@@ -1,4 +1,4 @@
-local vim_config_path = vim.fs.dirname(debug.getinfo(1, 'S').short_src)
+local vim_config_path = vim.fs.dirname(debug.getinfo(1, 'S').source:sub(2))
 vim.env.MYVIMRC = vim_config_path .. '/_vimrc'
 vim.api.nvim_command('source $MYVIMRC')
 
@@ -49,7 +49,6 @@ require'lazy'.setup(require'plugins', {
   performance = {
     rtp = {
       paths = {
-         vim_config_path .. '/0my-configurations',
          unpack(localcfg.runtime_paths or {}),
       },
     },

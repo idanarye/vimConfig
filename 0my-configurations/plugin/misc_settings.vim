@@ -7,28 +7,6 @@ endif
 
 set nohidden
 
-
-" Configure Unite
-
-" Like ctrlp.vim settings.
-call unite#custom#profile('default', 'context', {
-            \   'start_insert': 1,
-            \   'winheight': 10,
-            \   'direction': 'botright',
-            \ })
-
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-
-if executable('ag')
-    " Use ag (the silver searcher)
-    " https://github.com/ggreer/the_silver_searcher
-    let g:unite_source_grep_command = 'ag'
-    let g:unite_source_grep_default_opts =
-                \ '-i --vimgrep --hidden --ignore ' .
-                \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
-endif
-
-
 " Distable rust-racer default mappings - I'll add them in a ftplugin
 let g:racer_no_default_keymappings = 1
 
@@ -74,9 +52,6 @@ let g:doge_mapping_comment_jump_backward = "<C-k>"
 set diffopt=filler,internal,algorithm:histogram,indent-heuristic
 
 let g:context_enabled = 0
-try
-    ContextDisable
-endtry
 
 if has('nvim')
     set inccommand=nosplit
