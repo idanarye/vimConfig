@@ -1,5 +1,9 @@
 if has('termguicolors')
-	set termguicolors
+	if $ASCIINEMA_REC == '1'
+		set notermguicolors
+	else
+		set termguicolors
+	endif
 endif
 try
 	" color challenger_deep
