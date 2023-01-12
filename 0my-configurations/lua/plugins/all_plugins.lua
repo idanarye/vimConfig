@@ -169,23 +169,4 @@ return {
     'rouge8/neotest-rust',
     -- endif
     'rafamadriz/friendly-snippets',
-
-
-    {'idanarye/vim-casetrate', branch = 'develop'},
-    {'idanarye/vim-dutyl', branch = 'develop'},
-    {'idanarye/vim-erroneous', branch = 'develop'},
-    'idanarye/vim-makecfg',
-    {'idanarye/vim-merginal', branch = 'develop'},
-    {'idanarye/vim-omnipytent', branch = 'develop'},
-    {'idanarye/vim-omnipytent-extra', branch = 'develop'},
-    {'idanarye/vim-smile', branch = 'develop'},
-    'idanarye/vim-terminalogy',
-    {'idanarye/vim-vebugger', branch = 'develop'},
-    'idanarye/vim-yankitute',
-    'idanarye/vim-tabnine-completefunc',
-    -- if has('nvim')
-    'idanarye/nvim-moonicipal',
-    'idanarye/nvim-channelot',
-    'idanarye/nvim-buffls',
-    -- endif
 }
