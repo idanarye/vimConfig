@@ -1,5 +1,7 @@
 require'mason'.setup {}
 require'mason-lspconfig'.setup {}
+local mason_core_path = require'mason-core.path'
+
 local lspconfig = require'lspconfig'
 local lsp_extensions = require'lsp_extensions'
 
@@ -71,7 +73,7 @@ table.insert(runtime_path, "lua/?/init.lua")
 lspconfig.sumneko_lua.setup {
     capabilities = capabilities;
 
-    cmd = {'lua-language-server'};
+    cmd = {mason_core_path.bin_prefix'lua-language-server'},
     settings = {
         Lua = {
             runtime = {
