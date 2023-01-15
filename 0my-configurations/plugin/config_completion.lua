@@ -13,13 +13,13 @@ end
 cmp.setup {
     snippet = {
         expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
-        end;
-    };
+            require'luasnip'.lsp_expand(args.body)
+        end
+    },
     completion = {
         autocomplete = false;
         completeopt = 'menu,menuone,noselect';
-    };
+    },
 
     mapping = {
         ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
@@ -33,13 +33,14 @@ cmp.setup {
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
         ['<C-n>'] = run_if_visible(cmp.select_next_item);
         ['<C-p>'] = run_if_visible(cmp.select_prev_item);
-    };
+    },
 
     sources = cmp.config.sources({
         { name = 'nvim_lsp' };
-        { name = 'calc' };
-        { name = 'crates' };
-    });
+        { name = 'calc' },
+        { name = 'crates' },
+        --{ name = 'luasnip' },
+    }),
 
     sorting = {
         comparators = {

@@ -2,7 +2,6 @@ if !has('nvim')
     finish
 endif
 " let g:completion_enable_auto_popup = 0
-" let g:completion_enable_snippet = 'vim-vsnip'
 
 " imap <C-Space> <Plug>(completion_smart_tab)
 " inoremap <silent><expr> <C-Space> compe#complete()

@@ -117,8 +117,6 @@ return {
     'nvim-treesitter/playground',
     'nvim-telescope/telescope.nvim',
     'lewis6991/gitsigns.nvim',
-    'hrsh7th/vim-vsnip',
-    'hrsh7th/vim-vsnip-integ',
     {'ray-x/guihua.lua', build = 'cd lua/fzy && make'},
     'onsails/lspkind-nvim',
     'rafcamlet/nvim-luapad',
@@ -169,4 +167,5 @@ return {
     'rouge8/neotest-rust',
     -- endif
     'rafamadriz/friendly-snippets',
+    'L3MON4D3/LuaSnip',
 }
