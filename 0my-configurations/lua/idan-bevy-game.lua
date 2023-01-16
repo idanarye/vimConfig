@@ -15,7 +15,7 @@ return function(T, cfg)
 
     function T:check()
         local cmd = {'cargo', 'check', '-q', '--examples'}
-        vim.cmd('Erun! ' .. table.concat(vim.tbl_map(vim.fn.shellescape, cmd), ' '))
+        vim.cmd('Erun! ' .. table.concat(cmd, ' '))
     end
 
     function T:build()

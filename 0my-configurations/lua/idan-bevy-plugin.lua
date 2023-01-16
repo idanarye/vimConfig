@@ -31,7 +31,7 @@ return function(T, cfg)
     function T:check()
         local cmd = {'cargo', 'check', '-q', '--examples'}
         add_features_to_command(cmd, T:cargo_required_features_for_all_examples())
-        vim.cmd('Erun! ' .. table.concat(vim.tbl_map(vim.fn.shellescape, cmd), ' '))
+        vim.cmd('Erun! ' .. table.concat(cmd, ' '))
     end
 
     function T:build()
