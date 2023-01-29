@@ -3,6 +3,7 @@ local idan_rust = require'idan-rust'
 
 ---@class IdanBevyPluginCfg
 ---@field crate_name string
+---@field extra_features_for_docs string[]
 
 ---@param cfg IdanBevyPluginCfg
 return function(T, cfg)
@@ -85,7 +86,11 @@ return function(T, cfg)
 
     function T:doc()
         vim.cmd'botright new'
-        channelot.terminal_job{'cargo', 'doc', '--no-deps', '--all-features'}
+        local cmd = {'cargo', 'doc', '--no-deps', '--all-features'}
+        for _, extra_feature in ipairs(cfg.extra_features_for_docs) do
+            vim.list_extend(cmd, {'--features', extra_feature})
+        end
+        channelot.terminal_job(cmd)
         vim.cmd.startinsert()
     end
 
