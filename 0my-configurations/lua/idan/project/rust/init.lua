@@ -117,7 +117,7 @@ return function(T, cfg)
 
     function T:test()
         vim.cmd'botright new'
-        channelot.terminal_job{'cargo', 'test', '--doc', '--all-features'}
+        channelot.terminal_job{'cargo', 'test', '--all-features'}
         vim.cmd.startinsert()
     end
 
