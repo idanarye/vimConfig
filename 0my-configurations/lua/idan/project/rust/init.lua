@@ -2,9 +2,10 @@ local channelot = require'channelot'
 local idan_rust = require'idan.rust'
 
 ---@class IdanProjectRustCfg
----@field crate_name string
----@field extra_features_for_build_and_run string[]
----@field extra_features_for_docs string[]
+---@field crate_name? string
+---@field extra_features_for_build_and_run? string[]
+---@field extra_features_for_docs? string[]
+---@field only_build_relevant? boolean
 
 ---@param cfg? IdanProjectRustCfg
 return function(T, cfg)
@@ -38,6 +39,14 @@ return function(T, cfg)
         return cc:select()
     end
 
+    local function target_if_only_build_relevant()
+        if cfg.only_build_relevant then
+            return T:run_target()
+        else
+            return nil
+        end
+    end
+
     function T:cargo_required_features_for_all_examples()
         return idan_rust.jq_cargo_metadata('.packages[].targets | map(select(.kind[] == "example") | (.["required-features"] // [])[]) | unique')
     end
@@ -52,16 +61,27 @@ return function(T, cfg)
         end
     end
 
+    local function add_relevant_flags_for_target(cmd, target)
+        if target then
+            vim.list_extend(cmd, idan_rust.flags_to_run_target(target))
+            add_features_to_command(cmd, T:cargo_metadata_by_target()[target.name]['required-features'] or {})
+        else
+            table.insert(cmd, '--examples')
+            add_features_to_command(cmd, T:cargo_required_features_for_all_examples())
+        end
+    end
+
     function T:check()
-        local cmd = {'cargo', 'check', '-q', '--examples'}
+        local cmd = {'cargo', 'check', '-q'}
+        add_relevant_flags_for_target(cmd, target_if_only_build_relevant())
         add_features_to_command(cmd, T:cargo_required_features_for_all_examples())
         vim.cmd('Erun! ' .. table.concat(cmd, ' '))
     end
 
     function T:build()
-        local cmd = {'cargo', 'build', '-q', '--examples'}
+        local cmd = {'cargo', 'build', '-q'}
+        add_relevant_flags_for_target(cmd, target_if_only_build_relevant())
         add_features_to_command(cmd, cfg.extra_features_for_build_and_run or {})
-        add_features_to_command(cmd, T:cargo_required_features_for_all_examples())
         vim.cmd'botright new'
         channelot.terminal_job(cmd)
         vim.cmd.startinsert()
@@ -70,9 +90,8 @@ return function(T, cfg)
     function T:run()
         local target = T:run_target()
         local cmd = {'cargo', 'run'}
-        vim.list_extend(cmd, idan_rust.flags_to_run_target(target))
+        add_relevant_flags_for_target(cmd, target)
         add_features_to_command(cmd, cfg.extra_features_for_build_and_run or {})
-        add_features_to_command(cmd, T:cargo_metadata_by_target()[target.name]['required-features'] or {})
         vim.cmd'botright new'
         channelot.terminal_job({
             RUST_BACKTRACE='1',
@@ -84,9 +103,9 @@ return function(T, cfg)
     function T:debug()
         local target = T:run_target()
 
-        local cmd = idan_rust.flags_to_run_target(target)
+        local cmd = {}
+        add_relevant_flags_for_target(cmd, target)
         add_features_to_command(cmd, cfg.extra_features_for_build_and_run or {})
-        add_features_to_command(cmd, T:cargo_metadata_by_target()[target.name]['required-features'] or {})
         cmd = vim.tbl_map(vim.fn.shellescape, cmd)
         local exit_code = vim.fn['erroneous#run']('cargo build -q ' .. table.concat(cmd, ' '), true, true, false)
         if 0 ~= exit_code then
