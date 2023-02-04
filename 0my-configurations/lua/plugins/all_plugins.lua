@@ -90,7 +90,6 @@ return {
     'KnoP-01/tortus',
     'tpope/vim-rhubarb',
     'psliwka/vim-smoothie',
-    'wellle/context.vim',
     'dstein64/vim-win',
     'zsugabubus/vim-jumpmotion',
     'da-x/name-assign.vim',
@@ -168,4 +167,8 @@ return {
     -- endif
     'rafamadriz/friendly-snippets',
     'L3MON4D3/LuaSnip',
+
+    'mrbjarksen/neo-tree-diagnostics.nvim',
+    'SmiteshP/nvim-navic',
+    'utilyre/barbecue.nvim',
 }
