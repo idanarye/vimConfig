@@ -70,14 +70,14 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
     capabilities = capabilities;
 
     root_dir = function(startpath)
         if vim.endswith(startpath, '.moonicipal.lua') then
             return vim.fs.dirname(startpath)
         end
-        return lspconfig.sumneko_lua.document_config.default_config.root_dir(startpath)
+        return lspconfig.lua_ls.document_config.default_config.root_dir(startpath)
     end,
 
     cmd = {mason_core_path.bin_prefix'lua-language-server'},
@@ -87,6 +87,9 @@ lspconfig.sumneko_lua.setup {
                 version = 'LuaJIT',
                 -- Setup your lua path
                 path = runtime_path,
+            },
+            diagnostics = {
+                globals = {'vim'},
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
