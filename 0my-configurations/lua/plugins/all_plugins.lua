@@ -58,7 +58,7 @@ return {
     'tpope/vim-rsi',
     -- 'tpope/vim-scriptease',
     'tpope/vim-sleuth',
-    {'idanarye/nvim-surround', branch = 'support-special-characters-even-multibyte'},
+    'kylechui/nvim-surround',
     'tpope/vim-unimpaired',
     'udalov/kotlin-vim',
     'vim-ruby/vim-ruby',
