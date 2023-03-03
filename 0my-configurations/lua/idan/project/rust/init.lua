@@ -15,10 +15,6 @@ return function(T, cfg)
         return cfg.crate_name or idan_rust.jq_cargo_metadata('.packages[].name')
     end
 
-    function T:query()
-        dump(get_crate_name())
-    end
-
     function T:run_cargo_fmt()
         vim.cmd'!cargo fmt'
     end
@@ -146,10 +142,11 @@ return function(T, cfg)
 
     function T:launch_wasm()
         local target = T:run_target()
-        local cmd = {'cargo', 'build', '--examples', '--all-features', '--target', 'wasm32-unknown-unknown'}
+        local cmd = {'cargo', 'build', '--bins', '--examples', '--all-features', '--target', 'wasm32-unknown-unknown'}
         add_features_to_command(cmd, T:cargo_required_features_for_all_examples())
         vim.cmd'botright new'
         local t = channelot.terminal()
+        dump('Build:', cmd)
         t:job({RUST_BACKTRACE = '1'}, cmd):wait()
         local wasm_file_path = 'target/wasm32-unknown-unknown/debug/'
         if vim.tbl_contains(target.kind, 'example') then
