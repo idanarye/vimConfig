@@ -66,7 +66,7 @@ return function(T, cfg)
             vim.list_extend(cmd, idan_rust.flags_to_run_target(target))
             add_features_to_command(cmd, T:cargo_metadata_by_target()[target.name]['required-features'] or {})
         else
-            table.insert(cmd, '--examples')
+            vim.list_extend(cmd, {'--bins', '--examples'})
             add_features_to_command(cmd, T:cargo_required_features_for_all_examples())
         end
     end
