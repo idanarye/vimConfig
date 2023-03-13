@@ -146,7 +146,6 @@ return function(T, cfg)
         add_features_to_command(cmd, T:cargo_required_features_for_all_examples())
         vim.cmd'botright new'
         local t = channelot.terminal()
-        dump('Build:', cmd)
         t:job({RUST_BACKTRACE = '1'}, cmd):wait()
         local wasm_file_path = 'target/wasm32-unknown-unknown/debug/'
         if vim.tbl_contains(target.kind, 'example') then
