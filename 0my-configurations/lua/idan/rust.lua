@@ -6,7 +6,7 @@ function M.jq_cargo_metadata(query)
 end
 
 function M.jq_all_bin_targets()
-    return M.jq_cargo_metadata'.packages[0].targets | map(select(.crate_types[] == "bin"))'
+    return M.jq_cargo_metadata'.packages[0].targets | map(select(.crate_types[] == "bin" and .kind[] != "test"))'
 end
 
 function M.flags_to_run_target(target)
@@ -15,7 +15,7 @@ function M.flags_to_run_target(target)
     elseif vim.tbl_contains(target.kind, 'example') then
         return {'--example', target.name}
     else
-        error('Does not know how to run target of kind', vim.inspect(target.kind))
+        error('Does not know how to run target of kind ' .. vim.inspect(target.kind))
     end
 end
 
