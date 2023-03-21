@@ -6,6 +6,7 @@ local idan_rust = require'idan.rust'
 ---@field extra_features_for_build_and_run? string[]
 ---@field extra_features_for_docs? string[]
 ---@field only_build_relevant? boolean
+---@field cli_args_for_targets? {string: string[]}
 
 ---@param cfg? IdanProjectRustCfg
 return function(T, cfg)
@@ -25,12 +26,27 @@ return function(T, cfg)
 
     T{ alias = ':2' }
     function T:run_target()
+        local function name_with_args(target)
+            if target.cli_args then
+                return target.name .. vim.inspect(target.cli_args)
+            else
+                return target.name
+            end
+        end
         local cc = self:cached_choice {
-            key = 'name',
-            format = 'name',
+            key = name_with_args,
+            format = name_with_args,
         }
         for _, target in ipairs(idan_rust.jq_all_bin_targets()) do
             cc(target)
+            local cli_args = (cfg.cli_args_for_targets or {})[target.name]
+            if cli_args then
+                for _, args in ipairs(cli_args) do
+                    cc(vim.tbl_extend('error', target, {
+                        cli_args = args,
+                    }))
+                end
+            end
         end
         return cc:select()
     end
@@ -88,6 +104,10 @@ return function(T, cfg)
         local cmd = {'cargo', 'run'}
         add_relevant_flags_for_target(cmd, target)
         add_features_to_command(cmd, cfg.extra_features_for_build_and_run or {})
+        if target.cli_args then
+            table.insert(cmd, '--')
+            vim.list_extend(cmd, target.cli_args)
+        end
         vim.cmd'botright new'
         channelot.terminal_job({
             RUST_BACKTRACE='1',
@@ -122,6 +142,7 @@ return function(T, cfg)
             type = 'codelldb',
             request = 'launch',
             program = executable_path,
+            args = target.cli_args,
             env = {
                 RUST_BACKTRACE='1',
                 RUST_LOG=('%s=debug,%s=debug'):format(get_crate_name(), target.name),
