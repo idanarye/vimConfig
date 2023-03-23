@@ -1,12 +1,12 @@
 local M = {}
 
 function M.jq_cargo_metadata(query)
-    local output = vim.fn.system('cargo metadata --no-deps --format-version=1 | jq ' .. vim.fn.shellescape(query))
+    local output = vim.fn.system('cargo metadata --no-deps --offline --format-version=1 | jq ' .. vim.fn.shellescape(query))
     return vim.json.decode(output)
 end
 
 function M.jq_all_bin_targets()
-    return M.jq_cargo_metadata'.packages[0].targets | map(select(.crate_types[] == "bin" and .kind[] != "test"))'
+    return M.jq_cargo_metadata'.packages | map(.targets[] | select(.crate_types[] == "bin" and .kind[] != "test"))'
 end
 
 function M.flags_to_run_target(target)

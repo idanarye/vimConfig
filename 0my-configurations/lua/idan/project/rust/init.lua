@@ -60,11 +60,11 @@ return function(T, cfg)
     end
 
     function T:cargo_required_features_for_all_examples()
-        return idan_rust.jq_cargo_metadata('.packages[].targets | map(select(.kind[] == "example") | (.["required-features"] // [])[]) | unique')
+        return idan_rust.jq_cargo_metadata('.packages | map(.targets[] | select(.kind[] == "example") | (.["required-features"] // [])[]) | unique')
     end
 
     function T:cargo_metadata_by_target()
-        return idan_rust.jq_cargo_metadata('.packages[].targets | INDEX(.name)')
+        return idan_rust.jq_cargo_metadata('.packages | map(.targets[]) | INDEX(.name)')
     end
 
     local function add_features_to_command(cmd, features)
