@@ -120,3 +120,12 @@ lspconfig.yamlls.setup {
 lspconfig.serve_d.setup {
     capabilities = capabilities;
 }
+
+lspconfig.ruff_lsp.setup {
+    init_options = {
+        settings = {
+            args = {
+            },
+        },
+    },
+}
