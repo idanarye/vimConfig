@@ -99,6 +99,31 @@ return function(T, cfg)
         vim.cmd.startinsert()
     end
 
+    function T:_simple_target_runner()
+        return function(target_name, ...)
+            local cli_args = {...}
+            for _, target in ipairs(idan_rust.jq_all_bin_targets()) do
+                if target.name == target_name then
+                    local cmd = {'cargo', 'run'}
+                    add_relevant_flags_for_target(cmd, target)
+                    add_features_to_command(cmd, cfg.extra_features_for_build_and_run or {})
+                    if next(cli_args) ~= nil then
+                        table.insert(cmd, '--')
+                        vim.list_extend(cmd, cli_args)
+                    end
+                    vim.cmd'botright new'
+                    channelot.terminal_job({
+                        RUST_BACKTRACE='1',
+                        RUST_LOG=('%s=debug,%s=debug'):format(get_crate_name(), target.name),
+                    }, cmd)
+                    vim.cmd.startinsert()
+                    return
+                end
+            end
+            require'moonicipal'.abort('No target named ' .. target_name)
+        end
+    end
+
     function T:run()
         local target = T:run_target()
         local cmd = {'cargo', 'run'}
