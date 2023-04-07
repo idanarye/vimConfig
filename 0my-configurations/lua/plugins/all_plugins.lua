@@ -12,7 +12,6 @@ return {
     'inkarkat/vim-mark',
     'djjcast/mirodark',
     'dyng/ctrlsf.vim',
-    'editorconfig/editorconfig-vim',
     'fadein/FIGlet.vim',
     'FooSoft/vim-argwrap',
     'gabemc/powershell-vim',
