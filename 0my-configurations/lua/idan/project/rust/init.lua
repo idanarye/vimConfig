@@ -7,6 +7,7 @@ local idan_rust = require'idan.rust'
 ---@field extra_features_for_docs? string[]
 ---@field only_build_relevant? boolean
 ---@field cli_args_for_targets? {string: string[]}
+---@field extra_logging? {string: string}
 
 ---@param cfg? IdanProjectRustCfg
 return function(T, cfg)
@@ -14,6 +15,25 @@ return function(T, cfg)
 
     local function get_crate_name()
         return cfg.crate_name or idan_rust.jq_cargo_metadata('.packages[].name')
+    end
+
+    local function get_rust_log_envvar(override)
+        local logging = cfg.extra_logging or {}
+        if type(override) == 'table' then
+            logging = vim.tbl_extend('force', logging, override)
+        end
+        local parts = {}
+        for k, v in pairs(logging) do
+            if vim.tbl_islist(k) then
+                k = table.concat(k, ',')
+            end
+            table.insert(parts, ('%s=%s'):format(k, v))
+        end
+        return table.concat(parts, ',')
+    end
+
+    function T:query()
+        dump(get_rust_log_envvar{[{'hello', 'hi'}] = 'debug'})
     end
 
     function T:run_cargo_fmt()
@@ -113,8 +133,10 @@ return function(T, cfg)
                     end
                     vim.cmd'botright new'
                     channelot.terminal_job({
-                        RUST_BACKTRACE='1',
-                        RUST_LOG=('%s=debug,%s=debug'):format(get_crate_name(), target.name),
+                        RUST_BACKTRACE = '1',
+                        RUST_LOG = get_rust_log_envvar {
+                            [{get_crate_name(), target.name}] = 'debug',
+                        },
                     }, cmd)
                     vim.cmd.startinsert()
                     return
@@ -135,8 +157,10 @@ return function(T, cfg)
         end
         vim.cmd'botright new'
         channelot.terminal_job({
-            RUST_BACKTRACE='1',
-            RUST_LOG=('%s=debug,%s=debug'):format(get_crate_name(), target.name),
+            RUST_BACKTRACE = '1',
+            RUST_LOG = get_rust_log_envvar {
+                [{get_crate_name(), target.name}] = 'debug',
+            },
         }, cmd)
         vim.cmd.startinsert()
     end
@@ -169,8 +193,10 @@ return function(T, cfg)
             program = executable_path,
             args = target.cli_args,
             env = {
-                RUST_BACKTRACE='1',
-                RUST_LOG=('%s=debug,%s=debug'):format(get_crate_name(), target.name),
+                RUST_BACKTRACE = '1',
+                RUST_LOG = get_rust_log_envvar {
+                    [{get_crate_name(), target.name}] = 'debug',
+                },
                 LD_LIBRARY_PATH = envvar_ld_lib_path,
             },
         }
