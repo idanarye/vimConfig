@@ -32,10 +32,6 @@ return function(T, cfg)
         return table.concat(parts, ',')
     end
 
-    function T:query()
-        dump(get_rust_log_envvar{[{'hello', 'hi'}] = 'debug'})
-    end
-
     function T:run_cargo_fmt()
         vim.cmd'!cargo fmt'
     end
