@@ -86,7 +86,7 @@ return {
     'rbong/vim-crystalline',
     'AndrewRadev/inline_edit.vim',
     'kkoomen/vim-doge',
-    'KnoP-01/tortus',
+    'EdenEast/nightfox.nvim',
     'tpope/vim-rhubarb',
     'psliwka/vim-smoothie',
     'dstein64/vim-win',

@@ -55,4 +55,4 @@ require'lazy'.setup(require'plugins', {
   }
 })
 
-vim.cmd.colorscheme('tortus')
+vim.cmd.colorscheme('carbonfox')
