@@ -9,7 +9,6 @@ local theme = {
     tail = 'TabLine',
 }
 require('tabby.tabline').set(function(line)
-    vim.cmd.messages('clear')
     return {
         {
             { '  ', hl = theme.head },

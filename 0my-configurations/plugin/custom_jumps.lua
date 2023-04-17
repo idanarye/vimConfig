@@ -61,7 +61,6 @@ local function create_mapping(char, source)
         end,
         [']' .. char] = function(items)
             local current_cursor = vim.api.nvim_win_get_cursor(0)
-            vim.cmd.messages('clear')
             local closest = nil
             for _, item in ipairs(items) do
                 if compare_position(current_cursor, item) < 0 then
