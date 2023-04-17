@@ -83,7 +83,7 @@ return {
     'thinca/vim-themis',
     'liuchengxu/vista.vim',
     'rhysd/git-messenger.vim',
-    'rbong/vim-crystalline',
+    'nvim-lualine/lualine.nvim',
     'AndrewRadev/inline_edit.vim',
     'kkoomen/vim-doge',
     'EdenEast/nightfox.nvim',
