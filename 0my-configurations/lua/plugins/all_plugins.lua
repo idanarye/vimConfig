@@ -170,4 +170,6 @@ return {
     'mrbjarksen/neo-tree-diagnostics.nvim',
     'SmiteshP/nvim-navic',
     'utilyre/barbecue.nvim',
+
+    'nanozuki/tabby.nvim',
 }
