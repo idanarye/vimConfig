@@ -92,7 +92,6 @@ return {
     'dstein64/vim-win',
     'zsugabubus/vim-jumpmotion',
     'da-x/name-assign.vim',
-    'puremourning/vimspector',
     'rraks/pyro',
     'whiteinge/diffconflicts',
     'tpope/vim-dadbod',
