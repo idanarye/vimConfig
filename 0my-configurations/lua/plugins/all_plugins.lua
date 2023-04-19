@@ -81,7 +81,6 @@ return {
     'rafi/awesome-vim-colorschemes',
     'samoshkin/vim-mergetool',
     'thinca/vim-themis',
-    'liuchengxu/vista.vim',
     'rhysd/git-messenger.vim',
     'nvim-lualine/lualine.nvim',
     'AndrewRadev/inline_edit.vim',
@@ -171,4 +170,5 @@ return {
     'utilyre/barbecue.nvim',
 
     'nanozuki/tabby.nvim',
+    'stevearc/aerial.nvim',
 }

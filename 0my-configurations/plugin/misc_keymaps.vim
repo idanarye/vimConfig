@@ -41,7 +41,7 @@ xmap <M-l> <Plug>(textmanip-move-right)
 " noremap <Leader><Leader>` :TagbarShowTag<Cr>
 
 " noremap <Leader>` :call myutil#toggleVista()<Cr>
-noremap <Leader>` :Vista!!<Cr>
+" noremap <Leader>` :Vista!!<Cr>
 " noremap <Leader><Leader>` :TagbarShowTag<Cr>
 
 noremap <Leader><C-c> :nohlsearch<Bar>MarkClear<Cr>
@@ -172,8 +172,8 @@ nnoremap <M-p>b :call fzf#run(fzf#wrap({'source': 'git diff $(git merge-base ori
 " nnoremap <M-p><C-s> :call FzfRgRegex(0)<Cr>
 " nnoremap <M-p><C-b> :FzfBuffers<Cr>
 " nnoremap <M-p>t :FzfTags<Cr>
-nnoremap <M-p>t :Vista finder!<Cr>
-nnoremap <M-p><C-t> :Vista finder<Cr>
+" nnoremap <M-p>t :Vista finder!<Cr>
+" nnoremap <M-p><C-t> :Vista finder<Cr>
 nnoremap <M-p>f :FzfFiletypes<Cr>
 nnoremap <M-p><M-t> :call tabfzf#run()<Cr>
 
