@@ -41,17 +41,23 @@ dap.configurations.cpp = {
 dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
 
-vim.keymap.set('n', '<M-d>u', dapui.toggle)
+require'caskey'.setup {
+    mode = {'n'},
+    name = 'DAP',
+    ['<M-d>'] = {
+        ['u'] = {act = dapui.toggle, desc='Toggle DAP UI'},
 
-vim.keymap.set('n', '<M-d>c', dap.continue)
-vim.keymap.set('n', '<M-d>C', dap.run_to_cursor)
-vim.keymap.set('n', '<M-d>k', dap.close)
-vim.keymap.set('n', '<M-d>b', dap.toggle_breakpoint)
-vim.keymap.set('n', '<M-d><C-b>', function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end)
-vim.keymap.set('n', '<M-d>B', dap.clear_breakpoints)
+        ['c'] = {act = dap.continue, desc='DAP continue'},
+        ['C'] = {act = dap.run_to_cursor, desc='DAP run to cursor'},
+        ['k'] = {act = dap.close, desc='DAP close'},
+        ['b'] = {act = dap.toggle_breakpoint, desc='DAP toggle breakpoint'},
+        ['<C-b>'] = {act = function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc='DAP add conditional breakpoint'},
+        ['B'] = {act = dap.clear_breakpoints, desc='DAP clear all breakpoints'},
 
-vim.keymap.set('n', '<M-d>o', dap.step_over)
-vim.keymap.set('n', '<M-d>i', dap.step_into)
-vim.keymap.set('n', '<M-d>O', dap.step_out)
+        ['o'] = {act = dap.step_over, desc='DAP step over'},
+        ['i'] = {act = dap.step_into, desc='DAP step into'},
+        ['O'] = {act = dap.step_out, desc='DAP step out'},
 
-vim.keymap.set({'n', 'v'}, '<M-d>e', dapui.eval)
+        ['e'] = {act = dapui.eval, mode = {'n', 'v'}, desc='DAP eval'},
+    },
+}

@@ -33,23 +33,29 @@ fzf.setup {
 
 fzf.register_ui_select()
 
-vim.keymap.set('n', '<C-p>', fzf.files)
-vim.keymap.set('n', '<M-p><M-p>', fzf.builtin)
-vim.keymap.set('n', '<M-p>l', fzf.blines)
-vim.keymap.set('n', '<M-p>m', fzf.git_status)
-vim.keymap.set('n', '<M-p>s', fzf.live_grep)
-vim.keymap.set('n', '<M-p><M-s>', function()
-    local input = vim.fn.input('rg> ')
-    if input then
-        fzf.grep {
-            search = input;
-            no_esc = true;
-        }
-    end
-end)
-vim.keymap.set('n', '<M-p>S', function()
-    fzf.grep {
-        search = '\\b' .. vim.fn.expand('<cword>') .. '\\b';
-        no_esc = true;
+require'caskey'.setup {
+    mode = {'n'},
+    name = 'fzf-lua',
+    ['<C-p>'] = {act = fzf.files, desc='fzf-lua files'},
+    ['<M-p>'] = {
+        ['<M-p>'] = {act = fzf.builtin, desc='fzf-lua builtins'},
+        ['l'] = {act = fzf.blines, desc='fzf-lua lines in buffer'},
+        ['m'] = {act = fzf.git_status, desc='fzf-lua git files'},
+        ['s'] = {act = fzf.live_grep, desc = 'fzf-lua live grep'},
+        ['<M-s>'] = {act = function()
+            local input = vim.fn.input('rg> ')
+            if input then
+                fzf.grep {
+                    search = input;
+                    no_esc = true;
+                }
+            end
+        end, desc='fzf-lua grep (prompt pattern)'},
+        ['S'] = {act = function()
+            fzf.grep {
+                search = '\\b' .. vim.fn.expand('<cword>') .. '\\b';
+                no_esc = true;
+            }
+        end, desc='fzf-lua grep (word under cursor)'},
     }
-end)
+}
