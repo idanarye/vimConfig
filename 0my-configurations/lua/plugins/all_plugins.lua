@@ -171,4 +171,6 @@ return {
 
     'nanozuki/tabby.nvim',
     'stevearc/aerial.nvim',
+
+    'Nexmean/caskey.nvim',
 }

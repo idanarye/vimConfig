@@ -10,29 +10,29 @@ neotest.setup {
     };
 }
 
-local function bind_key(key, dlg)
-    vim.keymap.set('n', '<Leader>t' .. key, dlg)
-end
-
-bind_key('t', neotest.run.run)
-bind_key('T', function()
-    neotest.run.run(vim.fn.expand("%"))
-end)
-bind_key('<C-t>', function()
-    neotest.run.run_last()
-end)
-bind_key('o', neotest.output.open)
-bind_key('p', neotest.output_panel.toggle)
-
-bind_key('d', function()
-    neotest.run.run{strategy = 'dap'}
-end)
-bind_key('D', function()
-    neotest.run.run{vim.fn.expand('%'), strategy = 'dap'}
-end)
-bind_key('<C-d>', function()
-    neotest.run.run_last{strategy = 'dap'}
-end)
-
-bind_key('k', neotest.run.stop)
-bind_key('s', neotest.summary.toggle)
+require'caskey'.setup {
+    mode = {'n'},
+    name = 'neotest',
+    ['<Leader>t'] = {
+        ['t'] = { act = neotest.run.run, desc = 'Run test' },
+        ['T'] = { act = function()
+            neotest.run.run(vim.fn.expand("%"))
+        end, desc = 'Run tests file'},
+        ['<C-t>'] = { act = function()
+            neotest.run.run_last()
+        end, desc = 'Rerun last test'},
+        ['o'] = { act = neotest.output.open, desc = 'Open Neotest output popup' },
+        ['p'] = { act = neotest.output_panel.toggle, desc = 'Toggle Neotest panel' },
+        ['d'] = { act = function()
+            neotest.run.run{strategy = 'dap'}
+        end, desc = 'Run test in debug mode'},
+        ['D'] = { act = function()
+            neotest.run.run{vim.fn.expand('%'), strategy = 'dap'}
+        end, desc = 'Run tests file in debug mode'},
+        ['<C-d>'] = { act = function()
+            neotest.run.run{strategy = 'dap'}
+        end, desc = 'Rerun last test in debug mode'},
+        ['k'] = { act = neotest.run.stop, desc = 'Stop Neotest' },
+        ['s'] = { act = neotest.summary.toggle, desc = 'Toggle Neotest summary' },
+    },
+}
