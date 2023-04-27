@@ -118,7 +118,7 @@ call extend(g:erroneous_errorFormatChooserWords,{
 			\'rake': function('erroneous#parseRakeErrorOutput'),
 			\'ant': function('erroneous#parseAntErrorOutput'),
 			\'mvn': function('erroneous#parseMavenErrorOutput'),
-			\'gradle': '%A%f:%l:%m,%-Z%p^,%-C%.%#,%t: %f: (%l\, %c): %m',
+			\'gradle': '%t: file://%f:%l:%c %m,%A%f:%l:%m,%-Z%p^,%-C%.%#,%t: %f: (%l\, %c): %m',
 			\'mcs': '%f(%l\,%c): %m',
 			\'csc': '%#%f(%l\,%c): %m',
 			\'xbuild': function('erroneous#parseXBuildErrorOutput'),
