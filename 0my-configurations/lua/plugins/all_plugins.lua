@@ -173,4 +173,6 @@ return {
     'stevearc/aerial.nvim',
 
     'Nexmean/caskey.nvim',
+
+    'epwalsh/obsidian.nvim',
 }
