@@ -3,8 +3,8 @@ vim.o.showtabline = 2
 local theme = {
     fill = 'TabLineFill',
     head = 'TabLine',
-    current_tab = 'TabLineSel',
-    tab = 'TabLine',
+    current_tab = 'TabLine',
+    tab = 'TabLineSel',
     win = 'TabLine',
     tail = 'TabLine',
 }
