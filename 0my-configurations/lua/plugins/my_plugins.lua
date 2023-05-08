@@ -15,4 +15,6 @@ return {
     {'idanarye/nvim-moonicipal', branch = 'develop'},
     {'idanarye/nvim-channelot', branch = 'develop'},
     {'idanarye/nvim-buffls', branch = 'develop'},
+
+    {'idanarye/nvim-blunder'},
 }
