@@ -37,7 +37,7 @@ return function(T, cfg)
     end
 
     function T:clippy()
-        vim.cmd'Erun! cargo clippy -q'
+        vim.cmd'Brun cargo clippy -q'
     end
 
     T{ alias = ':2' }
@@ -103,16 +103,14 @@ return function(T, cfg)
         local cmd = {'cargo', 'check', '-q'}
         add_relevant_flags_for_target(cmd, target_if_only_build_relevant())
         add_features_to_command(cmd, T:cargo_required_features_for_all_examples())
-        vim.cmd('Erun! ' .. table.concat(cmd, ' '))
+        vim.cmd('Brun ' .. table.concat(cmd, ' '))
     end
 
     function T:build()
         local cmd = {'cargo', 'build', '-q'}
         add_relevant_flags_for_target(cmd, target_if_only_build_relevant())
         add_features_to_command(cmd, cfg.extra_features_for_build_and_run or {})
-        vim.cmd'botright new'
-        channelot.terminal_job(cmd)
-        vim.cmd.startinsert()
+        require'blunder'.run(cmd)
     end
 
     function T:_simple_target_runner()
