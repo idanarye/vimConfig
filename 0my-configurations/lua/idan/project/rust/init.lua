@@ -1,4 +1,5 @@
 local channelot = require'channelot'
+local blunder = require'blunder'
 local idan_rust = require'idan.rust'
 
 ---@class IdanProjectRustCfg
@@ -37,7 +38,7 @@ return function(T, cfg)
     end
 
     function T:clippy()
-        vim.cmd'Brun cargo clippy -q'
+        blunder.run{'cargo', 'clippy', '-q'}
     end
 
     T{ alias = ':2' }
@@ -103,14 +104,14 @@ return function(T, cfg)
         local cmd = {'cargo', 'check', '-q'}
         add_relevant_flags_for_target(cmd, target_if_only_build_relevant())
         add_features_to_command(cmd, T:cargo_required_features_for_all_examples())
-        vim.cmd('Brun ' .. table.concat(cmd, ' '))
+        blunder.run(cmd)
     end
 
     function T:build()
         local cmd = {'cargo', 'build', '-q'}
         add_relevant_flags_for_target(cmd, target_if_only_build_relevant())
         add_features_to_command(cmd, cfg.extra_features_for_build_and_run or {})
-        require'blunder'.run(cmd)
+        blunder.run(cmd)
     end
 
     function T:_simple_target_runner()
@@ -197,9 +198,7 @@ return function(T, cfg)
     end
 
     function T:test()
-        vim.cmd'botright new'
-        channelot.terminal_job{'cargo', 'test', '--all-features'}
-        vim.cmd.startinsert()
+        blunder.run{'cargo', 'test', '--all-features'}
     end
 
     function T:clean()
@@ -227,13 +226,11 @@ return function(T, cfg)
     end
 
     function T:doc()
-        vim.cmd'botright new'
         local cmd = {'cargo', 'doc', '--no-deps', '--all-features'}
         for _, extra_feature in ipairs(cfg.extra_features_for_docs or {}) do
             vim.list_extend(cmd, {'--features', extra_feature})
         end
-        channelot.terminal_job(cmd)
-        vim.cmd.startinsert()
+        blunder.run(cmd)
     end
 
     function T:browse_docs()
