@@ -1,5 +1,6 @@
 require'obsidian'.setup {
     dir = vim.fn.stdpath('data') .. '/obsidian.nvim',
+    finder = 'fzf-lua'
 }
 
 require'caskey'.setup {
