@@ -175,4 +175,5 @@ return {
     'Nexmean/caskey.nvim',
 
     'epwalsh/obsidian.nvim',
+    'HampusHauffman/block.nvim',
 }
