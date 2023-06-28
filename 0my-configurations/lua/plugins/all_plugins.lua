@@ -176,4 +176,5 @@ return {
 
     'epwalsh/obsidian.nvim',
     'HampusHauffman/block.nvim',
+    'rcarriga/nvim-notify',
 }

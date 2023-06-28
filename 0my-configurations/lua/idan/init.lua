@@ -21,4 +21,15 @@ function M.run_block_in_ipython(job, block)
     end
 end
 
+function M.notify_error(dlg, ...)
+    local args = {...}
+    xpcall(
+    function()
+        dlg(unpack(args))
+    end,
+    function(err)
+        vim.notify(err, 'error')
+    end)
+end
+
 return M
