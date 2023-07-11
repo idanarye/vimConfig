@@ -6,6 +6,7 @@ local idan_rust = require'idan.rust'
 ---@field crate_name? string
 ---@field extra_features_for_build_and_run? string[]
 ---@field extra_features_for_docs? string[]
+---@field extra_features_for_wasm? string[]
 ---@field only_build_relevant? boolean
 ---@field cli_args_for_targets? {string: string[]}
 ---@field extra_logging? {string: string}
@@ -85,6 +86,9 @@ return function(T, cfg)
     end
 
     local function add_features_to_command(cmd, features)
+        if features == nil then
+            return
+        end
         for _, feature in ipairs(features) do
             vim.list_extend(cmd, {'--features', feature})
         end
@@ -209,6 +213,7 @@ return function(T, cfg)
         local target = T:run_target()
         local cmd = {'cargo', 'build', '--bins', '--examples', '--all-features', '--target', 'wasm32-unknown-unknown'}
         add_features_to_command(cmd, T:cargo_required_features_for_all_examples())
+        add_features_to_command(cmd, cfg.extra_features_for_wasm)
         vim.cmd'botright new'
         local t = channelot.terminal()
         t:job({RUST_BACKTRACE = '1'}, cmd):wait()
@@ -227,7 +232,16 @@ return function(T, cfg)
 
     function T:doc()
         local cmd = {'cargo', 'doc', '--no-deps', '--all-features'}
-        for _, extra_feature in ipairs(cfg.extra_features_for_docs or {}) do
+        local extra_features_for_docs = cfg.extra_features_for_docs
+        if extra_features_for_docs == nil then
+            local from_cargo = idan_rust.jq_cargo_metadata('.packages[].metadata.docs.rs.features')
+            if vim.tbl_islist(from_cargo) then
+                extra_features_for_docs = from_cargo
+            else
+                extra_features_for_docs = {}
+            end
+        end
+        for _, extra_feature in ipairs(extra_features_for_docs) do
             vim.list_extend(cmd, {'--features', extra_feature})
         end
         blunder.run(cmd)
