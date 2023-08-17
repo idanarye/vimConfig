@@ -10,6 +10,7 @@ nnoremap <silent> \a <cmd>lua vim.lsp.buf.code_action()<CR>
 vnoremap <silent> \a :lua vim.lsp.buf.code_action()<CR>
 " nnoremap <silent> \a <cmd>Telescope lsp_code_actions<CR>
 " vnoremap <silent> \a <cmd>Telescope lsp_range_code_actions<CR>
+vnoremap <silent> \f :lua vim.lsp.buf.format{ range = {} }<CR>
 
 nnoremap <silent> \d <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K  <cmd>lua vim.lsp.buf.hover()<CR>

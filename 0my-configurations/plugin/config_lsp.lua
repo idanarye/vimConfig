@@ -1,4 +1,9 @@
-require'mason'.setup {}
+require'mason'.setup {
+    registries = {
+        'github:mason-org/mason-registry',
+        'lua:idan.mason-registry.index',
+    },
+}
 require'mason-lspconfig'.setup {}
 local mason_core_path = require'mason-core.path'
 
@@ -51,14 +56,34 @@ require'fzf_lsp'.setup {
 -- lspconfig.rust_analyzer.setup {}
 
 lspconfig.pylsp.setup {
-    capabilities = capabilities;
+    capabilities = capabilities,
 
     root_dir = function(startpath)
         if startpath == '' then
             startpath = vim.fn.getcwd()
         end
         return lspconfig.pylsp.document_config.default_config.root_dir(startpath)
-    end;
+    end,
+
+    settings = {
+        pylsp = {
+            plugins = {
+                pycodestyle = {
+                    enabled = false,
+                },
+                flake8 = {
+                    enabled = true,
+                    maxLineLength = 130,
+                },
+                pylsp_black = {
+                    enabled = true,
+                },
+                pylsp_mypy = {
+                    enabled = true,
+                },
+            }
+        },
+    },
 }
 
 
