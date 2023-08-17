@@ -1,3 +1,35 @@
+require'caskey'.setup {
+    mode = {'n'},
+    name = 'LSP',
+    ['K'] =  {act = vim.lsp.buf.hover, desc = 'LSP show documentation'},
+    ['\\'] = {
+        ['f'] = {mode = {'v'}, act = function() vim.lsp.buf.format{ range = {} } end, desc = 'LSP format selected lines'},
+        ['a'] = {mode = {'n', 'v'}, act = function()
+            local mode = vim.api.nvim_get_mode()
+            if mode.mode == 'v' or mode.mode == 'V' or mode.mode == '\22' then
+                vim.lsp.buf.code_action{ range = {
+                    ['start'] = vim.api.nvim_buf_get_mark(0, '<'),
+                    ['end'] = vim.api.nvim_buf_get_mark(0, '>'),
+                } }
+            else
+                vim.lsp.buf.code_action()
+            end
+        end, desc = 'LSP code actions'},
+
+        ['d'] = {act = vim.lsp.buf.definition, desc = 'LSP jump to definition'},
+        ['D'] = {act = vim.lsp.buf.implementation, desc = 'LSP jump to imlementations'},
+        ['k'] = {act = vim.lsp.buf.signature_help, desc = 'LSP signature help'},
+        ['<C-d>'] = {act = vim.lsp.buf.type_definition, desc = 'LSP jump to type definition'},
+        ['n'] = {act = vim.lsp.buf.references, desc = 'LSP jump to references'},
+        ['0'] = {act = vim.lsp.buf.document_symbol, desc = 'LSP document symbol'},
+        ['W'] = {act = vim.lsp.buf.workspace_symbol, desc = 'LSP workspace symbol'},
+        ['<M-d>'] = {act = vim.lsp.buf.declaration, desc = 'LSP jump to declaration'},
+        ['r'] = {act = vim.lsp.buf.rename, desc = 'LSP rename'},
+        -- ['q'] = <cmd> LspDiagnostics 0<CR>
+        -- ['Q'] = <cmd> LspDiagnosticsAll<CR>
+    },
+}
+
 require'mason'.setup {
     registries = {
         'github:mason-org/mason-registry',
