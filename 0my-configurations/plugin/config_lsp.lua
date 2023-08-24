@@ -30,6 +30,10 @@ require'caskey'.setup {
     },
 }
 
+vim.api.nvim_create_user_command('LspFormat', function()
+    vim.lsp.buf.format()
+end, {})
+
 require'mason'.setup {
     registries = {
         'github:mason-org/mason-registry',
