@@ -94,6 +94,24 @@ require'fzf_lsp'.setup {
 lspconfig.pylsp.setup {
     capabilities = capabilities,
 
+    on_new_config = function(new_config, new_root_dir)
+        local site_packages = vim.fn.systemlist({
+            'bash', '-ce', [=[
+            cd "$1"
+            python
+            ]=], '--', new_root_dir,
+        }, require'plenary.strings'.dedent[=[
+        import site
+        for site_package in site.getsitepackages():
+            print(site_package)
+        ]=])
+
+        --new_config.cmd_env.MYPYPATH = table.concat(site_packages, ':')
+        vim.list_extend(new_config.settings.pylsp.plugins.jedi.extra_paths, site_packages)
+    end,
+
+    cmd_env = vim.empty_dict(),
+
     root_dir = function(startpath)
         if startpath == '' then
             startpath = vim.fn.getcwd()
@@ -116,6 +134,10 @@ lspconfig.pylsp.setup {
                 },
                 pylsp_mypy = {
                     enabled = true,
+                    overrides = {'--follow-imports', 'silent', true},
+                },
+                jedi = {
+                    extra_paths = {}
                 },
             }
         },
