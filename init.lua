@@ -3,11 +3,10 @@ vim.env.MYVIMRC = vim_config_path .. '/_vimrc'
 vim.api.nvim_command('source $MYVIMRC')
 
 local localcfg_fn = loadfile(vim.fs.dirname(vim_config_path) .. '/localcfg.lua')
-local localcfg
 if localcfg_fn then
-  localcfg = localcfg_fn()
+  IdanLocalCfg = localcfg_fn()
 else
-  localcfg = {}
+  IdanLocalCfg = {}
 end
 
 local lazy_dev_patterns = {}
@@ -49,7 +48,7 @@ require'lazy'.setup(require'plugins', {
   performance = {
     rtp = {
       paths = {
-         unpack(localcfg.runtime_paths or {}),
+         unpack(IdanLocalCfg.runtime_paths or {}),
       },
     },
   }

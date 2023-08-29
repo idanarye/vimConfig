@@ -106,7 +106,10 @@ lspconfig.pylsp.setup {
             print(site_package)
         ]=])
 
-        --new_config.cmd_env.MYPYPATH = table.concat(site_packages, ':')
+        if IdanLocalCfg.add_special_python_site_packages then
+            IdanLocalCfg.add_special_python_site_packages(site_packages)
+        end
+
         vim.list_extend(new_config.settings.pylsp.plugins.jedi.extra_paths, site_packages)
     end,
 
