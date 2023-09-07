@@ -1,6 +1,6 @@
 return {
     {'idanarye/vim-casetrate', branch = 'develop'},
-    {'idanarye/vim-dutyl', branch = 'develop'},
+    -- {'idanarye/vim-dutyl', branch = 'develop'},
     {'idanarye/vim-erroneous', branch = 'develop'},
     'idanarye/vim-makecfg',
     {'idanarye/vim-merginal', branch = 'develop'},
