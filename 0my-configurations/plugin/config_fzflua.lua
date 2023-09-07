@@ -1,34 +1,34 @@
 local fzf = require'fzf-lua'
 fzf.setup {
     winopts = {
-        split = 'belowright new';
-    };
+        split = 'belowright new',
+    },
     keymap = {
         fzf = {
-            ["ctrl-z"] = "abort";
-            ["ctrl-u"] = "unix-line-discard";
-            --["ctrl-d"] = "half-page-down";
-            --["ctrl-u"] = "half-page-up";
-            --["ctrl-a"] = "beginning-of-line";
-            --["ctrl-e"] = "end-of-line";
-            ["alt-a"] = "toggle-all";
+            ["ctrl-z"] = "abort",
+            ["ctrl-u"] = "unix-line-discard",
+            --["ctrl-d"] = "half-page-down",
+            --["ctrl-u"] = "half-page-up",
+            --["ctrl-a"] = "beginning-of-line",
+            --["ctrl-e"] = "end-of-line",
+            ["alt-a"] = "toggle-all",
             -- Only valid with fzf previewers (bat/cat/git/etc)
-            ["f3"] = "toggle-preview-wrap";
-            ["f4"] = "toggle-preview";
-            ["shift-down"] = "preview-page-down";
-            ["shift-up"] = "preview-page-up";
-        };
-    };
+            ["f3"] = "toggle-preview-wrap",
+            ["f4"] = "toggle-preview",
+            ["shift-down"] = "preview-page-down",
+            ["shift-up"] = "preview-page-up",
+        },
+    },
     previewers = {
         git_diff = {
-            pager = "delta";
-        };
+            pager = "delta",
+        },
         builtin = {
             extensions = {
-                ["png"] = { "viu", "-b" };
-            };
-        };
-    };
+                ["png"] = { "viu", "-b" },
+            },
+        },
+    },
 }
 
 fzf.register_ui_select()
@@ -46,15 +46,15 @@ require'caskey'.setup {
             local input = vim.fn.input('rg> ')
             if input then
                 fzf.grep {
-                    search = input;
-                    no_esc = true;
+                    search = input,
+                    no_esc = true,
                 }
             end
         end, desc='fzf-lua grep (prompt pattern)'},
         ['S'] = {act = function()
             fzf.grep {
-                search = '\\b' .. vim.fn.expand('<cword>') .. '\\b';
-                no_esc = true;
+                search = '\\b' .. vim.fn.expand('<cword>') .. '\\b',
+                no_esc = true,
             }
         end, desc='fzf-lua grep (word under cursor)'},
     }

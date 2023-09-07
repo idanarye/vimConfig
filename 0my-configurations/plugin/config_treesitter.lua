@@ -1,7 +1,7 @@
 require'nvim-treesitter.configs'.setup {
     ensure_installed = {
         'bash',
-        'd',
+        -- 'd', -- don't install it, it makes Neovim and sometimes the machine itself freeze on certain files
         'json',
         'json5',
         'kotlin',
