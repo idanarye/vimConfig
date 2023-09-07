@@ -188,6 +188,22 @@ lspconfig.lua_ls.setup {
     on_init = function(client)
         local path = client.workspace_folders[1].name
         if not vim.loop.fs_stat(path..'/.luarc.json') and not vim.loop.fs_stat(path..'/.luarc.jsonc') then
+            local set_of_plugins = {}
+            for _, plugin_name in ipairs({
+                'nvim-dap',
+
+                'nvim-moonicipal',
+                'nvim-channelot',
+                'nvim-buffls',
+                'nvim-blunder',
+            })
+            do
+                set_of_plugins[plugin_name] = true
+            end
+            local plugin_paths_to_add = vim.tbl_filter(function(plugin_path)
+                local plugin_name = vim.fs.basename(vim.fs.dirname(plugin_path))
+                return set_of_plugins[plugin_name]
+            end, vim.api.nvim_get_runtime_file("lua", true))
             client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
                 Lua = {
                     runtime = {
@@ -203,7 +219,8 @@ lspconfig.lua_ls.setup {
                         checkThirdParty = false,
                         library = {
                             vim.env.VIMRUNTIME,
-                            unpack(vim.api.nvim_get_runtime_file("lua", true)),
+                            -- unpack(vim.api.nvim_get_runtime_file("lua", true)),
+                            unpack(plugin_paths_to_add),
                             -- "${3rd}/luv/library"
                             -- "${3rd}/busted/library",
                         }
