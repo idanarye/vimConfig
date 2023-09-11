@@ -101,8 +101,7 @@ return {
     'nvim-lua/lsp_extensions.nvim',
     'nvim-lua/popup.nvim',
 
-    -- 'nvim-lua/plenary.nvim',
-    {'idanarye/plenary.nvim', branch = 'async-testing'},
+     'nvim-lua/plenary.nvim',
 
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
