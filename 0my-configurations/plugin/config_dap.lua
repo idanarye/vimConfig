@@ -3,6 +3,8 @@ local dapui = require'dapui'
 
 local mason_core_path = require'mason-core.path'
 
+dap.defaults.fallback.switchbuf = 'useopen,split'
+
 dapui.setup({
     --sidebar = { open_on_start = false };
     --tray = { open_on_start = false };
