@@ -190,6 +190,8 @@ lspconfig.lua_ls.setup {
         if not vim.loop.fs_stat(path..'/.luarc.json') and not vim.loop.fs_stat(path..'/.luarc.jsonc') then
             local set_of_plugins = {}
             for _, plugin_name in ipairs({
+                'runtime',
+
                 'nvim-dap',
 
                 'nvim-moonicipal',
@@ -219,10 +221,7 @@ lspconfig.lua_ls.setup {
                         checkThirdParty = false,
                         library = {
                             vim.env.VIMRUNTIME,
-                            -- unpack(vim.api.nvim_get_runtime_file("lua", true)),
                             unpack(plugin_paths_to_add),
-                            -- "${3rd}/luv/library"
-                            -- "${3rd}/busted/library",
                         }
                         -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
                         -- library = vim.api.nvim_get_runtime_file("", true)
