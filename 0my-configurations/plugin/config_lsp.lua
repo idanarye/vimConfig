@@ -221,6 +221,7 @@ lspconfig.lua_ls.setup {
                         checkThirdParty = false,
                         library = {
                             vim.env.VIMRUNTIME,
+                            vim.env.VIMRUNTIME .. '/lua/vim/lsp',
                             unpack(plugin_paths_to_add),
                         }
                         -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
