@@ -192,6 +192,7 @@ lspconfig.lua_ls.setup {
             for _, plugin_name in ipairs({
                 'runtime',
                 '0my-configurations',
+                'local',
 
                 'nvim-dap',
 
