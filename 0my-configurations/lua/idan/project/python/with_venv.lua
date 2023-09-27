@@ -80,6 +80,25 @@ return function(T, cfg)
         })
     end
 
+    ---@param dlg fun(terminal: ChannelotTerminal)
+    local function virtualenv_creation(dlg)
+        blunder.create_window_for_terminal()
+        local t = channelot.terminal()
+        require'idan'.notify_error(function()
+            t:job{'pyenv', 'virtualenv-delete', '-f', cfg.venv_name}:wait()
+            t:job{'pyenv', 'virtualenv', cfg.venv_python_version, cfg.venv_name}:wait()
+            t:job{'pyenv', 'local', cfg.venv_name}:wait()
+            dlg(t)
+        end)
+        t:prompt_exit()
+    end
+
+    function T:recreate_virtualenv_as_is()
+        virtualenv_creation(function(t)
+            t:job{'pip', 'install', '.'}:wait()
+        end)
+    end
+
     function T:recreate_virtualenv()
         local pyproject = T:pyproject()
         local project_dependencies_to_install = pyproject.project.dependencies
@@ -96,30 +115,26 @@ return function(T, cfg)
             end, project_dependencies_to_install)
         end
 
-        blunder.create_window_for_terminal()
-        local t = channelot.terminal()
-        t:job{'pyenv', 'virtualenv-delete', '-f', cfg.venv_name}:wait()
-        t:job{'pyenv', 'virtualenv', cfg.venv_python_version, cfg.venv_name}:wait()
-        t:job{'pyenv', 'local', cfg.venv_name}:wait()
-        t:job{'pip', 'install', 'mypy', 'ipython', 'sphinx==5.3.0'}:wait()
-        if cfg.locally_install_packages then
-            if next(project_dependencies_to_install) then
-                t:job{'pip', 'install', unpack(project_dependencies_to_install)}:wait()
+        virtualenv_creation(function(t)
+            t:job{'pip', 'install', 'mypy', 'ipython', 'sphinx==5.3.0'}:wait()
+            if cfg.locally_install_packages then
+                if next(project_dependencies_to_install) then
+                    t:job{'pip', 'install', unpack(project_dependencies_to_install)}:wait()
+                end
+                for _, dependency_path in pairs(cfg.locally_install_packages) do
+                    t:job{'pip', 'install', '-e', dependency_path}:wait()
+                end
+            else
+                t:job{'pip', 'install', '.'}:wait()
             end
-            for _, dependency_path in pairs(cfg.locally_install_packages) do
-                t:job{'pip', 'install', '-e', dependency_path}:wait()
-            end
-        else
-            t:job{'pip', 'install', '.'}:wait()
-        end
-        local packages = T:packages()
-        t:job{
-            'python', '-m', 'mypy',
-            '--follow-imports', 'silent',
-            '--install-types', '--non-interactive',
-            unpack(packages)
-        }:wait()
-        t:prompt_exit()
+            local packages = T:packages()
+            t:job{
+                'python', '-m', 'mypy',
+                '--follow-imports', 'silent',
+                '--install-types', '--non-interactive',
+                unpack(packages)
+            }:wait()
+        end)
     end
 
     function T:run_mypy()
@@ -131,6 +146,26 @@ return function(T, cfg)
             '--non-interactive',
             unpack(T:packages())
         }
+    end
+
+    function T:black_this_file()
+        local bufnum = vim.api.nvim_get_current_buf()
+        local orig = vim.api.nvim_buf_get_lines(bufnum, 0, vim.api.nvim_buf_line_count(bufnum), true)
+        local j = channelot.job{'black', '-'}
+        for _, line in ipairs(orig) do
+            j:writeln(line)
+        end
+        j:close_stdin()
+        local output = { stdout = {}, stderr = {} }
+        for std, line in j:iter() do
+            table.insert(output[std], line)
+        end
+        local result = j:wait()
+        if result == 0 then
+            vim.api.nvim_buf_set_lines(bufnum, 0, vim.api.nvim_buf_line_count(bufnum), true, output.stdout)
+        else
+            vim.notify(table.concat(output.stderr, '\n'))
+        end
     end
 
     function T:copy_git_hash()
