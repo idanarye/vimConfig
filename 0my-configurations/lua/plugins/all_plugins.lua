@@ -136,7 +136,7 @@ return {
         vim.fn'firenvim#install'(0)
     end},
 
-    'jose-elias-alvarez/null-ls.nvim',
+    'nvimtools/none-ls.nvim',
 
     'ncm2/float-preview.nvim',
     'MunifTanjim/nui.nvim',
