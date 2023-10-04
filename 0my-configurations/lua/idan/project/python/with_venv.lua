@@ -116,7 +116,6 @@ return function(T, cfg)
         end
 
         virtualenv_creation(function(t)
-            t:job{'pip', 'install', 'mypy', 'ipython', 'sphinx==5.3.0'}:wait()
             if cfg.locally_install_packages then
                 if next(project_dependencies_to_install) then
                     t:job{'pip', 'install', unpack(project_dependencies_to_install)}:wait()
@@ -127,6 +126,7 @@ return function(T, cfg)
             else
                 t:job{'pip', 'install', '.'}:wait()
             end
+            t:job{'pip', 'install', 'mypy', 'ipython', 'sphinx==5.3.0'}:wait()
             local packages = T:packages()
             t:job{
                 'python', '-m', 'mypy',
@@ -183,7 +183,22 @@ return function(T, cfg)
     end
 
     function T:clear_docs()
-        vim.cmd'!rm -R docs/_build/ docs/_apidoc/'
+        local files_to_remove = {}
+        for _, look_in in ipairs{'docs'} do
+            vim.list_extend(files_to_remove, vim.fn.systemlist{
+                'git', 'ls-files',
+                '--others', '--ignored',
+                '--exclude-from', '.gitignore',
+                '--full-name',
+                '--directory',
+                look_in,
+            })
+        end
+        if next(files_to_remove) == nil then
+            return
+        end
+        blunder.create_window_for_terminal()
+        vim.fn.termopen{'rm', '--verbose', '-Rf', unpack(files_to_remove)}
     end
 
     function T:browse_docs()
