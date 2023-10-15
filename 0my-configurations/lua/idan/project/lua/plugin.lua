@@ -11,7 +11,7 @@ return function(T)
 
     function T:test()
         local testfile = T:choose_test()
-        vim.cmd'botright new'
+        blunder.create_window_for_terminal()
         vim.cmd.wincmd('20_')
         vim.fn.termopen{
             'nvim', '--headless',
@@ -22,7 +22,7 @@ return function(T)
     end
 
     function T:test_all()
-        vim.cmd'botright new'
+        blunder.create_window_for_terminal()
         vim.cmd.wincmd('20_')
         vim.fn.termopen{
             'nvim', '--headless',

@@ -130,14 +130,13 @@ return function(T, cfg)
                         table.insert(cmd, '--')
                         vim.list_extend(cmd, cli_args)
                     end
-                    vim.cmd'botright new'
+                    blunder.create_window_for_terminal()
                     channelot.terminal_job({
                         RUST_BACKTRACE = '1',
                         RUST_LOG = get_rust_log_envvar {
                             [{get_crate_name(), target.name}] = 'debug',
                         },
                     }, cmd)
-                    vim.cmd.startinsert()
                     return
                 end
             end
@@ -154,14 +153,13 @@ return function(T, cfg)
             table.insert(cmd, '--')
             vim.list_extend(cmd, target.cli_args)
         end
-        vim.cmd'botright new'
+        blunder.create_window_for_terminal()
         channelot.terminal_job({
             RUST_BACKTRACE = '1',
             RUST_LOG = get_rust_log_envvar {
                 [{get_crate_name(), target.name}] = 'debug',
             },
         }, cmd)
-        vim.cmd.startinsert()
     end
 
     function T:debug()
