@@ -1,3 +1,5 @@
+local blunder = require'blunder'
+
 return function(T)
     function T:choose_test()
         local cc = self:cached_choice{key = tostring}
