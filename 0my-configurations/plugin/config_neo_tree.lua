@@ -2,23 +2,32 @@ vim.api.nvim_set_keymap('n', '<Leader><Tab>', ':Neotree focus toggle<Cr>', {nore
 vim.api.nvim_set_keymap('n', '<Leader><Leader><Tab>', ':Neotree focus reveal<Cr>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<Leader>d', ':Neotree reveal current<Cr>', {noremap = true, silent = true})
 
-local sources = {
-    'filesystem',
-    'buffers',
-    'git_status',
-    'diagnostics',
-}
-
-local sources_for_source_selector = vim.tbl_map(function(source) 
-    return {
-        source = source,
-    }
-end, sources)
-
 require("neo-tree").setup {
-    sources = sources,
+    sources = {
+        'filesystem',
+        'buffers',
+        'git_status',
+        'netman.ui.neo-tree',
+        'diagnostics',
+    },
     source_selector = {
-        sources = sources_for_source_selector,
+        sources = {
+            {
+                source = 'filesystem',
+            },
+            {
+                source = 'buffers',
+            },
+            {
+                source = 'git_status',
+            },
+            {
+                source = 'remote',
+            },
+            {
+                source = 'diagnostics',
+            },
+        },
     },
     filesystem = {
         hijack_netrw_behavior = "open_current";

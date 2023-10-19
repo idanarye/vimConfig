@@ -177,4 +177,6 @@ return {
     'HampusHauffman/block.nvim',
     'rcarriga/nvim-notify',
     'KaitlynEthylia/TreePin',
+
+    'miversen33/netman.nvim',
 }
