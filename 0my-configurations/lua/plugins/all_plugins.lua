@@ -183,4 +183,11 @@ return {
     'mickael-menu/zk-nvim',
     -- 'prncss-xyz/neo-tree-zk.nvim',
     { 'idanarye/neo-tree-zk.nvim', branch = 'fix-modified_buffers_changes-to-opened_buffers_changed' },
+
+    -- 'vxpm/ferris.nvim',
+    {
+        'idanarye/ferris.nvim',
+        branch = 'fix-ra-requests-for-multi-lsp-buffers',
+        --dir = '/files/oss/ferris.nvim/',
+    },
 }

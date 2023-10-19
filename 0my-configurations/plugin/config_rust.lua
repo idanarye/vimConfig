@@ -28,3 +28,5 @@ require'rust-tools'.setup {
 }
 require'crates'.setup {
 }
+require'ferris'.setup {
+}
