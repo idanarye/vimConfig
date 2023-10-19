@@ -179,4 +179,8 @@ return {
     'KaitlynEthylia/TreePin',
 
     'miversen33/netman.nvim',
+
+    'mickael-menu/zk-nvim',
+    -- 'prncss-xyz/neo-tree-zk.nvim',
+    { 'idanarye/neo-tree-zk.nvim', branch = 'fix-modified_buffers_changes-to-opened_buffers_changed' },
 }

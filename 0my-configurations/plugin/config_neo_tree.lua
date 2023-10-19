@@ -9,6 +9,7 @@ require("neo-tree").setup {
         'git_status',
         'netman.ui.neo-tree',
         'diagnostics',
+        'zk',
     },
     source_selector = {
         sources = {
@@ -25,31 +26,34 @@ require("neo-tree").setup {
                 source = 'remote',
             },
             {
+                source = 'zk',
+            },
+            {
                 source = 'diagnostics',
             },
         },
     },
     filesystem = {
-        hijack_netrw_behavior = "open_current";
+        hijack_netrw_behavior = "open_current",
         window = {
             mappings = {
                 ['t'] = function(state)
                     vim.cmd('tabnew ' .. state.tree:get_node():get_id())
-                end;
-                ['o'] = 'system_open';
-                ['w'] = false;
+                end,
+                ['o'] = 'system_open',
+                ['w'] = false,
             }
-        };
+        },
         commands = {
             system_open = function(state)
                 vim.api.nvim_command('silent !xdg-open ' .. state.tree:get_node():get_id())
-            end;
-        };
-        bind_to_cwd = false;
-    };
+            end,
+        },
+        bind_to_cwd = false,
+    },
     event_handlers = {
         {
-            event = 'file_open_requested';
+            event = 'file_open_requested',
             handler = function(args)
                 if args.state.current_position == 'current' then
                     return
@@ -62,9 +66,13 @@ require("neo-tree").setup {
                     vim.api.nvim_command(open_cmd .. ' ' .. path)
                 end
                 return { handled = true }
-            end;
-        };
-    };
+            end,
+        },
+    },
+    zk = {
+        bind_to_cwd = true,
+        follow_current_file = false,
+    },
 }
 vim.fn.sign_define("LspDiagnosticsSignError", {text = " ", texthl = "LspDiagnosticsSignError"})
 vim.fn.sign_define("LspDiagnosticsSignWarning", {text = " ", texthl = "LspDiagnosticsSignWarning"})
