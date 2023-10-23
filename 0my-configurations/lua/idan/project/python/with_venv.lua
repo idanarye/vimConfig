@@ -37,7 +37,7 @@ return function(T, cfg)
         function T:run_target()
             local cc = self:cached_choice {
                 key = function(target)
-                    return target
+                    return vim.inspect(target)
                 end,
             }
             for _, target in ipairs(cfg.run_targets) do
@@ -48,16 +48,37 @@ return function(T, cfg)
 
         function T:run()
             local target = T:run_target() or moonicipal.abort()
-            vim.o.errorformat = [=[%A  File "%f"\, line %l%.%#,%Z%[%^ ]%\@=%m ]=]
-            blunder.run{'python', target}
+            local command
+            if type(target) == "string" then
+                command = {target}
+            elseif vim.tbl_islist(target) then
+                command = target
+            else
+                error("Bad target " .. vim.inspect(target))
+            end
+            blunder.run({'python', unpack(command)}, {
+                fmt = [=[%A  File "%f"\, line %l%.%#,%Z%[%^ ]%\@=%m ]=],
+            })
         end
 
         function T:debug()
             local target = T:run_target() or moonicipal.abort()
+            local program
+            local args
+            if type(target) == "string" then
+                program = target
+                args = nil
+            elseif vim.tbl_islist(target) then
+                program = target[1]
+                args = {unpack(target, 2)}
+            else
+                error("Bad target " .. vim.inspect(target))
+            end
             require'dap'.run {
                 type = 'python',
                 request = 'launch',
-                program = target,
+                program = program,
+                args = args,
             }
         end
     end
@@ -83,14 +104,14 @@ return function(T, cfg)
     ---@param dlg fun(terminal: ChannelotTerminal)
     local function virtualenv_creation(dlg)
         blunder.create_window_for_terminal()
-        local t = channelot.terminal()
         require'idan'.notify_error(function()
-            t:job{'pyenv', 'virtualenv-delete', '-f', cfg.venv_name}:wait()
-            t:job{'pyenv', 'virtualenv', cfg.venv_python_version, cfg.venv_name}:wait()
-            t:job{'pyenv', 'local', cfg.venv_name}:wait()
-            dlg(t)
+            channelot.terminal():with(function(t)
+                t:job{'pyenv', 'virtualenv-delete', '-f', cfg.venv_name}:wait()
+                t:job{'pyenv', 'virtualenv', cfg.venv_python_version, cfg.venv_name}:check()
+                t:job{'pyenv', 'local', cfg.venv_name}:check()
+                dlg(t)
+            end)
         end)
-        t:prompt_exit()
     end
 
     function T:recreate_virtualenv_as_is()
@@ -174,12 +195,12 @@ return function(T, cfg)
 
     function T:doc()
         blunder.create_window_for_terminal()
-        local t = channelot.terminal()
-         for _, package in ipairs(T:packages()) do
-             t:job{'python', '-m', 'sphinx.ext.apidoc', '-o', 'docs', package}:wait()
-         end
-         t:job{'python', '-m', 'sphinx.cmd.build', '-b', 'html', 'docs', 'docs/_build/html'}:wait()
-        t:prompt_exit()
+        channelot.terminal():with(function(t)
+            for _, package in ipairs(T:packages()) do
+                t:job{'python', '-m', 'sphinx.ext.apidoc', '-o', 'docs', package}:wait()
+            end
+            t:job{'python', '-m', 'sphinx.cmd.build', '-b', 'html', 'docs', 'docs/_build/html'}:wait()
+        end)
     end
 
     function T:clear_docs()
