@@ -1,4 +1,6 @@
-require'blunder'.setup {
+local blunder = require'blunder'
+
+blunder.setup {
     formats = {
         cargo = "%f:%l:%c: %t%*[^:]: %m,%f:%l:%c: %*\\d:%*\\d %t%*[^:]: %m,%-G%f:%l %s,%-G%*[ ]^,%-G%*[ ]^%*[~],%-G%*[ ]...,%-G,%-Gerror: aborting %.%#,%-Gerror: Could not compile %.%#,%Eerror: %m,%Eerror[E%n]: %m,%Wwarning: %m,%Inote: %m,%C %#--> %f:%l:%c,%-G%\\s%#Downloading%.%#,%-G%\\s%#Compiling%.%#,%-G%\\s%#Finished%.%#,%-G%\\s%#error: Could not compile %.%#,%-G%\\s%#To learn more\\,%.%#",
         csc = "%#%f(%l\\,%c): %m",
@@ -13,5 +15,10 @@ require'blunder'.setup {
         rdmd = "%f(%l): %m",
         ruby = "%f:%l:%m",
         rustc = "%f:%l:%c: %t%*[^:]: %m,%f:%l:%c: %*\\d:%*\\d %t%*[^:]: %m,%-G%f:%l %s,%-G%*[ ]^,%-G%*[ ]^%*[~],%-G%*[ ]...,%-G,%-Gerror: aborting %.%#,%-Gerror: Could not compile %.%#,%Eerror: %m,%Eerror[E%n]: %m,%Wwarning: %m,%Inote: %m,%C %#--> %f:%l:%c",
+
+        lua = [=[%f:%l: in %\w%\+ '%o']=],
     }
 }
+
+blunder.formats.croissant = blunder.formats.lua
+blunder.formats.luajit = blunder.formats.lua
