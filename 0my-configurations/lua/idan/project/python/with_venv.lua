@@ -10,8 +10,10 @@ local blunder = require'blunder'
 ---@field locally_install_packages? { [string]: string }
 
 ---@param cfg? IdanWorkProjectPythonWithVenvCfg
-return function(T, cfg)
+return function(cfg)
     cfg = cfg or {}
+
+    local T = moonicipal.tasks_lib()
 
     function T:pyproject()
         local pyproject = require'toml'.parse(table.concat(vim.fn.readfile('pyproject.toml'), '\n'))

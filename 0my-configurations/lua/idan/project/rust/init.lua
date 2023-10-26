@@ -1,3 +1,4 @@
+local moonicipal = require'moonicipal'
 local channelot = require'channelot'
 local blunder = require'blunder'
 local idan_rust = require'idan.rust'
@@ -12,8 +13,10 @@ local idan_rust = require'idan.rust'
 ---@field extra_logging? {string: string}
 
 ---@param cfg? IdanProjectRustCfg
-return function(T, cfg)
+return function(cfg)
     cfg = cfg or {}
+
+    local T = moonicipal.tasks_lib()
 
     local function get_crate_name()
         return cfg.crate_name or idan_rust.jq_cargo_metadata('.packages[].name')

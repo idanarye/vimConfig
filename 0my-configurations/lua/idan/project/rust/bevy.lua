@@ -1,15 +1,19 @@
+local moonicipal = require'moonicipal'
+
 ---@class IdanProjectRustBevyCfg : IdanProjectRustCfg
 ---@field level_editor? boolean
 ---@field pkv_app_name? string
 
 ---@param cfg? IdanProjectRustBevyCfg
-return function(T, cfg)
+return function(cfg)
     cfg = cfg or {}
     if not cfg.extra_features_for_build_and_run then
         cfg.extra_features_for_build_and_run = {}
     end
     table.insert(cfg.extra_features_for_build_and_run, 'bevy/dynamic_linking')
-    T = require'idan.project.rust'(T, cfg)
+
+    local P = require'idan.project.rust'(cfg)
+    local T = moonicipal.tasks_lib()
 
     if cfg.level_editor then
         local idan_rust = require'idan.rust'
@@ -19,9 +23,9 @@ return function(T, cfg)
         end
 
         function T:go()
-            T:_simple_target_runner()(get_game_executable_name(), '--editor')
+            P:_simple_target_runner()(get_game_executable_name(), '--editor')
         end
-        
+
         T{alias = ':3'}
         function T:pick_level()
             local cc = self:cached_choice {
@@ -37,7 +41,7 @@ return function(T, cfg)
 
         function T:execute()
             local level = T:pick_level() or require'moonicipal'.abort()
-            T:_simple_target_runner()(get_game_executable_name(), '--level', level)
+            P:_simple_target_runner()(get_game_executable_name(), '--level', level)
         end
     end
 
@@ -47,5 +51,5 @@ return function(T, cfg)
         end
     end
 
-    return T
+    return moonicipal.merge_libs(T, P)
 end
