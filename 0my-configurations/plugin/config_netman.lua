@@ -1,2 +1,0 @@
-require'netman'.setup {
-}

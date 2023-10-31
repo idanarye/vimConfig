@@ -7,7 +7,6 @@ require("neo-tree").setup {
         'filesystem',
         'buffers',
         'git_status',
-        'netman.ui.neo-tree',
         'diagnostics',
         'zk',
     },
@@ -21,9 +20,6 @@ require("neo-tree").setup {
             },
             {
                 source = 'git_status',
-            },
-            {
-                source = 'remote',
             },
             {
                 source = 'zk',
