@@ -190,6 +190,7 @@ lspconfig.lua_ls.setup {
         if not vim.loop.fs_stat(path..'/.luarc.json') and not vim.loop.fs_stat(path..'/.luarc.jsonc') then
             local set_of_plugins = {}
             for _, plugin_name in ipairs({
+                'nvim',
                 'runtime',
                 '0my-configurations',
                 'local',
