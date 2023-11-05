@@ -210,21 +210,32 @@ return function(cfg)
         vim.cmd'!cargo clean'
     end
 
-    function T:launch_wasm()
-        local target = T:run_target()
+    local function get_build_wasm_command()
         local cmd = {'cargo', 'build', '--bins', '--examples', '--all-features', '--target', 'wasm32-unknown-unknown'}
         add_features_to_command(cmd, T:cargo_required_features_for_all_examples())
         add_features_to_command(cmd, cfg.extra_features_for_wasm)
-        vim.cmd'botright new'
-        local t = channelot.terminal()
-        t:job({RUST_BACKTRACE = '1'}, cmd):wait()
-        local wasm_file_path = 'target/wasm32-unknown-unknown/debug/'
-        if vim.tbl_contains(target.kind, 'example') then
-            wasm_file_path = wasm_file_path .. 'examples/'
-        end
-        wasm_file_path = wasm_file_path .. target.name .. '.wasm'
-        t:job{'wasm-server-runner', wasm_file_path}:wait()
-        t:prompt_exit()
+        return cmd
+    end
+
+    function T:build_wasm()
+        local cmd = get_build_wasm_command()
+        blunder.create_window_for_terminal()
+        channelot.terminal_job({RUST_BACKTRACE = '1'}, cmd):check()
+    end
+
+    function T:launch_wasm()
+        local target = T:run_target()
+        local cmd = get_build_wasm_command()
+        blunder.create_window_for_terminal()
+        channelot.terminal():with(function(t)
+            t:job({RUST_BACKTRACE = '1'}, cmd):check()
+            local wasm_file_path = 'target/wasm32-unknown-unknown/debug/'
+            if vim.tbl_contains(target.kind, 'example') then
+                wasm_file_path = wasm_file_path .. 'examples/'
+            end
+            wasm_file_path = wasm_file_path .. target.name .. '.wasm'
+            t:job{'wasm-server-runner', wasm_file_path}:check()
+        end)
     end
 
     function T:browse_wasm()
