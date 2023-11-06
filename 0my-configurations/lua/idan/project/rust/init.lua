@@ -172,9 +172,23 @@ return function(cfg)
         add_relevant_flags_for_target(cmd, target)
         add_features_to_command(cmd, cfg.extra_features_for_build_and_run or {})
         cmd = vim.tbl_map(vim.fn.shellescape, cmd)
-        local exit_code = vim.fn['erroneous#run']('cargo build -q ' .. table.concat(cmd, ' '), true, true, false)
-        if 0 ~= exit_code then
-            return
+
+        local current_tab = vim.api.nvim_tabpage_get_number(0)
+        vim.cmd.tabnew()
+        local terminal = require'channelot'.terminal()
+        vim.notify(vim.inspect(terminal))
+        vim.cmd.tabclose()
+        vim.cmd.tabnext(current_tab)
+
+        local exit_status = terminal:job('cargo build -q ' .. table.concat(cmd, ' ')):using(blunder.for_channelot):wait()
+        local terminal_buffer_id = vim.api.nvim_get_chan_info(terminal.terminal_id).buffer
+        if exit_status == 0 then
+            vim.api.nvim_buf_delete(terminal_buffer_id, {force = true})
+        else
+            blunder.create_window_for_terminal()
+            vim.cmd.buffer(terminal_buffer_id)
+            terminal:prompt_exit('[Process exited ' .. exit_status .. ']')
+            moonicipal.abort()
         end
 
         local executable_path = 'target/debug/'
@@ -220,7 +234,7 @@ return function(cfg)
     function T:build_wasm()
         local cmd = get_build_wasm_command()
         blunder.create_window_for_terminal()
-        channelot.terminal_job({RUST_BACKTRACE = '1'}, cmd):check()
+        channelot.terminal_job({RUST_BACKTRACE = '1'}, cmd):using(blunder.for_channelot):wait()
     end
 
     function T:launch_wasm()
@@ -228,7 +242,7 @@ return function(cfg)
         local cmd = get_build_wasm_command()
         blunder.create_window_for_terminal()
         channelot.terminal():with(function(t)
-            t:job({RUST_BACKTRACE = '1'}, cmd):check()
+            t:job({RUST_BACKTRACE = '1'}, cmd):using(blunder.for_channelot):check()
             local wasm_file_path = 'target/wasm32-unknown-unknown/debug/'
             if vim.tbl_contains(target.kind, 'example') then
                 wasm_file_path = wasm_file_path .. 'examples/'
@@ -246,7 +260,7 @@ return function(cfg)
         local cmd = {'cargo', 'doc', '--no-deps', '--all-features'}
         local extra_features_for_docs = cfg.extra_features_for_docs
         if extra_features_for_docs == nil then
-            local from_cargo = idan_rust.jq_cargo_metadata('.packages[].metadata.docs.rs.features')
+            local from_cargo = idan_rust.jq_cargo_metadata('.packages | map(.metadata.docs.rs | select (. != null))[0].features')
             if vim.tbl_islist(from_cargo) then
                 extra_features_for_docs = from_cargo
             else
