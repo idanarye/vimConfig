@@ -168,26 +168,18 @@ return function(cfg)
     function T:debug()
         local target = T:run_target()
 
-        local cmd = {}
+        local cmd = {'cargo', 'build'}
         add_relevant_flags_for_target(cmd, target)
         add_features_to_command(cmd, cfg.extra_features_for_build_and_run or {})
-        cmd = vim.tbl_map(vim.fn.shellescape, cmd)
 
-        local current_tab = vim.api.nvim_tabpage_get_number(0)
-        vim.cmd.tabnew()
-        local terminal = require'channelot'.terminal()
-        vim.notify(vim.inspect(terminal))
-        vim.cmd.tabclose()
-        vim.cmd.tabnext(current_tab)
+        local terminal = require'channelot'.terminal { bufnr = vim.api.nvim_create_buf(true, false) }
 
-        local exit_status = terminal:job('cargo build -q ' .. table.concat(cmd, ' ')):using(blunder.for_channelot):wait()
-        local terminal_buffer_id = vim.api.nvim_get_chan_info(terminal.terminal_id).buffer
+        local exit_status = terminal:job(cmd):using(blunder.for_channelot):wait()
         if exit_status == 0 then
-            vim.api.nvim_buf_delete(terminal_buffer_id, {force = true})
+            terminal:close_buffer()
         else
-            blunder.create_window_for_terminal()
-            vim.cmd.buffer(terminal_buffer_id)
-            terminal:prompt_exit('[Process exited ' .. exit_status .. ']')
+            blunder.create_window_for_terminal { bufnr = terminal:get_bufnr() }
+            terminal:prompt_after_process_exited(exit_status)
             moonicipal.abort()
         end
 
