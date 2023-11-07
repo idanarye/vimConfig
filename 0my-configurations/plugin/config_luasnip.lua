@@ -34,23 +34,24 @@ vim.keymap.set({'i', 's'}, '<C-k>', function()
 end, {silent=true, expr = true})
 
 vim.api.nvim_create_user_command('InsertSnippet', function()
+    local relevant_filetypes = vim.tbl_keys(luasnip.available())
     local all_snippets = require'luasnip.session.snippet_collection'.get_snippets(nil, 'snippets')
     local completions = {}
     local max_filetype_length = 0
     local max_trigger_length = 0
-    for filetype, filetype_snippets in pairs(all_snippets) do
+    for _, filetype in ipairs(relevant_filetypes) do
         if max_filetype_length < #filetype then
             max_filetype_length = #filetype
         end
-        for _, snippet in ipairs(filetype_snippets) do
+        for _, snippet in ipairs(all_snippets[filetype] or {}) do
             if max_trigger_length < #snippet.trigger then
                 max_trigger_length = #snippet.trigger
             end
         end
     end
     local fmt = ('%%-%ds [%%-%ds] %%s'):format(max_trigger_length, max_filetype_length)
-    for filetype, filetype_snippets in pairs(all_snippets) do
-        for _, snippet in ipairs(filetype_snippets) do
+    for _, filetype in ipairs(relevant_filetypes) do
+        for _, snippet in ipairs(all_snippets[filetype] or {}) do
             completions[fmt:format(snippet.trigger, filetype, snippet.description[1])] = snippet
         end
     end
@@ -67,7 +68,14 @@ vim.api.nvim_create_user_command('InsertSnippet', function()
     require'fzf-lua'.fzf_exec(vim.tbl_keys(completions), {
         nomulti = true,
         fn_selected = function(chosen)
-            local snippet = get_snippet_from_chosen(chosen)
+            local action, text = unpack(chosen)
+            if action == 'esc' then
+                return
+            end
+            local snippet = completions[text]
+            if snippet == nil then
+                return
+            end
             luasnip.snip_expand(snippet)
         end,
     })
