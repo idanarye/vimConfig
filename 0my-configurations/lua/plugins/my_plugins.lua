@@ -16,5 +16,5 @@ return {
     {'idanarye/nvim-channelot', branch = 'develop'},
     {'idanarye/nvim-buffls', branch = 'develop'},
 
-    {'idanarye/nvim-blunder'},
+    {'idanarye/nvim-blunder', branch = 'develop'},
 }
