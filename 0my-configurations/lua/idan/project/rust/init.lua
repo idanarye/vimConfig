@@ -172,14 +172,10 @@ return function(cfg)
         add_relevant_flags_for_target(cmd, target)
         add_features_to_command(cmd, cfg.extra_features_for_build_and_run or {})
 
-        local terminal = require'channelot'.terminal { bufnr = vim.api.nvim_create_buf(true, false) }
-
-        local exit_status = terminal:job(cmd):using(blunder.for_channelot):wait()
-        if exit_status == 0 then
-            terminal:close_buffer()
-        else
-            blunder.create_window_for_terminal { bufnr = terminal:get_bufnr() }
-            terminal:prompt_after_process_exited(exit_status)
+        local build_failed = require'channelot'.shadow_terminal():with(function(t)
+            t:job(cmd):using(blunder.for_channelot):check()
+        end)
+        if build_failed then
             moonicipal.abort()
         end
 
