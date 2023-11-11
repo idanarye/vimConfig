@@ -241,7 +241,7 @@ return function(cfg)
     end
 
     function T:browse_wasm()
-        vim.cmd'!firefox http://127.0.0.1:1334'
+        vim.cmd'!firefox --new-window http://127.0.0.1:1334'
     end
 
     function T:doc()
@@ -262,7 +262,7 @@ return function(cfg)
     end
 
     function T:browse_docs()
-        vim.cmd('!firefox target/doc/' .. get_crate_name() .. '/index.html')
+        vim.cmd('!firefox --new-window target/doc/' .. get_crate_name() .. '/index.html')
     end
 
     return T
