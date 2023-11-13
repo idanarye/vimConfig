@@ -37,12 +37,42 @@ return function(cfg)
         return table.concat(parts, ',')
     end
 
+    local function target_if_only_build_relevant()
+        if cfg.only_build_relevant then
+            return T:run_target()
+        else
+            return nil
+        end
+    end
+
+    function T:cargo_required_features_for_all_examples()
+        return idan_rust.jq_cargo_metadata('.packages | map(.targets[] | select(.kind[] == "example") | (.["required-features"] // [])[]) | unique')
+    end
+
+    function T:cargo_metadata_by_target()
+        return idan_rust.jq_cargo_metadata('.packages | map(.targets[]) | INDEX(.name)')
+    end
+
+    function T:cargo_all_packages()
+        return idan_rust.jq_cargo_metadata('.packages | map(.name)')
+    end
+
+    local function flags_to_include_all_packages()
+        local result = {}
+        for _, subpackage in ipairs(T:cargo_all_packages()) do
+            vim.list_extend(result, {
+                '--package', subpackage,
+            })
+        end
+        return result
+    end
+
     function T:run_cargo_fmt()
         vim.cmd'!cargo fmt'
     end
 
     function T:clippy()
-        blunder.run{'cargo', 'clippy', '-q'}
+        blunder.run{'cargo', 'clippy', '-q', '--workspace', '--all-targets'}
     end
 
     T{ alias = ':2' }
@@ -70,22 +100,6 @@ return function(cfg)
             end
         end
         return cc:select()
-    end
-
-    local function target_if_only_build_relevant()
-        if cfg.only_build_relevant then
-            return T:run_target()
-        else
-            return nil
-        end
-    end
-
-    function T:cargo_required_features_for_all_examples()
-        return idan_rust.jq_cargo_metadata('.packages | map(.targets[] | select(.kind[] == "example") | (.["required-features"] // [])[]) | unique')
-    end
-
-    function T:cargo_metadata_by_target()
-        return idan_rust.jq_cargo_metadata('.packages | map(.targets[]) | INDEX(.name)')
     end
 
     local function add_features_to_command(cmd, features)
@@ -245,7 +259,7 @@ return function(cfg)
     end
 
     function T:doc()
-        local cmd = {'cargo', 'doc', '--no-deps', '--all-features'}
+        local cmd = {'cargo', 'doc', '--no-deps', '--all-features', unpack(flags_to_include_all_packages())}
         local extra_features_for_docs = cfg.extra_features_for_docs
         if extra_features_for_docs == nil then
             local from_cargo = idan_rust.jq_cargo_metadata('.packages | map(.metadata.docs.rs | select (. != null))[0].features')
