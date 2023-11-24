@@ -14,6 +14,7 @@ require'nvim-treesitter.configs'.setup {
         'rust',
         'toml',
         'yaml',
+        'nu',
     };
     highlight = { enable = true };
     incremental_selection = { enable = true };

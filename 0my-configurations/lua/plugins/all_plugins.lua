@@ -101,7 +101,7 @@ return {
     'nvim-lua/lsp_extensions.nvim',
     'nvim-lua/popup.nvim',
 
-     'nvim-lua/plenary.nvim',
+    'nvim-lua/plenary.nvim',
 
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
@@ -182,6 +182,8 @@ return {
     -- 'prncss-xyz/neo-tree-zk.nvim',
     { 'idanarye/neo-tree-zk.nvim', branch = 'fix-modified_buffers_changes-to-opened_buffers_changed' },
 
-     'vxpm/ferris.nvim',
-     'nvim-pack/nvim-spectre',
+    'vxpm/ferris.nvim',
+    'nvim-pack/nvim-spectre',
+
+    'LhKipp/nvim-nu',
 }

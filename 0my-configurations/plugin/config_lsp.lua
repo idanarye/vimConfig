@@ -259,3 +259,6 @@ lspconfig.yamlls.setup {
 lspconfig.serve_d.setup {
     capabilities = capabilities;
 }
+
+lspconfig.nushell.setup {
+}
