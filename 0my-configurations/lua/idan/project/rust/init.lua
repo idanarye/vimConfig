@@ -45,6 +45,25 @@ return function(cfg)
         end
     end
 
+    function T:watch_cargo_metdata()
+        local current_window = vim.api.nvim_get_current_win()
+        vim.cmd'botright vnew'
+        vim.fn.termopen{'watch', '--color', '--differences', idan_rust.CARGO_METADATA_GENERATION_COMMAND}
+        vim.api.nvim_set_current_win(current_window)
+    end
+
+    function T:jq_cargo_metdata()
+        channelot.create_window_for_terminal()
+        vim.cmd.wincmd'L'
+        vim.fn.termopen{
+            'fzf',
+            '--disabled', '--ansi', '--no-sort', '--tac',
+            '--query', '.',
+            '--bind', 'start:reload:' .. idan_rust.CARGO_METADATA_GENERATION_COMMAND .. ' | jq --color-output {q}',
+            '--bind', 'change:reload:' .. idan_rust.CARGO_METADATA_GENERATION_COMMAND .. ' | jq --color-output {q}',
+        }
+    end
+
     function T:cargo_required_features_for_all_examples()
         return idan_rust.jq_cargo_metadata('.packages | map(.targets[] | select(.kind[] == "example") | (.["required-features"] // [])[]) | unique')
     end
@@ -113,6 +132,7 @@ return function(cfg)
 
     local function add_relevant_flags_for_target(cmd, target)
         if target then
+            vim.list_extend(cmd, {'--package', target.package_name})
             vim.list_extend(cmd, idan_rust.flags_to_run_target(target))
             add_features_to_command(cmd, T:cargo_metadata_by_target()[target.name]['required-features'] or {})
         else
@@ -161,7 +181,7 @@ return function(cfg)
         end
     end
 
-    function T:run()
+    function T:target_and_command()
         local target = T:run_target()
         local cmd = {'cargo', 'run'}
         add_relevant_flags_for_target(cmd, target)
@@ -170,6 +190,15 @@ return function(cfg)
             table.insert(cmd, '--')
             vim.list_extend(cmd, target.cli_args)
         end
+        if self:is_main() then
+            dump(target)
+            dump(cmd)
+        end
+        return target, cmd
+    end
+
+    function T:run()
+        local target, cmd = T:target_and_command()
         blunder.create_window_for_terminal()
         channelot.terminal_job({
             RUST_BACKTRACE = '1',
