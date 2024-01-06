@@ -11,6 +11,7 @@ local idan_rust = require'idan.rust'
 ---@field only_build_relevant? boolean
 ---@field cli_args_for_targets? {string: string[]}
 ---@field extra_logging? {string: string}
+---@field variants_for_targets? {string: {string: string[]}}
 
 ---@param cfg? IdanProjectRustCfg
 return function(cfg)
@@ -97,24 +98,39 @@ return function(cfg)
     T{ alias = ':2' }
     function T:run_target()
         local function name_with_args(target)
-            if target.cli_args then
-                return target.name .. vim.inspect(target.cli_args)
-            else
-                return target.name
+            local result = target.name
+            if target.variant_name then
+                result = result .. ('[%s]'):format(target.variant_name)
             end
+            if target.cli_args then
+                result = result .. vim.inspect(target.cli_args)
+            end
+            return result
         end
         local cc = self:cached_choice {
             key = name_with_args,
             format = name_with_args,
         }
         for _, target in ipairs(idan_rust.jq_all_bin_targets()) do
-            cc(target)
             local cli_args = (cfg.cli_args_for_targets or {})[target.name]
-            if cli_args then
-                for _, args in ipairs(cli_args) do
-                    cc(vim.tbl_extend('error', target, {
-                        cli_args = args,
-                    }))
+            local variants = (cfg.variants_for_targets or {})[target.name] or {[false] = {}}
+            for variant_name, variant_features in pairs(variants) do
+                local variant = vim.tbl_extend('keep', target, {})
+                    -- ['required-features'] = {},
+                -- })
+                if variant_name then
+                    variant.variant_name = variant_name
+                    variant.variant_features = variant_features
+                    -- variant['required-features'] = vim.list_slice(variant['required-features'] or {})
+                    -- vim.list_extend(variant['required-features'], variant_features)
+                end
+                cc(variant)
+                if cli_args then
+                    for _, args in ipairs(cli_args) do
+                        cc(vim.tbl_extend('error', variant, {
+                            cli_args = args,
+                        }))
+                    end
                 end
             end
         end
@@ -135,6 +151,7 @@ return function(cfg)
             vim.list_extend(cmd, {'--package', target.package_name})
             vim.list_extend(cmd, idan_rust.flags_to_run_target(target))
             add_features_to_command(cmd, T:cargo_metadata_by_target()[target.name]['required-features'] or {})
+            add_features_to_command(cmd, target.variant_features or {})
         else
             vim.list_extend(cmd, {'--bins', '--examples'})
             add_features_to_command(cmd, T:cargo_required_features_for_all_examples())
@@ -181,6 +198,7 @@ return function(cfg)
         end
     end
 
+    T{ alias = ':0' }
     function T:target_and_command()
         local target = T:run_target()
         local cmd = {'cargo', 'run'}
