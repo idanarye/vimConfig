@@ -92,7 +92,7 @@ return function(cfg)
     end
 
     function T:clippy()
-        blunder.run{'cargo', 'clippy', '-q', '--workspace', '--all-targets'}
+        blunder.run{'cargo', 'clippy', '-q', '--workspace', '--all-targets', '--all-features'}
     end
 
     T{ alias = ':2' }
