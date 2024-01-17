@@ -17,8 +17,13 @@ blunder.setup {
         rustc = "%f:%l:%c: %t%*[^:]: %m,%f:%l:%c: %*\\d:%*\\d %t%*[^:]: %m,%-G%f:%l %s,%-G%*[ ]^,%-G%*[ ]^%*[~],%-G%*[ ]...,%-G,%-Gerror: aborting %.%#,%-Gerror: Could not compile %.%#,%Eerror: %m,%Eerror[E%n]: %m,%Wwarning: %m,%Inote: %m,%C %#--> %f:%l:%c",
 
         lua = [=[%f:%l: in %\w%\+ '%o']=],
+        python = table.concat({
+            [=[%*\sFile "%f"\, line %l\, %m]=],
+            [=[%*\sFile "%f"\, line %l]=],
+        }, ','),
     }
 }
 
+blunder.formats.python3 = blunder.formats.python
 blunder.formats.croissant = blunder.formats.lua
 blunder.formats.luajit = blunder.formats.lua
