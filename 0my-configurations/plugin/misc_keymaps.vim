@@ -62,11 +62,6 @@ nnoremap <Leader><C-s> :<C-u>write<Cr>
 nnoremap Y y$
 
 nnoremap <Leader><C-f> :PSearch<Cr>
-if exists(':terminal')
-    nnoremap <Leader><A-s> :new <Bar> terminal<Cr>a
-else
-    nnoremap <Leader><A-s> :VimShellPop<Cr>
-endif
 
 nnoremap <Leader><C-d>t :diffthis<Cr>
 nnoremap <Leader><C-d>o :diffoff<Cr>
