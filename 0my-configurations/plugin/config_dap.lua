@@ -48,6 +48,7 @@ require'caskey'.setup {
     name = 'DAP',
     ['<M-d>'] = {
         ['u'] = {act = dapui.toggle, desc='Toggle DAP UI'},
+        ['U'] = {act = dap.repl.toggle, desc='Toggle DAP REPL'},
 
         ['c'] = {act = dap.continue, desc='DAP continue'},
         ['C'] = {act = dap.run_to_cursor, desc='DAP run to cursor'},
