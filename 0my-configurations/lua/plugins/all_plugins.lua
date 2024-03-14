@@ -186,4 +186,6 @@ return {
 
     'LhKipp/nvim-nu',
     'danymat/neogen',
+
+    'jbyuki/one-small-step-for-vimkind',
 }
