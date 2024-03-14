@@ -185,4 +185,5 @@ return {
     'nvim-pack/nvim-spectre',
 
     'LhKipp/nvim-nu',
+    'danymat/neogen',
 }
