@@ -12,6 +12,7 @@ local idan_rust = require'idan.rust'
 ---@field cli_args_for_targets? {string: string[]}
 ---@field extra_logging? {string: string}
 ---@field variants_for_targets? {string: {string: string[]}}
+---@field features_for_clippy? string[]
 
 ---@param cfg? IdanProjectRustCfg
 return function(cfg)
@@ -87,12 +88,30 @@ return function(cfg)
         return result
     end
 
+    local function add_features_to_command(cmd, features)
+        if features == nil then
+            return
+        end
+        if features.no_default_features then
+            table.insert(cmd, '--no-default-features')
+        end
+        for _, feature in ipairs(features) do
+            vim.list_extend(cmd, {'--features', feature})
+        end
+    end
+
     function T:run_cargo_fmt()
         vim.cmd'!cargo fmt'
     end
 
     function T:clippy()
-        blunder.run{'cargo', 'clippy', '-q', '--workspace', '--all-targets', '--all-features'}
+        local cmd = {'cargo', 'clippy', '-q', '--workspace', '--all-targets'}
+        if cfg.features_for_clippy then
+            add_features_to_command(cmd, cfg.features_for_clippy)
+        else
+            table.insert(cmd, '--all-features')
+        end
+        blunder.run(cmd)
     end
 
     T{ alias = ':2' }
@@ -116,13 +135,9 @@ return function(cfg)
             local variants = (cfg.variants_for_targets or {})[target.name] or {[false] = {}}
             for variant_name, variant_features in pairs(variants) do
                 local variant = vim.tbl_extend('keep', target, {})
-                    -- ['required-features'] = {},
-                -- })
                 if variant_name then
                     variant.variant_name = variant_name
                     variant.variant_features = variant_features
-                    -- variant['required-features'] = vim.list_slice(variant['required-features'] or {})
-                    -- vim.list_extend(variant['required-features'], variant_features)
                 end
                 cc(variant)
                 if cli_args then
@@ -135,15 +150,6 @@ return function(cfg)
             end
         end
         return cc:select()
-    end
-
-    local function add_features_to_command(cmd, features)
-        if features == nil then
-            return
-        end
-        for _, feature in ipairs(features) do
-            vim.list_extend(cmd, {'--features', feature})
-        end
     end
 
     local function add_relevant_flags_for_target(cmd, target)
