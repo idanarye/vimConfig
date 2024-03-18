@@ -102,6 +102,7 @@ return {
     'nvim-lua/popup.nvim',
 
     'nvim-lua/plenary.nvim',
+    'nvim-neotest/nvim-nio',
 
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
