@@ -7,12 +7,14 @@ local idan_rust = require'idan.rust'
 ---@field crate_name? string
 ---@field extra_features_for_build_and_run? string[]
 ---@field extra_features_for_docs? string[]
+---@field wasm_use_all_features? boolean
 ---@field extra_features_for_wasm? string[]
 ---@field only_build_relevant? boolean
 ---@field cli_args_for_targets? {string: string[]}
 ---@field extra_logging? {string: string}
 ---@field variants_for_targets? {string: {string: string[]}}
 ---@field features_for_clippy? string[]
+---@field features_for_tests? string[]
 
 ---@param cfg? IdanProjectRustCfg
 return function(cfg)
@@ -100,18 +102,27 @@ return function(cfg)
         end
     end
 
+    local function add_features_or_all_features(cmd, features_or_all_features)
+        if features_or_all_features then
+            add_features_to_command(cmd, features_or_all_features)
+        else
+            table.insert(cmd, '--all-features')
+        end
+    end
+
+    local function run_command_with_features(cmd, features_or_all_features)
+        add_features_or_all_features(cmd, cfg.features_for_clippy)
+        blunder.run(cmd)
+    end
+
     function T:run_cargo_fmt()
         vim.cmd'!cargo fmt'
     end
 
     function T:clippy()
-        local cmd = {'cargo', 'clippy', '-q', '--workspace', '--all-targets'}
-        if cfg.features_for_clippy then
-            add_features_to_command(cmd, cfg.features_for_clippy)
-        else
-            table.insert(cmd, '--all-features')
-        end
-        blunder.run(cmd)
+        run_command_with_features({
+            'cargo', 'clippy', '-q', '--workspace', '--all-targets',
+        }, cfg.features_for_clippy)
     end
 
     T{ alias = ':2' }
@@ -272,7 +283,10 @@ return function(cfg)
     end
 
     function T:test()
-        blunder.run{'cargo', 'test', '--all-features'}
+        --blunder.run{'cargo', 'test', '--all-targets'}
+        run_command_with_features({
+            'cargo', 'test', '--all-targets',
+        }, cfg.features_for_clippy)
     end
 
     function T:clean()
@@ -280,8 +294,11 @@ return function(cfg)
     end
 
     local function get_build_wasm_command()
-        local cmd = {'cargo', 'build', '--bins', '--examples', '--all-features', '--target', 'wasm32-unknown-unknown'}
+        local cmd = {'cargo', 'build', '--bins', '--examples', '--target', 'wasm32-unknown-unknown'}
         add_features_to_command(cmd, T:cargo_required_features_for_all_examples())
+        if cfg.wasm_use_all_features == nil or cfg.wasm_use_all_features then
+            table.insert(cmd, '--all-features')
+        end
         add_features_to_command(cmd, cfg.extra_features_for_wasm)
         return cmd
     end
@@ -312,7 +329,7 @@ return function(cfg)
     end
 
     function T:doc()
-        local cmd = {'cargo', 'doc', '--no-deps', '--all-features', unpack(flags_to_include_all_packages())}
+        local cmd = {'cargo', 'doc', '--no-deps', unpack(flags_to_include_all_packages())}
         local extra_features_for_docs = cfg.extra_features_for_docs
         if extra_features_for_docs == nil then
             local from_cargo = idan_rust.jq_cargo_metadata('.packages | map(.metadata.docs.rs | select (. != null))[0].features')
