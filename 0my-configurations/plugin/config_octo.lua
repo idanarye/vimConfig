@@ -1,5 +1,8 @@
 require'octo'.setup {
     picker = 'fzf-lua',
+    suppress_missing_scope = {
+        projects_v2 = true,
+    },
 }
 
 local ck = require'caskey'
