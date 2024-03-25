@@ -189,4 +189,6 @@ return {
     'danymat/neogen',
 
     'jbyuki/one-small-step-for-vimkind',
+
+    'SuperBo/fugit2.nvim',
 }
