@@ -64,6 +64,20 @@ require("neo-tree").setup {
                 return { handled = true }
             end,
         },
+        {
+            event = 'neo_tree_buffer_leave',
+            handler = function()
+                local shown_buffers = {}
+                for _, win in ipairs(vim.api.nvim_list_wins()) do
+                    shown_buffers[vim.api.nvim_win_get_buf(win)] = true
+                end
+                for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+                    if not shown_buffers[buf] and vim.api.nvim_buf_get_option(buf, 'buftype') == 'nofile' and vim.api.nvim_buf_get_option(buf, 'filetype') == 'neo-tree' then
+                        vim.api.nvim_buf_delete(buf, {})
+                    end
+                end
+            end,
+        },
     },
     zk = {
         bind_to_cwd = true,
@@ -74,18 +88,3 @@ vim.fn.sign_define("LspDiagnosticsSignError", {text = " ", texthl = "LspDiagn
 vim.fn.sign_define("LspDiagnosticsSignWarning", {text = " ", texthl = "LspDiagnosticsSignWarning"})
 vim.fn.sign_define("LspDiagnosticsSignInformation", {text = " ", texthl = "LspDiagnosticsSignInformation"})
 vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", texthl = "LspDiagnosticsSignHint"})
-
-vim.api.nvim_create_user_command('FixNeoTreeLingeringBuffer', function()
-    local shown_buffers = {}
-    for _, win in ipairs(vim.api.nvim_list_wins()) do
-        shown_buffers[vim.api.nvim_win_get_buf(win)] = true
-    end
-    local deleted_buffers = {}
-    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-        if not shown_buffers[buf] and vim.api.nvim_buf_get_option(buf, 'buftype') == 'nofile' and vim.api.nvim_buf_get_option(buf, 'filetype') == 'neo-tree' then
-            deleted_buffers[buf] = true
-            vim.api.nvim_buf_delete(buf, {})
-        end
-    end
-    vim.notify('Deleted ' .. vim.tbl_count(deleted_buffers) .. ' lingering NeoTree buffers')
-end, {})
