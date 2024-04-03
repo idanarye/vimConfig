@@ -70,7 +70,7 @@ return {
     'vim-scripts/vim-gradle',
     'wellle/targets.vim',
     'wellle/visual-split.vim',
-    'Yggdroot/indentLine',
+    'shellRaining/hlchunk.nvim',
     'zenbro/mirror.vim',
     'hynek/vim-python-pep8-indent',
     'lervag/vimtex',

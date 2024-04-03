@@ -255,9 +255,6 @@ let g:breeze_highlight_filename_patterns = '*.ejs,*.jsp,*.erb'
 let g:omnipytent_filePrefix = '.idanarye'
 let g:omnipytent_defaultPythonVersion = 3
 
-let g:indent_guides_color_change_percent=10
-let g:indent_guides_guide_size=1
-
 let g:EasyClipUseSubstituteDefaults=1
 
 " let g:vebugger_leader='<M-d>'
