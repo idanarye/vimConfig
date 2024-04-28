@@ -8,6 +8,8 @@ local blunder = require'blunder'
 ---@field venv_python_version string
 ---@field run_targets? string[]
 ---@field locally_install_packages? { [string]: string }
+---@field cwd? string Run everything in a subdirectory
+---@field extra_packages? string[]
 
 ---@param cfg? IdanWorkProjectPythonWithVenvCfg
 return function(cfg)
@@ -16,7 +18,11 @@ return function(cfg)
     local T = moonicipal.tasks_lib()
 
     function T:pyproject()
-        local pyproject = require'toml'.parse(table.concat(vim.fn.readfile('pyproject.toml'), '\n'))
+        local file_path = 'pyproject.toml'
+        if cfg.cwd then
+            file_path = cfg.cwd .. '/' .. file_path
+        end
+        local pyproject = require'toml'.decode(table.concat(vim.fn.readfile(file_path), '\n'))
         if self:is_main() then
             dump(pyproject)
         end
@@ -28,8 +34,11 @@ return function(cfg)
             return {cfg.package_name}
         end
         local packages = vim.tbl_get(T:pyproject(), 'tool', 'setuptools', 'packages')
-        if packages then
-            return packages
+        if packages == nil then
+            packages = {}
+        end
+        if self:is_main() then
+            dump(packages)
         end
         return {}
     end
@@ -58,8 +67,9 @@ return function(cfg)
             else
                 error("Bad target " .. vim.inspect(target))
             end
-            blunder.run({'python', unpack(command)}, {
-                fmt = [=[%A  File "%f"\, line %l%.%#,%Z%[%^ ]%\@=%m ]=],
+            channelot.windowed_terminal_job(command, {cwd = cfg.cwd}):using(blunder.for_channelot {
+            --blunder.run({'python', unpack(command)}, {
+                efm = [=[%A  File "%f"\, line %l%.%#,%Z%[%^ ]%\@=%m ]=],
             })
         end
 
@@ -81,6 +91,7 @@ return function(cfg)
                 request = 'launch',
                 program = program,
                 args = args,
+                cwd = cfg.cwd,
             }
         end
     end
@@ -90,7 +101,8 @@ return function(cfg)
         if not cluster_name or cluster_name == '' then
             moonicipal.abort()
         end
-        blunder.create_window_for_terminal()
+        local cwd = cfg.cwd or vim.fn.getcwd()
+        channelot.create_window_for_terminal()
         vim.fn.termopen({'teka', 'explore', cluster_name, '--cmd', require'plenary.strings'.dedent[=[
         import os
         import json
@@ -98,16 +110,16 @@ return function(cfg)
             json.dump([ip for h in system.hosts for ip in h.host_ips], f)
         ]=]}, {
             env = {
-                IPS_JSON_FILE = vim.fs.normalize('$PWD/current-ips.json')
+                IPS_JSON_FILE = vim.fs.normalize(cwd .. '/current-ips.json')
             },
         })
     end
 
     ---@param dlg fun(terminal: ChannelotTerminal)
     local function virtualenv_creation(dlg)
-        blunder.create_window_for_terminal()
+        channelot.create_window_for_terminal()
         require'idan'.notify_error(function()
-            channelot.terminal():with(function(t)
+            channelot.terminal{cwd = cfg.cwd}:with(function(t)
                 t:job{'pyenv', 'virtualenv-delete', '-f', cfg.venv_name}:wait()
                 t:job{'pyenv', 'virtualenv', cfg.venv_python_version, cfg.venv_name}:check()
                 t:job{'pyenv', 'local', cfg.venv_name}:check()
@@ -149,7 +161,11 @@ return function(cfg)
             else
                 t:job{'pip', 'install', '.'}:wait()
             end
-            t:job{'pip', 'install', 'mypy', 'ipython', 'sphinx==5.3.0'}:wait()
+            local more_packages = {'mypy', 'ipython', 'sphinx==5.3.0'}
+            if cfg.extra_packages then
+                vim.list_extend(more_packages, cfg.extra_packages)
+            end
+            t:job{'pip', 'install', unpack(more_packages)}:wait()
             local packages = T:packages()
             t:job{
                 'python', '-m', 'mypy',
@@ -161,14 +177,16 @@ return function(cfg)
     end
 
     function T:run_mypy()
-        blunder.run{
+        channelot.windowed_terminal_job({
             'python',
             '-m', 'mypy',
             '--follow-imports', 'silent',
             '--install-types',
             '--non-interactive',
             unpack(T:packages())
-        }
+        }, {cwd = cfg.cwd}):using(blunder.for_channelot)
+        --blunder.run{
+        --}
     end
 
     function T:black_this_file()
@@ -196,8 +214,8 @@ return function(cfg)
     end
 
     function T:doc()
-        blunder.create_window_for_terminal()
-        channelot.terminal():with(function(t)
+        channelot.create_window_for_terminal()
+        channelot.terminal{cwd = cfg.cwd}:with(function(t)
             for _, package in ipairs(T:packages()) do
                 t:job{'python', '-m', 'sphinx.ext.apidoc', '-o', 'docs', package}:wait()
             end
@@ -208,6 +226,9 @@ return function(cfg)
     function T:clear_docs()
         local files_to_remove = {}
         for _, look_in in ipairs{'docs'} do
+            if cfg.cwd then
+                look_in = table.concat({cfg.cwd, look_in}, '/')
+            end
             vim.list_extend(files_to_remove, vim.fn.systemlist{
                 'git', 'ls-files',
                 '--others', '--ignored',
@@ -220,12 +241,12 @@ return function(cfg)
         if next(files_to_remove) == nil then
             return
         end
-        blunder.create_window_for_terminal()
+        channelot.create_window_for_terminal()
         vim.fn.termopen{'rm', '--verbose', '-Rf', unpack(files_to_remove)}
     end
 
     function T:browse_docs()
-        vim.fn.system{'firefox', 'docs/_build/html/index.html'}
+        channelot.job({'firefox', 'docs/_build/html/index.html'}, {cwd = cfg.cwd})
     end
 
     return T
