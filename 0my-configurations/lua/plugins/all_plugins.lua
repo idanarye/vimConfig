@@ -191,4 +191,6 @@ return {
     'jbyuki/one-small-step-for-vimkind',
 
     'SuperBo/fugit2.nvim',
+
+    'nomnivore/ollama.nvim',
 }
