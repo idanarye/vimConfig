@@ -10,7 +10,7 @@ end
 
 local ollama = require'ollama'
 ollama.setup {
-    model = 'codellama',
+    model = 'codegemma',
 }
 
 local ck = require'caskey'
