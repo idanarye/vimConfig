@@ -16,7 +16,7 @@ ollama.setup {
 local ck = require'caskey'
 ck.setup {
     mode = {'n', 'v'},
-    name = 'Ollama.nvim',
+    name = 'LLM',
     ['<M-a>'] = {
         ['<M-a>'] = {
             act = ollama.prompt,
@@ -42,5 +42,9 @@ ck.setup {
             act = ':<C-u>lua require"ollama".prompt("Simplify_Code")<Cr>',
             desc = 'Ollama.nvim Simplify_Code',
         },
+        ['o'] = {
+            act = require'oatmeal'.start,
+            desc = 'Start Oatmeal session',
+        }
     },
 }

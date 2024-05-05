@@ -193,4 +193,5 @@ return {
     'SuperBo/fugit2.nvim',
 
     'nomnivore/ollama.nvim',
+    'dustinblackman/oatmeal.nvim',
 }
