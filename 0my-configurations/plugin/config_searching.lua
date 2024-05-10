@@ -1,0 +1,2 @@
+require'grug-far'.setup {
+}

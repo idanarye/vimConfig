@@ -183,7 +183,6 @@ return {
     { 'idanarye/neo-tree-zk.nvim', branch = 'fix-modified_buffers_changes-to-opened_buffers_changed' },
 
     'vxpm/ferris.nvim',
-    'nvim-pack/nvim-spectre',
 
     'LhKipp/nvim-nu',
     'danymat/neogen',
@@ -194,4 +193,5 @@ return {
 
     'nomnivore/ollama.nvim',
     'dustinblackman/oatmeal.nvim',
+    'MagicDuck/grug-far.nvim',
 }
