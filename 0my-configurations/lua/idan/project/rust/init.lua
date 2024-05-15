@@ -182,11 +182,15 @@ return function(cfg)
         blunder.run(cmd)
     end
 
-    function T:build()
+    function T:_build_command()
         local cmd = {'cargo', 'build', '-q'}
         add_relevant_flags_for_target(cmd, target_if_only_build_relevant())
         add_features_to_command(cmd, cfg.extra_features_for_build_and_run or {})
-        blunder.run(cmd)
+        return cmd
+    end
+
+    function T:build()
+        blunder.run(T:_build_command())
     end
 
     function T:_simple_target_runner()
