@@ -240,7 +240,13 @@ autocmd FileType lua map <buffer> <F9> <Esc>:lua loadstring(vim.fn.readblob(vim.
 
 " source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
-behave mswin
+
+" Instead of `behave mswin` which was removed in Neovim 0.10
+set selection=exclusive
+set selectmode=mouse,key
+set mousemodel=popup
+set keymodel=startsel,stopsel
+
 set keymodel= "This makes the RSI plugin work better
 
 let g:NERDCustomDelimiters = {
