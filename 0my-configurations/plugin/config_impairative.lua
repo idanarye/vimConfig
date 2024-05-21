@@ -1,10 +1,9 @@
 local impairative = require'impairative'
 
 impairative.toggling {
-    -- Use capital O for now to avoid conflicts
-    enable = '[O',
-    disable = ']O',
-    toggle = 'yO',
+    enable = '[o',
+    disable = ']o',
+    toggle = 'yo',
 }
 :field {
     key = 'b',
@@ -95,8 +94,8 @@ impairative.toggling {
 
 impairative.operations {
     -- Use capital O for now to avoid conflicts
-    backward = '<Leader>[',
-    forward = '<Leader>]',
+    backward = '[',
+    forward = ']',
 }
 :command_pair {
     key = 'a',
