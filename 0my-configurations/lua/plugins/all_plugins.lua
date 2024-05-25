@@ -58,7 +58,6 @@ return {
     -- 'tpope/vim-scriptease',
     'tpope/vim-sleuth',
     'kylechui/nvim-surround',
-    'tpope/vim-unimpaired',
     'udalov/kotlin-vim',
     'vim-ruby/vim-ruby',
     'vim-scripts/AdvancedSorters',
