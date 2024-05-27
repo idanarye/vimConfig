@@ -219,11 +219,16 @@ lspconfig.lua_ls.setup {
                 version = 'LuaJIT'
             },
             diagnostics = {
-                globals = {'vim'},
+                --globals = {'vim'},
+            },
+            hint = {
+                enable = true,
+                arrayIndex = 'Enable',
+                setType = true,
             },
             -- Make the server aware of Neovim runtime files
             workspace = {
-                checkThirdParty = false,
+                checkThirdParty = 'ApplyInMemory',
                 library = {
                     vim.env.VIMRUNTIME,
                     vim.env.VIMRUNTIME .. '/lua/vim/lsp',
