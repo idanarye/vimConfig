@@ -88,7 +88,7 @@ require'fzf_lsp'.setup {
 }
 
 
--- This is already defined by rust-tools in config_rust.lua
+-- This is already defined by rustaceanvim in config_rust.lua
 -- lspconfig.rust_analyzer.setup {}
 
 lspconfig.pylsp.setup {

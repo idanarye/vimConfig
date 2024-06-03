@@ -1,31 +1,29 @@
-require'rust-tools'.setup {
+vim.g.rustaceanvim = {
     tools = {
-        inlay_hints = {
-            auto = false,
+        server = {
+            default_settings = {
+                ["rust-analyzer"] = {
+                    assist = {
+                        importGranularity = "module";
+                        importPrefix = "by_self";
+                    },
+                    cargo = {
+                        loadOutDirsFromCheck = true;
+                        features = 'all';
+                    },
+                    procMacro = {
+                        enable = true;
+                    },
+                    completion = {
+                        -- addCallArgumentSnippets = true;
+                        -- addCallParenthesis = true;
+                    },
+                },
+            },
         },
     },
-    server = {
-        settings = {
-            ["rust-analyzer"] = {
-                assist = {
-                    importGranularity = "module";
-                    importPrefix = "by_self";
-                },
-                cargo = {
-                    loadOutDirsFromCheck = true;
-                    features = 'all';
-                },
-                procMacro = {
-                    enable = true;
-                },
-                completion = {
-                    -- addCallArgumentSnippets = true;
-                    -- addCallParenthesis = true;
-                },
-            }
-        }
-    };
 }
+
 require'crates'.setup {
 }
 require'ferris'.setup {

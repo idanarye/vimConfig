@@ -146,7 +146,7 @@ return {
     'jbyuki/venn.nvim',
 
     {'ibhagwan/fzf-lua', branch = 'main'},
-    'simrat39/rust-tools.nvim',
+    'mrcjkb/rustaceanvim',
     {'saecki/crates.nvim', tag = 'v0.3.0'},
     'kevinhwang91/promise-async',
     'kevinhwang91/nvim-ufo',
