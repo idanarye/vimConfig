@@ -192,5 +192,7 @@ return {
 
     'nomnivore/ollama.nvim',
     'dustinblackman/oatmeal.nvim',
+    'Aaronik/GPTModels.nvim',
+
     'MagicDuck/grug-far.nvim',
 }

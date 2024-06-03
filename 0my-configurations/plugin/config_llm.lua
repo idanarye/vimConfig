@@ -18,6 +18,7 @@ ck.setup {
     mode = {'n', 'v'},
     name = 'LLM',
     ['<M-a>'] = {
+        -- Ollama
         ['<M-a>'] = {
             act = ollama.prompt,
             desc = 'Ollama.nvim Choose action',
@@ -42,9 +43,21 @@ ck.setup {
             act = ':<C-u>lua require"ollama".prompt("Simplify_Code")<Cr>',
             desc = 'Ollama.nvim Simplify_Code',
         },
+
+        -- Oatmeal
         ['o'] = {
             act = require'oatmeal'.start,
             desc = 'Start Oatmeal session',
-        }
+        },
+
+        -- GPTModels
+        ['c'] = {
+            act = ck.cmd'GPTModelsCode',
+            desc = 'Run GPTModelsCode',
+        },
+        ['h'] = {
+            act = ck.cmd'GPTModelsChat',
+            desc = 'Run GPTModelsChat',
+        },
     },
 }
