@@ -193,6 +193,15 @@ return function(cfg)
         blunder.run(T:_build_command())
     end
 
+    function T:_shadow_build()
+        local build_failed = channelot.shadow_terminal():with(function(t)
+            t:job(T:_build_command()):using(blunder.for_channelot):check()
+        end)
+        if build_failed then
+            moonicipal.abort()
+        end
+    end
+
     function T:_build_and_keep_terminal()
         local t = channelot.windowed_terminal()
         local build_exit_status = t:job(T:_build_command()):using(blunder.for_channelot):wait()
