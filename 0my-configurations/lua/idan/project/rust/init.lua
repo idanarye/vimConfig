@@ -193,6 +193,16 @@ return function(cfg)
         blunder.run(T:_build_command())
     end
 
+    function T:_build_and_keep_terminal()
+        local t = channelot.windowed_terminal()
+        local build_exit_status = t:job(T:_build_command()):using(blunder.for_channelot):wait()
+        if build_exit_status ~= 0 then
+            t:prompt_after_process_exited(build_exit_status)
+            moonicipal.abort()
+        end
+        return t
+    end
+
     function T:_simple_target_runner()
         return function(target_name, ...)
             local cli_args = {...}
@@ -205,8 +215,7 @@ return function(cfg)
                         table.insert(cmd, '--')
                         vim.list_extend(cmd, cli_args)
                     end
-                    blunder.create_window_for_terminal()
-                    channelot.terminal_job({
+                    channelot.windowed_terminal_job({
                         RUST_BACKTRACE = '1',
                         RUST_LOG = get_rust_log_envvar {
                             [{get_crate_name(), target.name}] = 'debug',
@@ -238,8 +247,7 @@ return function(cfg)
 
     function T:run()
         local target, cmd = T:target_and_command()
-        blunder.create_window_for_terminal()
-        channelot.terminal_job({
+        channelot.windowed_terminal_job({
             RUST_BACKTRACE = '1',
             RUST_LOG = get_rust_log_envvar {
                 [{get_crate_name(), target.name}] = 'debug',
@@ -309,15 +317,13 @@ return function(cfg)
 
     function T:build_wasm()
         local cmd = get_build_wasm_command()
-        blunder.create_window_for_terminal()
-        channelot.terminal_job({RUST_BACKTRACE = '1'}, cmd):using(blunder.for_channelot):wait()
+        channelot.windowed_terminal_job({RUST_BACKTRACE = '1'}, cmd):using(blunder.for_channelot):wait()
     end
 
     function T:launch_wasm()
         local target = T:run_target()
         local cmd = get_build_wasm_command()
-        blunder.create_window_for_terminal()
-        channelot.terminal():with(function(t)
+        channelot.windowed_terminal():with(function(t)
             t:job({RUST_BACKTRACE = '1'}, cmd):using(blunder.for_channelot):check()
             local wasm_file_path = 'target/wasm32-unknown-unknown/debug/'
             if vim.tbl_contains(target.kind, 'example') then
