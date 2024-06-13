@@ -1,7 +1,7 @@
 local fugit2 = require'fugit2'
 
-pcall(fugit2.setup, {
-})
+fugit2.setup {
+}
 
 local ck = require'caskey'
 
