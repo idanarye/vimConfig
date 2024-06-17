@@ -9,7 +9,7 @@ local blunder = require'blunder'
 ---@field run_targets? string[]
 ---@field locally_install_packages? { [string]: string }
 ---@field cwd? string Run everything in a subdirectory
----@field extra_packages? string[]
+---@field extra_packages? { [string]: string|boolean }
 
 ---@param cfg? IdanWorkProjectPythonWithVenvCfg
 return function(cfg)
@@ -41,6 +41,39 @@ return function(cfg)
             dump(packages)
         end
         return {}
+    end
+
+    T{alias = ':0'}
+    function T:extra_packages()
+        if vim.islist(cfg.extra_packages) then
+            error('extra_packages should now b a dict-like table, not a list')
+        end
+        local extra_packages = vim.tbl_extend('force', {
+            mypy = true,
+            ipython = true,
+            sphinx = '5.3.0',
+        }, cfg.extra_packages)
+        local indicators = {
+            ['='] = true,
+            ['<'] = true,
+            ['>'] = true,
+            ['~'] = true,
+        }
+        local result = vim.iter(pairs(extra_packages)):map(function(name, version)
+            if not version then
+                return
+            elseif version == true then
+                return name
+            elseif indicators[version:sub(1, 1)] then
+                return name .. version
+            else
+                return name .. '==' .. version
+            end
+        end):totable()
+        if self:is_main() then
+            dump(result)
+        end
+        return result
     end
 
     if cfg.run_targets then
@@ -161,11 +194,7 @@ return function(cfg)
             else
                 t:job{'pip', 'install', '.'}:wait()
             end
-            local more_packages = {'mypy', 'ipython', 'sphinx==5.3.0'}
-            if cfg.extra_packages then
-                vim.list_extend(more_packages, cfg.extra_packages)
-            end
-            t:job{'pip', 'install', unpack(more_packages)}:wait()
+            t:job{'pip', 'install', unpack(T:extra_packages())}:wait()
             local packages = T:packages()
             t:job{
                 'python', '-m', 'mypy',
