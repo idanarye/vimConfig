@@ -29,7 +29,7 @@ vim.keymap.set({'i', 's'}, '<C-k>', function()
     if luasnip.jumpable() then
         luasnip.jump(-1)
     else
-        return '<C-j>'
+        return '<C-k>'
     end
 end, {silent=true, expr = true})
 
