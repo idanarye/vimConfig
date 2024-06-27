@@ -140,7 +140,12 @@ return function(cfg)
         import os
         import json
         with open(os.environ['IPS_JSON_FILE'], 'w') as f:
-            json.dump([ip for h in system.hosts for ip in h.host_ips], f)
+            json.dump(dict(
+                ips=[ip for h in system.hosts for ip in h.host_ips],
+                hostname_to_ip={
+                    h.hostname: h.public_ip for h in system.hosts
+                }
+            ), f)
         ]=]}, {
             env = {
                 IPS_JSON_FILE = vim.fs.normalize(cwd .. '/current-ips.json')
