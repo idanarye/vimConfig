@@ -18,7 +18,9 @@ vim.keymap.set({'i', 's'}, '<C-l>', function()
 end, {silent=true, expr = true})
 
 vim.keymap.set({'i', 's'}, '<C-j>', function()
-    if luasnip.jumpable() then
+    if vim.snippet.active{direction = 1} then
+        return '<cmd>lua vim.snippet.jump(1)<cr>'
+    elseif luasnip.jumpable() then
         luasnip.jump(1)
     else
         return '<C-j>'
@@ -26,7 +28,9 @@ vim.keymap.set({'i', 's'}, '<C-j>', function()
 end, {silent=true, expr = true})
 
 vim.keymap.set({'i', 's'}, '<C-k>', function()
-    if luasnip.jumpable() then
+    if vim.snippet.active{direction = -1} then
+        return '<cmd>lua vim.snippet.jump(-1)<cr>'
+    elseif luasnip.jumpable() then
         luasnip.jump(-1)
     else
         return '<C-k>'
