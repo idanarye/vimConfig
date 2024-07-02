@@ -3,7 +3,6 @@ return {
         trig = 'ipy',
         name = 'Insert IPython.embed()',
     }, t({
-        'import IPython',
-        'IPython.embed()',
+        '__import__("IPython").embed()',
     })),
 }
