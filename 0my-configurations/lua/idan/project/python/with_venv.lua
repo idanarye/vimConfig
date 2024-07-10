@@ -52,7 +52,7 @@ return function(cfg)
             mypy = true,
             ipython = true,
             sphinx = '5.3.0',
-        }, cfg.extra_packages)
+        }, cfg.extra_packages or {})
         local indicators = {
             ['='] = true,
             ['<'] = true,
@@ -218,9 +218,9 @@ return function(cfg)
             '--install-types',
             '--non-interactive',
             unpack(T:packages())
-        }, {cwd = cfg.cwd}):using(blunder.for_channelot)
-        --blunder.run{
-        --}
+        }, {cwd = cfg.cwd, pty = false}):using(blunder.for_channelot {
+            efm = [=[%f:%l: error: %m]=],
+        })
     end
 
     function T:black_this_file()
