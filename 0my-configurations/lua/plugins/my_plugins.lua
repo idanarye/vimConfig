@@ -18,4 +18,5 @@ return {
     {'idanarye/nvim-blunder', branch = 'develop'},
     {'idanarye/nvim-days-without', branch = 'develop'},
     {'idanarye/nvim-impairative', branch = 'develop'},
+    {'idanarye/nvim-compoext', branch = 'develop'},
 }
