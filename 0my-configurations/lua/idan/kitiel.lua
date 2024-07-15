@@ -1,4 +1,5 @@
 ---@class kitiel.Connection
+---@field socket string
 local KitielConnection = {}
 KitielConnection.__index = KitielConnection
 
@@ -44,6 +45,8 @@ end
 ---@class kitiel.Terminal
 ---@field id integer
 ---@field parent kitiel.Connection
+---@field cmdline string
+---@field title string
 local KitielTerminal = {}
 KitielTerminal.__index = KitielTerminal
 
@@ -100,6 +103,22 @@ end
 
 function KitielTerminal:focus()
     self.parent:run_kitten{'focus-window', '--match', self:_match_expr(), '--no-response'}
+end
+
+---@param new_title string
+function KitielTerminal:set_title(new_title)
+    self.parent:run_kitten{'set-window-title', '--match', self:_match_expr(), new_title}
+end
+
+function KitielTerminal:interactive_set_title()
+    vim.ui.input({
+        prompt = 'Title: ',
+        default = self.title,
+    }, function(new_title)
+        if new_title ~= nil then
+            self:set_title(new_title)
+        end
+    end)
 end
 
 return KitielConnection
