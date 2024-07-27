@@ -133,7 +133,7 @@ nnoremap <M-p><C-m> :CtrlPMRUFiles<Cr>
 nnoremap <M-p>b :CtrlPBranch<Cr>
 nnoremap <M-p>r :CtrlPRoot<Cr>
 nnoremap <M-p>c :CtrlPChange<Cr>
-nnoremap <M-p>u :CtrlPUndo<Cr>
+"nnoremap <M-p>u :CtrlPUndo<Cr>
 nnoremap <M-p>q :CtrlPQuickfix<Cr>
 nnoremap <M-p><C-b> :CtrlPBuffer<Cr>
 "nnoremap <M-p>s :FuzzyGrep<Cr>
