@@ -119,6 +119,7 @@ return {
     'rcarriga/nvim-dap-ui',
     'theHamsta/nvim-dap-virtual-text',
     'mfussenegger/nvim-dap-python',
+    'Mgenuit/nvim-dap-kotlin',
 
     'pwntester/octo.nvim',
 
