@@ -41,13 +41,18 @@ require'caskey'.setup {
         ['<M-p>'] = {act = fzf.builtin, desc='fzf-lua builtins'},
         ['l'] = {act = fzf.blines, desc='fzf-lua lines in buffer'},
         ['m'] = {act = fzf.git_status, desc='fzf-lua git files'},
-        ['s'] = {act = fzf.live_grep, desc = 'fzf-lua live grep'},
+        ['s'] = {act = function()
+            fzf.live_grep {
+                silent = true,
+            }
+        end, desc = 'fzf-lua live grep'},
         ['<M-s>'] = {act = function()
             local input = vim.fn.input('rg> ')
             if input then
                 fzf.grep {
                     search = input,
                     no_esc = true,
+                    silent = true,
                 }
             end
         end, desc='fzf-lua grep (prompt pattern)'},
@@ -55,6 +60,7 @@ require'caskey'.setup {
             fzf.grep {
                 search = '\\b' .. vim.fn.expand('<cword>') .. '\\b',
                 no_esc = true,
+                silent = true,
             }
         end, desc='fzf-lua grep (word under cursor)'},
         ['u'] = {act = function()
