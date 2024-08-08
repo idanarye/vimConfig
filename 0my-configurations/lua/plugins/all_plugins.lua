@@ -196,4 +196,6 @@ return {
     'Aaronik/GPTModels.nvim',
 
     'MagicDuck/grug-far.nvim',
+
+    'stevearc/quicker.nvim',
 }
