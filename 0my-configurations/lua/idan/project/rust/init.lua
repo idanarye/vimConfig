@@ -315,13 +315,21 @@ return function(cfg)
     end
 
     local function get_build_wasm_command()
-        local cmd = {'cargo', 'build', '--bins', '--examples', '--target', 'wasm32-unknown-unknown'}
+        local cmd = {'cargo', 'build', '--target', 'wasm32-unknown-unknown'}
         add_features_to_command(cmd, T:cargo_required_features_for_all_examples())
         if cfg.wasm_use_all_features == nil or cfg.wasm_use_all_features then
+            vim.list_extend(cmd, {'--bins', '--examples'})
             table.insert(cmd, '--all-features')
+        else
+            local target = T:run_target()
+            add_relevant_flags_for_target(cmd, target)
         end
         add_features_to_command(cmd, cfg.extra_features_for_wasm)
         return cmd
+    end
+
+    function T:query()
+        vim.print(get_build_wasm_command())
     end
 
     function T:build_wasm()
