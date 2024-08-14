@@ -99,7 +99,7 @@ function KitielTerminal:__call(command_as_text)
         return self:get_last_command_text()
     end
     local text_lines = vim.split(command_as_text, '\n')
-    text_lines[1] = '\21' .. text_lines[1]
+    text_lines[1] = '\05 \21' .. text_lines[1]
     self:send_text(text_lines)
 end
 
