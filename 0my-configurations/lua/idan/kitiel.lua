@@ -98,7 +98,9 @@ function KitielTerminal:__call(command_as_text)
     if command_as_text == nil then
         return self:get_last_command_text()
     end
-    self:send_text(vim.split(command_as_text, '\n'))
+    local text_lines = vim.split(command_as_text, '\n')
+    text_lines[1] = '\21' .. text_lines[1]
+    self:send_text(text_lines)
 end
 
 function KitielTerminal:focus()
