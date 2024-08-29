@@ -2,12 +2,12 @@ require'impairative.replicate-unimpaired'()
 
 local impairative = require'impairative'
 
-impairative.toggling {
+local toggling = impairative.toggling {
     disable = ']o',
     enable = '[o',
     toggle = 'yo',
 }
-:option {
+toggling:option {
     key = 'e',
     option = 'conceallevel',
     values = {[true] = 2, [false] = 0},
@@ -62,3 +62,26 @@ impairative.operations {
         end)
     end,
 }
+
+for key, mod in pairs{
+    ['I'] = require'hlchunk.mods.indent' {
+    },
+    ['C'] = require'hlchunk.mods.chunk' {
+    },
+}
+do
+    toggling:getter_setter {
+        key = key,
+        name = ('hlchunk %s mod'):format(mod.meta.name),
+        get = function() return mod.conf.enable end,
+        set = function(value)
+            if value then
+                mod:enable()
+            else
+                mod:disable()
+            end
+        end,
+        --enable = function() mod:enable() end,
+        --disable = function() mod:disable() end,
+    }
+end
