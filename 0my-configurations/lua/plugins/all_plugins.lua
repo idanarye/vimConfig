@@ -198,4 +198,6 @@ return {
     'MagicDuck/grug-far.nvim',
 
     'stevearc/quicker.nvim',
+
+    'aaronhallaert/advanced-git-search.nvim',
 }
