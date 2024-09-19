@@ -22,7 +22,7 @@ return function(cfg)
 
     local T = moonicipal.tasks_lib()
 
-    local function get_crate_name()
+    function T:_crate_name()
         return cfg.crate_name or idan_rust.jq_cargo_metadata('.packages[].name')
     end
 
@@ -227,7 +227,7 @@ return function(cfg)
                     channelot.windowed_terminal_job({
                         RUST_BACKTRACE = '1',
                         RUST_LOG = get_rust_log_envvar {
-                            [{get_crate_name(), target.name}] = 'debug',
+                            [{T:_crate_name(), target.name}] = 'debug',
                         },
                     }, cmd)
                     return
@@ -259,7 +259,7 @@ return function(cfg)
         channelot.windowed_terminal_job({
             RUST_BACKTRACE = '1',
             RUST_LOG = get_rust_log_envvar {
-                [{get_crate_name(), target.name}] = 'debug',
+                [{T:_crate_name(), target.name}] = 'debug',
             },
         }, cmd)
     end
@@ -296,7 +296,7 @@ return function(cfg)
             env = {
                 RUST_BACKTRACE = '1',
                 RUST_LOG = get_rust_log_envvar {
-                    [{get_crate_name(), target.name}] = 'debug',
+                    [{T:_crate_name(), target.name}] = 'debug',
                 },
                 LD_LIBRARY_PATH = envvar_ld_lib_path,
             },
@@ -373,7 +373,7 @@ return function(cfg)
     end
 
     function T:browse_docs()
-        vim.cmd('!firefox --new-window target/doc/' .. get_crate_name() .. '/index.html')
+        vim.cmd('!firefox --new-window target/doc/' .. T:_crate_name() .. '/index.html')
     end
 
     return T
