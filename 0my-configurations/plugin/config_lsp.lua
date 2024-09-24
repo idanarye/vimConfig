@@ -95,16 +95,23 @@ lspconfig.pylsp.setup {
     capabilities = capabilities,
 
     on_new_config = function(new_config, new_root_dir)
-        local site_packages = vim.fn.systemlist({
-            'bash', '-ce', [=[
-            cd "$1"
-            python
-            ]=], '--', new_root_dir,
-        }, require'plenary.strings'.dedent[=[
-        import site
-        for site_package in site.getsitepackages():
-            print(site_package)
-        ]=])
+        local uses_uv = vim.system({'uv', 'tree', '--frozen', '--offline'}, {cwd = new_root_dir}):wait().code == 0
+        local python_cmd
+        if uses_uv then
+            python_cmd = {'uv', '--quiet', 'run', 'python'}
+        else
+            python_cmd = {'python'}
+        end
+
+        local result = vim.system(python_cmd, {
+            cwd = new_root_dir,
+            stdin = require'plenary.strings'.dedent[=[
+            import site
+            for site_package in site.getsitepackages():
+                print(site_package)
+            ]=],
+        }):wait()
+        local site_packages = vim.split(result.stdout, '\n', {plain = true, trimempty = true})
 
         if IdanLocalCfg.add_special_python_site_packages then
             IdanLocalCfg.add_special_python_site_packages(site_packages)

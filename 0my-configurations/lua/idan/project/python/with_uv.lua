@@ -16,7 +16,7 @@ return function(cfg)
     end
 
     function T:run()
-        blunder.run{'uv', '-q', '--isolated', 'run', T:entry_point()}
+        blunder.run{'uv', '-q', 'run', T:entry_point()}
     end
 
     function T:debug()
@@ -28,7 +28,7 @@ return function(cfg)
     end
 
     function T:explore()
-        channelot.windowed_terminal_job{'uv', '-q', '--isolated', 'run', 'ipython', '-i', T:entry_point()}
+        channelot.windowed_terminal_job{'uv', '-q', 'run', 'ipython', '-i', T:entry_point()}
     end
 
     return T
