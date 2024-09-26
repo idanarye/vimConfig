@@ -273,3 +273,26 @@ lspconfig.serve_d.setup {
 
 lspconfig.nushell.setup {
 }
+
+require'lspconfig.configs'.yarn_spinner = {
+    default_config = {
+        cmd = {
+            'dotnet', 'run',
+            '--property:Configuration=Release',
+            '--project', '/files/builds/YarnSpinner/YarnSpinner.LanguageServer/'
+        },
+        filetypes = { 'yarn' },
+        root_dir = lspconfig.util.root_pattern('.git', '*.yarn'),
+    }
+}
+
+lspconfig.yarn_spinner.setup {
+    capabilities = capabilities,
+}
+
+vim.cmd [=[
+augroup YarnFileType
+autocmd!
+autocmd BufRead,BufNewFile *.yarn setfiletype yarn
+augroup END
+]=]
