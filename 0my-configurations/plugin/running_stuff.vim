@@ -1,3 +1,4 @@
+finish
 "set makeprg=rake\ -s
 
 function! s:createTaskRunningShortcut(key,cmd)
