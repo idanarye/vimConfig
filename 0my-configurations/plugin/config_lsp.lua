@@ -103,6 +103,10 @@ lspconfig.pylsp.setup {
             python_cmd = {'python'}
         end
 
+        if IdanLocalCfg.override_python_command_for_getting_site_packages then
+            python_cmd = IdanLocalCfg.override_python_command_for_getting_site_packages() or python_cmd
+        end
+
         local result = vim.system(python_cmd, {
             cwd = new_root_dir,
             stdin = require'plenary.strings'.dedent[=[
