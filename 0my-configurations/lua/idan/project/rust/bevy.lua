@@ -1,21 +1,14 @@
 local moonicipal = require'moonicipal'
 
----@class IdanProjectRustBevyCfg : IdanProjectRustCfg
----@field level_editor? boolean
----@field pkv_app_name? string
-
----@param cfg? IdanProjectRustBevyCfg
-return function(cfg)
-    cfg = cfg or {}
-    if not cfg.extra_features_for_build_and_run then
-        cfg.extra_features_for_build_and_run = {}
-    end
+return function()
+    local P, cfg = require'idan.project.rust'()
     table.insert(cfg.extra_features_for_build_and_run, 'bevy/dynamic_linking')
+    ---@type string?
+    cfg.pkv_app_name = nil
 
-    local P = require'idan.project.rust'(cfg)
     local T = moonicipal.tasks_lib()
 
-    if cfg.level_editor then
+    function cfg.setup_level_editor()
         local idan_rust = require'idan.rust'
 
         local function get_game_executable_name()
@@ -45,11 +38,11 @@ return function(cfg)
         end
     end
 
-    if cfg.pkv_app_name then
+    function cfg.setup_pkv(pkv_app_name)
         function T:erase_save()
-            vim.cmd('!rm -Rf ~/.local/share/' .. vim.fn.tolower(cfg.pkv_app_name))
+            vim.cmd('!rm -Rf ~/.local/share/' .. vim.fn.tolower(pkv_app_name))
         end
     end
 
-    return moonicipal.merge_libs(T, P)
+    return moonicipal.merge_libs(T, P), cfg
 end

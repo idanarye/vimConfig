@@ -3,31 +3,40 @@ local channelot = require'channelot'
 local blunder = require'blunder'
 local idan_rust = require'idan.rust'
 
----@class IdanProjectRustCfg
----@field crate_name? string
----@field extra_features_for_build_and_run? string[]
----@field extra_features_for_docs? string[]
----@field wasm_use_all_features? boolean
----@field extra_features_for_wasm? string[]
----@field only_build_relevant? boolean
----@field cli_args_for_targets? {string: string[]}
----@field extra_logging? {string: string}
----@field variants_for_targets? {string: {string: string[]}}
----@field features_for_clippy? string[]
----@field features_for_tests? string[]
-
----@param cfg? IdanProjectRustCfg
-return function(cfg)
-    cfg = cfg or {}
-
+return function()
     local T = moonicipal.tasks_lib()
+
+    local cfg = {
+        ---@type string?
+        crate_name = nil,
+        ---@type string[]
+        extra_features_for_build_and_run = {},
+        ---@type string[]?
+        extra_features_for_docs = nil,
+        ---@type boolean
+        wasm_use_all_features = true,
+        ---@type string[]
+        extra_features_for_wasm = {},
+        ---@type boolean
+        only_build_relevant = false,
+        ---@type {[string]: string[][]}
+        cli_args_for_targets = {},
+        ---@type {[string]: string}
+        extra_logging = {},
+        ---@type {[string]: {[string]: string[]}}
+        variants_for_targets = {},
+        ---@type string[]
+        features_for_clippy = {},
+        ---@type string[]
+        features_for_tests = {},
+    }
 
     function T:_crate_name()
         return cfg.crate_name or idan_rust.jq_cargo_metadata('.packages[].name')
     end
 
     local function get_rust_log_envvar(override)
-        local logging = cfg.extra_logging or {}
+        local logging = cfg.extra_logging
         if type(override) == 'table' then
             logging = vim.tbl_extend('force', logging, override)
         end
@@ -142,8 +151,8 @@ return function(cfg)
             format = name_with_args,
         }
         for _, target in ipairs(idan_rust.jq_all_bin_targets()) do
-            local cli_args = (cfg.cli_args_for_targets or {})[target.name]
-            local variants = (cfg.variants_for_targets or {})[target.name] or {[false] = {}}
+            local cli_args = cfg.cli_args_for_targets[target.name]
+            local variants = cfg.variants_for_targets[target.name] or {[false] = {}}
             for variant_name, variant_features in pairs(variants) do
                 local variant = vim.tbl_extend('keep', target, {})
                 if variant_name then
@@ -376,5 +385,5 @@ return function(cfg)
         vim.cmd('!firefox --new-window target/doc/' .. T:_crate_name() .. '/index.html')
     end
 
-    return T
+    return T, cfg
 end

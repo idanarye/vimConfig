@@ -1,10 +1,7 @@
 local moonicipal = require'moonicipal'
 
----@class IdanProjectRustNuCfg : IdanProjectRustCfg
-
----@param cfg? IdanProjectRustNuCfg
-return function(cfg)
-    local P = require'idan.project.rust'(cfg)
+return function()
+    local P, cfg = require'idan.project.rust'()
     local T = moonicipal.tasks_lib()
 
     function T:_nu_runner()
@@ -32,5 +29,5 @@ return function(cfg)
         })
     end
 
-    return moonicipal.merge_libs(T, P)
+    return moonicipal.merge_libs(T, P), cfg
 end
