@@ -2,12 +2,11 @@ local moonicipal = require'moonicipal'
 local blunder = require'blunder'
 local channelot = require'channelot'
 
----@class IdanWorkProjectPythonWithUvCfg
----@field entry_point? string
-
----@param cfg? IdanWorkProjectPythonWithUvCfg
-return function(cfg)
-    cfg = cfg or {}
+return function()
+    local cfg = {
+        ---@type string
+        entry_point = 'main.py',
+    }
 
     local T = moonicipal.tasks_lib()
 
@@ -31,5 +30,5 @@ return function(cfg)
         channelot.windowed_terminal_job{'uv', '-q', 'run', 'ipython', '-i', T:entry_point()}
     end
 
-    return T
+    return T, cfg
 end
