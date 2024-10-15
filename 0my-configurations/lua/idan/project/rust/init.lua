@@ -3,7 +3,7 @@ local channelot = require'channelot'
 local blunder = require'blunder'
 local idan_rust = require'idan.rust'
 
----@alias IdanProjectRustCliArgsForTarget {[number]: string, with_job?: fun(job: ChannelotJob), pty?: boolean}
+---@alias IdanProjectRustCliArgsForTarget {[number]: string, with_job?: fun(job: ChannelotJob), cwd?: string, pty?: boolean}
 
 return function()
     local T = moonicipal.tasks_lib()
@@ -262,12 +262,17 @@ return function()
         add_features_to_command(cmd, cfg.extra_features_for_build_and_run or {})
         local run_opts = {}
         if type(target.cli_args) == 'table' then
+            if target.cli_args.cwd then
+                vim.list_extend(cmd, {'--manifest-path', vim.fn.fnamemodify('Cargo.toml', ':p')})
+            end
             if type(target.cli_args[1]) == 'string' then
                 table.insert(cmd, '--')
                 vim.list_extend(cmd, target.cli_args)
             end
             ---@type fun(job: ChannelotJob)?
             run_opts.with_job = target.cli_args.with_job
+            ---@type string?
+            run_opts.cwd = target.cli_args.cwd
             ---@type boolean?
             run_opts.pty = target.cli_args.pty
         end
@@ -286,6 +291,7 @@ return function()
                 [{T:_crate_name(), target.name}] = 'debug',
             },
         }, cmd, {
+            cwd = run_opts.cwd,
             pty = run_opts.pty
         })
         if run_opts.with_job then
@@ -322,7 +328,8 @@ return function()
             type = 'codelldb',
             request = 'launch',
             program = executable_path,
-            args = target.cli_args,
+            args = vim.list_extend({}, target.cli_args or {}),
+            cwd = (target.cli_args or {}).cwd,
             env = {
                 RUST_BACKTRACE = '1',
                 RUST_LOG = get_rust_log_envvar {
