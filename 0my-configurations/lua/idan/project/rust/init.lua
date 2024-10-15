@@ -3,6 +3,8 @@ local channelot = require'channelot'
 local blunder = require'blunder'
 local idan_rust = require'idan.rust'
 
+---@alias IdanProjectRustCliArgsForTarget {[number]: string, with_job?: fun(job: ChannelotJob), pty?: boolean}
+
 return function()
     local T = moonicipal.tasks_lib()
 
@@ -19,7 +21,7 @@ return function()
         extra_features_for_wasm = {},
         ---@type boolean
         only_build_relevant = false,
-        ---@type {[string]: string[][]}
+        ---@type {[string]: {[number|string]: IdanProjectRustCliArgsForTarget}}
         cli_args_for_targets = {},
         ---@type {[string]: string}
         extra_logging = {},
@@ -141,7 +143,9 @@ return function()
             if target.variant_name then
                 result = result .. ('[%s]'):format(target.variant_name)
             end
-            if target.cli_args then
+            if target.cli_args_name then
+                result = result .. ' <' .. target.cli_args_name .. '>'
+            elseif target.cli_args then
                 result = result .. vim.inspect(target.cli_args)
             end
             return result
@@ -161,8 +165,12 @@ return function()
                 end
                 cc(variant)
                 if cli_args then
-                    for _, args in ipairs(cli_args) do
+                    for name, args in pairs(cli_args) do
+                        if type(name) == 'number' then
+                            name = nil
+                        end
                         cc(vim.tbl_extend('error', variant, {
+                            cli_args_name = name,
                             cli_args = args,
                         }))
                     end
@@ -252,25 +260,38 @@ return function()
         local cmd = {'cargo', 'run'}
         add_relevant_flags_for_target(cmd, target)
         add_features_to_command(cmd, cfg.extra_features_for_build_and_run or {})
-        if target.cli_args then
-            table.insert(cmd, '--')
-            vim.list_extend(cmd, target.cli_args)
+        local run_opts = {}
+        if type(target.cli_args) == 'table' then
+            if type(target.cli_args[1]) == 'string' then
+                table.insert(cmd, '--')
+                vim.list_extend(cmd, target.cli_args)
+            end
+            ---@type fun(job: ChannelotJob)?
+            run_opts.with_job = target.cli_args.with_job
+            ---@type boolean?
+            run_opts.pty = target.cli_args.pty
         end
         if self:is_main() then
             dump(target)
             dump(cmd)
         end
-        return target, cmd
+        return target, cmd, run_opts
     end
 
     function T:run()
-        local target, cmd = T:target_and_command()
-        channelot.windowed_terminal_job({
+        local target, cmd, run_opts = T:target_and_command()
+        local job = channelot.windowed_terminal_job({
             RUST_BACKTRACE = '1',
             RUST_LOG = get_rust_log_envvar {
                 [{T:_crate_name(), target.name}] = 'debug',
             },
-        }, cmd)
+        }, cmd, {
+            pty = run_opts.pty
+        })
+        if run_opts.with_job then
+            run_opts.with_job(job)
+        end
+        job:wait()
     end
 
     function T:debug()
