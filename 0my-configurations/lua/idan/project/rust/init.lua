@@ -44,7 +44,7 @@ return function()
         end
         local parts = {}
         for k, v in pairs(logging) do
-            if vim.tbl_islist(k) then
+            if vim.islist(k) then
                 k = table.concat(k, ',')
             end
             table.insert(parts, ('%s=%s'):format(k, v))
@@ -272,8 +272,8 @@ return function()
             run_opts.pty = target.cli_args.pty
         end
         if self:is_main() then
-            dump(target)
-            dump(cmd)
+            vim.print(target)
+            vim.print(cmd)
         end
         return target, cmd, run_opts
     end
@@ -390,7 +390,7 @@ return function()
         local extra_features_for_docs = cfg.extra_features_for_docs
         if extra_features_for_docs == nil then
             local from_cargo = idan_rust.jq_cargo_metadata('.packages | map(.metadata.docs.rs | select (. != null))[0].features')
-            if vim.tbl_islist(from_cargo) then
+            if vim.islist(from_cargo) then
                 extra_features_for_docs = from_cargo
             else
                 extra_features_for_docs = {}
