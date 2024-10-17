@@ -19,6 +19,9 @@ fzf.setup {
             ["shift-up"] = "preview-page-up",
         },
     },
+    defaults = {
+        multiline = 1,
+    },
     previewers = {
         git_diff = {
             pager = "delta",
