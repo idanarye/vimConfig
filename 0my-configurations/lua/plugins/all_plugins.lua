@@ -121,8 +121,6 @@ return {
     'mfussenegger/nvim-dap-python',
     'Mgenuit/nvim-dap-kotlin',
 
-    'pwntester/octo.nvim',
-
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-calc',
     'hrsh7th/nvim-cmp',
@@ -200,4 +198,5 @@ return {
     'stevearc/quicker.nvim',
 
     'aaronhallaert/advanced-git-search.nvim',
+    'daliusd/ghlite.nvim',
 }
