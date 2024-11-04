@@ -93,5 +93,6 @@ require'caskey'.setup {
                 }
             })
         end, desc='fzf-lua choose background buffer with unsaved data'},
+        ['f'] = {act = fzf.filetypes, desc='fzf-lua file types'},
     }
 }

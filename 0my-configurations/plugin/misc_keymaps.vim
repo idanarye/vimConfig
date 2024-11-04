@@ -169,7 +169,7 @@ nnoremap <M-p>b :call fzf#run(fzf#wrap({'source': 'git diff $(git merge-base ori
 " nnoremap <M-p>t :FzfTags<Cr>
 " nnoremap <M-p>t :Vista finder!<Cr>
 " nnoremap <M-p><C-t> :Vista finder<Cr>
-nnoremap <M-p>f :FzfFiletypes<Cr>
+"nnoremap <M-p>f :FzfFiletypes<Cr>
 nnoremap <M-p><M-t> :call tabfzf#run()<Cr>
 
 " nnoremap <M-p><C-s> :call ctrlp#init(ctrlp#sift#cmd())<Cr>
