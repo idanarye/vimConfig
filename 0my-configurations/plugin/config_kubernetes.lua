@@ -6,7 +6,7 @@ require'caskey'.setup {
     mode = {'n'},
     name = 'kubectl',
     ['<Leader>k'] = {
-        act = kubectl.toggle,
+        act = kubectl.open,
         desc = 'Toggle kubectl.nvim',
     }
 }
