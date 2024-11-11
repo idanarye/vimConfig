@@ -182,7 +182,9 @@ return {
 
     'vxpm/ferris.nvim',
 
-    'LhKipp/nvim-nu',
+    --'LhKipp/nvim-nu',
+    {'idanarye/nvim-nu', branch = 'use-official-tree-sitter-grammar'},  -- TODO: remove when my PR gets merged
+
     'danymat/neogen',
 
     'jbyuki/one-small-step-for-vimkind',
