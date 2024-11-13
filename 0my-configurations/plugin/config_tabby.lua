@@ -18,8 +18,8 @@ require('tabby.tabline').set(function(line)
             local hl = tab.is_current() and theme.current_tab or theme.tab
             local any_changed = false
             for _, win in ipairs(tab.wins().wins) do
-                local buf = win.buf()
-                if buf.is_changed() then
+                local buf = vim.api.nvim_win_get_buf(win)
+                if vim.api.nvim_get_option_value('modified', {buf = buf}) then
                     any_changed = true
                     break
                 end
