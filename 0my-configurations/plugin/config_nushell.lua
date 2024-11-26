@@ -1,3 +1,3 @@
 require'nu'.setup {
-    use_lsp_features = false,
+    use_lsp_features = true,
 }
