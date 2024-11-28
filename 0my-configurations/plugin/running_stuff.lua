@@ -38,6 +38,7 @@ local COMMANDS = {
     ['S'] = 'sync',
     ['t'] = 'test',
     ['<C-t>'] = 'build_tests',
+    ['<M-t>'] = 'test_debugger',
     ['T'] = 'tags',
     ['u'] = 'upload',
     ['U'] = 'update',
