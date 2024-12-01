@@ -254,7 +254,6 @@ return function()
         end
     end
 
-    T{ alias = ':0' }
     function T:target_and_command()
         local target = T:run_target()
         local cmd = {'cargo', 'run'}
