@@ -25,6 +25,13 @@ require'caskey'.setup {
         ['W'] = {act = vim.lsp.buf.workspace_symbol, desc = 'LSP workspace symbol'},
         ['<M-d>'] = {act = vim.lsp.buf.declaration, desc = 'LSP jump to declaration'},
         ['r'] = {act = vim.lsp.buf.rename, desc = 'LSP rename'},
+        ['q'] = {act = function()
+            vim.diagnostic.open_float {
+                suffix = function(d)
+                    return (' (%s)'):format(d.source)
+                end,
+            }
+        end, desc = 'show diagnostics' }
         -- ['q'] = <cmd> LspDiagnostics 0<CR>
         -- ['Q'] = <cmd> LspDiagnosticsAll<CR>
     },
