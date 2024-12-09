@@ -164,6 +164,11 @@ lspconfig.pylsp.setup {
         },
     },
 }
+lspconfig.ruff.setup {
+    init_options = {
+        settings = vim.empty_dict()
+    },
+}
 
 
 --lspconfig.ccls.setup {
