@@ -221,12 +221,14 @@ lspconfig.lua_ls.setup {
             'local',
 
             'nvim-dap',
+            'plenary.nvim',
 
             'nvim-moonicipal',
             'nvim-channelot',
             'nvim-buffls',
             'nvim-blunder',
             'nvim-impairative',
+            'vim-for-weka',
         })
         do
             set_of_plugins[plugin_name] = true

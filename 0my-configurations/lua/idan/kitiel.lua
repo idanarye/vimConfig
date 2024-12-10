@@ -46,6 +46,7 @@ end
 ---@field id integer
 ---@field parent kitiel.Connection
 ---@field cmdline string
+---@field foreground_processes [{cmdline: string[], cmd: string, pid: integer}]
 ---@field title string
 local KitielTerminal = {}
 KitielTerminal.__index = KitielTerminal
@@ -60,12 +61,17 @@ function KitielConnection:terminals()
                         parent = self,
                         id = window.id,
                         cmdline = window.cmdline,
+                        foreground_processes = window.foreground_processes,
                         title = window.title,
                     }, KitielTerminal))
                 end
             end
         end
     end)):totable()
+end
+
+function KitielTerminal:get_normalized_foreground_process()
+    return vim.fs.basename(self.foreground_processes[#self.foreground_processes].cmdline[1])
 end
 
 ---@return string
@@ -100,6 +106,11 @@ function KitielTerminal:__call(command_as_text)
     end
     local text_lines = vim.split(command_as_text, '\n')
     text_lines[1] = '\05 \21' .. text_lines[1]
+    if self:get_normalized_foreground_process() == 'nu' then
+        for i, line in ipairs(text_lines) do
+            text_lines[i] = line .. '\r'
+        end
+    end
     self:send_text(text_lines)
 end
 
