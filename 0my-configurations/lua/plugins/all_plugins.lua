@@ -127,6 +127,9 @@ return {
     'lukas-reineke/cmp-under-comparator',
     'rcarriga/cmp-dap',
 
+    {'saghen/blink.cmp', version = 'v0.*'},
+    {'saghen/blink.compat', version = '*'},
+
     'ray-x/lsp_signature.nvim',
 
     'gfanto/fzf-lsp.nvim',

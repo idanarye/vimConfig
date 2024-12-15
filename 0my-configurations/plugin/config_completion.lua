@@ -1,3 +1,51 @@
+require'blink.compat'.setup {
+    --impersonate_nvim_cmp = true,
+    --debug = true,
+}
+
+local blink = require'blink.cmp'
+
+blink.setup {
+    keymap = {
+        preset = 'enter',
+        -- Disable tabs - I already use <C-j> and <C-k> for snippet navigation
+        ['<Tab>'] = {},
+        ['<S-Tab>'] = {},
+    },
+    completion = {
+        trigger = {
+            show_on_keyword = false,
+            show_on_trigger_character = false,
+        },
+        list = {
+            selection = 'auto_insert',
+        },
+    },
+    sources = {
+        completion = {
+            -- remember to enable your providers here
+            enabled_providers = { 'lsp', 'path', 'snippets', 'buffer', 'crates', 'calc' },
+        },
+        providers = {
+            lsp = {
+                async = true,
+            },
+            -- TODO: figure out why these custom sources don't work
+            crates = {
+                name = 'crates',
+                module = 'blink.compat.source',
+            },
+            calc = {
+                name = 'calc',
+                module = 'blink.compat.source',
+            },
+        },
+    },
+}
+
+if true then
+    return
+end
 local cmp = require'cmp'
 
 local run_if_visible = function(dlg)
