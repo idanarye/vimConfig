@@ -22,10 +22,8 @@ blink.setup {
         },
     },
     sources = {
-        completion = {
-            -- remember to enable your providers here
-            enabled_providers = { 'lsp', 'path', 'snippets', 'buffer', 'crates', 'calc' },
-        },
+        -- remember to enable your providers here
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'crates', 'calc' },
         providers = {
             lsp = {
                 async = true,
