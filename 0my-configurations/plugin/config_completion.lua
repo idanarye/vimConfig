@@ -19,15 +19,24 @@ blink.setup {
         },
         list = {
             selection = 'auto_insert',
+            --selection = 'manual',
+            --selection = 'preselect',
         },
     },
     sources = {
         -- remember to enable your providers here
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'crates', 'calc' },
+        default = {
+            'lsp',
+            'path',
+            'snippets',
+            'buffer',
+            'crates',
+            'calc',
+        },
         providers = {
-            lsp = {
-                async = true,
-            },
+            --lsp = {
+                --async = true,
+            --},
             -- TODO: figure out why these custom sources don't work
             crates = {
                 name = 'crates',
