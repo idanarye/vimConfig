@@ -130,7 +130,7 @@ return function(cfg)
     end
 
     function T:read_cluster_ips()
-        local cluster_name = moonicipal.input { prompt = 'Cluster name: ' }
+        local cluster_name = moonicipal.input { prompt = 'Cluster name' }
         if not cluster_name or cluster_name == '' then
             moonicipal.abort()
         end
