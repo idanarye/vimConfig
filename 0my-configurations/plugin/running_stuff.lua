@@ -79,9 +79,7 @@ do
     for key, task in pairs(COMMANDS) do
         mappings[key] = {
             desc = ('Run %s task %s'):format(cfg.name, task),
-            act = function()
-                vim.cmd[cfg.command](task)
-            end,
+            act = ck.cmd(cfg.command .. ' ' .. task),
         }
     end
     ck.setup {
