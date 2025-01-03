@@ -110,21 +110,6 @@ noremap <M-m> m
 nnoremap <Leader>bb :Bufstop<Cr>
 nnoremap <Leader>bs :BufstopStatusline<Cr>
 
-"keymaps for working with tabs
-nnoremap <M-t>n :tabnew<Cr>
-nnoremap <M-t>q :tabclose<Cr>
-nnoremap <M-t>c :tabclose<Cr>
-nnoremap <M-t>o :tabonly<Cr>
-nnoremap <M-t>l :tabmove +1<Cr>
-nnoremap <M-t>L :tabmove<Cr>
-nnoremap <M-t>h :tabmove -1<Cr>
-nnoremap <M-t>H :tabmove 0<Cr>
-call map(range(1, 9), {i -> execute(printf("nnoremap <M-t>%s :tabnext %s<Cr>", i, i))})
-nnoremap <M-t>m :call tabops#fzfAndTabmerge()<Cr>
- nnoremap <M-t>t :call tabops#fzfAndTabjump()<Cr>
- nnoremap <M-t><M-t> :call tabops#fzfAndTabjump()<Cr>
-nnoremap <M-t>s :tab split<Cr>
-
 "keymaps for quick access to CtrlP modes
 " nnoremap <M-p>l :CtrlPLine<Cr>
 "nnoremap <M-p>f :CtrlPFunky<Cr>
