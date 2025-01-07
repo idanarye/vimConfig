@@ -15,6 +15,7 @@ function KitielConnection:moonicipal_cache(task)
     local cc = task:cached_choice {
         key = 'id',
         format = 'title',
+        select_1 = true,
     }
     for _, terminal in ipairs(self:terminals()) do
         cc(terminal)
@@ -93,6 +94,21 @@ function KitielTerminal:send_text(text)
     })
 end
 
+---@param text string|string[]
+function KitielTerminal:send_text_backeted_paste(text)
+    vim.validate {
+        text = {text, {'string', 'table'}},
+    }
+    vim.system(self.parent:_format_kitten_cmd{
+        'send-text',
+        '--match', self:_match_expr(),
+        '--stdin',
+        '--bracketed-paste', 'enable',
+    }, {
+        stdin = text,
+    })
+end
+
 ---@return string
 function KitielTerminal:get_last_command_text()
     return self.parent:run_kitten{'get-text', '--match', self:_match_expr(), '--extent', 'last_cmd_output'}.stdout
@@ -104,14 +120,24 @@ function KitielTerminal:__call(command_as_text)
     if command_as_text == nil then
         return self:get_last_command_text()
     end
-    local text_lines = vim.split(command_as_text, '\n')
-    text_lines[1] = '\05 \21' .. text_lines[1]
-    if self:get_normalized_foreground_process() == 'nu' then
-        for i, line in ipairs(text_lines) do
-            text_lines[i] = line .. '\r'
+
+    local normalized_foreground_process = self:get_normalized_foreground_process()
+    if normalized_foreground_process == 'nu' then
+        local text_lines = vim.split(command_as_text, '\n')
+        text_lines[1] = '\05 \21' .. text_lines[1]
+        if self:get_normalized_foreground_process() == 'nu' then
+            for i, line in ipairs(text_lines) do
+                text_lines[i] = line .. '\r'
+            end
         end
+        self:send_text(text_lines)
+    elseif normalized_foreground_process == 'python' or normalized_foreground_process == 'python3' then
+        self:send_text('\x15')
+        self:send_text_backeted_paste(command_as_text)
+        self:send_text('\x1b\r')
+    else
+        self:send_text(command_as_text)
     end
-    self:send_text(text_lines)
 end
 
 function KitielTerminal:focus()
