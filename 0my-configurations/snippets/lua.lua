@@ -3,16 +3,16 @@ return {
         trig = 'f)',
         name = 'Insert anonymous function last argument',
     }, {
-        t {'function('}, i(2), t(')'),
-        t {'', '    '}, i(1),
-        t {'', 'end)'},
+        t {'function('}, i(1), t(')'),
+        t {'', '    '}, i(2),
+        t {'', 'end)'}, i(3),
     }),
     s({
         trig = 'f,',
         name = 'Insert anonymous function non-last argument',
     }, {
-        t {'function('}, i(2), t(')'),
-        t {'', '    '}, i(1),
-        t {'', 'end,'},
+        t {'function('}, i(1), t(')'),
+        t {'', '    '}, i(2),
+        t {'', 'end,'}, i(3),
     }),
 }
