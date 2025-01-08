@@ -18,9 +18,10 @@ blink.setup {
             show_on_trigger_character = false,
         },
         list = {
-            selection = 'auto_insert',
-            --selection = 'manual',
-            --selection = 'preselect',
+            selection = {
+                preselect = true,
+                auto_insert = true,
+            },
         },
     },
     sources = {
