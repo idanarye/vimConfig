@@ -165,7 +165,6 @@ return {
     -- endif
     'rafamadriz/friendly-snippets',
     'L3MON4D3/LuaSnip',
-    'garymjr/nvim-snippets',
 
     'mrbjarksen/neo-tree-diagnostics.nvim',
     'SmiteshP/nvim-navic',
