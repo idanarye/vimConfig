@@ -168,7 +168,7 @@ return {
 
     'mrbjarksen/neo-tree-diagnostics.nvim',
     'SmiteshP/nvim-navic',
-    'utilyre/barbecue.nvim',
+    'Bekaboo/dropbar.nvim',
 
     'nanozuki/tabby.nvim',
     'stevearc/aerial.nvim',

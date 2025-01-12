@@ -12,6 +12,11 @@ toggling:option {
     option = 'conceallevel',
     values = {[true] = 2, [false] = 0},
 }
+:option {
+    key = 'B',
+    option = 'winbar',
+    values = {[true] = '%{%v:lua.dropbar()%}', [false] = ''},
+}
 :getter_setter {
     key = 'i',
     name = 'inlay hints',
