@@ -202,4 +202,5 @@ return {
     'aaronhallaert/advanced-git-search.nvim',
     'daliusd/ghlite.nvim',
     'Ramilito/kubectl.nvim',
+    'athar-qadri/scratchpad.nvim',
 }
