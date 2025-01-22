@@ -160,12 +160,6 @@ nnoremap <M-p><M-t> :call tabfzf#run()<Cr>
 " nnoremap <M-p><C-s> :call ctrlp#init(ctrlp#sift#cmd())<Cr>
 " nnoremap <M-p>B :CtrlPBookmark<Cr>
 
-"Keymaps for RengBang
-map <Leader>sr <Plug>(operator-rengbang)
-map <Leader>sp <Plug>(operator-rengbang-useprev)
-nnoremap <Leader>sR :RengBangConfirm<Cr>
-vnoremap <Leader>sR :RengBangConfirm<Cr>
-
 nnoremap <Leader>w :call argwrap#toggle()<Cr>
 
 let g:casetrate_leader = '<M-c>'
