@@ -6,13 +6,32 @@ require'blink.compat'.setup {
 local blink = require'blink.cmp'
 
 blink.setup {
-    keymap = {
+    keymap = vim.tbl_extend('error', {
         preset = 'enter',
         -- Disable tabs - I already use <C-j> and <C-k> for snippet navigation
         ['<Tab>'] = {},
         ['<S-Tab>'] = {},
-    },
+    }, (function()
+        local numeric_mappings = {}
+        for i = 1, 10 do
+            numeric_mappings[('<M-%d>'):format(i % 10)] = {function(cmp)
+                cmp.accept{index = i}
+            end}
+        end
+        return numeric_mappings
+    end)()),
     completion = {
+        menu = {
+            draw = {
+                columns = { { 'item_idx' }, { 'kind_icon' }, { 'label', 'label_description', gap = 1 } },
+                components = {
+                    item_idx = {
+                        text = function(ctx) return ctx.idx == 10 and '0' or ctx.idx >= 10 and ' ' or tostring(ctx.idx) end,
+                        highlight = 'BlinkCmpItemIdx', -- optional, only if you want to change its color
+                    },
+                },
+            },
+        },
         trigger = {
             show_on_keyword = false,
             show_on_trigger_character = false,
