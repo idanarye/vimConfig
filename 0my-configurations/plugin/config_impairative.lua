@@ -13,7 +13,7 @@ toggling:option {
     values = {[true] = 2, [false] = 0},
 }
 :option {
-    key = 'B',
+    key = 'b',
     option = 'winbar',
     values = {[true] = '%{%v:lua.dropbar()%}', [false] = ''},
 }
