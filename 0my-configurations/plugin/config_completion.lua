@@ -35,12 +35,21 @@ blink.setup {
         trigger = {
             show_on_keyword = false,
             show_on_trigger_character = false,
+            prefetch_on_insert = false,
         },
         list = {
             selection = {
                 preselect = true,
                 auto_insert = true,
             },
+        },
+        accept = {
+            auto_brackets = {
+                enabled = false,
+            },
+        },
+        ghost_text = {
+            enabled = true,
         },
     },
     sources = {
