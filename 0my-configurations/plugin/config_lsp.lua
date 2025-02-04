@@ -98,77 +98,158 @@ require'fzf_lsp'.setup {
 -- This is already defined by rustaceanvim in config_rust.lua
 -- lspconfig.rust_analyzer.setup {}
 
-lspconfig.pylsp.setup {
-    capabilities = capabilities,
+local function resolve_site_packages(root_dir)
+    local uses_uv = vim.system({'uv', 'tree', '--frozen', '--offline'}, {cwd = root_dir}):wait().code == 0
+    local python_cmd
+    if uses_uv then
+        python_cmd = {'uv', '--quiet', 'run', 'python'}
+    else
+        python_cmd = {'python'}
+    end
 
-    on_new_config = function(new_config, new_root_dir)
-        local uses_uv = vim.system({'uv', 'tree', '--frozen', '--offline'}, {cwd = new_root_dir}):wait().code == 0
-        local python_cmd
-        if uses_uv then
-            python_cmd = {'uv', '--quiet', 'run', 'python'}
-        else
-            python_cmd = {'python'}
-        end
+    if IdanLocalCfg.override_python_command_for_getting_site_packages then
+        python_cmd = IdanLocalCfg.override_python_command_for_getting_site_packages() or python_cmd
+    end
 
-        if IdanLocalCfg.override_python_command_for_getting_site_packages then
-            python_cmd = IdanLocalCfg.override_python_command_for_getting_site_packages() or python_cmd
-        end
+    local result = vim.system(python_cmd, {
+        cwd = root_dir,
+        stdin = require'plenary.strings'.dedent[=[
+        import site
+        for site_package in site.getsitepackages():
+            print(site_package)
+        ]=],
+    }):wait()
+    local site_packages = vim.split(result.stdout, '\n', {plain = true, trimempty = true})
 
-        local result = vim.system(python_cmd, {
-            cwd = new_root_dir,
-            stdin = require'plenary.strings'.dedent[=[
-            import site
-            for site_package in site.getsitepackages():
-                print(site_package)
-            ]=],
-        }):wait()
-        local site_packages = vim.split(result.stdout, '\n', {plain = true, trimempty = true})
+    if IdanLocalCfg.add_special_python_site_packages then
+        IdanLocalCfg.add_special_python_site_packages(site_packages)
+    end
+    return site_packages
+end
 
-        if IdanLocalCfg.add_special_python_site_packages then
-            IdanLocalCfg.add_special_python_site_packages(site_packages)
-        end
+local function resolve_python_info(root_dir)
+    local uses_uv = vim.system({'uv', 'tree', '--frozen', '--offline'}, {cwd = root_dir}):wait().code == 0
+    local python_cmd
+    if uses_uv then
+        python_cmd = {'uv', '--quiet', 'run', 'python'}
+    else
+        python_cmd = {'python'}
+    end
 
-        vim.list_extend(new_config.settings.pylsp.plugins.jedi.extra_paths, site_packages)
-    end,
+    if IdanLocalCfg.override_python_command_for_getting_site_packages then
+        python_cmd = IdanLocalCfg.override_python_command_for_getting_site_packages() or python_cmd
+    end
 
-    cmd_env = vim.empty_dict(),
+    local result = vim.system(python_cmd, {
+        cwd = root_dir,
+        stdin = require'plenary.strings'.dedent[=[
+        import sys
+        import site
+        import json
+        json.dump({
+            "python_executable": sys.executable,
+            "python_version": "{}.{}".format(*sys.version_info),
+            "site_packages": site.getsitepackages(),
+        }, sys.stdout)
+        ]=],
+    }):wait()
+    if result.code ~= 0 then
+        error(result.stderr)
+    end
+    local info = vim.json.decode(result.stdout)
 
-    root_dir = function(startpath)
-        if startpath == '' then
-            startpath = vim.fn.getcwd()
-        end
-        return lspconfig.pylsp.document_config.default_config.root_dir(startpath)
-    end,
+    if IdanLocalCfg.add_special_python_site_packages then
+        IdanLocalCfg.add_special_python_site_packages(info.site_packages)
+    end
+    return info
+end
 
-    settings = {
-        pylsp = {
-            plugins = {
-                pycodestyle = {
-                    enabled = false,
-                },
-                flake8 = {
-                    enabled = true,
-                    maxLineLength = 130,
-                },
-                pylsp_black = {
-                    enabled = true,
-                },
-                pylsp_mypy = {
-                    enabled = true,
-                    overrides = {'--follow-imports', 'silent', true},
-                },
-                jedi = {
-                    extra_paths = {}
-                },
-            }
+if false then
+    lspconfig.pylsp.setup {
+        capabilities = capabilities,
+
+        on_new_config = function(new_config, new_root_dir)
+            vim.list_extend(new_config.settings.pylsp.plugins.jedi.extra_paths, resolve_python_info(new_root_dir).site_packages)
+        end,
+
+        cmd_env = vim.empty_dict(),
+
+        root_dir = function(startpath)
+            if startpath == '' then
+                startpath = vim.fn.getcwd()
+            end
+            return lspconfig.pylsp.document_config.default_config.root_dir(startpath)
+        end,
+
+        settings = {
+            pylsp = {
+                plugins = {
+                    pycodestyle = {
+                        enabled = false,
+                    },
+                    flake8 = {
+                        enabled = true,
+                        maxLineLength = 130,
+                    },
+                    pylsp_black = {
+                        enabled = true,
+                    },
+                    pylsp_mypy = {
+                        enabled = true,
+                        overrides = {'--follow-imports', 'silent', true},
+                    },
+                    jedi = {
+                        extra_paths = {}
+                    },
+                }
+            },
         },
-    },
-}
---lspconfig.ruff.setup {
-    --init_options = {
-        --settings = vim.empty_dict()
-    --},
---}
+    }
+end
+if true then
+    lspconfig.basedpyright.setup {
+        on_new_config = function(new_config, new_root_dir)
+            local python_info = resolve_python_info(new_root_dir)
+
+            new_config.settings.python.pythonPath = python_info.python_executable
+
+            vim.list_extend(new_config.settings.basedpyright.analysis.extraPaths, python_info.site_packages)
+            -- TODO: only do this if version is less than 3.12?
+            new_config.settings.basedpyright.analysis.diagnosticSeverityOverrides.reportImplicitOverride = 'none'
+        end,
+        settings = {
+            python = {
+            },
+            basedpyright = {
+                analysis = {
+                    extraPaths = {},
+                    diagnosticSeverityOverrides = {
+                        reportUnknownParameterType = 'none',
+                        reportUnknownArgumentType = 'none',
+                        reportUnknownLambdaType = 'none',
+                        reportUnknownVariableType = 'none',
+                        reportUnknownMemberType = 'none',
+                    },
+                },
+            },
+        },
+    }
+end
+
+if true then
+    lspconfig.ruff.setup {
+        init_options = {
+            settings = {
+                lint = {
+                    select = {'E', 'F', 'Q'},
+                    ['extend-select'] = {'E223'},
+                    preview = true,
+                },
+
+            },
+        },
+    }
+end
 
 
 --lspconfig.ccls.setup {
