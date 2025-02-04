@@ -200,6 +200,8 @@ if true then
                         reportUnknownLambdaType = 'none',
                         reportUnknownVariableType = 'none',
                         reportUnknownMemberType = 'none',
+                        reportAny = 'none',
+                        reportExplicitAny = 'none',
                     },
                 },
             },
