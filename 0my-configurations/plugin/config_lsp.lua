@@ -98,35 +98,6 @@ require'fzf_lsp'.setup {
 -- This is already defined by rustaceanvim in config_rust.lua
 -- lspconfig.rust_analyzer.setup {}
 
-local function resolve_site_packages(root_dir)
-    local uses_uv = vim.system({'uv', 'tree', '--frozen', '--offline'}, {cwd = root_dir}):wait().code == 0
-    local python_cmd
-    if uses_uv then
-        python_cmd = {'uv', '--quiet', 'run', 'python'}
-    else
-        python_cmd = {'python'}
-    end
-
-    if IdanLocalCfg.override_python_command_for_getting_site_packages then
-        python_cmd = IdanLocalCfg.override_python_command_for_getting_site_packages() or python_cmd
-    end
-
-    local result = vim.system(python_cmd, {
-        cwd = root_dir,
-        stdin = require'plenary.strings'.dedent[=[
-        import site
-        for site_package in site.getsitepackages():
-            print(site_package)
-        ]=],
-    }):wait()
-    local site_packages = vim.split(result.stdout, '\n', {plain = true, trimempty = true})
-
-    if IdanLocalCfg.add_special_python_site_packages then
-        IdanLocalCfg.add_special_python_site_packages(site_packages)
-    end
-    return site_packages
-end
-
 local function resolve_python_info(root_dir)
     local uses_uv = vim.system({'uv', 'tree', '--frozen', '--offline'}, {cwd = root_dir}):wait().code == 0
     local python_cmd
@@ -238,6 +209,9 @@ end
 
 if true then
     lspconfig.ruff.setup {
+        on_new_config = function(new_config, new_root_dir)
+            IdanLocalCfg.modify_ruff_settings(new_config.settings)
+        end,
         init_options = {
             settings = {
                 lint = {
