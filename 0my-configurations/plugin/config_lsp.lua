@@ -216,9 +216,28 @@ if true then
         end,
         init_options = {
             settings = {
+                lineLength = 130,
                 lint = {
-                    select = {'E', 'F', 'Q'},
+                    select = {
+                        'E', -- pycodestyle errors
+                        'W', -- pycodestyle warnings
+                        'F', -- flake8
+                        'Q', -- quotes
+                        'N', -- pep8 naming
+                        'U', -- pyupgrade
+                        'B', -- bugbear
+                        'A', -- bultins
+                        'COM', -- commas
+                        'C', -- comprehensions
+                        'ISC', -- implicit-str-concat
+                        'PIE', -- flake8-pie
+                        'ERA', -- eradicate
+                        'PLE', -- pylint errors
+                    },
                     ['extend-select'] = {'E223'},
+                    preview = true,
+                },
+                format = {
                     preview = true,
                 },
 
