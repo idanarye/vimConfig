@@ -212,11 +212,10 @@ end
 if true then
     lspconfig.ruff.setup {
         on_new_config = function(new_config, new_root_dir)
-            IdanLocalCfg.modify_ruff_settings(new_config.settings)
+            IdanLocalCfg.modify_ruff_settings(new_config.init_options.settings)
         end,
         init_options = {
             settings = {
-                lineLength = 130,
                 lint = {
                     select = {
                         'E', -- pycodestyle errors
