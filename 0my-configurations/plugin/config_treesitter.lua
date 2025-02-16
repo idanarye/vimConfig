@@ -18,9 +18,6 @@ require'nvim-treesitter.configs'.setup {
     };
     highlight = {
         enable = true,
-        disable = {
-            'nu', -- doesn't work
-        },
     };
     incremental_selection = { enable = true };
     textobjects = { enable = true };

@@ -183,8 +183,6 @@ return {
 
     'vxpm/ferris.nvim',
 
-    'LhKipp/nvim-nu',
-
     'danymat/neogen',
 
     'jbyuki/one-small-step-for-vimkind',
