@@ -1,7 +1,8 @@
 local fzf = require'fzf-lua'
 fzf.setup {
     winopts = {
-        split = 'belowright new',
+        --split = 'belowright new',
+        --split = 'botright new',
     },
     keymap = {
         fzf = {
