@@ -11,6 +11,8 @@ blink.setup {
         -- Disable tabs - I already use <C-j> and <C-k> for snippet navigation
         ['<Tab>'] = {},
         ['<S-Tab>'] = {},
+        ['<C-p>'] = { 'select_prev', 'fallback' },
+        ['<C-n>'] = { 'select_next', 'fallback' },
     }, (function()
         local numeric_mappings = {}
         for i = 1, 10 do
@@ -75,6 +77,12 @@ blink.setup {
                 name = 'calc',
                 module = 'blink.compat.source',
             },
+        },
+    },
+    cmdline = {
+        keymap = {
+            ['<C-n>'] = { 'select_next', 'fallback' },
+            ['<C-p>'] = { 'select_prev', 'fallback' },
         },
     },
 }
