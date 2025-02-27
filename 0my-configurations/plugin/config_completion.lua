@@ -83,6 +83,7 @@ blink.setup {
         keymap = {
             ['<C-n>'] = { 'select_next', 'fallback' },
             ['<C-p>'] = { 'select_prev', 'fallback' },
+            ['<C-e>'] = { 'cancel', 'fallback' },
         },
     },
 }
