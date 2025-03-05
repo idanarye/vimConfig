@@ -88,6 +88,10 @@ require'caskey'.setup {
         ['i'] = {act = dap.step_into, desc='DAP step into'},
         ['O'] = {act = dap.step_out, desc='DAP step out'},
 
+        ['k'] = {act = dap.up, desc='DAP go up in the current stacktrace without stepping'},
+        ['j'] = {act = dap.down, desc='DAP go down in the current stacktrace without stepping'},
+        ['f'] = {act = dap.focus_frame, desc='DAP jump to the current frame'},
+
         ['e'] = {act = dapui.eval, mode = {'n', 'v'}, desc='DAP eval'},
     },
 }
