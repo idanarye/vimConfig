@@ -79,7 +79,7 @@ require'caskey'.setup {
 
         ['c'] = {act = dap.continue, desc='DAP continue'},
         ['C'] = {act = dap.run_to_cursor, desc='DAP run to cursor'},
-        ['k'] = {act = dap.close, desc='DAP close'},
+        ['Q'] = {act = dap.close, desc='DAP close'},
         ['b'] = {act = dap.toggle_breakpoint, desc='DAP toggle breakpoint'},
         ['<C-b>'] = {act = function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc='DAP add conditional breakpoint'},
         ['B'] = {act = dap.clear_breakpoints, desc='DAP clear all breakpoints'},
