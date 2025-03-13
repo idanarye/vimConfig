@@ -35,5 +35,28 @@ ck.setup {
                 focus = true,
             }
         end, desc = 'focus Quicker loclist ' },
+        ['w'] = { act = function()
+            local qf = vim.fn.getqflist()
+            local warnings_are_valid = vim.iter(qf):any(function(item)
+                return item.type == 'W' and item.valid == 1
+            end)
+            local set_valid_to
+            if warnings_are_valid then
+                set_valid_to = 0
+            else
+                set_valid_to = 1
+            end
+            local num_warnings = 0
+            for _, item in ipairs(qf) do
+                if item.type == 'W' then
+                    item.valid = set_valid_to
+                    num_warnings = num_warnings + 1
+                end
+            end
+            if 0 < num_warnings then
+                vim.fn.setqflist(qf)
+                vim.notify(('%d warnings are now %s'):format(num_warnings, ({[0] = 'invalid', [1] = 'valid'})[set_valid_to]))
+            end
+        end, desc = 'toggle warnings validity' },
     },
 }
