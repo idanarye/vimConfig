@@ -202,6 +202,7 @@ if true then
                         reportUnknownMemberType = 'none',
                         reportAny = 'none',
                         reportExplicitAny = 'none',
+                        reportUnusedCallResult = 'none',
                     },
                 },
             },
