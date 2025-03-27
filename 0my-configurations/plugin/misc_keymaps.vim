@@ -57,7 +57,8 @@ nnoremap <Leader><A-f> :filetype detect<Cr>
 nnoremap <Leader><A-w> :set wrap!<Cr>
 nnoremap <Leader><C-t> :checktime<Cr>
 
-nnoremap <Leader><C-s> :<C-u>write<Cr>
+nnoremap <C-s> <Cmd>update<Cr>
+nnoremap <Leader><C-s> <Cmd>write<Cr>
 
 nnoremap Y y$
 

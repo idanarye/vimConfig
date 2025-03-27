@@ -41,7 +41,8 @@ return {
     {'Shougo/vimproc', build = 'make -B'},
     'Shougo/vimshell',
 
-    'svermeulen/vim-easyclip',
+    --'svermeulen/vim-easyclip',
+    'gbprod/cutlass.nvim',
 
     't9md/vim-textmanip',
     'tmhedberg/SimpylFold',

@@ -173,9 +173,9 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 filetype indent on
 
 if has("multi_byte")
-  if &termencoding == ""
-    let &termencoding = &encoding
-  endif
+  "if &termencoding == ""
+    "let &termencoding = &encoding
+  "endif
   set encoding=utf-8
   setglobal fileencoding=utf-8
   "setglobal bomb
@@ -239,7 +239,7 @@ autocmd FileType vim map <buffer> <F9> <Esc>:source %<Cr>
 autocmd FileType lua map <buffer> <F9> <Esc>:lua loadstring(vim.fn.readblob(vim.fn.expand('%')))()<Cr>
 
 " source $VIMRUNTIME/vimrc_example.vim
-source $VIMRUNTIME/mswin.vim
+" source $VIMRUNTIME/mswin.vim
 
 " Instead of `behave mswin` which was removed in Neovim 0.10
 set selection=exclusive
