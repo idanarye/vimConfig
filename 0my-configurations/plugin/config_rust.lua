@@ -9,7 +9,7 @@ vim.g.rustaceanvim = {
                 },
                 cargo = {
                     loadOutDirsFromCheck = true,
-                    -- features = 'all',
+                     features = 'all',
                 },
                 procMacro = {
                     enable = true,
