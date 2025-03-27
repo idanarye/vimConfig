@@ -1,5 +1,6 @@
 local dap = require'dap'
 local dapui = require'dapui'
+local dap_view = require'dap-view'
 
 local mason_core_path = require'mason-core.path'
 
@@ -9,6 +10,20 @@ dapui.setup({
     --sidebar = { open_on_start = false };
     --tray = { open_on_start = false };
 })
+
+dap_view.setup {
+    winbar = {
+        sections = { 'console', 'watches', 'exceptions', 'breakpoints', 'threads', 'repl' },
+        default_section = 'repl',
+        show = true,
+    },
+    windows = {
+        terminal = {
+            hide = {'python'},
+            -- start_hidden = true,
+        }
+    }
+}
 
 vim.g.dap_virtual_text = true
 
@@ -76,6 +91,7 @@ require'caskey'.setup {
     ['<M-d>'] = {
         ['u'] = {act = dapui.toggle, desc='Toggle DAP UI'},
         ['U'] = {act = dap.repl.toggle, desc='Toggle DAP REPL'},
+        ['v'] = {act = dap_view.toggle, desc='Toggle DAP View'},
 
         ['c'] = {act = dap.continue, desc='DAP continue'},
         ['C'] = {act = dap.run_to_cursor, desc='DAP run to cursor'},

@@ -116,6 +116,7 @@ return {
     'rafcamlet/nvim-luapad',
     'mfussenegger/nvim-dap',
     'rcarriga/nvim-dap-ui',
+    'igorlfs/nvim-dap-view',
     'theHamsta/nvim-dap-virtual-text',
     'mfussenegger/nvim-dap-python',
     'Mgenuit/nvim-dap-kotlin',
