@@ -85,6 +85,18 @@ vim.api.nvim_create_user_command('OneSmallStepForVimkindLaunchServer', function(
     }
 end, {})
 
+local function make_dap_view_switch_action(view)
+    local module_name = ('dap-view.%s.view'):format(view)
+    return {
+        act = function()
+            dap_view.open()
+            require'dap-view.options.winbar'.update_winbar(view)
+            -- require'dap-view.views'.switch_to_view(require(module_name).show)
+        end,
+        desc = 'DAP View switch to ' .. view
+    }
+end
+
 require'caskey'.setup {
     mode = {'n'},
     name = 'DAP',
@@ -109,5 +121,14 @@ require'caskey'.setup {
         ['f'] = {act = dap.focus_frame, desc='DAP jump to the current frame'},
 
         ['e'] = {act = dapui.eval, mode = {'n', 'v'}, desc='DAP eval'},
+
+        ['<M-v>'] = {
+            ['b'] = make_dap_view_switch_action('breakpoints'),
+            ['e'] = make_dap_view_switch_action('exceptions'),
+            ['w'] = make_dap_view_switch_action('watches'),
+            ['t'] = make_dap_view_switch_action('threads'),
+            ['r'] = make_dap_view_switch_action('repl'),
+            ['c'] = make_dap_view_switch_action('console'),
+        }
     },
 }
