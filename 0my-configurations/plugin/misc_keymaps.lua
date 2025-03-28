@@ -19,10 +19,10 @@ ck.setup {
     end, desc = 'Close all bubble windows'},
     ['<C-s>'] = {
         mode = {'n', 'i', 'x'},
-        act = 'update',
+        act = ck.cmd'update',
     },
     ['<Leader><C-s>'] = {
-        act = 'write',
+        act = ck.cmd'write',
     },
     ['<C-c>'] = {
         mode = {'x'},
