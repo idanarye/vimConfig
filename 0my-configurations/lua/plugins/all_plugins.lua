@@ -63,7 +63,7 @@ return {
     'vim-scripts/AdvancedSorters',
     'vim-scripts/aspnetcs',
     'vim-scripts/keepcase.vim',
-    'vim-scripts/mlessnau_case',
+    'chrisgrieser/nvim-various-textobjs',
     'vim-scripts/roo.vim',
     'vim-scripts/Tabmerge',
     'vim-scripts/vim-gradle',
