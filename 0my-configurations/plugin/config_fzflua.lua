@@ -44,7 +44,89 @@ require'caskey'.setup {
     ['<M-p>'] = {
         ['<M-p>'] = {act = fzf.builtin, desc='fzf-lua builtins'},
         ['l'] = {act = fzf.blines, desc='fzf-lua lines in buffer'},
-        ['m'] = {act = fzf.git_status, desc='fzf-lua git files'},
+        ['m'] = {act = function()
+            local commit = nil
+            local selecting_commit = false
+
+            local actions = {}
+            local file_opts = {
+                query = '',
+                actions = actions,
+                fzf_opts = {['--multi'] = true},
+            }
+            local commit_opts = {
+                query = '',
+                actions = actions,
+                fzf_opts = {['--multi'] = false},
+            }
+
+            actions['ctrl-g'] = function(selected, opts)
+                if selecting_commit then
+                    commit_opts.query = opts.last_query
+                    commit = selected[1]:match[=[^(%w+) ]=]
+                    selecting_commit = false
+                    fzf.core.fzf_resume(file_opts)
+                else
+                    file_opts.query = opts.last_query
+                    selecting_commit = true
+                    fzf.core.fzf_resume(commit_opts)
+                end
+            end
+
+            local process_selected = function(selected)
+                return vim.iter(selected):map(function(entry)
+                    return entry:match'^.\t(.*)$'
+                end):totable()
+            end
+
+            actions['default'] = function(selected, opts)
+                if selecting_commit then
+                    actions['ctrl-g'](selected, opts)
+                else
+                    fzf.actions.file_edit_or_qf(process_selected(selected), opts)
+                end
+            end
+
+            for action_bind, action_function in pairs {
+                ["ctrl-s"] = 'file_split',
+                ["ctrl-v"] = 'file_vsplit',
+                ["ctrl-t"] = 'file_tabedit',
+                ["alt-q"]  = 'file_sel_to_qf',
+                ["alt-Q"]  = 'file_sel_to_ll',
+            }
+            do
+                actions[action_bind] = function(selected, opts)
+                    if selecting_commit then
+                        fzf.core.fzf_resume()
+                    else
+                        return fzf.actions[action_function](process_selected(selected), opts)
+                    end
+                end
+            end
+
+            fzf.fzf_exec(function(cb)
+                require'moonicipal.util'.defer_to_coroutine(function()
+                    if selecting_commit then
+                        cb('<WORKTREE>')
+                        for _, line in require'channelot'.job{'git', 'log', '--oneline'}:iter() do
+                            cb(line)
+                        end
+                    else
+                        local cmd
+                        if commit then
+                            cmd = {'git', 'show', commit}
+                        else
+                            cmd = {'git', 'diff'}
+                        end
+                        vim.list_extend(cmd, {'--format=', '--name-status', '--'})
+                        for _, line in require'channelot'.job(cmd):iter() do
+                            cb(line)
+                        end
+                    end
+                    cb()
+                end)
+            end, file_opts)
+        end, desc='fzf-lua git files'},
         ['s'] = {act = function()
             fzf.live_grep {
                 silent = true,
@@ -87,7 +169,7 @@ require'caskey'.setup {
             end
             fzf.fzf_exec(relevant_buffers, {
                 actions = {
-                    default = require'fzf-lua.actions'.file_edit,
+                    default = fzf.actions.file_edit,
                 },
                 fzf_opts = {
                     ['--no-multi'] = '',
