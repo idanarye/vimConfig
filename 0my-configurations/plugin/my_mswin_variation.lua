@@ -1,26 +1,14 @@
-" Set options and add mapping such that Vim behaves a lot like MS-Windows
-"
-" Maintainer:	The Vim Project <https://github.com/vim/vim>
-" Last Change:	2024 Mar 13
-" Former Maintainer:	Bram Moolenaar <Bram@vim.org>
+-- set the 'cpoptions' to its Vim default
+local save_cpo = vim.o.cpoptions
+vim.o.cpoptions = vim.opt.cpoptions.default
+-- set 'selection', 'selectmode', 'mousemodel' and 'keymodel' for MS-Windows
+-- vim.o.selection = 'exclusive'
+vim.o.selection = 'inclusive'
+vim.opt.selectmode = {'mouse', 'key'}
+vim.o.mousemodel = 'popup'
+vim.opt.keymodel = {'startsel', 'stopsel'}
 
-" Bail out if this isn't wanted.
-if exists("g:skip_loading_mswin") && g:skip_loading_mswin
-  finish
-endif
-
-" set the 'cpoptions' to its Vim default
-if 1	" only do this when compiled with expression evaluation
-  let s:save_cpo = &cpoptions
-endif
-set cpo&vim
-
-" set 'selection', 'selectmode', 'mousemodel' and 'keymodel' for MS-Windows
-set selection=exclusive
-set selectmode=mouse,key
-set mousemodel=popup
-set keymodel=startsel,stopsel
-
+vim.cmd[=[
 " backspace and cursor keys wrap to previous/next line
 set backspace=indent,eol,start whichwrap+=<,>,[,]
 
@@ -141,9 +129,7 @@ if has("gui")
   cnoremap <expr> <C-H> has("gui_running") ? "\<C-\>\<C-C>:promptrepl\<CR>" : "\<C-H>"
 endif
 
-" restore 'cpoptions'
-set cpo&
-if 1
-  let &cpoptions = s:save_cpo
-  unlet s:save_cpo
-endif
+]=]
+-- restore 'cpoptions'
+vim.o.cpoptions = vim.opt.cpoptions.default
+vim.o.cpoptions = save_cpo
