@@ -6,6 +6,9 @@ require'blink.compat'.setup {
 local blink = require'blink.cmp'
 
 blink.setup {
+    snippets = {
+        preset = 'luasnip',
+    },
     keymap = vim.tbl_extend('error', {
         preset = 'enter',
         -- Disable tabs - I already use <C-j> and <C-k> for snippet navigation
