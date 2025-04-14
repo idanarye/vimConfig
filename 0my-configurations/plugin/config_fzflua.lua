@@ -75,7 +75,11 @@ require'caskey'.setup {
 
             local process_selected = function(selected)
                 return vim.iter(selected):map(function(entry)
-                    return entry:match'^.\t(.*)$'
+                    if commit then
+                        return entry:match'^.\t(.*)$'
+                    else
+                        return entry:match'^...(.*)$'
+                    end
                 end):totable()
             end
 
@@ -114,11 +118,10 @@ require'caskey'.setup {
                     else
                         local cmd
                         if commit then
-                            cmd = {'git', 'show', commit}
+                            cmd = {'git', 'show', commit, '--format=', '--name-status', '--'}
                         else
-                            cmd = {'git', 'diff'}
+                            cmd = {'git', 'status', '--porcelain=v1'}
                         end
-                        vim.list_extend(cmd, {'--format=', '--name-status', '--'})
                         for _, line in require'channelot'.job(cmd):iter() do
                             cb(line)
                         end
