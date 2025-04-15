@@ -6,7 +6,13 @@ require'caskey'.setup {
     mode = {'n'},
     name = 'kubectl',
     ['<Leader>k'] = {
-        act = kubectl.open,
+        act = function()
+            if vim.env.KUBECONFIG then
+                kubectl.open()
+            else
+                vim.notify('$KUBECONFIG is not set. Please run the :KubeSelectConfigFile command', vim.log.levels.WARN)
+            end
+        end,
         desc = 'Toggle kubectl.nvim',
     }
 }
