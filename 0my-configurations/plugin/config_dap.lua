@@ -1,6 +1,7 @@
 local dap = require'dap'
 local dapui = require'dapui'
 local dap_view = require'dap-view'
+local dm = require'debugmaster'
 
 local mason_core_path = require'mason-core.path'
 
@@ -129,6 +130,11 @@ require'caskey'.setup {
             ['t'] = make_dap_view_switch_action('threads'),
             ['r'] = make_dap_view_switch_action('repl'),
             ['c'] = make_dap_view_switch_action('console'),
-        }
+        },
+
+    },
+    ['<M-c-d>'] = {
+        act = dm.mode.toggle,
+        desc = 'Toggle debugmaster debug mode',
     },
 }
