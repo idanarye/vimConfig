@@ -47,8 +47,6 @@ require'mason'.setup {
         'lua:idan.mason-registry.index',
     },
 }
-require'mason-lspconfig'.setup {}
-local mason_core_path = require'mason-core.path'
 
 local lspconfig = require'lspconfig'
 local lsp_extensions = require'lsp_extensions'
