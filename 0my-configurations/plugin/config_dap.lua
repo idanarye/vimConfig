@@ -3,8 +3,6 @@ local dapui = require'dapui'
 local dap_view = require'dap-view'
 local dm = require'debugmaster'
 
-local mason_core_path = require'mason-core.path'
-
 dap.defaults.fallback.switchbuf = 'useopen,split'
 
 dapui.setup({
@@ -28,14 +26,16 @@ dap_view.setup {
 
 vim.g.dap_virtual_text = true
 
-require'dap-python'.setup(mason_core_path.package_prefix'debugpy/venv/bin/python')
+vim.schedule(function()
+    require'dap-python'.setup(vim.fs.normalize('$MASON/packages/debugpy/venv/bin/python'))
+end)
 
 dap.adapters.codelldb = {
     type = 'server',
     host = '127.0.0.1',
     port = '${port}',
     executable = {
-        command = mason_core_path.bin_prefix'codelldb';
+        command = 'codelldb';
         args = { '--port', '${port}' };
     },
 }
@@ -60,7 +60,7 @@ dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
 
 require'dap-kotlin'.setup {
-    dap_command = mason_core_path.bin_prefix'kotlin-debug-adapter',
+    dap_command = 'kotlin-debug-adapter',
 }
 
 dap.adapters.nlua = function(callback, config)
@@ -78,7 +78,6 @@ dap.configurations.lua = {
         name = "Attach to running Neovim instance",
     }
 }
-
 
 vim.api.nvim_create_user_command('OneSmallStepForVimkindLaunchServer', function()
     require"osv".launch {

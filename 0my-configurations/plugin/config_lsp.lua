@@ -265,7 +265,7 @@ lspconfig.lua_ls.setup {
         return lspconfig.lua_ls.document_config.default_config.root_dir(startpath)
     end,
 
-    cmd = {mason_core_path.bin_prefix'lua-language-server'},
+    cmd = {'lua-language-server'},
     settings = {
         Lua = {
             --runtime = {
