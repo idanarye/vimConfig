@@ -42,10 +42,6 @@ vim.api.nvim_create_user_command('LspFormat', function()
 end, {})
 
 require'mason'.setup {
-    registries = {
-        'github:mason-org/mason-registry',
-        'lua:idan.mason-registry.index',
-    },
 }
 
 local lspconfig = require'lspconfig'
