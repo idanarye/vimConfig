@@ -192,10 +192,6 @@ return {
 
     'SuperBo/fugit2.nvim',
 
-    'nomnivore/ollama.nvim',
-    'dustinblackman/oatmeal.nvim',
-    'Aaronik/GPTModels.nvim',
-
     'MagicDuck/grug-far.nvim',
 
     'stevearc/quicker.nvim',
@@ -204,4 +200,6 @@ return {
     'daliusd/ghlite.nvim',
     'Ramilito/kubectl.nvim',
     'yarospace/lua-console.nvim',
+    'folke/snacks.nvim',
+    'GeorgesAlkhouri/nvim-aider',
 }
