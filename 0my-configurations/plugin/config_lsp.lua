@@ -378,6 +378,9 @@ lspconfig.yarn_spinner.setup {
     capabilities = capabilities,
 }
 
+lspconfig.protols.setup {
+}
+
 vim.cmd [=[
 augroup YarnFileType
 autocmd!
