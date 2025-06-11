@@ -2,16 +2,17 @@ local aider = require'nvim_aider'
 vim.schedule(function()
     aider.setup {
         args = (function()
+            local args = {}
+            vim.list_extend(args, {'--no-auto-commits'})
             if vim.fn.filereadable('aider.conf.yml') == 1 then
-                return {
-                    '--config', 'aider.conf.yml',
-                }
+                vim.list_extend(args, {'--config', 'aider.conf.yml'})
             elseif vim.env.GOOGLE_API_KEY then
-                return {
+                vim.list_extend(args, {
                     '--model', 'gemini',
                     '--api-key', 'gemini=' .. vim.env.GOOGLE_API_KEY,
-                }
+                })
             end
+            return args
         end)(),
         auto_reload = true,
     }
