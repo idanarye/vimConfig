@@ -87,6 +87,7 @@ blink.setup {
             ['<C-n>'] = { 'select_next', 'fallback' },
             ['<C-p>'] = { 'select_prev', 'fallback' },
             ['<C-e>'] = { 'cancel', 'fallback' },
+            ['<Cr>'] = { 'select_and_accept', 'fallback' },
         },
     },
 }
