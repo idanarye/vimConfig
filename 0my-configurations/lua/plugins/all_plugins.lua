@@ -130,6 +130,7 @@ return {
 
     {'saghen/blink.cmp', version = '1.*'},
     {'saghen/blink.compat', version = '*'},
+    'saghen/blink.download',
 
     'ray-x/lsp_signature.nvim',
 
@@ -198,7 +199,7 @@ return {
 
     'aaronhallaert/advanced-git-search.nvim',
     'daliusd/ghlite.nvim',
-    'Ramilito/kubectl.nvim',
+    {'Ramilito/kubectl.nvim', version = '2.*'},
     'yarospace/lua-console.nvim',
     'folke/snacks.nvim',
     'GeorgesAlkhouri/nvim-aider',
