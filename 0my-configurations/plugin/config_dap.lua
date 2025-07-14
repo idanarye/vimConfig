@@ -90,8 +90,9 @@ local function make_dap_view_switch_action(view)
     return {
         act = function()
             dap_view.open()
-            require'dap-view.options.winbar'.update_winbar(view)
-            -- require'dap-view.views'.switch_to_view(require(module_name).show)
+            if require'dap-view.state'.current_section ~= view then
+                dap_view.show_view(view)
+            end
         end,
         desc = 'DAP View switch to ' .. view
     }
