@@ -20,6 +20,7 @@ return function()
 
     function T:debug()
         require'dap'.run {
+            name = 'python-launch',
             type = 'python',
             request = 'launch',
             program = T:entry_point(),
