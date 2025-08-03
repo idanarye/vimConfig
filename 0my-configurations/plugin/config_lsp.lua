@@ -249,40 +249,13 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-lspconfig.lua_ls.setup {
-    capabilities = capabilities;
-
-    root_dir = function(startpath)
-        if vim.endswith(startpath, '.moonicipal.lua') then
-            return vim.fs.dirname(startpath)
-        end
-        return lspconfig.lua_ls.document_config.default_config.root_dir(startpath)
-    end,
-
-    cmd = {'lua-language-server'},
-    settings = {
-        Lua = {
-            --runtime = {
-                --version = 'LuaJIT',
-                ---- Setup your lua path
-                --path = runtime_path,
-            --},
-            --diagnostics = {
-                --globals = {'vim'},
-            --},
-            --workspace = {
-                ---- Make the server aware of Neovim runtime files
-                --library = vim.api.nvim_get_runtime_file("", true),
-                --checkThirdParty = false,
-            --},
-        },
-    },
-
+vim.lsp.enable('emmylua_ls')
+vim.lsp.config('emmylua_ls', {
     on_init = function(client)
-        local path = client.workspace_folders[1].name
-        if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
-            return
-        end
+        --local path = client.workspace_folders[1].name
+        --if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
+            --return
+        --end
         local set_of_plugins = {}
         for _, plugin_name in ipairs({
             'nvim',
@@ -307,36 +280,18 @@ lspconfig.lua_ls.setup {
             local plugin_name = vim.fs.basename(vim.fs.dirname(plugin_path))
             return set_of_plugins[plugin_name]
         end, vim.api.nvim_get_runtime_file("lua", true))
-        client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-            runtime = {
-                -- Tell the language server which version of Lua you're using
-                -- (most likely LuaJIT in the case of Neovim)
-                version = 'LuaJIT'
-            },
-            diagnostics = {
-                --globals = {'vim'},
-            },
-            hint = {
-                enable = true,
-                arrayIndex = 'Enable',
-                setType = true,
-            },
-            -- Make the server aware of Neovim runtime files
+
+        client.settings.Lua = {
             workspace = {
-                checkThirdParty = 'ApplyInMemory',
                 library = {
                     vim.env.VIMRUNTIME,
                     vim.env.VIMRUNTIME .. '/lua/vim/lsp',
                     unpack(plugin_paths_to_add),
                 }
-                -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
-                -- library = vim.api.nvim_get_runtime_file("", true)
             },
-        })
-
-        client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+        }
     end
-}
+})
 
 lspconfig.kotlin_language_server.setup {
     capabilities = capabilities;
