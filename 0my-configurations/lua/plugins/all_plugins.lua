@@ -203,4 +203,6 @@ return {
     'yarospace/lua-console.nvim',
     'folke/snacks.nvim',
     'GeorgesAlkhouri/nvim-aider',
+
+    'zdcthomas/yop.nvim',
 }

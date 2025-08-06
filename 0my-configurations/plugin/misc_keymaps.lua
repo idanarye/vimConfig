@@ -1,4 +1,5 @@
 local ck = require'caskey'
+local yop = require'yop'
 
 ck.setup {
     mode = {'n'},
@@ -21,3 +22,7 @@ ck.setup {
         act = ck.cmd'write',
     },
 }
+
+yop.op_map({'n', 'v'}, 's', function(_lines, _info)
+    return vim.fn.getreg(vim.v.register, false, true)
+end, {desc = 'replace with register content'})
