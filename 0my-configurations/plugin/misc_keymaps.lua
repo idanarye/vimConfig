@@ -26,3 +26,6 @@ ck.setup {
 yop.op_map({'n', 'v'}, 's', function(_lines, _info)
     return vim.fn.getreg(vim.v.register, false, true)
 end, {desc = 'replace with register content'})
+yop.op_map({'n'}, 'ss', function(_lines, _info)
+    return vim.fn.getreg(vim.v.register, false, true)
+end, {linewise = true, desc = 'replace line with register content'})
