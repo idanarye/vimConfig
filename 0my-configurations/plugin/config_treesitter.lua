@@ -23,7 +23,7 @@ require'nvim-treesitter.configs'.setup {
     textobjects = { enable = true };
     indent = {
         enable = true,
-        disable = { 'rust', 'lua', 'nu', }, -- I only want this for Python
+        disable = { 'rust', 'lua', }, -- I only want this for Python and Nushell
     },
     playground = {
         enable = true;
