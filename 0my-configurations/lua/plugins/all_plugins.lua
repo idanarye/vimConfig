@@ -205,4 +205,5 @@ return {
     'GeorgesAlkhouri/nvim-aider',
 
     'zdcthomas/yop.nvim',
+    'jameswolensky/marker-groups.nvim',
 }
