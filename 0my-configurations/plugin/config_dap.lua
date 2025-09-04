@@ -138,3 +138,5 @@ require'caskey'.setup {
         desc = 'Toggle debugmaster debug mode',
     },
 }
+
+dm.plugins.ui_auto_toggle.enabled = false
