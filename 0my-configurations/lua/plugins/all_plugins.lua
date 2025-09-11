@@ -202,7 +202,7 @@ return {
     {'Ramilito/kubectl.nvim', version = '2.*'},
     'yarospace/lua-console.nvim',
     'folke/snacks.nvim',
-    'GeorgesAlkhouri/nvim-aider',
+    'coder/claudecode.nvim',
 
     'zdcthomas/yop.nvim',
     'jameswolensky/marker-groups.nvim',
