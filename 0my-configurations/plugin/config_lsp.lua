@@ -171,7 +171,9 @@ if true then
     vim.lsp.enable('ruff')
     vim.lsp.config('ruff', {
         before_init = function(_params, config)
-            IdanLocalCfg.modify_ruff_settings(config.init_options.settings)
+            if IdanLocalCfg.modify_ruff_settings then
+                IdanLocalCfg.modify_ruff_settings(config.init_options.settings)
+            end
         end,
         init_options = {
             settings = {
