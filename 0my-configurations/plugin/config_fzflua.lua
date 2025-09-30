@@ -52,18 +52,28 @@ require'caskey'.setup {
             local file_opts = {
                 query = '',
                 actions = actions,
-                fzf_opts = {['--multi'] = true},
+                fzf_opts = {
+                    ['--multi'] = true,
+                },
+                fzf_cli_args = '',
             }
             local commit_opts = {
                 query = '',
                 actions = actions,
-                fzf_opts = {['--multi'] = false},
+                fzf_opts = {
+                    ['--multi'] = false,
+                    ['--with-nth'] = '2..',
+                    ['--nth'] = '2..',
+                },
+                fzf_cli_args = '--bind "load:pos(1)"',
             }
 
-            actions['ctrl-g'] = function(selected, opts)
+            actions['ctrl-g'] = {fn = function(selected, opts)
                 if selecting_commit then
                     commit_opts.query = opts.last_query
-                    commit = selected[1]:match[=[^(%w+) ]=]
+                    local pos
+                    pos, commit = selected[1]:match'^(%d+)\t(%w+) '
+                    commit_opts.fzf_cli_args = ('--bind "load:pos(%s)"'):format(pos)
                     selecting_commit = false
                     fzf.core.fzf_resume(file_opts)
                 else
@@ -71,7 +81,7 @@ require'caskey'.setup {
                     selecting_commit = true
                     fzf.core.fzf_resume(commit_opts)
                 end
-            end
+            end, reload = true }
 
             local process_selected = function(selected)
                 return vim.iter(selected):map(function(entry)
@@ -85,7 +95,7 @@ require'caskey'.setup {
 
             actions['default'] = function(selected, opts)
                 if selecting_commit then
-                    actions['ctrl-g'](selected, opts)
+                    actions['ctrl-g'].fn(selected, opts)
                 else
                     fzf.actions.file_edit_or_qf(process_selected(selected), opts)
                 end
@@ -111,9 +121,11 @@ require'caskey'.setup {
             fzf.fzf_exec(function(cb)
                 require'moonicipal.util'.defer_to_coroutine(function()
                     if selecting_commit then
-                        cb('<WORKTREE>')
+                        local pos = 1
+                        cb(pos .. '\t<WORKTREE>')
                         for _, line in require'channelot'.job{'git', 'log', '--oneline'}:iter() do
-                            cb(line)
+                            pos = pos + 1
+                            cb(pos .. '\t' .. line)
                         end
                     else
                         local cmd
