@@ -6,9 +6,12 @@ ck.setup {
     ['<Leader>'] = {
         ['<M-s>'] = { act = function()
             vim.cmd.new()
-            vim.fn.termopen{'nu'}
+            vim.fn.jobstart({'nu'}, {term = true})
             vim.cmd.startinsert()
         end, desc = 'Start Terminal' },
+        ['<C-s>'] = { act = ck.cmd'write' },
+        ['i'] = { act = ck.cmd'InlineEdit' },
+        ['I'] = { act = ck.cmd'BreakString' },
     },
     ['<C-w>u'] = { act = function()
         for _, winnr in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
@@ -18,9 +21,6 @@ ck.setup {
             end
         end
     end, desc = 'Close all bubble windows'},
-    ['<Leader><C-s>'] = {
-        act = ck.cmd'write',
-    },
 }
 
 yop.op_map({'n', 'v'}, 's', function(_lines, _info)

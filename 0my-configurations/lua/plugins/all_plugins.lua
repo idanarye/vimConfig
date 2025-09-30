@@ -82,6 +82,7 @@ return {
     'rhysd/git-messenger.vim',
     'nvim-lualine/lualine.nvim',
     'AndrewRadev/inline_edit.vim',
+    'duqcyxwd/stringbreaker.nvim',
     'kkoomen/vim-doge',
     'EdenEast/nightfox.nvim',
     'tpope/vim-rhubarb',
