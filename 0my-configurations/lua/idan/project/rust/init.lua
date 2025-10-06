@@ -19,6 +19,8 @@ return function()
         wasm_use_all_features = true,
         ---@type string[]
         extra_features_for_wasm = {},
+        ---@type {[string]: string}
+        extra_envvars_for_wasm = {},
         ---@type boolean
         only_build_relevant = false,
         ---@type {[string]: {[number|string]: IdanProjectRustCliArgsForTarget}}
@@ -364,20 +366,25 @@ return function()
         return cmd
     end
 
-    function T:query()
-        vim.print(get_build_wasm_command())
+    local function get_build_wasm_envvars()
+        return vim.tbl_extend("force", {
+            RUST_BACKTRACE = '1',
+        }, cfg.extra_envvars_for_wasm)
+    end
+
+    local function get_build_wasm_job_params()
+        return get_build_wasm_envvars(), get_build_wasm_command()
     end
 
     function T:build_wasm()
-        local cmd = get_build_wasm_command()
-        channelot.windowed_terminal_job({RUST_BACKTRACE = '1'}, cmd):using(blunder.for_channelot):wait()
+        channelot.windowed_terminal_job(get_build_wasm_job_params()):using(blunder.for_channelot):wait()
     end
 
     function T:launch_wasm()
         local target = T:run_target()
-        local cmd = get_build_wasm_command()
+        local job_params = {get_build_wasm_job_params()}
         channelot.windowed_terminal():with(function(t)
-            t:job({RUST_BACKTRACE = '1'}, cmd):using(blunder.for_channelot):check()
+            t:job(unpack(job_params)):using(blunder.for_channelot):check()
             local wasm_file_path = 'target/wasm32-unknown-unknown/debug/'
             if vim.tbl_contains(target.kind, 'example') then
                 wasm_file_path = wasm_file_path .. 'examples/'

@@ -207,4 +207,6 @@ return {
 
     'zdcthomas/yop.nvim',
     'jameswolensky/marker-groups.nvim',
+    
+    'joelazar/blink-calc',
 }

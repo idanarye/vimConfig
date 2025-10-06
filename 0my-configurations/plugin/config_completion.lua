@@ -78,7 +78,7 @@ blink.setup {
             },
             calc = {
                 name = 'calc',
-                module = 'blink.compat.source',
+                module = 'blink-calc',
             },
         },
     },
