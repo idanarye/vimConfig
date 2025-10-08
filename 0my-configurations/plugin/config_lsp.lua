@@ -258,6 +258,19 @@ vim.lsp.config('emmylua_ls', {
 vim.lsp.enable('kotlin_language_server')
 
 vim.lsp.enable('jsonls')
+-- For some reason this doesn't work:
+vim.lsp.config('jsonls', {
+    settings = {
+        json = {
+            schemas = {
+                {
+                    uri = 'https://raw.githubusercontent.com/YarnSpinnerTool/YarnSpinner/refs/heads/main/YarnSpinner.Compiler/YarnProject.schema.json',
+                    fileMatch = { '*.yarnproject' },
+                },
+            },
+        }
+    }
+})
 
 vim.lsp.enable('yamlls')
 vim.lsp.config('yamlls',  {
@@ -274,20 +287,12 @@ vim.lsp.enable('nushell')
 
 vim.lsp.enable('protols')
 
-vim.lsp.config('yarn_spinner', {
-    cmd = {
-        'dotnet', 'run',
-        '--property:Configuration=Release',
-        '--project', '/files/builds/YarnSpinner/YarnSpinner.LanguageServer/'
-    },
-    filetypes = { 'yarn' },
-    root_dir = require'lspconfig.util'.root_pattern('.git', '*.yarn'),
-})
 vim.lsp.enable('yarn_spinner')
 
 vim.cmd [=[
 augroup YarnFileType
 autocmd!
 autocmd BufRead,BufNewFile *.yarn setfiletype yarn
+autocmd BufRead,BufNewFile *.yarnproject setfiletype json
 augroup END
 ]=]
