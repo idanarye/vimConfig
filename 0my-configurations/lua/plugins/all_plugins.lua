@@ -209,4 +209,6 @@ return {
     'jameswolensky/marker-groups.nvim',
     
     'joelazar/blink-calc',
+
+    'brianhuster/live-preview.nvim',
 }
