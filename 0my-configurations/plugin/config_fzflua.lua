@@ -45,6 +45,15 @@ require'caskey'.setup {
         ['<M-p>'] = {act = fzf.builtin, desc='fzf-lua builtins'},
         ['l'] = {act = fzf.blines, desc='fzf-lua lines in buffer'},
         ['m'] = {act = function()
+            local show_prefix_result = vim.system{'git', 'rev-parse', '--show-prefix'}:wait()
+            if show_prefix_result.code ~= 0 then
+                vim.notify(show_prefix_result.stderr, vim.log.levels.ERROR)
+                return
+            end
+            local dir_prefix = show_prefix_result.stdout
+            if vim.endswith(dir_prefix, '\n') then
+                dir_prefix = dir_prefix:sub(1, -2)
+            end
             local commit = nil
             local selecting_commit = false
 
@@ -90,6 +99,8 @@ require'caskey'.setup {
                     else
                         return entry:match'^...(.*)$'
                     end
+                end):map(function(path)
+                    return vim.fs.relpath(dir_prefix, path)
                 end):totable()
             end
 
