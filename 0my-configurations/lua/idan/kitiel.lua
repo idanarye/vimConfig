@@ -10,14 +10,18 @@ function KitielConnection.new(socket)
     }, KitielConnection)
 end
 
+---@class kitiel.TerminalsFilter
+---@field cwd? string
+
+---@param filter? kitiel.TerminalsFilter
 ---@return kitiel.Terminal
-function KitielConnection:moonicipal_cache(task)
+function KitielConnection:moonicipal_cache(task, filter)
     local cc = task:cached_choice {
         key = 'id',
         format = 'title',
         select_1 = true,
     }
-    for _, terminal in ipairs(self:terminals()) do
+    for _, terminal in ipairs(self:terminals(filter)) do
         cc(terminal)
     end
     return cc:select()
@@ -46,21 +50,24 @@ end
 ---@class kitiel.Terminal
 ---@field id integer
 ---@field parent kitiel.Connection
+---@field cwd string
 ---@field cmdline string
 ---@field foreground_processes [{cmdline: string[], cmd: string, pid: integer}]
 ---@field title string
 local KitielTerminal = {}
 KitielTerminal.__index = KitielTerminal
 
+---@param filter kitiel.TerminalsFilter
 ---@return kitiel.Terminal[]
-function KitielConnection:terminals()
-    return vim.iter(coroutine.wrap(function()
+function KitielConnection:terminals(filter)
+    local it = vim.iter(coroutine.wrap(function()
         for _, instance in ipairs(self:ls()) do
             for _, tab in ipairs(instance.tabs) do
                 for _, window in ipairs(tab.windows) do
                     coroutine.yield(setmetatable({
                         parent = self,
                         id = window.id,
+                        cwd = window.cwd,
                         cmdline = window.cmdline,
                         foreground_processes = window.foreground_processes,
                         title = window.title,
@@ -68,7 +75,15 @@ function KitielConnection:terminals()
                 end
             end
         end
-    end)):totable()
+    end))
+    if filter then
+        if filter.cwd then
+            it = it:filter(function(terminal)
+                return terminal.cwd == filter.cwd
+            end)
+        end
+    end
+    return it:totable()
 end
 
 function KitielTerminal:get_normalized_foreground_process()
