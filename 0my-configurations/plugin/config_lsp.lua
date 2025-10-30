@@ -248,6 +248,7 @@ vim.lsp.config('emmylua_ls', {
                 library = {
                     vim.env.VIMRUNTIME,
                     vim.env.VIMRUNTIME .. '/lua/vim/lsp',
+                    '/usr/share/lua/5.1',
                     unpack(plugin_paths_to_add),
                 }
             },
