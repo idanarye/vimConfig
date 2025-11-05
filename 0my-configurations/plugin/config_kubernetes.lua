@@ -7,10 +7,21 @@ require'caskey'.setup {
     name = 'kubectl',
     ['<Leader>k'] = {
         act = function()
-            if vim.env.KUBECONFIG then
+            if not vim.env.KUBECONFIG then
+                vim.notify('$KUBECONFIG is not set. Please run the :KubeSelectConfigFile command', vim.log.levels.WARN)
+                return
+            end
+            local known_resource_types = vim.tbl_keys(require'kubectl.cache'.cached_api_resources.values)
+            if next(known_resource_types) == nil then
                 kubectl.open()
             else
-                vim.notify('$KUBECONFIG is not set. Please run the :KubeSelectConfigFile command', vim.log.levels.WARN)
+                require'moonicipal.util'.defer_to_coroutine(function()
+                    local resource_type = require'moonicipal'.select(known_resource_types, {
+                    })
+                    if resource_type then
+                        vim.cmd.Kubectl('get', resource_type)
+                    end
+                end)
             end
         end,
         desc = 'Toggle kubectl.nvim',
