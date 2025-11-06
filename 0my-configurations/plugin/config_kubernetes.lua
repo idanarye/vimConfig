@@ -1,5 +1,8 @@
 local kubectl = require'kubectl'
 kubectl.setup {
+    headers = {
+        enabled = false,
+    }
 }
 
 local function select_kubeconfig_file()
