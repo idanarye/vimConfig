@@ -68,25 +68,9 @@ impairative.operations {
     end,
 }
 
-for key, mod in pairs{
-    ['I'] = require'hlchunk.mods.indent' {
-    },
-    ['C'] = require'hlchunk.mods.chunk' {
-    },
+toggling:getter_setter {
+    key = 'I',
+    name = 'blink.indent',
+    get = require'blink.indent'.is_enabled,
+    set = require'blink.indent'.enable,
 }
-do
-    toggling:getter_setter {
-        key = key,
-        name = ('hlchunk %s mod'):format(mod.meta.name),
-        get = function() return mod.conf.enable end,
-        set = function(value)
-            if value then
-                mod:enable()
-            else
-                mod:disable()
-            end
-        end,
-        --enable = function() mod:enable() end,
-        --disable = function() mod:disable() end,
-    }
-end

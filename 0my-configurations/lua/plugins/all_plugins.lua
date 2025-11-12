@@ -69,7 +69,6 @@ return {
     'vim-scripts/vim-gradle',
     'wellle/targets.vim',
     'wellle/visual-split.vim',
-    'shellRaining/hlchunk.nvim',
     'zenbro/mirror.vim',
     'hynek/vim-python-pep8-indent',
     'lervag/vimtex',
@@ -209,6 +208,7 @@ return {
     'jameswolensky/marker-groups.nvim',
     
     'joelazar/blink-calc',
+    'saghen/blink.indent',
 
     'brianhuster/live-preview.nvim',
 }
