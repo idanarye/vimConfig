@@ -287,6 +287,17 @@ vim.lsp.enable('serve_d')
 vim.lsp.enable('nushell')
 
 vim.lsp.enable('protols')
+vim.lsp.config('protols', {
+    root_markers = { 'protols.toml', '.git' },
+    before_init = function(_params, config)
+        if IdanLocalCfg.modify_protols_config then
+            IdanLocalCfg.modify_protols_config(config)
+        end
+    end,
+    init_options = {
+        -- This must exist in the options or things will break
+    },
+})
 
 vim.lsp.enable('yarn_spinner')
 
