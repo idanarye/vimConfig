@@ -233,11 +233,17 @@ vim.lsp.config('emmylua_ls', {
             'nvim-buffls',
             'nvim-blunder',
             'nvim-impairative',
-            'vim-for-weka',
         })
         do
             set_of_plugins[plugin_name] = true
         end
+
+        if IdanLocalCfg.plugins_for_lua_lsp then
+            for _, plugin_name in ipairs(IdanLocalCfg.plugins_for_lua_lsp) do
+                set_of_plugins[plugin_name] = true
+            end
+        end
+
         local plugin_paths_to_add = vim.tbl_filter(function(plugin_path)
             local plugin_name = vim.fs.basename(vim.fs.dirname(plugin_path))
             return set_of_plugins[plugin_name]
