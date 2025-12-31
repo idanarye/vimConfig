@@ -9,7 +9,8 @@ vim.g.rustaceanvim = {
                 },
                 cargo = {
                     loadOutDirsFromCheck = true,
-                     features = 'all',
+                    features = 'all',
+                    targetDir = 'target/ra',
                 },
                 procMacro = {
                     enable = true,
