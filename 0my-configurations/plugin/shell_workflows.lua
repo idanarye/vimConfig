@@ -68,5 +68,35 @@ ck.setup {
             end
             vim.api.nvim_set_current_win(last_win)
         end, desc = 'Go to last non-shell'},
+        ['<C-q>'] = { act = function()
+            require'moonicipal.util'.defer_to_coroutine(function()
+                require'moonicipal'.fix_echo()
+
+                local bufs_to_chans = {}
+                for _, chan in ipairs(vim.api.nvim_list_chans()) do
+                    if chan.mode == 'terminal' then
+                    -- if chan.stream == 'job' then
+                        bufs_to_chans[chan.buffer] = chan
+                    end
+                end
+
+                vim.iter(vim.api.nvim_tabpage_list_wins(0)):each(function(win)
+                    local buf = vim.api.nvim_win_get_buf(win)
+                    local chan = bufs_to_chans[buf]
+                    if chan == nil then
+                        return
+                    end
+                    if chan.stream == 'job' then
+                        if vim.fn.jobwait({chan.id}, 0)[1] == -1 then
+                            return
+                        end
+                    else
+                        -- TODO: support Channelot terminals
+                        return
+                    end
+                    vim.api.nvim_buf_delete(buf, {force = true})
+                end)
+            end)
+        end, desc = 'Close all finished terminals'},
     },
 }
