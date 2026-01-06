@@ -100,7 +100,7 @@ local function resolve_python_info(root_dir)
     local uses_uv = vim.system({'uv', 'tree', '--frozen', '--offline'}, {cwd = root_dir}):wait().code == 0
     local python_cmd
     if uses_uv then
-        python_cmd = {'uv', '--quiet', 'run', 'python'}
+        python_cmd = {'uv', '--quiet', 'run', '--frozen', 'python'}
     else
         python_cmd = {'python'}
     end
