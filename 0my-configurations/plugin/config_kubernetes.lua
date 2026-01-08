@@ -1,3 +1,6 @@
+if 'https://github.com/Ramilito/kubectl.nvim/issues/707' then
+    return
+end
 local kubectl = require'kubectl'
 kubectl.setup {
     headers = {
