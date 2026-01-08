@@ -13,14 +13,17 @@ ck.setup {
         ['i'] = { act = ck.cmd'InlineEdit' },
         ['I'] = { act = ck.cmd'BreakString' },
     },
-    ['<C-w>u'] = { act = function()
-        for _, winnr in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
-            local win_config = vim.api.nvim_win_get_config(winnr)
-            if win_config.relative and win_config.relative ~= '' then
-                vim.api.nvim_win_close(winnr, false)
+    ['<C-w>'] = {
+        ['u'] = { act = function()
+            for _, winnr in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+                local win_config = vim.api.nvim_win_get_config(winnr)
+                if win_config.relative and win_config.relative ~= '' then
+                    vim.api.nvim_win_close(winnr, false)
+                end
             end
-        end
-    end, desc = 'Close all bubble windows'},
+        end, desc = 'Close all bubble windows'},
+        ['N'] = { act = ck.cmd'enew' },
+    }
 }
 
 yop.op_map({'n', 'v'}, 's', function(_lines, _info)
