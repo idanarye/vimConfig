@@ -9,7 +9,7 @@ ck.setup {
     ['<Leader><C-g>'] = {
         act = function()
             local ghlite_commands = vim.iter(vim.api.nvim_get_commands{}):map(function(cmd)
-                if vim.startswith(cmd, 'GHLite') then
+                if vim.startswith(cmd, 'GHLite') or vim.startswith(cmd, 'ClearGHLite') then
                     return cmd
                 end
             end):totable()
@@ -23,6 +23,14 @@ ck.setup {
 }
 
 local ghlite_ns = vim.api.nvim_create_namespace('GHLiteNamespace')
+
+vim.api.nvim_create_user_command('ClearGHLiteDiagnostics', function()
+    vim.diagnostic.reset(ghlite_ns)
+end, {})
+
+vim.api.nvim_create_user_command('ClearGHLiteSelectedPR', function()
+    require'ghlite.state'.selected_PR = nil
+end, {})
 
 vim.diagnostic.config({virtual_lines = true}, ghlite_ns)
 
