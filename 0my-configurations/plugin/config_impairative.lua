@@ -2,12 +2,7 @@ require'impairative.replicate-unimpaired'()
 
 local impairative = require'impairative'
 
-local toggling = impairative.toggling {
-    disable = ']o',
-    enable = '[o',
-    toggle = 'yo',
-}
-toggling:option {
+require'idan.impairative-toggling':option {
     key = 'e',
     option = 'conceallevel',
     values = {[true] = 2, [false] = 0},
@@ -68,7 +63,7 @@ impairative.operations {
     end,
 }
 
-toggling:getter_setter {
+require'idan.impairative-toggling':getter_setter {
     key = 'I',
     name = 'blink.indent',
     get = require'blink.indent'.is_enabled,
