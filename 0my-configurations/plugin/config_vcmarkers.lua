@@ -1,0 +1,2 @@
+require'vcmarkers'.setup {
+}

@@ -146,7 +146,6 @@ return {
     'MunifTanjim/nui.nvim',
     'nvim-neo-tree/neo-tree.nvim',
     's1n7ax/nvim-window-picker',
-    'akinsho/git-conflict.nvim',
     'jbyuki/venn.nvim',
 
     {'ibhagwan/fzf-lua', branch = 'main'},
@@ -211,4 +210,8 @@ return {
     'saghen/blink.indent',
 
     'brianhuster/live-preview.nvim',
+
+    'swaits/lazyjj.nvim',
+    'yannvanhalewyn/jujutsu.nvim',
+    'algmyr/vcmarkers.nvim',
 }
