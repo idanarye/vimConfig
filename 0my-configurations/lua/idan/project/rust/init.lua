@@ -342,7 +342,6 @@ return function()
     end
 
     function T:test()
-        --blunder.run{'cargo', 'test', '--all-targets'}
         run_command_with_features({
             'cargo', 'test', '--all-targets',
         }, cfg.features_for_clippy)
@@ -400,14 +399,24 @@ return function()
 
     function T:doc()
         local cmd = {'cargo', 'doc', '--no-deps', unpack(flags_to_include_all_packages())}
+        local all_features = false
         local extra_features_for_docs = cfg.extra_features_for_docs
         if extra_features_for_docs == nil then
-            local from_cargo = idan_rust.jq_cargo_metadata('.packages | map(.metadata.docs.rs | select (. != null))[0].features')
-            if vim.islist(from_cargo) then
-                extra_features_for_docs = from_cargo
+            local from_cargo = idan_rust.jq_cargo_metadata('.packages | map(.metadata.docs.rs | select (. != null))[0]')
+            if from_cargo == vim.NIL then
+                from_cargo = {}
+            end
+            if vim.islist(from_cargo.features) then
+                extra_features_for_docs = from_cargo.features
             else
                 extra_features_for_docs = {}
             end
+            if from_cargo['all-features'] then
+                all_features = true
+            end
+        end
+        if all_features then
+            table.insert(cmd, '--all-features')
         end
         for _, extra_feature in ipairs(extra_features_for_docs) do
             vim.list_extend(cmd, {'--features', extra_feature})
@@ -417,6 +426,10 @@ return function()
 
     function T:browse_docs()
         vim.cmd('!firefox --new-window target/doc/' .. T:_crate_name() .. '/index.html')
+    end
+
+    function T:publish_dryrun()
+        require'blunder'.run {'cargo', 'publish', '--dry-run', '--workspace', '--allow-dirty'}
     end
 
     return T, cfg
