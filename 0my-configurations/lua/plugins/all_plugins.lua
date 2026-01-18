@@ -108,7 +108,7 @@ return {
     'tamago324/nlsp-settings.nvim',
     'kyazdani42/nvim-web-devicons', -- for file icons
     {'nvim-treesitter/nvim-treesitter', priority = 100, build = ':TSUpdate'},
-    'nvim-treesitter/playground',
+    -- 'nvim-treesitter/playground',
     'nvim-telescope/telescope.nvim',
     'lewis6991/gitsigns.nvim',
     {'ray-x/guihua.lua', build = 'cd lua/fzy && make'},

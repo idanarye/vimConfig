@@ -1,3 +1,7 @@
+if 'this breaks the configuration' then
+    return
+end
+
 local treepin = require'treepin'
 
 treepin.setup {

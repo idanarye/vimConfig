@@ -1,4 +1,4 @@
-require'nvim-treesitter.configs'.setup {
+require'nvim-treesitter.config'.setup {
     ensure_installed = {
         'bash',
         -- 'd', -- don't install it, it makes Neovim and sometimes the machine itself freeze on certain files
@@ -25,10 +25,10 @@ require'nvim-treesitter.configs'.setup {
         enable = true,
         disable = { 'rust', 'lua', }, -- I only want this for Python and Nushell
     },
-    playground = {
-        enable = true;
-        persist_queries = false;
-    };
+    -- playground = {
+        -- enable = true;
+        -- persist_queries = false;
+    -- };
     query_linter = {
         enable = true;
         use_virtual_text = true;
