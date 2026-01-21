@@ -212,7 +212,7 @@ return {
     'brianhuster/live-preview.nvim',
 
     'swaits/lazyjj.nvim',
-    --'yannvanhalewyn/jujutsu.nvim',
-    { 'idanarye/jujutsu.nvim', branch = 'combined' },
+    'yannvanhalewyn/jujutsu.nvim',
+    --{ 'idanarye/jujutsu.nvim', branch = 'combined' },
     'algmyr/vcmarkers.nvim',
 }
