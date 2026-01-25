@@ -153,7 +153,7 @@ return {
     {'saecki/crates.nvim', tag = 'v0.3.0'},
     'kevinhwang91/promise-async',
     'kevinhwang91/nvim-ufo',
-    'ggandor/leap.nvim',
+    { url = 'https://codeberg.org/andyg/leap.nvim' },
     'AckslD/nvim-FeMaco.lua',
     'phaazon/mind.nvim',
     'sindrets/diffview.nvim',
