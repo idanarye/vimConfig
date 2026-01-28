@@ -25,9 +25,43 @@ require'jujutsu-nvim'.setup {
 
 local ck = require'caskey'
 
+---@param cmd string
+local function jj_si(cmd)
+    return {
+        act = function()
+            vim.cmd.JJ(cmd)
+            vim.cmd.startinsert()
+        end,
+        desc = 'JJ ' .. cmd,
+    }
+end
+
 ck.setup {
     mode = {'n'},
     ['<Leader>j'] = {
         ['j'] = {act = ck.cmd'JJ', desc = 'Run JJ (Jujutsu)'},
+        ['f'] = jj_si('git fetch'),
     },
 }
+
+vim.api.nvim_create_user_command("JJCreateRemoteBookmark", function()
+    require'moonicipal.util'.defer_to_coroutine(function()
+        local channelot = require'channelot'
+        local tracked_bookmarks = {}
+        for _, line in channelot.job{'jj', 'bookmark', 'list', '--tracked', '-T', [=[name ++ "\n"]=]}:iter{stdout = 'buffered', stderr = 'ignore'} do
+            tracked_bookmarks[line] = true
+        end
+        local untracked_bookmarks = {}
+        for _, line in channelot.job{'jj', 'bookmark', 'list', '-T', [=[name ++ "\n"]=]}:iter{stdout = 'buffered', stderr = 'ignore'} do
+            if not tracked_bookmarks[line] then
+                table.insert(untracked_bookmarks, line)
+            end
+        end
+
+        local chosen_bookmark = require'moonicipal'.select(untracked_bookmarks)
+        if not chosen_bookmark then
+            return
+        end
+        require'channelot'.windowed_terminal_job{'jj', 'bookmark', 'track', chosen_bookmark, '--remote=origin'}:wait()
+    end)
+end, {})
