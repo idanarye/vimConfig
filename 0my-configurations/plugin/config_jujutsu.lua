@@ -38,9 +38,12 @@ end
 
 ck.setup {
     mode = {'n'},
-    ['<Leader>j'] = {
-        ['j'] = {act = ck.cmd'JJ', desc = 'Run JJ (Jujutsu)'},
-        ['f'] = jj_si('git fetch'),
+    ['<Leader>'] = {
+        ['j'] = {
+            ['j'] = {act = ck.cmd'JJ', desc = 'Run JJ (Jujutsu)'},
+            ['f'] = jj_si('git fetch'),
+        },
+        ['J'] = {act = ck.cmd'Jj', desc = 'Run Jj (Jujutsu: jiejie plugin)'},
     },
 }
 

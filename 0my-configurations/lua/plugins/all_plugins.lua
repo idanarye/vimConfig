@@ -215,4 +215,5 @@ return {
     'yannvanhalewyn/jujutsu.nvim',
     --{ 'idanarye/jujutsu.nvim', branch = 'combined' },
     'algmyr/vcmarkers.nvim',
+    'jceb/jiejie.nvim',
 }
