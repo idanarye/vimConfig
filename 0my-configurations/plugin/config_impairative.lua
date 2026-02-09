@@ -63,9 +63,51 @@ impairative.operations {
     end,
 }
 
-require'idan.impairative-toggling':getter_setter {
+require'idan.impairative-toggling'
+:getter_setter {
     key = 'I',
     name = 'blink.indent',
     get = require'blink.indent'.is_enabled,
     set = require'blink.indent'.enable,
+}
+:getter_setter {
+    key = 'q',
+    name = 'diagnostic virtual lines',
+    get = function()
+        local vln = vim.diagnostic.config().virtual_lines
+        if type(vln) == 'table' and vln.current_line then
+            return false
+        end
+        return vln
+    end,
+    set = function(set_to)
+        vim.diagnostic.config {
+            virtual_lines = set_to,
+        }
+    end,
+}
+:getter_setter {
+    key = 'Q',
+    name = 'diagnostic virtual lines - current line',
+    get = function()
+        local vln = vim.diagnostic.config().virtual_lines
+        if type(vln) == 'table' then
+            return vln.current_line
+        else
+            return false
+        end
+    end,
+    set = function(set_to)
+        if set_to then
+            vim.diagnostic.config {
+                virtual_lines = {
+                    current_line = true,
+                },
+            }
+        else
+            vim.diagnostic.config {
+                virtual_lines = false,
+            }
+        end
+    end,
 }
