@@ -217,4 +217,5 @@ return {
     'jceb/jiejie.nvim',
 
     'lambdalisue/vim-suda',
+    'chomosuke/typst-preview.nvim',
 }

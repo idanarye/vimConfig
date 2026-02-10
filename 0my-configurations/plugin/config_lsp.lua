@@ -314,3 +314,5 @@ autocmd BufRead,BufNewFile *.yarn setfiletype yarn
 autocmd BufRead,BufNewFile *.yarnproject setfiletype json
 augroup END
 ]=]
+
+vim.lsp.enable('tinymist')
