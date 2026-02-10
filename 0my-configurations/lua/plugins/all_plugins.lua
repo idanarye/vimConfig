@@ -49,7 +49,6 @@ return {
     'tommcdo/vim-exchange',
     'tommcdo/vim-ninja-feet',
     'tomtom/tlib_vim',
-    'tpope/vim-eunuch',
     'tpope/vim-fireplace',
     'tpope/vim-fugitive',
     'tpope/vim-rails',
@@ -216,4 +215,6 @@ return {
     --{ 'idanarye/jujutsu.nvim', branch = 'combined' },
     'algmyr/vcmarkers.nvim',
     'jceb/jiejie.nvim',
+
+    'lambdalisue/vim-suda',
 }

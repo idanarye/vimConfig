@@ -4,3 +4,5 @@ lspkindInitFunction {
 }
 
 vim.opt.spelloptions:append('camel')
+
+vim.g.suda_smart_edit = 1
