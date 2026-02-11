@@ -31,9 +31,23 @@ require'caskey'.setup {
                     return (' (%s)'):format(d.source)
                 end,
             }
-        end, desc = 'show diagnostics' }
+        end, desc = 'show diagnostics' },
         -- ['q'] = <cmd> LspDiagnostics 0<CR>
         -- ['Q'] = <cmd> LspDiagnosticsAll<CR>
+        ['R'] = {act = function()
+            require'moonicipal.util'.defer_to_coroutine(function()
+                local clients_to_stop = require'moonicipal'.select(vim.lsp.get_clients(), {
+                    multi = true,
+                    format = function(client)
+                        return client.name
+                    end,
+                })
+                for _, client in ipairs(clients_to_stop) do
+                    client:stop(true)
+                    vim.schedule_wrap(vim.lsp.enable)(client.name)
+                end
+            end)
+        end, desc = 'Restart language servers' },
     },
 }
 
