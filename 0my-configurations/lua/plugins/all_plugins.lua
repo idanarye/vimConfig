@@ -211,11 +211,6 @@ return {
 
     'brianhuster/live-preview.nvim',
 
-    'swaits/lazyjj.nvim',
-    'yannvanhalewyn/jujutsu.nvim',
-    --{ 'idanarye/jujutsu.nvim', branch = 'combined' },
-    'jceb/jiejie.nvim',
-
     'lambdalisue/vim-suda',
     'chomosuke/typst-preview.nvim',
     'zion-off/mole.nvim',
