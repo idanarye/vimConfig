@@ -145,6 +145,7 @@ return {
     'MunifTanjim/nui.nvim',
     'nvim-neo-tree/neo-tree.nvim',
     's1n7ax/nvim-window-picker',
+    'akinsho/git-conflict.nvim',
     'jbyuki/venn.nvim',
 
     {'ibhagwan/fzf-lua', branch = 'main'},
@@ -213,7 +214,6 @@ return {
     'swaits/lazyjj.nvim',
     'yannvanhalewyn/jujutsu.nvim',
     --{ 'idanarye/jujutsu.nvim', branch = 'combined' },
-    'algmyr/vcmarkers.nvim',
     'jceb/jiejie.nvim',
 
     'lambdalisue/vim-suda',
