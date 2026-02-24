@@ -98,5 +98,12 @@ ck.setup {
                 end)
             end)
         end, desc = 'Close all finished terminals'},
+        ['<C-r>'] = {mode = {'i', 't', 'c'}, act = function()
+            local chosen_reg = vim.fn.getcharstr()
+            if chosen_reg == '=' then
+                vim.fn.setreg('=', vim.fn.input('='))
+            end
+            vim.api.nvim_feedkeys(vim.fn.getreg(chosen_reg), 'i', false)
+        end, desc = 'Paste a register into the terminal'},
     },
 }
