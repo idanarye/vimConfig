@@ -214,4 +214,5 @@ return {
     'lambdalisue/vim-suda',
     'chomosuke/typst-preview.nvim',
     'zion-off/mole.nvim',
+    'subnut/nvim-ghost.nvim',
 }
