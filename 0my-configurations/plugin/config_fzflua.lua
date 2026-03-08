@@ -153,6 +153,24 @@ require'caskey'.setup {
                 end)
             end, file_opts)
         end, desc='fzf-lua git files'},
+        ['C'] = {act = function()
+            require'fzf-lua'.fzf_exec(
+                vim.split(vim.system{
+                    'git',
+                    'diff',
+                    '--name-only',
+                    '--diff-filter=U',
+                    '--relative',
+                }:wait().stdout or '', '\n', {
+                    plain = true,
+                    trimempty = true,
+                }),
+                {
+                    actions = require'fzf-lua'.defaults.actions.files,
+                    preview = 'git diff {} | delta',
+                }
+            )
+        end, desc='fzf-lua git conflicts' },
         ['s'] = {act = function()
             fzf.live_grep {
                 silent = true,
