@@ -94,6 +94,7 @@ nnoremap <Leader>gL :GitLog<Cr>
 nnoremap <Leader>gb :Git blame<Cr>
 nnoremap <Leader>gf :call merginal#bang('git fetch --prune')<Cr>
 nnoremap <Leader>gu :call merginal#bang('git submodule update --init')<Cr>
+nnoremap <Leader>gM :Git mediate<Cr>
 
 "This one is for my very own Merginal
 noremap <Leader>gm :MerginalToggle<Cr>
