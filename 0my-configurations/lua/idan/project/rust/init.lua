@@ -248,6 +248,7 @@ return function()
                         RUST_LOG = get_rust_log_envvar {
                             [{T:_crate_name(), target.name}] = 'debug',
                         },
+                        NVIM_LISTEN_ADDRESS='',
                     }, cmd)
                     return
                 end
@@ -291,6 +292,7 @@ return function()
             RUST_LOG = get_rust_log_envvar {
                 [{T:_crate_name(), target.name}] = 'debug',
             },
+            NVIM_LISTEN_ADDRESS='',
         }, cmd, {
             cwd = run_opts.cwd,
             pty = run_opts.pty
