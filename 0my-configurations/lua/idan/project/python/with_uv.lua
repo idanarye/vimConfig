@@ -31,5 +31,41 @@ return function()
         channelot.windowed_terminal_job{'uv', '-q', 'run', 'ipython', '-i', T:entry_point()}
     end
 
+    T{alias = ':1'}
+    function T:type_checker()
+        local cc = self:cached_choice {
+            key = 'tool',
+            format = 'tool',
+        }
+        cc {
+            tool = 'basedpyright',
+            args = {},
+        }
+        cc {
+            tool = 'ty',
+            args = {'check', '--no-progress', '--output-format', 'concise'},
+            efm = '%f:%l:%c: %m',
+        }
+        cc {
+            tool = 'pyrefly',
+            args = {'check', '--output-format', 'min-text', '--summary=none'},
+            efm = [=[%t%*[A-Z] %f:%l:%c-%k: %m]=],
+        }
+        return cc:select()
+    end
+
+    function T:check()
+        local checker = T:type_checker()
+        local uv_cmd = {
+            'uv', '--quiet', 'run',
+            '--with', checker.tool,
+            '--',
+            checker.tool,
+            unpack(checker.args)
+        }
+        -- channelot.windowed_terminal_job(uv_cmd, {pty = false}):using(blunder.for_channelot{efm = checker.efm}):wait()
+        blunder.run(uv_cmd, {efm = checker.efm})
+    end
+
     return T, cfg
 end
