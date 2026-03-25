@@ -216,4 +216,5 @@ return {
     'zion-off/mole.nvim',
     'subnut/nvim-ghost.nvim',
     'https://codeberg.org/knight9114/arc.nvim',
+    {'toppair/peek.nvim', build = 'deno task --quiet build:fast'},
 }
