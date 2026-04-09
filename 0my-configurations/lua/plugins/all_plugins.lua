@@ -90,6 +90,7 @@ return {
     'da-x/name-assign.vim',
     'rraks/pyro',
     'whiteinge/diffconflicts',
+    'spacedentist/resolve.nvim',
     'tpope/vim-dadbod',
     'kristijanhusak/vim-dadbod-ui',
     {'mg979/vim-visual-multi', branch = 'master'},
@@ -145,7 +146,6 @@ return {
     'MunifTanjim/nui.nvim',
     'nvim-neo-tree/neo-tree.nvim',
     's1n7ax/nvim-window-picker',
-    'akinsho/git-conflict.nvim',
     'jbyuki/venn.nvim',
 
     {'ibhagwan/fzf-lua', branch = 'main'},
