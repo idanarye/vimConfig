@@ -140,3 +140,11 @@ require'caskey'.setup {
 }
 
 dm.plugins.ui_auto_toggle.enabled = false
+
+require'idan.impairative-toggling':manual {
+    key = 'V',
+    name = 'dap-view virtual text',
+    enable = dap_view.virtual_text_enable,
+    disable = dap_view.virtual_text_disable,
+    toggle = dap_view.virtual_text_toggle,
+}
