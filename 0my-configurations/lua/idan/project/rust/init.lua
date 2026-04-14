@@ -189,7 +189,7 @@ return function()
             add_features_to_command(cmd, T:cargo_metadata_by_target()[target.name]['required-features'] or {})
             add_features_to_command(cmd, target.variant_features or {})
         else
-            vim.list_extend(cmd, {'--lib', '--bins', '--examples'})
+            vim.list_extend(cmd, {'--all-targets'})
             add_features_to_command(cmd, T:cargo_required_features_for_all_examples())
         end
     end

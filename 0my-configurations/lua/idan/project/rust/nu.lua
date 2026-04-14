@@ -10,7 +10,7 @@ return function()
             local cmd = {
                 'nu',
                 '--no-config-file',
-                '--plugins', ('[target/debug/%s]'):format(P:_crate_name()),
+                '--plugins', ('target/debug/%s'):format(P:_crate_name()),
             }
             if nu_code then
                 vim.list_extend(cmd, {'--commands', nu_code})
