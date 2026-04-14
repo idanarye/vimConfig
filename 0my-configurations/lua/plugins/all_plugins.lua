@@ -217,4 +217,6 @@ return {
     'subnut/nvim-ghost.nvim',
     'https://codeberg.org/knight9114/arc.nvim',
     {'toppair/peek.nvim', build = 'deno task --quiet build:fast'},
+
+    'retran/meow.yarn.nvim',
 }

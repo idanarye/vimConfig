@@ -1,4 +1,5 @@
-require'caskey'.setup {
+local ck = require'caskey'
+ck.setup {
     mode = {'n'},
     name = 'LSP',
     ['K'] =  {act = vim.lsp.buf.hover, desc = 'LSP show documentation'},
@@ -21,6 +22,7 @@ require'caskey'.setup {
         ['k'] = {act = vim.lsp.buf.signature_help, desc = 'LSP signature help'},
         ['<C-d>'] = {act = vim.lsp.buf.type_definition, desc = 'LSP jump to type definition'},
         ['n'] = {act = vim.lsp.buf.references, desc = 'LSP jump to references'},
+        ['N'] = {act = ck.cmd('MeowYarn call'), desc = 'LSP references using meow.yarn'},
         ['0'] = {act = vim.lsp.buf.document_symbol, desc = 'LSP document symbol'},
         ['W'] = {act = vim.lsp.buf.workspace_symbol, desc = 'LSP workspace symbol'},
         ['<M-d>'] = {act = vim.lsp.buf.declaration, desc = 'LSP jump to declaration'},
@@ -106,6 +108,9 @@ require'lsp_extensions'.inlay_hints{
 
 require'fzf_lsp'.setup {
     --override_ui_select = true;
+}
+
+require'meow.yarn'.setup {
 }
 
 
