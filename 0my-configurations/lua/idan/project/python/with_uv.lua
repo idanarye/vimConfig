@@ -28,7 +28,7 @@ return function()
     end
 
     function T:explore()
-        channelot.windowed_terminal_job{'uv', '-q', 'run', 'ipython', '-i', T:entry_point()}
+        channelot.windowed_terminal_job{'uv', '-q', 'run', '--with', 'ipython', 'python', '-m', 'IPython', '-i', T:entry_point()}
     end
 
     T{alias = ':1'}
