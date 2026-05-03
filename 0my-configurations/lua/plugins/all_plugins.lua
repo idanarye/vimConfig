@@ -155,7 +155,6 @@ return {
     'kevinhwang91/nvim-ufo',
     { url = 'https://codeberg.org/andyg/leap.nvim' },
     'AckslD/nvim-FeMaco.lua',
-    'phaazon/mind.nvim',
     'sindrets/diffview.nvim',
     'johnfrankmorgan/whitespace.nvim',
 
