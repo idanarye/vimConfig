@@ -1,3 +1,4 @@
+finish
 function! s:chooseDbuiConnection() abort
     call fzf#run({
                 \ 'source': map(db_ui#connections_list(), 'printf("%s\31%s", v:val.name, v:val.url)'),
