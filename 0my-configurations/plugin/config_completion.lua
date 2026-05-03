@@ -67,6 +67,9 @@ blink.setup {
             'crates',
             'calc',
         },
+        per_filetype = {
+            sql = { 'snippets', 'dadbod', 'buffer' },
+        },
         providers = {
             --lsp = {
                 --async = true,
@@ -79,6 +82,10 @@ blink.setup {
             calc = {
                 name = 'calc',
                 module = 'blink-calc',
+            },
+            dadbod = {
+                name = 'Dadbod',
+                module = 'vim_dadbod_completion.blink',
             },
         },
     },

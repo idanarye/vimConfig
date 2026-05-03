@@ -93,6 +93,7 @@ return {
     'spacedentist/resolve.nvim',
     'tpope/vim-dadbod',
     'kristijanhusak/vim-dadbod-ui',
+    'kristijanhusak/vim-dadbod-completion',
     {'mg979/vim-visual-multi', branch = 'master'},
 
     -- if has('nvim')
