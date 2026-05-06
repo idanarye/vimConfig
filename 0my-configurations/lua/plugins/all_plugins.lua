@@ -219,4 +219,6 @@ return {
     {'toppair/peek.nvim', build = 'deno task --quiet build:fast'},
 
     'retran/meow.yarn.nvim',
+
+    'emrearmagan/atlas.nvim',
 }
