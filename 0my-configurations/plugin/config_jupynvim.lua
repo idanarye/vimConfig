@@ -1,0 +1,2 @@
+require'jupynvim'.setup {
+}

@@ -221,4 +221,12 @@ return {
     'retran/meow.yarn.nvim',
 
     'emrearmagan/atlas.nvim',
+
+    {
+        'sheng-tse/jupynvim',
+        build = function(plugin)
+            local install = loadfile(plugin.dir .. '/lua/jupynvim/install.lua')()
+            install.run(plugin)
+        end,
+    },
 }
