@@ -229,4 +229,6 @@ return {
             install.run(plugin)
         end,
     },
+
+    'rashedInt32/lazydiff.nvim',
 }
