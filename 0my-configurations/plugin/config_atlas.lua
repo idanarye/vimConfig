@@ -13,9 +13,19 @@ require'atlas'.setup {
             github = {
                 views = {
                     {
-                        name = "My PRs",
-                        key = "1",
-                        search = "author:@me sort:updated-desc",
+                        name = 'My PRs',
+                        key = '1',
+                        search = 'author:@me sort:updated-desc',
+                    },
+                    {
+                        name = 'Needs my review',
+                        key = '2',
+                        search = 'is:open is:pr review-requested:@me ',
+                    },
+                    {
+                        name = 'Already reviewed',
+                        key = '3',
+                        search = 'is:open is:pr reviewed-by:@me -review:approved',
                     },
                 },
             },
