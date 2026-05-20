@@ -231,4 +231,5 @@ return {
     },
 
     'rashedInt32/lazydiff.nvim',
+    'Thiago4532/mdmath.nvim',
 }
