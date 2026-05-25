@@ -231,5 +231,10 @@ return {
     },
 
     'rashedInt32/lazydiff.nvim',
-    'Thiago4532/mdmath.nvim',
+    {
+        'techwizrd/render-latex.nvim',
+        build = function()
+            vim.cmd.RenderLatex('install')
+        end,
+    },
 }
