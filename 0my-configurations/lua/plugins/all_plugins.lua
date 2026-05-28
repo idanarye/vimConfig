@@ -237,4 +237,6 @@ return {
             vim.cmd.RenderLatex('install')
         end,
     },
+    'AbaoFromCUG/websocket.nvim',
+    'SUSTech-data/neopyter',
 }

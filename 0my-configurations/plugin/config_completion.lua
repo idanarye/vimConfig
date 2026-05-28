@@ -69,6 +69,7 @@ blink.setup {
         },
         per_filetype = {
             sql = { 'snippets', 'dadbod', 'buffer' },
+            python = { inherit_defaults = true, 'neopyter' },
         },
         providers = {
             --lsp = {
@@ -86,6 +87,12 @@ blink.setup {
             dadbod = {
                 name = 'Dadbod',
                 module = 'vim_dadbod_completion.blink',
+            },
+            neopyter = {
+                name = 'Neopyter',
+                module = 'neopyter.blink',
+                ---@type neopyter.BlinkCompleterOption
+                opts = {},
             },
         },
     },
