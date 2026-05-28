@@ -18,3 +18,13 @@ ck.setup {
         ['X'] = { act = ck.cmd'Neopyter execute notebook:run-all-above' },
     }
 }
+
+local orig_opts = vim.iter({'conceallevel', 'concealcursor'}):fold({}, function(acc, k)
+    acc[k] = vim.o[k]
+    return acc
+end)
+require'jupynvim'.setup {
+}
+for k, v in pairs(orig_opts) do
+    vim.o[k] = v
+end
