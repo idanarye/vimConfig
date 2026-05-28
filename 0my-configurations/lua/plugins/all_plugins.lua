@@ -238,5 +238,4 @@ return {
         end,
     },
     'AbaoFromCUG/websocket.nvim',
-    'SUSTech-data/neopyter',
 }
