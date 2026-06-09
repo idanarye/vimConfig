@@ -19,6 +19,9 @@ function KitielConnection:moonicipal_cache(task, filter)
     local cc = task:cached_choice {
         key = 'id',
         format = 'title',
+        preview = function(t)
+            return t.foreground_processes
+        end,
         select_1 = true,
     }
     for _, terminal in ipairs(self:terminals(filter)) do
@@ -137,15 +140,10 @@ function KitielTerminal:__call(command_as_text)
     end
 
     local normalized_foreground_process = self:get_normalized_foreground_process()
-    if normalized_foreground_process == 'nu' then
-        local text_lines = vim.split(command_as_text, '\n')
-        text_lines[1] = '\05 \21' .. text_lines[1]
-        if self:get_normalized_foreground_process() == 'nu' then
-            for i, line in ipairs(text_lines) do
-                text_lines[i] = line .. '\r'
-            end
-        end
-        self:send_text(text_lines)
+    if normalized_foreground_process == 'nu' or normalized_foreground_process == 'bash' then
+        self:send_text('\x15')
+        self:send_text_backeted_paste(command_as_text)
+        self:send_text('\n')
     elseif normalized_foreground_process == 'python' or normalized_foreground_process == 'python3' then
         self:send_text('\x15')
         self:send_text_backeted_paste(command_as_text)
