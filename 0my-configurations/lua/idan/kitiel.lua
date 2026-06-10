@@ -143,7 +143,7 @@ function KitielTerminal:__call(command_as_text)
     if normalized_foreground_process == 'nu' or normalized_foreground_process == 'bash' then
         self:send_text('\x15')
         self:send_text_backeted_paste(command_as_text)
-        self:send_text('\n')
+        self:send_text('\r')
     elseif normalized_foreground_process == 'python' or normalized_foreground_process == 'python3' then
         self:send_text('\x15')
         self:send_text_backeted_paste(command_as_text)
