@@ -121,7 +121,6 @@ return {
     'miroshQa/debugmaster.nvim',
     'theHamsta/nvim-dap-virtual-text',
     'mfussenegger/nvim-dap-python',
-    'Mgenuit/nvim-dap-kotlin',
 
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-calc',

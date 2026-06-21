@@ -59,10 +59,6 @@ dap.configurations.cpp = {
 dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
 
-require'dap-kotlin'.setup {
-    dap_command = 'kotlin-debug-adapter',
-}
-
 dap.adapters.nlua = function(callback, config)
     callback({
         type = 'server',
