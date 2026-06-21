@@ -106,7 +106,6 @@ return {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig',
-    'tamago324/nlsp-settings.nvim',
     'kyazdani42/nvim-web-devicons', -- for file icons
     {'nvim-treesitter/nvim-treesitter', priority = 100, build = ':TSUpdate'},
     -- 'nvim-treesitter/playground',

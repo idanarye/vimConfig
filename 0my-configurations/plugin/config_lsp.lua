@@ -64,12 +64,6 @@ if not local_settings_loaded then
     local_settings = {}
 end
 
-require'nlspsettings'.setup {
-    config_home = vim.fn.globpath(vim.o.runtimepath, 'nlsp-settings');
-    append_default_schemas = true;
-    loader = 'yaml';
-}
-
 vim.lsp.config('*', {
     capabilities = {
         textDocument = {
