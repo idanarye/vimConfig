@@ -174,7 +174,8 @@ return {
     'nanozuki/tabby.nvim',
     'stevearc/aerial.nvim',
 
-    'Nexmean/caskey.nvim',
+    --'Nexmean/caskey.nvim',
+    'idanarye/caskey.nvim',
 
     'HampusHauffman/block.nvim',
     'rcarriga/nvim-notify',
