@@ -25,5 +25,6 @@ blunder.setup {
 }
 
 blunder.formats.python3 = blunder.formats.python
+blunder.formats.uv = blunder.formats.python
 blunder.formats.croissant = blunder.formats.lua
 blunder.formats.luajit = blunder.formats.lua
