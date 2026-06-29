@@ -238,4 +238,5 @@ return {
         end,
     },
     'AbaoFromCUG/websocket.nvim',
+    'CoreyKaylor/diffbandit.nvim',
 }

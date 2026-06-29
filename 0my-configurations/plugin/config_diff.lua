@@ -10,3 +10,6 @@ require'idan.impairative-toggling':manual {
     enable = lazydiff.enable,
     disable = lazydiff.disable,
 }
+
+require'diffbandit'.setup {
+}
