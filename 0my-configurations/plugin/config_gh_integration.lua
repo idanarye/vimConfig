@@ -1,3 +1,8 @@
+if true then
+    -- TODO: find a replacement? ghlite requires async.nvim, which conflicts
+    -- with promise-async, which is required for ufo.
+    return
+end
 require'ghlite'.setup {
     open_command = 'xdg-open',
 }

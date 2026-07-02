@@ -196,7 +196,6 @@ return {
     'stevearc/quicker.nvim',
 
     'aaronhallaert/advanced-git-search.nvim',
-    'daliusd/ghlite.nvim',
     {'Ramilito/kubectl.nvim', version = '2.*'},
     'yarospace/lua-console.nvim',
     'folke/snacks.nvim',
