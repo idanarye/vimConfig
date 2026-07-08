@@ -1,3 +1,6 @@
+if true then
+    return
+end
 local orig_opts = vim.iter({'conceallevel', 'concealcursor'}):fold({}, function(acc, k)
     acc[k] = vim.o[k]
     return acc

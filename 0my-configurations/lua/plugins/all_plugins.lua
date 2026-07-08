@@ -220,14 +220,14 @@ return {
 
     'emrearmagan/atlas.nvim',
 
-    {
-        'sheng-tse/jupynvim',
-        --'idanarye/jupynvim', branch = 'fix/14/execution-order-run-above-below',
-        build = function(plugin)
-            local install = loadfile(plugin.dir .. '/lua/jupynvim/install.lua')()
-            install.run(plugin)
-        end,
-    },
+    --{
+        --'sheng-tse/jupynvim',
+        ----'idanarye/jupynvim', branch = 'fix/14/execution-order-run-above-below',
+        --build = function(plugin)
+            --local install = loadfile(plugin.dir .. '/lua/jupynvim/install.lua')()
+            --install.run(plugin)
+        --end,
+    --},
 
     'rashedInt32/lazydiff.nvim',
     {
