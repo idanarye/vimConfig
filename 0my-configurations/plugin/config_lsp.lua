@@ -261,7 +261,7 @@ vim.lsp.config('emmylua_ls', {
             return set_of_plugins[plugin_name]
         end, vim.api.nvim_get_runtime_file("lua", true))
 
-        client.settings.Lua = {
+        client.settings.emmylua = {
             workspace = {
                 library = {
                     vim.env.VIMRUNTIME,
