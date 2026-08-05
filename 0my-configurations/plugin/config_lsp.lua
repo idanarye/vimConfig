@@ -118,7 +118,7 @@ local function resolve_python_info(root_dir)
     end
 
     if IdanLocalCfg.override_python_command_for_getting_site_packages then
-        python_cmd = IdanLocalCfg.override_python_command_for_getting_site_packages() or python_cmd
+        python_cmd = IdanLocalCfg.override_python_command_for_getting_site_packages(root_dir) or python_cmd
     end
 
     local result = vim.system(python_cmd, {
@@ -150,7 +150,6 @@ if true then
     vim.lsp.config('basedpyright', {
         before_init = function(_params, config)
             local python_info = resolve_python_info(config.root_dir)
-
             config.settings.python.pythonPath = python_info.python_executable
 
             vim.list_extend(config.settings.basedpyright.analysis.extraPaths, python_info.site_packages)
