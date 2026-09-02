@@ -305,6 +305,7 @@ vim.lsp.enable('nushell')
 
 vim.lsp.enable('protols')
 vim.lsp.config('protols', {
+    filetypes = { 'proto' },
     root_markers = { 'protols.toml', '.git' },
     before_init = function(_params, config)
         if IdanLocalCfg.modify_protols_config then
