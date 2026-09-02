@@ -9,6 +9,7 @@ ts.setup {
 ---@type table<string, _TreeSitterSpecificLanguageConfiguration>
 local langs = {
     ['bash'] = {},
+    ['capnp'] = {},
     -- 'd', -- don't install it, it makes Neovim and sometimes the machine itself freeze on certain files
     ['json'] = {},
     ['json5'] = {},
