@@ -295,6 +295,7 @@ vim.lsp.config('yamlls',  {
     settings = {
         yaml = {
             schemas = local_settings.yaml_schemas,
+            schemaStore = { enable = false },
         },
     },
 })
