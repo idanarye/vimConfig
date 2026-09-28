@@ -318,6 +318,8 @@ vim.lsp.config('protols', {
     },
 })
 
+vim.lsp.enable('denols')
+
 vim.lsp.enable('yarn_spinner')
 
 vim.cmd [=[
