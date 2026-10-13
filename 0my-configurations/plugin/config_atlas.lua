@@ -1,6 +1,8 @@
 require'atlas'.setup {
-    issues = (function()
-        local result = {}
+    providers = (function()
+        local result = {
+            github = {},
+        }
         if IdanLocalCfg.configure_atlas_providers then
             IdanLocalCfg.configure_atlas_providers(result)
         end
