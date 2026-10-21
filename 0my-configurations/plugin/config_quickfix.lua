@@ -24,6 +24,31 @@ quicker.setup {
     },
 }
 
+local function toggle_qf_validity_for(pred, name)
+    local qf = vim.fn.getqflist()
+
+    local relevant_items_are_valid = vim.iter(qf):any(function(item)
+        return pred(item) and item.valid == 1
+    end)
+    local set_valid_to
+    if relevant_items_are_valid then
+        set_valid_to = 0
+    else
+        set_valid_to = 1
+    end
+    local num_changed = 0
+    for _, item in ipairs(qf) do
+        if pred(item) then
+            item.valid = set_valid_to
+            num_changed = num_changed + 1
+        end
+    end
+    if 0 < num_changed then
+        vim.fn.setqflist(qf)
+        vim.notify(('%d %s are now %s'):format(num_changed, name or 'items', ({[0] = 'invalid', [1] = 'valid'})[set_valid_to]))
+    end
+end
+
 ck.setup {
     mode = 'n',
     name = 'quickfix',
@@ -53,27 +78,29 @@ ck.setup {
             }
         end, desc = 'focus Quicker loclist ' },
         ['w'] = { act = function()
-            local qf = vim.fn.getqflist()
-            local warnings_are_valid = vim.iter(qf):any(function(item)
-                return item.type == 'W' and item.valid == 1
-            end)
-            local set_valid_to
-            if warnings_are_valid then
-                set_valid_to = 0
-            else
-                set_valid_to = 1
-            end
-            local num_warnings = 0
-            for _, item in ipairs(qf) do
-                if item.type == 'W' then
-                    item.valid = set_valid_to
-                    num_warnings = num_warnings + 1
-                end
-            end
-            if 0 < num_warnings then
-                vim.fn.setqflist(qf)
-                vim.notify(('%d warnings are now %s'):format(num_warnings, ({[0] = 'invalid', [1] = 'valid'})[set_valid_to]))
-            end
+            toggle_qf_validity_for(function(item)
+                return item.type == 'W'
+            end, 'warnings')
         end, desc = 'toggle warnings validity' },
+        ['o'] = { act = function()
+            local function is_outside_the_workdir(bufnr)
+                local buftype = vim.api.nvim_get_option_value('buftype', {buf = bufnr})
+                if buftype ~= '' then
+                    -- special buffer - probably interesting
+                    return true
+                end
+                local filename = vim.fs.abspath(vim.api.nvim_buf_get_name(bufnr))
+                return vim.fs.relpath('.', filename) == nil
+            end
+
+            local cache = {}
+
+            toggle_qf_validity_for(function(item)
+                if cache[item.bufnr] == nil then
+                    cache[item.bufnr] = is_outside_the_workdir(item.bufnr)
+                end
+                return cache[item.bufnr]
+            end, 'outside items')
+        end, desc = 'toggle validity of items from outside the workdir' },
     },
 }
