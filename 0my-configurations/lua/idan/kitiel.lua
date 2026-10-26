@@ -109,7 +109,7 @@ function KitielTerminal:send_text(text)
         '--stdin',
     }, {
         stdin = text,
-    })
+    }):wait()
 end
 
 ---@param text string|string[]
@@ -124,7 +124,7 @@ function KitielTerminal:send_text_backeted_paste(text)
         '--bracketed-paste', 'enable',
     }, {
         stdin = text,
-    })
+    }):wait()
 end
 
 ---@return string
