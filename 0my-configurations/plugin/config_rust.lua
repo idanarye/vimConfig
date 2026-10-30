@@ -36,7 +36,7 @@ vim.g.rustaceanvim = {
                 },
                 files = {
                     watcher = 'server',
-                    -- exclude =  {'target', 'node_modules', '.git'},
+                    exclude =  {'target', 'node_modules', '.git'},
                 },
                 server = {
                     extraEnv = {
